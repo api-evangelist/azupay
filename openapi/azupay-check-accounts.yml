@@ -1,0 +1,416 @@
+openapi: 3.0.1
+info:
+  title: Azupay Check Accounts API
+  description: API Reference
+  version: v1
+  contact:
+    email: contactus@azupay.com.au
+servers:
+- url: https://api-uat.azupay.com.au/v1
+  description: UAT environment
+- url: https://api.azupay.com.au/v1
+  description: Production environment
+tags:
+- name: Check Accounts
+  description: 'Before you submit a Payment you can validate if the PayID or BSB account of the recipient
+    exists and
+
+    is eligible to receive payments.
+
+    '
+paths:
+  /accountCheck:
+    post:
+      operationId: checkAccountDetails
+      security:
+      - SecretKey: []
+      tags:
+      - Check Accounts
+      summary: Confirm the BSB/account number and name of a payee.
+      description: The purpose of this operation is to validate the BSB/account number and name via Confirmation
+        of Payee (CoP).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountCheckObj'
+      responses:
+        '200':
+          description: The account status object
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/AccountCheckResponseObj'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+        '401':
+          description: Invalid Authorization header
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+        '403':
+          description: Permission Denied
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+  /accountEnquiry:
+    post:
+      operationId: enquireAccount
+      security:
+      - SecretKey: []
+      tags:
+      - Check Accounts
+      summary: Check account BSB for NPP and PayTo reachability.
+      description: Check if NPP or AzupayTo payments can be sent to the account issuer identified by the
+        given BSB.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BSBEnquiryObj'
+            examples:
+              BSB Not Found (Test Case):
+                value:
+                  bsb: '939200'
+              BSB Not Found 2 (Test Case):
+                value:
+                  bsb: '000000'
+              Return an Authorisation Error (Test Case):
+                value:
+                  bsb: '999999'
+              BSB is NPP Reachable and PayTo Reachable (Test Case):
+                value:
+                  bsb: '939300'
+              BSB is NPP Reachable and NOT PayTo Reachable (Test Case):
+                value:
+                  bsb: '939301'
+      responses:
+        '200':
+          description: The account status object
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/AccountStatusObj'
+                - $ref: '#/components/schemas/AccountStatusExtraForBSBObj'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+        '401':
+          description: Invalid Authorization header
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+        '404':
+          description: Account Not Found
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+  /payIDEnquiry:
+    post:
+      operationId: checkPayID
+      tags:
+      - Check Accounts
+      summary: Check the status of the PayID.
+      description: "Check if the PayID is registered and able to accept NPP and PayTo payments. \nAlso\
+        \ support validation of bsb and account number attached to the PayID.\n"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayIDEnquiryObj'
+      responses:
+        '200':
+          description: The account status object
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/AccountStatusObj'
+                - $ref: '#/components/schemas/AccountStatusExtraForPayIdObj'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+        '401':
+          description: Invalid Authorization header
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+        '404':
+          description: Account Not Found
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+      security:
+      - SecretKey: []
+components:
+  schemas:
+    AccountCheckObj:
+      type: object
+      additionalProperties: false
+      required:
+      - accountCheckId
+      - bsb
+      - accountNumber
+      - accountName
+      - purposeCode
+      - additionalDetails
+      properties:
+        accountCheckId:
+          description: The accountCheckId that is going to be used to track a cop lookup
+          type: string
+          maxLength: 100
+          minLength: 5
+          pattern: ^[ -~]*$
+        bsb:
+          description: The BSB that is going to be used for cop lookup
+          maxLength: 6
+          minLength: 6
+          pattern: ^[0-9]*$
+          type: string
+        accountNumber:
+          description: The accountNumber that is going to be used for cop lookup
+          maxLength: 12
+          minLength: 4
+          pattern: ^[0-9]*$
+          type: string
+        accountName:
+          description: The accountName that is going to be used for cop lookup
+          maxLength: 140
+          minLength: 1
+          type: string
+          pattern: ^[^\s].*[^\s]$
+        purposeCode:
+          type: string
+          description: The purposeCode that declares the purpose of cop lookup
+          enum:
+          - PYMT
+          - PAYE
+          - MAND
+          - PIRQ
+          - VADR
+        additionalDetails:
+          type: object
+          description: Additional details
+          additionalProperties: false
+          required:
+          - endUserId
+          - endUserSessionId
+          properties:
+            endUserId:
+              type: string
+              minLength: 1
+              maxLength: 50
+              pattern: ^[ -~]*$
+            endUserSessionId:
+              type: string
+              minLength: 1
+              maxLength: 34
+              pattern: ^[ -~]*$
+    AccountCheckResponseObj:
+      type: object
+      required:
+      - accountCheckResultCode
+      - accountCheckResult
+      properties:
+        displayAccountName:
+          type: string
+        accountCheckResultCode:
+          type: string
+        accountCheckResult:
+          type: string
+        errorReasonCode:
+          type: string
+        errorReasonDescription:
+          type: string
+        retryAdvice:
+          type: boolean
+          description: Indicates whether the merchant should retry the CoP lookup. True for retryable
+            errors (NAVL, RFSL, TMNY, TIME, TECH), false for non-retryable errors (BSBN, NCOP, OOUT, CNPF).
+    AccountStatusExtraForBSBObj:
+      type: object
+      properties:
+        AccountStatus:
+          type: object
+          properties:
+            paytoReachable:
+              type: boolean
+              description: True if the BSB is PayTo reachable.
+    AccountStatusExtraForPayIdObj:
+      type: object
+      properties:
+        AccountStatus:
+          type: object
+          properties:
+            paytoReachable:
+              type: boolean
+              description: True if the PayID is PayTo reachable.
+            aliasName:
+              type: string
+              description: The alias name registered against the PayID.
+            validAccountName:
+              type: boolean
+              description: 'Whether the accountName provided in the parameter matches with the legal account
+                name attached to the PayID
+
+                '
+    AccountStatusObj:
+      type: object
+      properties:
+        AccountStatus:
+          type: object
+          required:
+          - nppReachable
+          - paytoReachable
+          properties:
+            nppReachable:
+              type: boolean
+              description: "True if the account can accept deposits via NPP. Does not check if the account\
+                \ is closed or has \nsanctions that may prevent deposits clearing.\n"
+            accountServices:
+              type: array
+              items:
+                type: string
+                example: x2p1
+              description: "List of NPP services that can be used to send to deposits to this account.\
+                \ eg x2p1- OSKO, \nsct- Single Credit Transfer.\n"
+            validBsb:
+              type: boolean
+              description: Whether the bsb provided in the parameter matches with the account attached
+                to the PayID
+            validAccountNumber:
+              type: boolean
+              description: 'Whether the accountNumber provided in the parameter matches with the account
+                attached to the PayID
+
+                '
+            bic11:
+              type: string
+              description: "The BIC11 of the bank where the account is held. Only provided when both `bsb`\
+                \ and `accountNumber` is \nprovided in the parameters\n"
+    BSBEnquiryObj:
+      type: object
+      additionalProperties: false
+      required:
+      - bsb
+      properties:
+        bsb:
+          description: The BSB that is going to be validated against npp eligibility
+          maxLength: 6
+          minLength: 6
+          pattern: ^\d{6}$
+          type: string
+    ErrorModel:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: false
+          properties:
+            failureCode:
+              type: string
+            failureReason:
+              type: string
+          required:
+          - failureCode
+          - failureReason
+    PayIDEnquiryObj:
+      type: object
+      additionalProperties: false
+      required:
+      - payID
+      - payIDType
+      properties:
+        payID:
+          type: string
+          minLength: 1
+          maxLength: 140
+          example: johndoe@example.com
+          description: The PayID to check.
+        payIDType:
+          type: string
+          example: EMAIL
+          description: 'PayID Type. Valid Values:
+
+            - ''PHONE’ Can be a mobile phone number or landline with area code
+
+            - ‘EMAIL’ Email address
+
+            - ‘ABN’ Australian Business Number
+
+            - ‘ORG’ Organisation Name'
+          enum:
+          - PHONE
+          - EMAIL
+          - ABN
+          - ORG
+        bsb:
+          type: string
+          description: Bsb to validate. If provided, `accountNumber` must be present.
+        accountNumber:
+          type: string
+          description: Account number to validate. If provided, `bsb` must be present.
+        accountName:
+          type: string
+          minLength: 1
+          maxLength: 140
+          description: Account name to check against the payId legal account name.
+  securitySchemes:
+    SecretKey:
+      description: 'The secret key is used to access restricted functions and should be stored
+
+        securely in your system. It is required for operations which may result in
+
+        additional charges to you as a merchant. Please protect the key by storing
+
+        it encrypted granting access only to a limited set of users and applications
+
+        requiring its use.
+
+        '
+      in: header
+      name: Authorization
+      type: apiKey
+    DistributableKey:
+      description: 'The distributable key has limited access and may be exposed publicly to
+
+        your payers.
+
+        '
+      in: header
+      name: Authorization
+      type: apiKey

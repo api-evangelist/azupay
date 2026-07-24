@@ -1,0 +1,154 @@
+aid: azupay
+name: Azupay
+review:
+  question: Does Azupay publish a genuine self-serve developer portal with a downloadable OpenAPI, and what is its real API surface, auth model, and event posture?
+  answer: true
+  date: '2026-07-24'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    Azupay is an API-first Australian real-time payments provider operating on
+    the New Payments Platform (NPP). It publishes a live, self-serve developer
+    portal at https://developer.azupay.com.au/ (HTTP 200, ReadMe-hosted) with
+    guides, a full API reference, a changelog, webhooks documentation, test
+    accounts, and a UAT environment. The REST API is served from
+    https://api.azupay.com.au/v1 (production) and https://api-uat.azupay.com.au/v1
+    (UAT). A separate api-docs.azupay.com.au host did not resolve at review time
+    (curl exit 000); developer.azupay.com.au is the active portal.
+
+    OpenAPI: the reference does not expose a single monolithic /openapi.json
+    (that path returns 404). Instead, ReadMe renders one OpenAPI 3.0.1 definition
+    per operation, embedded verbatim in each /reference/<op>.md page under an
+    "# OpenAPI definition" JSON fence. All 37 documented operation pages were
+    fetched (HTTP 200 each) and their embedded specs merged into 27 unique paths
+    with 92 shared component schemas and no path/operation conflicts. The merged
+    surface was split along the portal's own x-tagGroups into six product-family
+    OpenAPI 3.0.1 specs, saved verbatim under openapi/ and each validated with
+    openapi-spec-validator (all VALID): AzupayId receive (payment-request),
+    AzupayOut send (payment), AzupayTo PayTo agreements/initiations
+    (payment-agreement), Confirmation-of-Payee/reachability (check-accounts),
+    reporting/balance (reports), and clients/API-keys/OAuth2 config
+    (configuration).
+
+    Auth model: primary scheme is API key in the Authorization header — a
+    SecretKey (restricted, charged operations) and a DistributableKey (limited,
+    publicly exposable). OAuth 2.0 client-credentials is documented as an
+    additional server-to-server option issuing short-lived scoped JWT bearer
+    tokens from a per-tenant oauth2TokenUrl (returned by POST
+    /client/{clientId}/oauth2); there is no global /.well-known discovery
+    document (the well-known probes returned 403). OAuth2 and sub-client creation
+    are enabled per client by Azupay.
+
+    Events: webhooks are documented (asynchronous payment status, configurable
+    preferences, with an OAuth2-secured notification option). No AsyncAPI
+    document is published and no public GraphQL, gRPC/.proto, or Postman
+    collection was found. A public GitHub organization github.com/azupay exists
+    but has no public repositories and no bio confirming ownership, so it was not
+    asserted as the company's org.
+
+    Home market is Australia. As NPP rails, the underlying scheme is real-time
+    account-to-account with PayID addressing and PayTo mandated debits (ISO 20022
+    messaging under the hood at the NPP layer, not surfaced as a downloadable
+    scheme artifact by Azupay); Confirmation of Payee (CoP) is offered as a
+    first-class fraud/misdirection control.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.azupay.com.au/v1
+      documented: true
+    - protocol: REST
+      scheme: https
+      baseURL: https://api-uat.azupay.com.au/v1
+      note: UAT / integration test environment with fictitious test accounts and PayIDs.
+      documented: true
+    - protocol: Webhooks
+      scheme: https
+      note: HTTPS callback notifications for asynchronous payment status; configurable preferences; optional OAuth2-secured delivery. No AsyncAPI published.
+      documented: true
+    - protocol: SFTP
+      scheme: sftp
+      note: Batch/file transfer (ABA Direct Entry format and other file types) via Azupay-hosted or customer-hosted SFTP for bulk payouts/collections.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket surface documented.
+  auth:
+    primary: API key (Authorization header)
+    schemes:
+      - name: SecretKey
+        type: apiKey
+        in: header
+        headerName: Authorization
+        note: Restricted key for operations that may incur merchant charges; store encrypted, limit access.
+      - name: DistributableKey
+        type: apiKey
+        in: header
+        headerName: Authorization
+        note: Limited-access key that may be exposed publicly to payers.
+      - name: OAuth2ClientCredentials
+        type: oauth2
+        flow: clientCredentials
+        note: Additional option. Per-tenant token URL returned by POST /client/{clientId}/oauth2; scoped JWT bearer tokens (oauth2AllowedScopes); default scope set covers paymentRequest, payment, accountEnquiry, payIDEnquiry, report, balance endpoints. No global well-known discovery (403).
+  specsHarvested:
+    count: 6
+    format: OpenAPI 3.0.1
+    validator: openapi-spec-validator (all VALID)
+    provenance:
+      sourceHost: https://developer.azupay.com.au
+      method: Per-operation OpenAPI 3.0.1 definitions embedded verbatim in ReadMe /reference/<op>.md pages, fetched 2026-07-24 (37 pages, all HTTP 200), merged (27 paths, 92 schemas, 0 conflicts) and split by the portal's own x-tagGroups.
+      fetchDate: '2026-07-24'
+    files:
+      - path: openapi/azupay-payment-request.yml
+        family: AzupayId — receive payments (PayID)
+        paths: 3
+      - path: openapi/azupay-payment.yml
+        family: AzupayOut — send/outbound payments
+        paths: 2
+      - path: openapi/azupay-payment-agreement.yml
+        family: AzupayTo — PayTo agreements & initiations
+        paths: 9
+      - path: openapi/azupay-check-accounts.yml
+        family: Confirmation of Payee / PayID enquiry / reachability
+        paths: 3
+      - path: openapi/azupay-reports.yml
+        family: Reports & balance
+        paths: 3
+      - path: openapi/azupay-configuration.yml
+        family: Clients & API-key & OAuth2 management
+        paths: 7
+sources:
+  - url: https://developer.azupay.com.au/
+    type: DeveloperPortal
+    status: 200
+    note: Live ReadMe-hosted developer portal.
+  - url: https://developer.azupay.com.au/llms.txt
+    type: Documentation
+    status: 200
+    note: LLM index enumerating all guides, the 37-operation API reference, and changelog.
+  - url: https://developer.azupay.com.au/reference/makepayment.md
+    type: APIReference
+    status: 200
+    note: Example reference page carrying an embedded verbatim OpenAPI 3.0.1 definition (servers api.azupay.com.au/v1 + UAT).
+  - url: https://developer.azupay.com.au/docs/oauth-20-api.md
+    type: Documentation
+    status: 200
+    note: OAuth 2.0 client-credentials guide (per-tenant token URL, default scopes).
+  - url: https://developer.azupay.com.au/docs/webhooks.md
+    type: Documentation
+    status: 200
+    note: Webhooks implementation and security.
+  - url: https://api.azupay.com.au/.well-known/openid-configuration
+    type: WellKnown
+    status: 403
+    note: No anonymous OIDC/OAuth discovery document served; OAuth2 token URL is provisioned per client.
+  - url: https://helpcentre.azupay.com.au/
+    type: HelpCenter
+    status: 200
+  - url: https://status.azupay.com.au/
+    type: StatusPage
+    status: 200
+  - url: https://github.com/azupay
+    type: GitHubOrganization
+    status: 200
+    note: Org exists but has no public repositories and no confirming bio; not asserted as the company's org in apis.yml.
