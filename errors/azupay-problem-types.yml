@@ -1,0 +1,149 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/*.yml
+format: http-status
+envelope: Azupay returns a JSON error body with a message field; responses are not RFC 9457 problem+json.
+note: Payment failure/return reasons (e.g. failureReason AGNT) are surfaced on the PaymentStatus object
+  of the relevant transaction, not as API-level errors.
+problems:
+- status: 400
+  title: Bad request
+  description: Bad Request
+  remediation: Validate the request body/parameters against the API reference before retrying.
+  operations:
+  - apiKeysProvision
+  - changeStatusOfPaymentAgreement
+  - checkAccountDetails
+  - checkPayID
+  - createClient
+  - createOrUpdatePaymentScheduler
+  - createPayIdPaymentRequest
+  - createPaymentAgreement
+  - createPaymentAgreementAmendment
+  - createPaymentAgreementRequest
+  - deleteClient
+  - deletePaymentRequest
+  - enableClientOAuth2
+  - enquireAccount
+  - getApiKey
+  - getApiKeys
+  - getPayment
+  - getPaymentInitiation
+  - getPaymentRequest
+  - makePayment
+  - makePaymentInitiation
+  - refundPaymentInitation
+  - refundPaymentRequest
+  - searchPayment
+  - searchPaymentAgreement
+  - searchPaymentInitiation
+  - searchPaymentRequest
+  - updateApiKeys
+  - updateClientLowBalanceAlertEmailAddresses
+  - updateClientLowBalanceAlertThreshold
+- status: 401
+  title: Unauthorized
+  description: Invalid Authorization header
+  remediation: Supply a valid Secret or Distributable key (or OAuth2 bearer token) in the Authorization
+    header.
+  operations:
+  - apiKeysProvision
+  - changeStatusOfPaymentAgreement
+  - checkAccountDetails
+  - checkPayID
+  - createOrUpdatePaymentScheduler
+  - createPaymentAgreement
+  - createPaymentAgreementAmendment
+  - createPaymentAgreementRequest
+  - deletePaymentRequest
+  - enquireAccount
+  - getApiKey
+  - getApiKeys
+  - getBalance
+  - getPayment
+  - getPaymentInitiation
+  - getPaymentRequest
+  - getPaymentScheduler
+  - makePayment
+  - makePaymentInitiation
+  - refundPaymentInitation
+  - refundPaymentRequest
+  - searchPayment
+  - searchPaymentAgreement
+  - searchPaymentInitiation
+  - searchPaymentRequest
+  - updateApiKeys
+- status: 403
+  title: Forbidden
+  description: Caller not authorised, or agreement not in ACTIVE state.
+  remediation: The supplied key lacks permission for this operation or the capability is not enabled for
+    your client; contact Azupay.
+  operations:
+  - apiKeysProvision
+  - changeStatusOfPaymentAgreement
+  - checkAccountDetails
+  - createClient
+  - createOrUpdatePaymentScheduler
+  - createPayIdPaymentRequest
+  - createPaymentAgreement
+  - createPaymentAgreementAmendment
+  - createPaymentAgreementRequest
+  - deleteClient
+  - downloadReport
+  - enableClientOAuth2
+  - getApiKey
+  - getApiKeys
+  - getClientLowBalanceAlertEmailAddresses
+  - getClientLowBalanceAlertThreshold
+  - getClientOAuth2
+  - getPaymentInitiation
+  - getPaymentScheduler
+  - getReport
+  - searchPaymentRequest
+  - updateApiKeys
+  - updateClientLowBalanceAlertEmailAddresses
+  - updateClientLowBalanceAlertThreshold
+- status: 404
+  title: Not found
+  description: Account Not Found
+  remediation: The referenced resource does not exist; verify the id (e.g. paymentRequestId, clientId).
+  operations:
+  - apiKeysProvision
+  - changeStatusOfPaymentAgreement
+  - checkPayID
+  - createOrUpdatePaymentScheduler
+  - createPaymentAgreementAmendment
+  - deleteClient
+  - downloadReport
+  - enquireAccount
+  - getApiKey
+  - getApiKeys
+  - getClientLowBalanceAlertEmailAddresses
+  - getClientLowBalanceAlertThreshold
+  - getClientOAuth2
+  - getPayment
+  - getPaymentRequest
+  - getPaymentScheduler
+  - getReport
+  - refundPaymentInitation
+  - refundPaymentRequest
+  - updateApiKeys
+  - updateClientLowBalanceAlertEmailAddresses
+  - updateClientLowBalanceAlertThreshold
+- status: 409
+  title: Conflict
+  description: Amend Payment Agreement already in progress.
+  remediation: A resource with the same client-supplied id (clientTransactionId / clientRefundID) already
+    exists; treat as idempotent duplicate.
+  operations:
+  - changeStatusOfPaymentAgreement
+  - createOrUpdatePaymentScheduler
+  - createPaymentAgreementAmendment
+  - makePayment
+- status: 412
+  title: Precondition failed
+  description: Invalid Status in Change Status Request
+  remediation: A required precondition (e.g. current version for an upsert/amendment) was not met; re-fetch
+    and retry with the current version.
+  operations:
+  - changeStatusOfPaymentAgreement

@@ -2,24 +2,19 @@ aid: azupay
 url: https://raw.githubusercontent.com/api-evangelist/azupay/refs/heads/main/apis.yml
 name: Azupay
 kind: company
-description: >-
-  Azupay is an Australian real-time payments company that moves money over the
-  New Payments Platform (NPP), the account-to-account rails operated by Australian
-  Payments Plus. It is API-first: merchants and platforms embed Azupay to receive
-  payments via PayID (AzupayId), send outbound payments to a PayID or BSB/account
-  number (AzupayOut), and collect recurring or on-demand debits through PayTo
-  mandates and payment agreements (AzupayTo). Azupay also offers Confirmation of
-  Payee (CoP) account checks and PayID enquiry to reduce misdirected-payment and
-  fraud risk, batch/file (ABA and SFTP) processing for bulk payouts and
-  collections, reporting, balance management, sub-client and API-key management,
-  and hosted UX apps (Pay by Bank, Disbursements, Subscriptions). Its public
-  developer portal documents a REST API at api.azupay.com.au/v1 with a UAT
-  environment, authenticated by API key (secret and distributable keys in the
-  Authorization header) with OAuth 2.0 client-credentials available as an
-  additional server-to-server option, plus webhooks for asynchronous payment
-  status. Home market is Australia; the surface is genuinely self-serve and
-  documented, though production access and some capabilities (sub-clients, OAuth2)
-  are enabled per client by Azupay.
+description: 'Azupay is an Australian real-time payments company that moves money over the New Payments
+  Platform (NPP), the account-to-account rails operated by Australian Payments Plus. It is API-first:
+  merchants and platforms embed Azupay to receive payments via PayID (AzupayId), send outbound payments
+  to a PayID or BSB/account number (AzupayOut), and collect recurring or on-demand debits through PayTo
+  mandates and payment agreements (AzupayTo). Azupay also offers Confirmation of Payee (CoP) account checks
+  and PayID enquiry to reduce misdirected-payment and fraud risk, batch/file (ABA and SFTP) processing
+  for bulk payouts and collections, reporting, balance management, sub-client and API-key management,
+  and hosted UX apps (Pay by Bank, Disbursements, Subscriptions). Its public developer portal documents
+  a REST API at api.azupay.com.au/v1 with a UAT environment, authenticated by API key (secret and distributable
+  keys in the Authorization header) with OAuth 2.0 client-credentials available as an additional server-to-server
+  option, plus webhooks for asynchronous payment status. Home market is Australia; the surface is genuinely
+  self-serve and documented, though production access and some capabilities (sub-clients, OAuth2) are
+  enabled per client by Azupay.'
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Payments
@@ -38,11 +33,10 @@ specificationVersion: '0.19'
 apis:
 - aid: azupay:azupay-payment-request-api
   name: Azupay PaymentRequest API (AzupayId)
-  description: >-
-    Receive real-time account-to-account payments from customers by creating
-    PayID-addressed payment requests. Create, retrieve, search, delete, and
-    refund PaymentRequests; poll payment status to confirm the customer has paid.
-    Supports dynamic and static PayIDs. Part of Azupay's AzupayId receive product.
+  description: Receive real-time account-to-account payments from customers by creating PayID-addressed
+    payment requests. Create, retrieve, search, delete, and refund PaymentRequests; poll payment status
+    to confirm the customer has paid. Supports dynamic and static PayIDs. Part of Azupay's AzupayId receive
+    product.
   humanURL: https://developer.azupay.com.au/docs/receiving-payments
   baseURL: https://api.azupay.com.au/v1
   tags:
@@ -57,12 +51,13 @@ apis:
     url: https://developer.azupay.com.au/docs/receiving-payments
   - type: APIReference
     url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
+  - type: Overlay
+    url: overlays/azupay-payment-request-overlay.yaml
 - aid: azupay:azupay-payment-api
   name: Azupay Payment API (AzupayOut)
-  description: >-
-    Send outbound NPP payments to a PayID or to a BSB and account number, then
-    poll for settlement status. Search prior payments. Part of Azupay's AzupayOut
-    disbursement/payout product for real-time money movement.
+  description: Send outbound NPP payments to a PayID or to a BSB and account number, then poll for settlement
+    status. Search prior payments. Part of Azupay's AzupayOut disbursement/payout product for real-time
+    money movement.
   humanURL: https://developer.azupay.com.au/docs/making-payments
   baseURL: https://api.azupay.com.au/v1
   tags:
@@ -77,14 +72,14 @@ apis:
     url: https://developer.azupay.com.au/docs/making-payments
   - type: APIReference
     url: https://developer.azupay.com.au/reference/makepayment
+  - type: Overlay
+    url: overlays/azupay-payment-overlay.yaml
 - aid: azupay:azupay-payment-agreement-api
   name: Azupay PaymentAgreement & Initiation API (AzupayTo / PayTo)
-  description: >-
-    Establish and manage PayTo payment agreements and initiate eligible debits
-    against them. Create, amend, change status, and search agreements; create
-    payment agreement requests; schedule payments; initiate, refund, search, and
-    retrieve payment initiations. Azupay's AzupayTo mandated-debit product built
-    on NPP PayTo.
+  description: Establish and manage PayTo payment agreements and initiate eligible debits against them.
+    Create, amend, change status, and search agreements; create payment agreement requests; schedule payments;
+    initiate, refund, search, and retrieve payment initiations. Azupay's AzupayTo mandated-debit product
+    built on NPP PayTo.
   humanURL: https://developer.azupay.com.au/docs/payto-integration-guide
   baseURL: https://api.azupay.com.au/v1
   tags:
@@ -100,13 +95,13 @@ apis:
     url: https://developer.azupay.com.au/docs/payto-integration-guide
   - type: APIReference
     url: https://developer.azupay.com.au/reference/createpaymentagreement
+  - type: Overlay
+    url: overlays/azupay-payment-agreement-overlay.yaml
 - aid: azupay:azupay-check-accounts-api
   name: Azupay Account Check API (Confirmation of Payee)
-  description: >-
-    Reduce misdirected-payment and fraud risk with real-time account checks.
-    Confirm a payee's BSB/account number and name via Confirmation of Payee (CoP),
-    check whether an account issuer can receive NPP or AzupayTo payments by BSB,
-    and verify PayID registration and reachability.
+  description: Reduce misdirected-payment and fraud risk with real-time account checks. Confirm a payee's
+    BSB/account number and name via Confirmation of Payee (CoP), check whether an account issuer can receive
+    NPP or AzupayTo payments by BSB, and verify PayID registration and reachability.
   humanURL: https://developer.azupay.com.au/docs/account-check-cop
   baseURL: https://api.azupay.com.au/v1
   tags:
@@ -121,12 +116,12 @@ apis:
     url: https://developer.azupay.com.au/docs/account-check-cop
   - type: APIReference
     url: https://developer.azupay.com.au/reference/checkaccountdetails
+  - type: Overlay
+    url: overlays/azupay-check-accounts-overlay.yaml
 - aid: azupay:azupay-reports-api
   name: Azupay Report & Balance API
-  description: >-
-    Retrieve daily transaction reports by month or date range, obtain time-limited
-    download links for reports, and check the current balance of an Azupay client
-    account.
+  description: Retrieve daily transaction reports by month or date range, obtain time-limited download
+    links for reports, and check the current balance of an Azupay client account.
   humanURL: https://developer.azupay.com.au/docs/report-api
   baseURL: https://api.azupay.com.au/v1
   tags:
@@ -141,14 +136,14 @@ apis:
     url: https://developer.azupay.com.au/docs/report-api
   - type: APIReference
     url: https://developer.azupay.com.au/reference/getreport
+  - type: Overlay
+    url: overlays/azupay-reports-overlay.yaml
 - aid: azupay:azupay-configuration-api
   name: Azupay Clients & API Key Management API
-  description: >-
-    Manage the platform configuration for an Azupay integration. Create, replace,
-    and disable sub-clients; provision, retrieve, and update API keys for sub
-    merchants; enable and read OAuth 2.0 configuration; and manage low-balance
-    alert thresholds and recipients. Several operations are enabled per client by
-    Azupay.
+  description: Manage the platform configuration for an Azupay integration. Create, replace, and disable
+    sub-clients; provision, retrieve, and update API keys for sub merchants; enable and read OAuth 2.0
+    configuration; and manage low-balance alert thresholds and recipients. Several operations are enabled
+    per client by Azupay.
   humanURL: https://developer.azupay.com.au/docs/clients-api
   baseURL: https://api.azupay.com.au/v1
   tags:
@@ -163,7 +158,15 @@ apis:
     url: https://developer.azupay.com.au/docs/clients-api
   - type: APIReference
     url: https://developer.azupay.com.au/reference/createclient
+  - type: Overlay
+    url: overlays/azupay-configuration-overlay.yaml
 common:
+- type: DomainSecurity
+  url: security/azupay-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/azupay-agentic-access.yml
+- type: Authentication
+  url: authentication/azupay-authentication.yml
 - type: Website
   url: https://azupay.com.au/
 - type: DeveloperPortal
@@ -194,6 +197,36 @@ common:
   url: https://azupay.com.au/privacy-policy/
 - type: Login
   url: https://dashboard.azupay.com.au/
+- type: OAuthScopes
+  url: scopes/azupay-scopes.yml
+- type: Conventions
+  url: conventions/azupay-conventions.yml
+- type: Idempotency
+  url: conventions/azupay-conventions.yml
+- type: Lifecycle
+  url: lifecycle/azupay-lifecycle.yml
+- type: Deprecation
+  url: https://developer.azupay.com.au/docs/getting-started-1
+- type: ErrorCatalog
+  url: errors/azupay-problem-types.yml
+- type: Conformance
+  url: conformance/azupay-conformance.yml
+- type: DataModel
+  url: data-model/azupay-data-model.yml
+- type: Sandbox
+  url: sandbox/azupay-sandbox.yml
+- type: ChangeLog
+  url: changelog/azupay-changelog.yml
+- type: Components
+  url: components/azupay-components.yml
+- type: Webhooks
+  url: asyncapi/azupay-webhooks.yml
+- type: LLMsTxt
+  url: llms/azupay-llms.txt
+- type: MCPServer
+  url: mcp/azupay-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

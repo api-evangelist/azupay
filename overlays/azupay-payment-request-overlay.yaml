@@ -1,0 +1,14 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Azupay Azupay Payment Request API
+  version: 1.0.0
+extends: openapi/azupay-payment-request.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-24'
+    x-apievangelist-provider: azupay
+    x-apievangelist-idempotency: Client-supplied clientTransactionId / clientRefundID act as natural idempotency
+      keys; duplicates return 409.
+    x-apievangelist-webhooks: Asynchronous payment status delivered via webhooks (see conventions/ and
+      asyncapi/).

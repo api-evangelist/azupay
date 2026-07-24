@@ -1,0 +1,120 @@
+generated: '2026-07-24'
+method: derived
+status: candidate
+server:
+  name: azupay
+  transport: http
+  note: No official Azupay MCP server is published as of this date; this is a candidate tool surface derived
+    1:1 from the REST OpenAPI operations to guide an agent integration.
+tools:
+- name: checkAccountDetails
+  description: Confirm the BSB/account number and name of a payee.
+  source_operation: openapi/azupay-check-accounts.yml#checkAccountDetails
+- name: enquireAccount
+  description: Check account BSB for NPP and PayTo reachability.
+  source_operation: openapi/azupay-check-accounts.yml#enquireAccount
+- name: checkPayID
+  description: Check the status of the PayID.
+  source_operation: openapi/azupay-check-accounts.yml#checkPayID
+- name: apiKeysProvision
+  description: Create API keys for Sub Merchants
+  source_operation: openapi/azupay-configuration.yml#apiKeysProvision
+- name: getApiKeys
+  description: Get API keys for Sub Merchants
+  source_operation: openapi/azupay-configuration.yml#getApiKeys
+- name: getApiKey
+  description: Gets an API key based on the API key ID.
+  source_operation: openapi/azupay-configuration.yml#getApiKey
+- name: updateApiKeys
+  description: Update API keys for Sub Merchants
+  source_operation: openapi/azupay-configuration.yml#updateApiKeys
+- name: enableClientOAuth2
+  description: Enable OAuth2 for a client
+  source_operation: openapi/azupay-configuration.yml#enableClientOAuth2
+- name: getClientOAuth2
+  description: Get OAuth2 configuration for a client
+  source_operation: openapi/azupay-configuration.yml#getClientOAuth2
+- name: createClient
+  description: Create or replace a client
+  source_operation: openapi/azupay-configuration.yml#createClient
+- name: deleteClient
+  description: Disable a sub-client
+  source_operation: openapi/azupay-configuration.yml#deleteClient
+- name: getClientLowBalanceAlertEmailAddresses
+  description: ''
+  source_operation: openapi/azupay-configuration.yml#getClientLowBalanceAlertEmailAddresses
+- name: updateClientLowBalanceAlertEmailAddresses
+  description: Set email addresses to send the low balance alerts
+  source_operation: openapi/azupay-configuration.yml#updateClientLowBalanceAlertEmailAddresses
+- name: getClientLowBalanceAlertThreshold
+  description: ''
+  source_operation: openapi/azupay-configuration.yml#getClientLowBalanceAlertThreshold
+- name: updateClientLowBalanceAlertThreshold
+  description: Set low balance threshold to trigger alerts
+  source_operation: openapi/azupay-configuration.yml#updateClientLowBalanceAlertThreshold
+- name: createPaymentAgreement
+  description: Create a Payment Agreement
+  source_operation: openapi/azupay-payment-agreement.yml#createPaymentAgreement
+- name: createPaymentAgreementAmendment
+  description: Amend a Payment Agreement
+  source_operation: openapi/azupay-payment-agreement.yml#createPaymentAgreementAmendment
+- name: changeStatusOfPaymentAgreement
+  description: Change Status of a Payment Agreement
+  source_operation: openapi/azupay-payment-agreement.yml#changeStatusOfPaymentAgreement
+- name: searchPaymentAgreement
+  description: Search for Payment Agreements.
+  source_operation: openapi/azupay-payment-agreement.yml#searchPaymentAgreement
+- name: createOrUpdatePaymentScheduler
+  description: Create or amend a Payment Scheduler
+  source_operation: openapi/azupay-payment-agreement.yml#createOrUpdatePaymentScheduler
+- name: getPaymentScheduler
+  description: Retrieve a Payment Scheduler
+  source_operation: openapi/azupay-payment-agreement.yml#getPaymentScheduler
+- name: createPaymentAgreementRequest
+  description: Create a Payment Agreement Request
+  source_operation: openapi/azupay-payment-agreement.yml#createPaymentAgreementRequest
+- name: getPaymentInitiation
+  description: Get a Payment Initiation
+  source_operation: openapi/azupay-payment-agreement.yml#getPaymentInitiation
+- name: makePaymentInitiation
+  description: Initiate a Payment
+  source_operation: openapi/azupay-payment-agreement.yml#makePaymentInitiation
+- name: refundPaymentInitation
+  description: Refund for Payment Initiation
+  source_operation: openapi/azupay-payment-agreement.yml#refundPaymentInitation
+- name: searchPaymentInitiation
+  description: Search for Payment Initiation
+  source_operation: openapi/azupay-payment-agreement.yml#searchPaymentInitiation
+- name: createPayIdPaymentRequest
+  description: Create a Payment Request.
+  source_operation: openapi/azupay-payment-request.yml#createPayIdPaymentRequest
+- name: deletePaymentRequest
+  description: Delete a Payment Request.
+  source_operation: openapi/azupay-payment-request.yml#deletePaymentRequest
+- name: getPaymentRequest
+  description: Get a Payment Request.
+  source_operation: openapi/azupay-payment-request.yml#getPaymentRequest
+- name: refundPaymentRequest
+  description: Refund a PaymentRequest.
+  source_operation: openapi/azupay-payment-request.yml#refundPaymentRequest
+- name: searchPaymentRequest
+  description: Search for Payment Requests.
+  source_operation: openapi/azupay-payment-request.yml#searchPaymentRequest
+- name: getPayment
+  description: Get a Payment.
+  source_operation: openapi/azupay-payment.yml#getPayment
+- name: makePayment
+  description: Make a Payment.
+  source_operation: openapi/azupay-payment.yml#makePayment
+- name: searchPayment
+  description: Search for Payments.
+  source_operation: openapi/azupay-payment.yml#searchPayment
+- name: getBalance
+  description: Get current balance
+  source_operation: openapi/azupay-reports.yml#getBalance
+- name: getReport
+  description: Get Reports
+  source_operation: openapi/azupay-reports.yml#getReport
+- name: downloadReport
+  description: Get Report download Url
+  source_operation: openapi/azupay-reports.yml#downloadReport

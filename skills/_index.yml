@@ -1,0 +1,36 @@
+generated: '2026-07-24'
+method: generated
+skills:
+- file: azupay-receive-payid-payment.md
+  name: Receive a PayID payment
+  api: openapi/azupay-payment-request.yml
+  operations:
+  - createPayIdPaymentRequest
+  - getPaymentRequest
+  - searchPaymentRequest
+  - refundPaymentRequest
+- file: azupay-send-payment.md
+  name: Send an outbound payment
+  api: openapi/azupay-payment.yml
+  operations:
+  - makePayment
+  - getPayment
+  - searchPayment
+- file: azupay-confirmation-of-payee.md
+  name: Confirm a payee before paying
+  api: openapi/azupay-check-accounts.yml
+  operations:
+  - checkAccountDetails
+  - enquireAccount
+  - checkPayID
+- file: azupay-payto-agreement-and-debit.md
+  name: Set up a PayTo agreement and debit it
+  api: openapi/azupay-payment-agreement.yml
+  operations:
+  - createPaymentAgreementRequest
+  - createPaymentAgreement
+  - changeStatusOfPaymentAgreement
+  - makePaymentInitiation
+  - getPaymentInitiation
+  - refundPaymentInitation
+  - createOrUpdatePaymentScheduler

@@ -1,0 +1,66 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/*.yml
+note: Entities and relationships derived from OpenAPI operation resources and id-reference fields (clientId,
+  paymentAgreementId, clientTransactionId).
+entities:
+- name: Client
+  description: A business (or sub-client) onboarded with Azupay, identified by clientId.
+  id_field: clientId
+- name: ApiKey
+  description: A Secret (SECR) or Distributable (DIST) API key provisioned for a client/sub-merchant.
+  id_field: apiKeyId
+- name: PaymentRequest
+  description: A PayID-addressed inbound (receive) payment request; keyed by client clientTransactionId.
+  id_field: paymentRequestId
+- name: Payment
+  description: An outbound NPP payment to a PayID or BSB/account.
+  id_field: paymentId
+- name: PaymentAgreement
+  description: A PayTo mandate/agreement between payer and merchant.
+  id_field: paymentAgreementId
+- name: PaymentAgreementRequest
+  description: A request to establish a PayTo agreement.
+- name: PaymentScheduler
+  description: A recurring schedule attached to a PaymentAgreement (upsert keyed on paymentAgreementId).
+- name: PaymentInitiation
+  description: A debit initiated against an active PayTo agreement.
+  id_field: paymentInitiationId
+- name: Report
+  description: A daily transaction report for a client account.
+  id_field: reportId
+- name: Balance
+  description: The current balance of an Azupay client account.
+relationships:
+- from: ApiKey
+  to: Client
+  type: belongs_to
+  via: clientId
+- from: PaymentRequest
+  to: Client
+  type: belongs_to
+  via: clientId
+- from: Payment
+  to: Client
+  type: belongs_to
+  via: clientId
+- from: PaymentAgreement
+  to: Client
+  type: belongs_to
+  via: clientId
+- from: PaymentScheduler
+  to: PaymentAgreement
+  type: belongs_to
+  via: paymentAgreementId
+- from: PaymentInitiation
+  to: PaymentAgreement
+  type: belongs_to
+  via: paymentAgreementId
+- from: Report
+  to: Client
+  type: belongs_to
+  via: clientId
+- from: Balance
+  to: Client
+  type: belongs_to
+  via: clientId

@@ -1,0 +1,136 @@
+# Azupay Developer Docs Documentation
+
+> Work with us and embed our highly optimised and continuously improving UX Apps to provide seamless PayOuts, Payment Requests and Automatic Payments for your customers, suppliers and partners. Alternatively, work with our suite of APIs and create your own customised user experiences.
+
+## Guides
+- [Build your first integration](https://developer.azupay.com.au/docs/getting-started-1.md): Save yourself some later headaches: read this page before starting your first integration
+- [Choosing the right UX payment solution](https://developer.azupay.com.au/docs/selecting-the-right-ux-app.md)
+- [Best practice](https://developer.azupay.com.au/docs/best-practice.md): Advice on how to get the best outcomes from your integration with Azupay apps or APIs
+- [Overview](https://developer.azupay.com.au/docs/managing-your-apps.md)
+- [Receive Payments](https://developer.azupay.com.au/docs/receive-payments.md)
+- [Pay by Bank App](https://developer.azupay.com.au/docs/pay-by-bank-app.md): The Pay by Bank App lets you receive real-time account-to-account payments through a custom-branded checkout experience. Within the app, you can offer PayID payments, enable PayTo where suitable.
+- [Receive PayID Payments](https://developer.azupay.com.au/docs/receive-payid-payments.md)
+- [Receive PayTo Payments](https://developer.azupay.com.au/docs/receive-payto-payments.md)
+- [Configurations](https://developer.azupay.com.au/docs/configurations.md)
+- [Send Payments](https://developer.azupay.com.au/docs/send-payments.md)
+- [Disbursement App ](https://developer.azupay.com.au/docs/disbursements-app.md): The Disbursements App enables Azupay clients to make outbound payments directly from the Azupay client dashboard.
+- [Send to PayID or BSB & AccNo](https://developer.azupay.com.au/docs/send-payments-to-bsb-account-number.md)
+- [Pull Payments](https://developer.azupay.com.au/docs/pull-payments.md)
+- [Subscriptions App](https://developer.azupay.com.au/docs/subscriptions-app.md)
+- [Pull via Subscriptions App](https://developer.azupay.com.au/docs/pull-via-subscriptions-app.md)
+- [Integration Guide](https://developer.azupay.com.au/docs/integration-guide.md): A series of guides on how to integrate specific Apps and solutions
+- [Integrate Pay by Bank](https://developer.azupay.com.au/docs/integrate-pay-by-bank.md)
+- [Shopify Integration](https://developer.azupay.com.au/docs/integrating-with-shopify.md)
+- [Clover Integration](https://developer.azupay.com.au/docs/onboarding-to-azupay-on-clover.md): This guide explains how to onboard your business to **Azupay Pay by Bank** using a **Clover terminal**.  The onboarding process is completed directly on the terminal and allows Azupay to verify your business and settlement bank account so you can begin accepting Pay by Bank payments.
+- [Integrate Subscriptions App](https://developer.azupay.com.au/docs/integrate-subscriptions-app.md)
+- [Testing the Pay by Bank App](https://developer.azupay.com.au/docs/test-accounts-1-click-checkout.md): In the UAT environment, we provide you with fictitious accounts and PayIDs in order to test possible payment request outcomes in the PayID and PayTo payment flows
+- [Testing the Subscriptions App](https://developer.azupay.com.au/docs/testing-the-subscriptions-app.md)
+- [Test accounts - Subscriptions app](https://developer.azupay.com.au/docs/test-accounts-for-subscriptions-app.md)
+- [Test accounts - PaymentInitiation API](https://developer.azupay.com.au/docs/test-accounts-paymentinitiation-api-1.md)
+- [Whitelisting of App URLs](https://developer.azupay.com.au/docs/whitelisting-of-app-urls.md): This guide outlines what URLs you should whitelist for our hosted UX apps
+- [PayTo Integration Guide](https://developer.azupay.com.au/docs/payto-integration-guide.md): Step-by-step instructions for integrating PayTo recurring payments with Azupay
+- [PaymentRequest API](https://developer.azupay.com.au/docs/receiving-payments.md): The PaymentRequest API is used to receive payments from your customers.
+- [Payment API](https://developer.azupay.com.au/docs/making-payments.md): Overview of how to send outbound payments
+- [PaymentAgreement API](https://developer.azupay.com.au/docs/guide-to-the-createagreement-api.md): The Payment Agreement API is used to establish agreements with your customers for reoccuring payments.
+- [PaymentInitiation API](https://developer.azupay.com.au/docs/guide-to-the-paymentinitiation-api.md): Once you have an active Payment Agreement in place you can automatically collect eligible payments aligned to the terms of the Payment Agreement.
+- [PaymentAgreementRequest API](https://developer.azupay.com.au/docs/paymentagreementrequest-api.md)
+- [PaymentSchedule API](https://developer.azupay.com.au/docs/paymentschedule-api.md): Schedule payments against existing payment agreements
+- [Report API](https://developer.azupay.com.au/docs/report-api.md): The report API is used to retrieve daily transaction reports by month and retrieve reports available for download by date ranges.
+- [Balance API](https://developer.azupay.com.au/docs/get-current-balance-api.md): This API is used to check your account balance for an Azupay client.
+- [File transfer guide - Batch](https://developer.azupay.com.au/docs/batch-user-guide.md)
+- [Payment request - Batch](https://developer.azupay.com.au/docs/payment-request-batch.md)
+- [Payment initiation - Batch](https://developer.azupay.com.au/docs/payment-initiation-batch.md)
+- [Payment initiation refund - Batch](https://developer.azupay.com.au/docs/payment-initiation-refund-batch-files.md)
+- [Payment - Batch (ABA file format)](https://developer.azupay.com.au/docs/payment-payout-batch-files.md): An .ABA file is an electronic file format commonly used by Australian banks for processing bulk transactions, such as payroll, accounts payable, and direct debits. It's structured in a format specified by the Australian Banking Association (ABA) and adheres to a standard known as the Direct Entry (DE) file format.
+- [API Key Management API](https://developer.azupay.com.au/docs/api-key-management.md)
+- [Clients API](https://developer.azupay.com.au/docs/clients-api.md)
+- [Account Check API (CoP)](https://developer.azupay.com.au/docs/account-check-cop.md): Real-time account checks that safeguard payments from fraud, mistakes, and misdirected payments, giving your business confidence every time
+- [PayID Enquiry API](https://developer.azupay.com.au/docs/payid-enquiry.md)
+- [OAuth 2.0](https://developer.azupay.com.au/docs/oauth-20-api.md): OAuth 2.0 client credentials lets your backend system call enabled Azupay REST APIs with short-lived bearer tokens instead of sending an API key on each request. It is designed for server-to-server integrations where your system can securely store credentials and request access tokens as needed.  Azupay provides OAuth 2.0 access as an additional authentication option. Existing API-key integrations remain supported unless Azupay advises otherwise for your implementation.
+- [Reports](https://developer.azupay.com.au/docs/reports.md)
+- [Search for transaction data](https://developer.azupay.com.au/docs/search-for-transaction-data.md)
+- [Viewing PayTo agreements](https://developer.azupay.com.au/docs/viewing-payto-agreements.md): PayTo agreement data includes the Payment Agreements that have been arranged with your customers. A Payment Agreement is the agreement between your business and your customer that allows eligible payments to be collected from the customer’s nominated PayID or bank account details using PayTo.
+- [Balance management](https://developer.azupay.com.au/docs/managing-your-account-balance.md): This page offers a way to manage your Azupay account balance
+- [Create payment request from dashboard](https://developer.azupay.com.au/docs/create-payment-request-from-dashboard.md)
+- [Refunding Transactions from the Dashboard](https://developer.azupay.com.au/docs/refunding-transactions-from-the-dashboard.md): A guide to making refunds on a transaction.
+- [Settings](https://developer.azupay.com.au/docs/managing-your-azupay-account-settings.md)
+- [Switching clients](https://developer.azupay.com.au/docs/switching-clients.md)
+- [User management](https://developer.azupay.com.au/docs/user-management.md)
+- [User Roles](https://developer.azupay.com.au/docs/user-roles-reference.md)
+- [Multi-factor authentication](https://developer.azupay.com.au/docs/multi-factor-authentication.md)
+- [Data Security in the Integration & UAT Environment](https://developer.azupay.com.au/docs/data-security-in-the-integration-uat-environment.md)
+- [Testing & integration -  PaymentRequest API](https://developer.azupay.com.au/docs/test-cases-for-payid-api-integration.md)
+- [Testing & integration - PaymentInitiation API](https://developer.azupay.com.au/docs/testing-integration-paymentinitiation-api.md)
+- [Test accounts PaymentInitiation API](https://developer.azupay.com.au/docs/test-accounts-paymentinitiation-api.md)
+- [Test accounts - PaymentAgreement APIs](https://developer.azupay.com.au/docs/testing.md): In the UAT environment, we provide you with fictitious accounts, PayIDs and Payment Agreements in order to test all possible payment outcomes for our products
+- [Test accounts - Payment APIs](https://developer.azupay.com.au/docs/test-accounts-payment-apis.md): In the UAT environment, we provide you with fictitious accounts and PayID's in order to test all possible outbound payment outcomes
+- [Test accounts - Check accounts API](https://developer.azupay.com.au/docs/account-references.md)
+- [Checking account balance](https://developer.azupay.com.au/docs/checking-account-balance.md)
+- [Signing Up](https://developer.azupay.com.au/docs/signing-up.md)
+- [Creating Sub-accounts](https://developer.azupay.com.au/docs/creating-sub-accounts.md)
+- [Account Types and Client Management](https://developer.azupay.com.au/docs/client-management.md)
+- [Settlement of Funds](https://developer.azupay.com.au/docs/settlements-of-funds-reference.md)
+- [Webhooks - Implementation and Security](https://developer.azupay.com.au/docs/webhooks.md)
+- [Configuring webhook preferences](https://developer.azupay.com.au/docs/configuring-webhook-preferences.md)
+- [OAuth2 for webhook notifications](https://developer.azupay.com.au/docs/oauth2-for-webhook-notifications.md)
+- [Technical details for OAuth2 Webhook notifications](https://developer.azupay.com.au/docs/technical-details-for-oauth2-webhook-notifications.md)
+- [Maintenance and incident alerting](https://developer.azupay.com.au/docs/maintenance-and-incident-alerting.md)
+- [Raising disputes for Azupay investigation](https://developer.azupay.com.au/docs/raising-disputes.md)
+- [Updating a customer dispute upon request by Azupay](https://developer.azupay.com.au/docs/updating-a-customer-dispute.md)
+- [Account blacklisting - payment requests](https://developer.azupay.com.au/docs/account-blacklisting-payment-requests.md)
+- [Single Sign-On (SSO) Support for Azupay Dashboard](https://developer.azupay.com.au/docs/single-sign-on.md)
+- [Connectivity Guide](https://developer.azupay.com.au/docs/connectivity-guide.md): Configure SFTP connectivity for Azupay Batch using Azupay Hosted or Customer Hosted SFTP Server models. Includes setup, authentication, testing, and network requirements.
+- [SFTP Connectivity Troubleshooting](https://developer.azupay.com.au/docs/sftp-troubleshooting.md): Diagnose and resolve common SFTP connectivity issues with exact error messages, initial diagnostics, and step-by-step resolutions for both connectivity models.
+- [File Processing Overview](https://developer.azupay.com.au/docs/readme.md): Overview of file types supported by Azupay Batch for bulk payment and collection operations, with links to detailed format specifications.
+- [ABA File Format and Processing Guide](https://developer.azupay.com.au/docs/aba-outbound.md): Complete specification for ABA format outbound payment files, including record structure, validation rules, processing lifecycle, response files, and error handling.
+
+## API Reference
+- [Create a Payment Request.](https://developer.azupay.com.au/reference/createpayidpaymentrequest.md): Creates a payment request. Once created, your customer can make a payment to the specified PayID. You can poll for PaymentStatus using getPaymentRequest to determine whether or not the required payment was made by the customer.
+- [Delete a Payment Request.](https://developer.azupay.com.au/reference/deletepaymentrequest.md): Delete an existing payment request, de-registering the associated PayID in the process.
+- [Search for Payment Requests.](https://developer.azupay.com.au/reference/searchpaymentrequest.md): Search for Payment Requests
+- [Get a Payment Request.](https://developer.azupay.com.au/reference/getpaymentrequest.md): Retrieves an existing PayID PaymentRequest.  Use the contents of the response body to determine whether the customer has made their payment.
+- [Refund a PaymentRequest.](https://developer.azupay.com.au/reference/refundpaymentrequest.md): Refund a previously settled PaymentRequest back to the customer's source of funding. Optionally supply the amount to refund. Refunds requests can be rejected for the following failure reasons:  | `failureCode`    | `failureReason`                                                                 | |------------------|---------------------------------------------------------------------------------| | ERR0.03          | Refunds can only be done on COMPLETE, RETURN_COMPLETE or RETURN_FAILED payments | | ERR0.05          | Missing id.                                                                     | | ERR0.06          | Refund amount value must be a number                                            | | ERR0.07          | Refunds cannot be done against PaymentRequest\'s with multiPayment set to true  | | ERR0.08          | Refunds can only be done on COMPLETE, RETURN_COMPLETE or RETURN_FAILED payments | | ERR0.09          | Refund for this client can only be for the full amount                          | | ERR0.10          | Refund amount must be less than or equal to original payment amount             | | ERR0.11          | Insufficient funds to process this refund                                       |
+- [Make a Payment.](https://developer.azupay.com.au/reference/makepayment.md): Make an outbound payment to the provided PayID or BSB/Account Number. Once made, you can poll for PaymentStatus using getPayment to determine whether or not the payment was settled to the payee.
+- [Search for Payments.](https://developer.azupay.com.au/reference/searchpayment.md): Search for Payments
+- [Get a Payment.](https://developer.azupay.com.au/reference/getpayment.md): Retrieves the status of a previous Make a Payment call. Use the contents of the response body to determine whether the payment has completed.
+- [Create a Payment Agreement](https://developer.azupay.com.au/reference/createpaymentagreement.md): Create a Payment Agreement
+- [Search for Payment Agreements.](https://developer.azupay.com.au/reference/searchpaymentagreement.md): Search for Payment Agreements
+- [Amend a Payment Agreement](https://developer.azupay.com.au/reference/createpaymentagreementamendment.md): Amend a Payment Agreement
+- [Change Status of a Payment Agreement](https://developer.azupay.com.au/reference/changestatusofpaymentagreement.md): Change the status of a Payment Agreement
+- [Create or amend a Payment Scheduler](https://developer.azupay.com.au/reference/createorupdatepaymentscheduler.md): Creates a scheduler against an active payment agreement, or amends the existing one. Upsert keyed on paymentAgreementId. Amendments require the current version.
+- [Retrieve a Payment Scheduler](https://developer.azupay.com.au/reference/getpaymentscheduler.md): Returns the scheduler for the given payment agreement, with its current state.
+- [Create a Payment Agreement Request](https://developer.azupay.com.au/reference/createpaymentagreementrequest.md): Create a Payment Agreement Request
+- [Initiate a Payment](https://developer.azupay.com.au/reference/makepaymentinitiation.md): Initiate a Payment
+- [Refund for Payment Initiation](https://developer.azupay.com.au/reference/refundpaymentinitation.md): Refund for Payment Initiation (PayTo Transactions)
+- [Search for Payment Initiation](https://developer.azupay.com.au/reference/searchpaymentinitiation.md): Search for Payment Initiation (PayTo Transactions)
+- [Get a Payment Initiation](https://developer.azupay.com.au/reference/getpaymentinitiation.md): Retrieves an existing Payment Initiation (PayTo Transaction).
+- [Check account BSB for NPP and PayTo reachability.](https://developer.azupay.com.au/reference/enquireaccount.md): Check if NPP or AzupayTo payments can be sent to the account issuer identified by the given BSB.
+- [Confirm the BSB/account number and name of a payee.](https://developer.azupay.com.au/reference/checkaccountdetails.md): The purpose of this operation is to validate the BSB/account number and name via Confirmation of Payee (CoP).
+- [Check the status of the PayID.](https://developer.azupay.com.au/reference/checkpayid.md): Check if the PayID is registered and able to accept NPP and PayTo payments.  Also support validation of bsb and account number attached to the PayID.
+- [Get Reports](https://developer.azupay.com.au/reference/getreport.md): Provides a list of reports that can be passed onto GET /report/download API endpoint. You can supply  `month + timezone` query parameters OR you can supply `fromDate + toDate`. The former provides you a list of all  reports automatically generated by azupay whilst the latter provides you with a report for the date range  specified.  Because `fromDate` and `toDate` contain special HTML entities (i.e. `:` and `+`), they must be encoded. Example: `2022-06-02T12:11:00.999+0530` must be supplied as `2022-06-02T12%3A11%3A00.999%2B0530`
+- [Get Report download Url](https://developer.azupay.com.au/reference/downloadreport.md): Gets a time limited link to download the specified report
+- [Get current balance](https://developer.azupay.com.au/reference/getbalance.md): Returns balance of your Azupay account.
+- [Create or replace a client](https://developer.azupay.com.au/reference/createclient.md): Create new sub-clients. Sub-clients are children of your own client (master-client).  Duplicates can be prevented by using the same value in `clientTransactionId` in the request. It would also replace an existing client if the same `clientTransactionId` is provided in the request.  This API is only available to some Azupay customers. Please contact us for more information.
+- [Disable a sub-client](https://developer.azupay.com.au/reference/deleteclient.md): Disable a sub-client. Sub-client is a child of your own client (master-client).  This API is only available to some Azupay customers. Please contact us for more information.
+- [/clients/{clientId}/lowBalanceAlert/threshold](https://developer.azupay.com.au/reference/getclientlowbalancealertthreshold.md)
+- [Set low balance threshold to trigger alerts](https://developer.azupay.com.au/reference/updateclientlowbalancealertthreshold.md): Set low balance threshold to trigger alerts when the balance goes lower than the specified limit. When this happens, an email is sent to the specified recipients.
+- [/clients/{clientId}/lowBalanceAlert/emailAddresses](https://developer.azupay.com.au/reference/getclientlowbalancealertemailaddresses.md)
+- [Set email addresses to send the low balance alerts](https://developer.azupay.com.au/reference/updateclientlowbalancealertemailaddresses.md): Set the email addresses to send the alerts when the balance goes lower than the specified limit.
+- [Create API keys for Sub Merchants](https://developer.azupay.com.au/reference/apikeysprovision.md): Create API keys
+- [Get API keys for Sub Merchants](https://developer.azupay.com.au/reference/getapikeys.md): Get API keys
+- [Update API keys for Sub Merchants](https://developer.azupay.com.au/reference/updateapikeys.md): Update API keys
+- [Gets an API key based on the API key ID.](https://developer.azupay.com.au/reference/getapikey.md): Get API key
+- [Enable OAuth2 for a client](https://developer.azupay.com.au/reference/enableclientoauth2.md): Enable OAuth2 for a client
+- [Get OAuth2 configuration for a client](https://developer.azupay.com.au/reference/getclientoauth2.md): Get OAuth2 configuration for a client
+
+## Changelog
+- [Configure results when viewing Payment agreements](https://developer.azupay.com.au/changelog/configure-results-when-viewing-payment-agreements.md)
+- [OAuth 2 settings management in the client dashboard](https://developer.azupay.com.au/changelog/oauth-2-settings-management-in-the-client-dashboard.md)
+- [Privacy Notice reference in Pay by Bank](https://developer.azupay.com.au/changelog/privacy-notice-reference-in-pay-by-bank.md)
+- [Batch app PGP key retention](https://developer.azupay.com.au/changelog/batch-app-pgp-key-retention.md)
+- [Payment information display in the Disbursement app](https://developer.azupay.com.au/changelog/payment-information-display-in-the-disbursement-app.md)
+- [Payment Agreement ID search in the Azupay dashboard](https://developer.azupay.com.au/changelog/payment-agreement-id-search-in-the-azupay-dashboard.md)
+- [New field in Daily transaction reports for batch file payout clients](https://developer.azupay.com.au/changelog/new-field-in-daily-transaction-reports-for-batch-file-payout-clients.md)
+- [Shopify checkout discount for Pay by Bank payment option](https://developer.azupay.com.au/changelog/shopify-checkout-discount-for-pay-by-bank-payment-option.md)
+- [Custom domains for the Azupay client dashboard](https://developer.azupay.com.au/changelog/custom-domains-for-the-azupay-client-dashboard.md)
+- [Improved name matching for joint PayID accounts](https://developer.azupay.com.au/changelog/improved-name-matching-for-joint-payid-accounts.md)

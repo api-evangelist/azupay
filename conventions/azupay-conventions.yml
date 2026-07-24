@@ -1,0 +1,50 @@
+generated: '2026-07-24'
+method: searched
+source: https://developer.azupay.com.au/docs/getting-started-1, /docs/webhooks, /docs/oauth-20-api
+authentication:
+  primary: apiKey — Secret (SECR) or Distributable (DIST) key in the Authorization header
+  additional: OAuth 2.0 client-credentials (JWT bearer) for enabled server-to-server clients
+  artifact: authentication/azupay-authentication.yml
+idempotency:
+  supported: true
+  mechanism: Client-supplied natural keys rather than a dedicated Idempotency-Key header.
+  keys:
+  - clientTransactionId (PaymentRequest / Payment — unique id for the transaction created by the merchant
+    system)
+  - clientRefundID (refund operations)
+  behaviour: Re-submitting a create with an already-used client key returns HTTP 409 Conflict; use it
+    to safely retry without creating duplicate payments.
+  artifact: errors/azupay-problem-types.yml
+pagination:
+  style: cursor
+  params:
+  - nextPageId
+  - numberOfRecords
+  applies_to:
+  - searchPaymentRequest
+  - searchPayment
+  - searchPaymentAgreement
+  - searchPaymentInitiation
+  response_fields:
+  - nextPageId
+versioning:
+  scheme: uri-path
+  current: v1
+  policy: Breaking changes ship under a new version; non-breaking changes (new endpoints, optional params,
+    reordered/added response fields, error-message wording, TLS cipher/cert changes) are made in place.
+    See getting-started Breaking vs Non-Breaking.
+  artifact: lifecycle/azupay-lifecycle.yml
+error_envelope:
+  format: plain JSON with a message field (not RFC 9457 problem+json)
+  transaction_failures: Payment failure/return reasons surfaced on the PaymentStatus object (e.g. failureReason
+    AGNT), distinct from HTTP-level errors.
+async:
+  model: webhooks
+  artifact: asyncapi/azupay-webhooks.yml
+  note: Poll (getPaymentRequest/getPayment) or subscribe to webhooks to confirm settlement.
+rate_limiting:
+  documented: false
+  note: No public rate-limit signalling documented; limits are managed per client configuration.
+environments:
+- 'UAT: https://api-uat.azupay.com.au/v1'
+- 'PROD: https://api.azupay.com.au/v1'

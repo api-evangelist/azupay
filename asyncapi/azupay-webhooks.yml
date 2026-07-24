@@ -1,0 +1,61 @@
+generated: '2026-07-24'
+method: searched
+source: https://developer.azupay.com.au/docs/webhooks
+spec_type: Webhooks
+transport: HTTPS POST callback to a client-registered endpoint
+delivery:
+  guarantee: at-least-once
+  ack: endpoint must return HTTP 200 within 5 seconds
+  retry: First two retries after 20s, then up to 15 further retries at 15-minute intervals (~3h45m total);
+    may deliver out of order and duplicate events.
+  ordering: Not guaranteed; superseded statuses may still be retried. Consumers must be idempotent and
+    tolerate out-of-order events.
+patterns:
+- transaction-level (Callback Option on the create request)
+- client-level (enabled by Azupay support; sent in parallel)
+security: Per-request authorization header (transaction level) or a global authorization key (client level);
+  optional OAuth2 for webhook notifications.
+events:
+- event: PaymentRequestStatus
+  object: PaymentRequest.paymentNotification
+  statuses:
+  - Waiting
+  - Complete
+  - Expired
+  - Return In Progress
+  - Return Complete
+  - Return Failed
+  - Return Rejected
+- event: PaymentAgreementStatus
+  object: PaymentAgreement.paymentAgreementNotification
+  statuses:
+  - Created
+  - Active
+  - Suspended
+  - Cancelled
+- event: PaymentInitiationStatusEvent
+  object: PaymentInitiation.paymentInitiationNotification
+  statuses:
+  - Settled
+  - Pending
+  - Failed
+- event: PaymentStatus
+  object: Payment.paymentNotification
+  statuses:
+  - Created
+  - Pending
+  - Failed
+  - Settled
+  - Returned
+- event: SweepRequestEvent
+  object: client.sweepNotification
+  statuses:
+  - Sweep settled to nominated settlement account
+- event: ClientEnabledEvent
+  object: client.clientManagementNotification
+  statuses:
+  - Sub-client enabled
+related_docs:
+- https://developer.azupay.com.au/docs/configuring-webhook-preferences
+- https://developer.azupay.com.au/docs/oauth2-for-webhook-notifications
+- https://developer.azupay.com.au/docs/technical-details-for-oauth2-webhook-notifications

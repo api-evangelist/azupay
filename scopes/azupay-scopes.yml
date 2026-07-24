@@ -1,0 +1,21 @@
+generated: '2026-07-24'
+method: searched
+source: openapi/*.yml (no oauth2 in spec)
+docs: https://developer.azupay.com.au/docs/oauth-20-api
+note: The REST OpenAPI declares only apiKey security. Docs document OAuth 2.0 client-credentials as an
+  additional server-to-server option; the permitted scope set (oauth2AllowedScopes) is provisioned per
+  client by Azupay and returned by the OAuth 2.0 connection-details endpoint (getClientOAuth2 / enableClientOAuth2)
+  rather than published as a fixed public catalogue.
+schemes:
+- name: OAuth2ClientCredentials
+  flow: clientCredentials
+  tokenUrl: dynamic — returned as oauth2TokenUrl by POST /client/{clientId}/oauth2 (enableClientOAuth2)
+  grantType: client_credentials
+  tokenType: JWT bearer
+  ttl: oauth2TtlInSecs (short-lived; token response carries expires_in)
+scopes:
+- scope: oauth2AllowedScopes
+  description: Per-client scope set enabling access to the specific Azupay REST endpoints agreed for the
+    integration; exact scope names are provisioned and returned by Azupay, not published publicly.
+  flows:
+  - clientCredentials

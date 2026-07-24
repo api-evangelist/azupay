@@ -1,0 +1,70 @@
+generated: '2026-07-24'
+method: searched
+source: https://developer.azupay.com.au/docs/test-accounts-payment-apis (and sibling test-accounts pages)
+environments:
+- name: UAT
+  base_url: https://api-uat.azupay.com.au/v1
+  description: Integration/UAT test environment. Access requires signed NDA and Azupay onboarding.
+- name: Production
+  base_url: https://api.azupay.com.au/v1
+auth: Same Secret (SECR) and Distributable (DIST) API keys per environment, generated from the client
+  Dashboard; UAT uses fictitious accounts.
+notes: Azupay publishes fixed test PayIDs, phone/ABN/ORG identifiers and BSB/account numbers whose behaviour
+  is deterministic in UAT. Values below are published verbatim; never use in production.
+test_payids:
+- payid: johnsmith@test.com.au
+  type: EMAIL
+  outcome: SETTLED
+- payid: mwilliams@test.com.au
+  type: EMAIL
+  outcome: FAILED
+- payid: mandrews@test.com.au
+  type: EMAIL
+  outcome: RETURNED
+- payid: pjones@test.com.au
+  type: EMAIL
+  outcome: PENDING then SETTLED
+- payid: +61-454444555
+  type: PHONE
+  outcome: SETTLED then RETURNED
+- payid: +61-400123395
+  type: PHONE
+  outcome: FAILED
+- payid: +61-400234506
+  type: PHONE
+  outcome: RETURNED
+- payid: +61-400345617
+  type: PHONE
+  outcome: PENDING then SETTLED
+- payid: '10000000000'
+  type: ABN
+  outcome: SETTLED
+- payid: '17000000009'
+  type: ABN
+  outcome: FAILED
+- payid: '17200000040'
+  type: ABN
+  outcome: RETURNED
+test_bsb_accounts:
+- bsb: '062000'
+  account: '12345999'
+  outcome: SETTLED
+- bsb: '062000'
+  account: '12345678'
+  outcome: FAILED
+  failureReason: AGNT
+- bsb: '062000'
+  account: '12345888'
+  outcome: PENDING then SETTLED
+- bsb: '062000'
+  account: '12345444'
+  outcome: SETTLED then RETURNED
+- bsb: '182512'
+  account: '00000001'
+  outcome: SETTLED
+  sentViaDE: true
+related_docs:
+- https://developer.azupay.com.au/docs/test-cases-for-payid-api-integration
+- https://developer.azupay.com.au/docs/test-accounts-paymentinitiation-api
+- https://developer.azupay.com.au/docs/testing
+- https://developer.azupay.com.au/docs/account-references

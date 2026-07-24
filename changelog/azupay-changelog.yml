@@ -1,0 +1,28 @@
+generated: '2026-07-24'
+method: searched
+source: https://developer.azupay.com.au/changelog
+scheme: dated release notes (ReadMe changelog)
+versioning: API versioned via uri-path (v1); changelog is date-ordered, entries are not individually version-tagged.
+note: Entry publish dates are not exposed in the changelog markdown; the live changelog page is the source
+  of truth for dates. Recent-window titles captured below.
+entries:
+- title: Configure results when viewing Payment agreements
+  url: https://developer.azupay.com.au/changelog/configure-results-when-viewing-payment-agreements
+- title: OAuth 2 settings management in the client dashboard
+  url: https://developer.azupay.com.au/changelog/oauth-2-settings-management-in-the-client-dashboard
+- title: Privacy Notice reference in Pay by Bank
+  url: https://developer.azupay.com.au/changelog/privacy-notice-reference-in-pay-by-bank
+- title: Batch app PGP key retention
+  url: https://developer.azupay.com.au/changelog/batch-app-pgp-key-retention
+- title: Payment information display in the Disbursement app
+  url: https://developer.azupay.com.au/changelog/payment-information-display-in-the-disbursement-app
+- title: Payment Agreement ID search in the Azupay dashboard
+  url: https://developer.azupay.com.au/changelog/payment-agreement-id-search-in-the-azupay-dashboard
+- title: New field in Daily transaction reports for batch file payout clients
+  url: https://developer.azupay.com.au/changelog/new-field-in-daily-transaction-reports-for-batch-file-payout-clients
+- title: Shopify checkout discount for Pay by Bank payment option
+  url: https://developer.azupay.com.au/changelog/shopify-checkout-discount-for-pay-by-bank-payment-option
+- title: Custom domains for the Azupay client dashboard
+  url: https://developer.azupay.com.au/changelog/custom-domains-for-the-azupay-client-dashboard
+- title: Improved name matching for joint PayID accounts
+  url: https://developer.azupay.com.au/changelog/improved-name-matching-for-joint-payid-accounts

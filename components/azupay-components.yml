@@ -1,0 +1,22 @@
+generated: '2026-07-24'
+method: searched
+source: https://developer.azupay.com.au/docs/selecting-the-right-ux-app and app guides
+note: Azupay ships hosted/embeddable "UX Apps" — prebuilt, custom-brandable payment surfaces that front
+  the APIs so clients can avoid building their own checkout UX. Distinct from server-side SDKs.
+components:
+- family: Pay by Bank App
+  type: hosted-checkout
+  description: Custom-branded checkout that receives real-time account-to-account payments; offers PayID
+    and (where suitable) PayTo.
+  docs: https://developer.azupay.com.au/docs/pay-by-bank-app
+  integrations:
+  - Shopify
+  - Clover
+- family: Disbursements App
+  type: hosted-dashboard
+  description: Make outbound payments directly from the Azupay client dashboard.
+  docs: https://developer.azupay.com.au/docs/disbursements-app
+- family: Subscriptions App
+  type: hosted-app
+  description: Collect recurring/pull payments via PayTo through a hosted subscriptions experience.
+  docs: https://developer.azupay.com.au/docs/subscriptions-app

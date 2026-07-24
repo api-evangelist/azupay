@@ -1,0 +1,16 @@
+generated: '2026-07-24'
+method: searched
+source: https://developer.azupay.com.au/docs/getting-started-1, https://status.azupay.com.au
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://developer.azupay.com.au/docs/getting-started-1
+deprecation:
+  policy_url: https://developer.azupay.com.au/docs/getting-started-1
+  policy: Breaking changes are issued under a new version; a documented Breaking vs Non-Breaking changes
+    list defines what Azupay treats as backward-compatible.
+  sunset_header: false
+status_page: https://status.azupay.com.au/
+changelog: https://developer.azupay.com.au/changelog
+support: https://helpcentre.azupay.com.au/ and Jira Service Desk (https://azupay.atlassian.net/servicedesk/customer/portals)
+deprecated_operations: []

@@ -1,0 +1,40 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/*.yml + developer.azupay.com.au docs
+standards:
+- id: oauth2-client-credentials
+  conforms: true
+  evidence: Docs document OAuth 2.0 client-credentials as an additional server-to-server auth option (oauth-20-api);
+    tokens are JWT bearer.
+- id: api-key-auth
+  conforms: true
+  evidence: All operations accept a Secret or Distributable apiKey in the Authorization header (securitySchemes
+    SecretKey/DistributableKey).
+- id: npp-new-payments-platform
+  conforms: true
+  evidence: Real-time account-to-account payments settled over the NPP (AP+).
+- id: payid
+  conforms: true
+  evidence: PayID-addressed receive/send and PayID enquiry operations.
+- id: payto
+  conforms: true
+  evidence: PayTo mandated-debit agreements and payment initiation (AzupayTo).
+- id: confirmation-of-payee
+  conforms: true
+  evidence: Account name/BSB verification via accountCheck (CoP).
+- id: webhooks
+  conforms: true
+  evidence: Event-driven webhook notifications for payment/agreement/initiation status.
+- id: cursor-pagination
+  conforms: true
+  evidence: Search operations page via nextPageId + numberOfRecords.
+- id: idempotency
+  conforms: true
+  evidence: Client-supplied clientTransactionId / clientRefundID natural keys; duplicate submissions return
+    409.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Error bodies are plain JSON with a message field, not application/problem+json.
+- id: cdr-consumer-data-right
+  conforms: false
+  evidence: Azupay operates on NPP rails, not the CDR/Open Banking accreditation regime.
