@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azupay Payment API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a Payment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-uat.azupay.com.au/v1/payment",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "ID of Payment to retrieve. This is the paymentId returned by the makePayment call."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves the status of a previous Make a Payment call. Use the contents of the response body to determine whether the payment has completed."
+        },
+        {
+          "info": {
+            "name": "Make a Payment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/payment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Make an outbound payment to the provided PayID or BSB/Account Number.\nOnce made, you can poll for PaymentStatus using getPayment to determine\nwhether or not the payment was settled to the payee.\n"
+        },
+        {
+          "info": {
+            "name": "Search for Payments.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/payment/search",
+            "params": [
+              {
+                "name": "nextPageId",
+                "value": "",
+                "type": "query",
+                "description": "The next page ID that was obtained on a previous search result. Used to obtain the next set of results"
+              },
+              {
+                "name": "numberOfRecords",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to retrieve. Defaults to 100 if not provided"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search for Payments\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

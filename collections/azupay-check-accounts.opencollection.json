@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azupay Check Accounts API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Check Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Confirm the BSB/account number and name of a payee.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/accountCheck",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "The purpose of this operation is to validate the BSB/account number and name via Confirmation of Payee (CoP)."
+        },
+        {
+          "info": {
+            "name": "Check account BSB for NPP and PayTo reachability.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/accountEnquiry",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Check if NPP or AzupayTo payments can be sent to the account issuer identified by the given BSB."
+        },
+        {
+          "info": {
+            "name": "Check the status of the PayID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/payIDEnquiry",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Check if the PayID is registered and able to accept NPP and PayTo payments. \nAlso support validation of bsb and account number attached to the PayID.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

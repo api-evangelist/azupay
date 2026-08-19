@@ -1,0 +1,1318 @@
+{
+  "item": [
+    {
+      "id": "6ce285d7-ab32-4508-b6b2-00b2c95228d8",
+      "name": "Payment Request",
+      "description": {
+        "content": "This API allows your customers to make payments using PayID on your website, mobile app or over the counter.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6328f2c9-ce9c-48db-a3bb-c57313265f5c",
+          "name": "Create a Payment Request.",
+          "request": {
+            "name": "Create a Payment Request.",
+            "description": {
+              "content": "Creates a payment request. Once created, your customer can make a payment to the specified PayID. You can poll for PaymentStatus using getPaymentRequest to determine whether or not the required payment was made by the customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "paymentRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PaymentRequest\": {\n    \"clientId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"paymentDescription\": \"<string>\",\n    \"payID\": \"<string>\",\n    \"payIDSuffix\": \"<string>\",\n    \"suggestedPayerDetails\": {\n      \"payIDDetails\": {\n        \"payID\": \"<string>\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"<string>\",\n        \"accountNumber\": \"<string>\",\n        \"accountName\": \"<string>\"\n      }\n    },\n    \"clientBranch\": \"<string>\",\n    \"multiPayment\": \"<boolean>\",\n    \"metaData\": {\n      \"key_0\": \"string\"\n    },\n    \"payerNotificationEmail\": \"<email>\",\n    \"payerNotificationMobile\": \"<string>\",\n    \"paymentAmount\": \"<number>\",\n    \"enableVirtualAccount\": \"<boolean>\",\n    \"paymentExpiryDatetime\": \"<dateTime>\",\n    \"paymentNotification\": {\n      \"paymentNotificationEndpointUrl\": \"<url>\",\n      \"paymentNotificationAuthorizationHeaderValue\": \"<string>\"\n    },\n    \"ultimatePayeeName\": \"<string>\",\n    \"variant\": \"<string>\",\n    \"suggestedPayerPayID\": \"<string>\",\n    \"recurringPaymentAmount\": \"<number>\",\n    \"recurringPaymentFrequency\": \"<string>\",\n    \"recurringPaymentType\": \"<string>\",\n    \"recurringPaymentEndDate\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "401e35bc-ca68-45e7-b067-7b0ab3a031e6",
+              "name": "Payment Request Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentRequest\": {\n    \"payID\": \"update-me-to-a-unique-payid@yourdomain.com.au\",\n    \"clientId\": \"update-me-to-your-client-id\",\n    \"clientTransactionId\": \"update-me-to-some-unique-value-single-use-payid\",\n    \"paymentAmount\": 100,\n    \"paymentDescription\": \"A single use PayId Test case for dynamic once-off PayId payments. Make sure to update the values required.\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"PaymentRequest\": {\n    \"clientId\": \"CLIENT1\",\n    \"clientTransactionId\": \"TX5346423452345345\",\n    \"paymentDescription\": \"Payment for Drivers' licence renewal.\",\n    \"payID\": \"dl-12345.abc@mymerchant.com.au\",\n    \"payIDSuffix\": \"otherdomain.com.au\",\n    \"suggestedPayerDetails\": {\n      \"payIDDetails\": {\n        \"payID\": \"0400123123\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"123456\",\n        \"accountNumber\": \"123555555\",\n        \"accountName\": \"Jane Doe\"\n      }\n    },\n    \"clientBranch\": \"BRANCH1\",\n    \"multiPayment\": \"<boolean>\",\n    \"metaData\": {\n      \"key_0\": 6904,\n      \"key_1\": 2957,\n      \"key_2\": 6662.872684770305\n    },\n    \"payerNotificationEmail\": \"<email>\",\n    \"payerNotificationMobile\": \"<string>\",\n    \"paymentAmount\": 101.95,\n    \"enableVirtualAccount\": \"<boolean>\",\n    \"paymentExpiryDatetime\": \"<dateTime>\",\n    \"checkoutUrl\": \"https://pay.azupay.com.au/checkout/123435\",\n    \"paymentNotification\": {\n      \"paymentNotificationEndpointUrl\": \"<url>\",\n      \"paymentNotificationAuthorizationHeaderValue\": \"<string>\"\n    },\n    \"ultimatePayeeName\": \"<string>\",\n    \"variant\": \"<string>\",\n    \"suggestedPayerPayID\": \"0400123123\",\n    \"recurringPaymentAmount\": 500,\n    \"recurringPaymentFrequency\": \"MONTHLY\",\n    \"recurringPaymentType\": \"VARIABLE\",\n    \"recurringPaymentEndDate\": \"2025-12-31\"\n  },\n  \"PaymentRequestStatus\": {\n    \"paymentRequestId\": \"K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=\",\n    \"status\": \"RETURN_COMPLETE\",\n    \"createdDateTime\": \"1959-12-27T04:34:58.256Z\",\n    \"settledBy\": \"PayID\",\n    \"completedDatetime\": \"1968-12-03T06:29:21.926Z\",\n    \"refundInformation\": {\n      \"availableBalance\": \"string\",\n      \"requests\": [\n        {\n          \"refundTrigger\": \"PAYMENT_VALIDATION\",\n          \"dateTime\": \"2009-03-03T09:49:57.629Z\",\n          \"createdDateTime\": \"1968-08-27T03:21:04.780Z\",\n          \"completedDateTime\": \"2018-11-13T21:59:49.353Z\",\n          \"amount\": \"string\",\n          \"nppTransactionId\": \"string\",\n          \"status\": \"COMPLETE\"\n        },\n        {\n          \"refundTrigger\": \"REFUND_API\",\n          \"dateTime\": \"1946-11-20T07:13:19.579Z\",\n          \"createdDateTime\": \"2001-03-11T15:10:54.235Z\",\n          \"completedDateTime\": \"1985-03-02T08:11:36.299Z\",\n          \"amount\": \"string\",\n          \"nppTransactionId\": \"string\",\n          \"status\": \"FAILED\"\n        }\n      ]\n    },\n    \"failureReason\": \"string\",\n    \"rbaSettlementDatetime\": \"1995-10-20T18:53:12.172Z\",\n    \"returnCompletedDatetime\": \"1996-11-06T14:10:43.725Z\",\n    \"returnInitiator\": \"MANUAL\",\n    \"parentPaymentRequestId\": \"K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=\",\n    \"amountReceived\": 6335.094988632496,\n    \"overpaymentAmount\": 7621.160564213764,\n    \"payerPaymentDescription\": \"string\",\n    \"payerPaymentReference\": \"string\",\n    \"failedPaymentAttempts\": [\n      {\n        \"attemptAmount\": 3963.8645821845053,\n        \"attemptDateTime\": \"string\",\n        \"attemptFailureReason\": \"string\"\n      },\n      {\n        \"attemptAmount\": 8004.536722224965,\n        \"attemptDateTime\": \"string\",\n        \"attemptFailureReason\": \"string\"\n      }\n    ],\n    \"payerInformation\": {\n      \"bsb\": \"string\",\n      \"accountNumber\": \"string\",\n      \"fullLegalAccountName\": \"string\"\n    },\n    \"nppTransactionId\": \"string\",\n    \"virtualBsb\": \"123456\",\n    \"virtualAccountNumber\": \"8872816\",\n    \"paidViaVirtualAccount\": false,\n    \"paymentAgreementId\": \"K+9p4EE0rJnMtomRfWKWE2BnAboHP2KwgIPyEIA=\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "498cd3d0-07b4-4e35-97cb-8e8fcde899d3",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentRequest\": {\n    \"payID\": \"update-me-to-a-unique-payid@yourdomain.com.au\",\n    \"clientId\": \"update-me-to-your-client-id\",\n    \"clientTransactionId\": \"update-me-to-some-unique-value-single-use-payid\",\n    \"paymentAmount\": 100,\n    \"paymentDescription\": \"A single use PayId Test case for dynamic once-off PayId payments. Make sure to update the values required.\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17636991-adef-41c5-a89a-bea7d65fa152",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentRequest\": {\n    \"payID\": \"update-me-to-a-unique-payid@yourdomain.com.au\",\n    \"clientId\": \"update-me-to-your-client-id\",\n    \"clientTransactionId\": \"update-me-to-some-unique-value-single-use-payid\",\n    \"paymentAmount\": 100,\n    \"paymentDescription\": \"A single use PayId Test case for dynamic once-off PayId payments. Make sure to update the values required.\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60101578-c208-4a0b-9d82-9b48babfaee5",
+          "name": "Delete a Payment Request.",
+          "request": {
+            "name": "Delete a Payment Request.",
+            "description": {
+              "content": "Delete an existing payment request, de-registering the associated PayID in the process.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "paymentRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) ID of Payment Request to delete. This is the paymentRequestId\nreturn by the createPaymentRequest API\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "daba729c-872b-45d4-9a2b-aa81034e04d4",
+              "name": "The payment request was deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7fa133e0-e944-44d0-9e1d-c8594b7375a6",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b791ddf1-de35-4385-8aeb-0920ffdaddcb",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8861b3e0-9245-43e0-8b84-26161054263b",
+          "name": "Get a Payment Request.",
+          "request": {
+            "name": "Get a Payment Request.",
+            "description": {
+              "content": "Retrieves an existing PayID PaymentRequest.\n\nUse the contents of the response body to determine whether the customer has made their payment.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "paymentRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) ID of Payment Request to retrieve. \n\nThis is the `paymentRequestId` returned by the **Create a Payment Request** API\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "43f31a05-a4e7-4477-865b-11e452811560",
+              "name": "The payment request object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"PaymentRequest\": {\n    \"clientId\": \"CLIENT1\",\n    \"clientTransactionId\": \"TX5346423452345345\",\n    \"paymentDescription\": \"Payment for Drivers' licence renewal.\",\n    \"payID\": \"dl-12345.abc@mymerchant.com.au\",\n    \"payIDSuffix\": \"otherdomain.com.au\",\n    \"suggestedPayerDetails\": {\n      \"payIDDetails\": {\n        \"payID\": \"0400123123\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"123456\",\n        \"accountNumber\": \"123555555\",\n        \"accountName\": \"Jane Doe\"\n      }\n    },\n    \"clientBranch\": \"BRANCH1\",\n    \"multiPayment\": \"<boolean>\",\n    \"metaData\": {\n      \"key_0\": 9931,\n      \"key_1\": 557\n    },\n    \"payerNotificationEmail\": \"<email>\",\n    \"payerNotificationMobile\": \"<string>\",\n    \"paymentAmount\": 101.95,\n    \"enableVirtualAccount\": \"<boolean>\",\n    \"paymentExpiryDatetime\": \"<dateTime>\",\n    \"checkoutUrl\": \"https://pay.azupay.com.au/checkout/123435\",\n    \"paymentNotification\": {\n      \"paymentNotificationEndpointUrl\": \"<url>\",\n      \"paymentNotificationAuthorizationHeaderValue\": \"<string>\"\n    },\n    \"ultimatePayeeName\": \"<string>\",\n    \"variant\": \"<string>\",\n    \"suggestedPayerPayID\": \"0400123123\",\n    \"recurringPaymentAmount\": 500,\n    \"recurringPaymentFrequency\": \"MONTHLY\",\n    \"recurringPaymentType\": \"VARIABLE\",\n    \"recurringPaymentEndDate\": \"2025-12-31\"\n  },\n  \"PaymentRequestStatus\": {\n    \"paymentRequestId\": \"K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=\",\n    \"status\": \"WAITING\",\n    \"createdDateTime\": \"1957-02-25T05:42:40.170Z\",\n    \"settledBy\": \"BSBAndAccountNumber\",\n    \"completedDatetime\": \"1980-08-20T17:25:15.400Z\",\n    \"refundInformation\": {\n      \"availableBalance\": \"string\",\n      \"requests\": [\n        {\n          \"refundTrigger\": \"WEBHOOK_ACTION\",\n          \"dateTime\": \"1986-12-05T01:47:43.685Z\",\n          \"createdDateTime\": \"1981-07-29T10:36:09.189Z\",\n          \"completedDateTime\": \"2009-12-02T16:58:03.175Z\",\n          \"amount\": \"string\",\n          \"nppTransactionId\": \"string\",\n          \"status\": \"IN_PROGRESS\"\n        },\n        {\n          \"refundTrigger\": \"PAYMENT_VALIDATION\",\n          \"dateTime\": \"1985-04-25T12:26:06.363Z\",\n          \"createdDateTime\": \"1976-12-15T07:36:31.299Z\",\n          \"completedDateTime\": \"1994-10-09T20:41:06.104Z\",\n          \"amount\": \"string\",\n          \"nppTransactionId\": \"string\",\n          \"status\": \"IN_PROGRESS\"\n        }\n      ]\n    },\n    \"failureReason\": \"string\",\n    \"rbaSettlementDatetime\": \"1956-06-19T19:01:21.119Z\",\n    \"returnCompletedDatetime\": \"2008-05-26T18:42:18.487Z\",\n    \"returnInitiator\": \"MANUAL\",\n    \"parentPaymentRequestId\": \"K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=\",\n    \"amountReceived\": 4100.915827133733,\n    \"overpaymentAmount\": 1513.1519219010092,\n    \"payerPaymentDescription\": \"string\",\n    \"payerPaymentReference\": \"string\",\n    \"failedPaymentAttempts\": [\n      {\n        \"attemptAmount\": 1744.1318461237465,\n        \"attemptDateTime\": \"string\",\n        \"attemptFailureReason\": \"string\"\n      },\n      {\n        \"attemptAmount\": 3794.4942467311125,\n        \"attemptDateTime\": \"string\",\n        \"attemptFailureReason\": \"string\"\n      }\n    ],\n    \"payerInformation\": {\n      \"bsb\": \"string\",\n      \"accountNumber\": \"string\",\n      \"fullLegalAccountName\": \"string\"\n    },\n    \"nppTransactionId\": \"string\",\n    \"virtualBsb\": \"123456\",\n    \"virtualAccountNumber\": \"48553\",\n    \"paidViaVirtualAccount\": false,\n    \"paymentAgreementId\": \"K+9p4EE0rJnMtomRfWKWE2BnAboHP2KwgIPyEIA=\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac2a3bf6-b5b0-4790-b178-01e309d28093",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e683955-6484-4602-bd0e-8e740b07dd47",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d594a4be-d2aa-40fe-ae3e-91f6e90bd18c",
+              "name": "Payment Request Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c806ae4-d85b-4918-8ab6-04ee826432a3",
+          "name": "Refund a PaymentRequest.",
+          "request": {
+            "name": "Refund a PaymentRequest.",
+            "description": {
+              "content": "Refund a previously settled PaymentRequest back to the customer's source of funding. Optionally supply the amount to refund. Refunds requests can be rejected for the following failure reasons:\n\n| `failureCode`    | `failureReason`                                                                 |\n|------------------|---------------------------------------------------------------------------------|\n| ERR0.03          | Refunds can only be done on COMPLETE, RETURN_COMPLETE or RETURN_FAILED payments |\n| ERR0.05          | Missing id.                                                                     |\n| ERR0.06          | Refund amount value must be a number                                            |\n| ERR0.07          | Refunds cannot be done against PaymentRequest\\'s with multiPayment set to true  |\n| ERR0.08          | Refunds can only be done on COMPLETE, RETURN_COMPLETE or RETURN_FAILED payments |\n| ERR0.09          | Refund for this client can only be for the full amount                          |\n| ERR0.10          | Refund amount must be less than or equal to original payment amount             |\n| ERR0.11          | Insufficient funds to process this refund                                       |\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "paymentRequest",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) ID of Payment Request to refund. This is the paymentRequestId return by the createPaymentRequest API"
+                },
+                {
+                  "disabled": false,
+                  "key": "refundAmount",
+                  "value": "<number>",
+                  "description": "The amount to refund"
+                },
+                {
+                  "disabled": false,
+                  "key": "clientRefundID",
+                  "value": "<string>",
+                  "description": "The client refund transaction ID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "57f4166c-795e-45ff-b98f-ddfdff3b188f",
+              "name": "Payment refunded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "refundAmount",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "clientRefundID",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"PaymentRequest\": {\n    \"clientId\": \"CLIENT1\",\n    \"clientTransactionId\": \"TX5346423452345345\",\n    \"paymentDescription\": \"Payment for Drivers' licence renewal.\",\n    \"payID\": \"dl-12345.abc@mymerchant.com.au\",\n    \"payIDSuffix\": \"otherdomain.com.au\",\n    \"suggestedPayerDetails\": {\n      \"payIDDetails\": {\n        \"payID\": \"0400123123\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"123456\",\n        \"accountNumber\": \"123555555\",\n        \"accountName\": \"Jane Doe\"\n      }\n    },\n    \"clientBranch\": \"BRANCH1\",\n    \"multiPayment\": \"<boolean>\",\n    \"metaData\": {\n      \"key_0\": 9931,\n      \"key_1\": 557\n    },\n    \"payerNotificationEmail\": \"<email>\",\n    \"payerNotificationMobile\": \"<string>\",\n    \"paymentAmount\": 101.95,\n    \"enableVirtualAccount\": \"<boolean>\",\n    \"paymentExpiryDatetime\": \"<dateTime>\",\n    \"checkoutUrl\": \"https://pay.azupay.com.au/checkout/123435\",\n    \"paymentNotification\": {\n      \"paymentNotificationEndpointUrl\": \"<url>\",\n      \"paymentNotificationAuthorizationHeaderValue\": \"<string>\"\n    },\n    \"ultimatePayeeName\": \"<string>\",\n    \"variant\": \"<string>\",\n    \"suggestedPayerPayID\": \"0400123123\",\n    \"recurringPaymentAmount\": 500,\n    \"recurringPaymentFrequency\": \"MONTHLY\",\n    \"recurringPaymentType\": \"VARIABLE\",\n    \"recurringPaymentEndDate\": \"2025-12-31\"\n  },\n  \"PaymentRequestStatus\": {\n    \"paymentRequestId\": \"K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=\",\n    \"status\": \"WAITING\",\n    \"createdDateTime\": \"1957-02-25T05:42:40.170Z\",\n    \"settledBy\": \"BSBAndAccountNumber\",\n    \"completedDatetime\": \"1980-08-20T17:25:15.400Z\",\n    \"refundInformation\": {\n      \"availableBalance\": \"string\",\n      \"requests\": [\n        {\n          \"refundTrigger\": \"WEBHOOK_ACTION\",\n          \"dateTime\": \"1986-12-05T01:47:43.685Z\",\n          \"createdDateTime\": \"1981-07-29T10:36:09.189Z\",\n          \"completedDateTime\": \"2009-12-02T16:58:03.175Z\",\n          \"amount\": \"string\",\n          \"nppTransactionId\": \"string\",\n          \"status\": \"IN_PROGRESS\"\n        },\n        {\n          \"refundTrigger\": \"PAYMENT_VALIDATION\",\n          \"dateTime\": \"1985-04-25T12:26:06.363Z\",\n          \"createdDateTime\": \"1976-12-15T07:36:31.299Z\",\n          \"completedDateTime\": \"1994-10-09T20:41:06.104Z\",\n          \"amount\": \"string\",\n          \"nppTransactionId\": \"string\",\n          \"status\": \"IN_PROGRESS\"\n        }\n      ]\n    },\n    \"failureReason\": \"string\",\n    \"rbaSettlementDatetime\": \"1956-06-19T19:01:21.119Z\",\n    \"returnCompletedDatetime\": \"2008-05-26T18:42:18.487Z\",\n    \"returnInitiator\": \"MANUAL\",\n    \"parentPaymentRequestId\": \"K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=\",\n    \"amountReceived\": 4100.915827133733,\n    \"overpaymentAmount\": 1513.1519219010092,\n    \"payerPaymentDescription\": \"string\",\n    \"payerPaymentReference\": \"string\",\n    \"failedPaymentAttempts\": [\n      {\n        \"attemptAmount\": 1744.1318461237465,\n        \"attemptDateTime\": \"string\",\n        \"attemptFailureReason\": \"string\"\n      },\n      {\n        \"attemptAmount\": 3794.4942467311125,\n        \"attemptDateTime\": \"string\",\n        \"attemptFailureReason\": \"string\"\n      }\n    ],\n    \"payerInformation\": {\n      \"bsb\": \"string\",\n      \"accountNumber\": \"string\",\n      \"fullLegalAccountName\": \"string\"\n    },\n    \"nppTransactionId\": \"string\",\n    \"virtualBsb\": \"123456\",\n    \"virtualAccountNumber\": \"48553\",\n    \"paidViaVirtualAccount\": false,\n    \"paymentAgreementId\": \"K+9p4EE0rJnMtomRfWKWE2BnAboHP2KwgIPyEIA=\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6836c6b-95ee-47da-9d06-2c0fe68d7339",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "refundAmount",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "clientRefundID",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "edfad9b4-68fe-4ea7-9079-f042012569e7",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "refundAmount",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "clientRefundID",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "161b318e-801b-4202-8e05-66310edbe32d",
+              "name": "Payment Request Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "refundAmount",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "clientRefundID",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9641193-ae70-41a9-a259-cd87948707f3",
+          "name": "Search for Payment Requests.",
+          "request": {
+            "name": "Search for Payment Requests.",
+            "description": {
+              "content": "Search for Payment Requests\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "paymentRequest",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nextPageId",
+                  "value": "<string>",
+                  "description": "The next page ID that was obtained on a previous search result. Used to obtain the next set of results"
+                },
+                {
+                  "disabled": false,
+                  "key": "numberOfRecords",
+                  "value": "<number>",
+                  "description": "Number of records to retrieve. Defaults to 100 if not provided"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PaymentRequestSearch\": {\n    \"clientTransactionId\": \"<string>\",\n    \"fromDate\": \"<string>\",\n    \"toDate\": \"<string>\",\n    \"payID\": \"<email>\",\n    \"clientBranch\": \"<string>\",\n    \"searchByDateType\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "81adcf94-5a59-4b21-bb4d-17d8a77aafa3",
+              "name": "The requested page of payment requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextPageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "numberOfRecords",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentRequestSearch\": {\n    \"clientTransactionId\": \"TX5346423452345345\",\n    \"fromDate\": \"2021-10-18T02:32:30.693Z\",\n    \"toDate\": \"2021-10-18T02:32:30.693Z\",\n    \"payID\": \"dl-12345.abc@mymerchant.com.au\",\n    \"clientBranch\": \"BRANCH1\",\n    \"searchByDateType\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"records\": [\n    {\n      \"PaymentRequest\": {\n        \"clientId\": \"CLIENT1\",\n        \"clientTransactionId\": \"TX5346423452345345\",\n        \"paymentDescription\": \"Payment for Drivers' licence renewal.\",\n        \"payID\": \"dl-12345.abc@mymerchant.com.au\",\n        \"payIDSuffix\": \"otherdomain.com.au\",\n        \"suggestedPayerDetails\": {\n          \"payIDDetails\": {\n            \"payID\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"bankAccountDetails\": {\n            \"bsb\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"accountNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"accountName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"clientBranch\": \"BRANCH1\",\n        \"multiPayment\": \"<boolean>\",\n        \"metaData\": {\n          \"key_0\": false,\n          \"key_1\": 1266.0540785561182\n        },\n        \"payerNotificationEmail\": \"<email>\",\n        \"payerNotificationMobile\": \"<string>\",\n        \"paymentAmount\": 101.95,\n        \"enableVirtualAccount\": \"<boolean>\",\n        \"paymentExpiryDatetime\": \"<dateTime>\",\n        \"checkoutUrl\": \"https://pay.azupay.com.au/checkout/123435\",\n        \"paymentNotification\": {\n          \"paymentNotificationEndpointUrl\": \"<url>\",\n          \"paymentNotificationAuthorizationHeaderValue\": \"<string>\"\n        },\n        \"ultimatePayeeName\": \"<string>\",\n        \"variant\": \"<string>\",\n        \"suggestedPayerPayID\": \"0400123123\",\n        \"recurringPaymentAmount\": 500,\n        \"recurringPaymentFrequency\": \"MONTHLY\",\n        \"recurringPaymentType\": \"VARIABLE\",\n        \"recurringPaymentEndDate\": \"2025-12-31\"\n      },\n      \"PaymentRequestStatus\": {\n        \"paymentRequestId\": \"K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=\",\n        \"status\": \"COMPLETE\",\n        \"createdDateTime\": \"1953-04-18T10:08:33.865Z\",\n        \"settledBy\": \"PayTo\",\n        \"completedDatetime\": \"2019-12-04T21:50:16.743Z\",\n        \"refundInformation\": {\n          \"availableBalance\": \"string\",\n          \"requests\": [\n            {\n              \"refundTrigger\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dateTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"createdDateTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"completedDateTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"nppTransactionId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"refundTrigger\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dateTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"createdDateTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"completedDateTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"nppTransactionId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"failureReason\": \"string\",\n        \"rbaSettlementDatetime\": \"1947-05-14T13:17:29.081Z\",\n        \"returnCompletedDatetime\": \"1951-04-30T19:19:59.621Z\",\n        \"returnInitiator\": \"AUTOMATIC\",\n        \"parentPaymentRequestId\": \"K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=\",\n        \"amountReceived\": 5410.369106763989,\n        \"overpaymentAmount\": 1883.1447120484445,\n        \"payerPaymentDescription\": \"string\",\n        \"payerPaymentReference\": \"string\",\n        \"failedPaymentAttempts\": [\n          {\n            \"attemptAmount\": 1967.077739936859,\n            \"attemptDateTime\": \"string\",\n            \"attemptFailureReason\": \"string\"\n          },\n          {\n            \"attemptAmount\": 3387.9684078621876,\n            \"attemptDateTime\": \"string\",\n            \"attemptFailureReason\": \"string\"\n          }\n        ],\n        \"payerInformation\": {\n          \"bsb\": \"string\",\n          \"accountNumber\": \"string\",\n          \"fullLegalAccountName\": \"string\"\n        },\n        \"nppTransactionId\": \"string\",\n        \"virtualBsb\": \"123456\",\n        \"virtualAccountNumber\": \"4782592\",\n        \"paidViaVirtualAccount\": true,\n        \"paymentAgreementId\": \"K+9p4EE0rJnMtomRfWKWE2BnAboHP2KwgIPyEIA=\"\n      }\n    },\n    {\n      \"PaymentRequest\": {\n        \"clientId\": \"CLIENT1\",\n        \"clientTransactionId\": \"TX5346423452345345\",\n        \"paymentDescription\": \"Payment for Drivers' licence renewal.\",\n        \"payID\": \"dl-12345.abc@mymerchant.com.au\",\n        \"payIDSuffix\": \"otherdomain.com.au\",\n        \"suggestedPayerDetails\": {\n          \"payIDDetails\": {\n            \"payID\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"bankAccountDetails\": {\n            \"bsb\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"accountNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"accountName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"clientBranch\": \"BRANCH1\",\n        \"multiPayment\": \"<boolean>\",\n        \"metaData\": {\n          \"key_0\": false,\n          \"key_1\": 2810.2295634114594\n        },\n        \"payerNotificationEmail\": \"<email>\",\n        \"payerNotificationMobile\": \"<string>\",\n        \"paymentAmount\": 101.95,\n        \"enableVirtualAccount\": \"<boolean>\",\n        \"paymentExpiryDatetime\": \"<dateTime>\",\n        \"checkoutUrl\": \"https://pay.azupay.com.au/checkout/123435\",\n        \"paymentNotification\": {\n          \"paymentNotificationEndpointUrl\": \"<url>\",\n          \"paymentNotificationAuthorizationHeaderValue\": \"<string>\"\n        },\n        \"ultimatePayeeName\": \"<string>\",\n        \"variant\": \"<string>\",\n        \"suggestedPayerPayID\": \"0400123123\",\n        \"recurringPaymentAmount\": 500,\n        \"recurringPaymentFrequency\": \"MONTHLY\",\n        \"recurringPaymentType\": \"VARIABLE\",\n        \"recurringPaymentEndDate\": \"2025-12-31\"\n      },\n      \"PaymentRequestStatus\": {\n        \"paymentRequestId\": \"K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=\",\n        \"status\": \"WAITING\",\n        \"createdDateTime\": \"2003-01-09T05:38:41.431Z\",\n        \"settledBy\": \"PayID\",\n        \"completedDatetime\": \"2012-10-23T21:08:27.753Z\",\n        \"refundInformation\": {\n          \"availableBalance\": \"string\",\n          \"requests\": [\n            {\n              \"refundTrigger\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dateTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"createdDateTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"completedDateTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"nppTransactionId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"refundTrigger\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dateTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"createdDateTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"completedDateTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"nppTransactionId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"failureReason\": \"string\",\n        \"rbaSettlementDatetime\": \"1956-05-30T04:14:24.807Z\",\n        \"returnCompletedDatetime\": \"1949-07-22T04:02:00.772Z\",\n        \"returnInitiator\": \"MANUAL\",\n        \"parentPaymentRequestId\": \"K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=\",\n        \"amountReceived\": 5956.759013616452,\n        \"overpaymentAmount\": 1094.5752824151546,\n        \"payerPaymentDescription\": \"string\",\n        \"payerPaymentReference\": \"string\",\n        \"failedPaymentAttempts\": [\n          {\n            \"attemptAmount\": 9000.592247251801,\n            \"attemptDateTime\": \"string\",\n            \"attemptFailureReason\": \"string\"\n          },\n          {\n            \"attemptAmount\": 6437.346133719853,\n            \"attemptDateTime\": \"string\",\n            \"attemptFailureReason\": \"string\"\n          }\n        ],\n        \"payerInformation\": {\n          \"bsb\": \"string\",\n          \"accountNumber\": \"string\",\n          \"fullLegalAccountName\": \"string\"\n        },\n        \"nppTransactionId\": \"string\",\n        \"virtualBsb\": \"123456\",\n        \"virtualAccountNumber\": \"034424\",\n        \"paidViaVirtualAccount\": true,\n        \"paymentAgreementId\": \"K+9p4EE0rJnMtomRfWKWE2BnAboHP2KwgIPyEIA=\"\n      }\n    }\n  ],\n  \"nextPageId\": \"string\",\n  \"recordCount\": 9085.170431394597\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8fd946e0-c79b-405d-ae46-a40de424d7e4",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextPageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "numberOfRecords",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentRequestSearch\": {\n    \"clientTransactionId\": \"TX5346423452345345\",\n    \"fromDate\": \"2021-10-18T02:32:30.693Z\",\n    \"toDate\": \"2021-10-18T02:32:30.693Z\",\n    \"payID\": \"dl-12345.abc@mymerchant.com.au\",\n    \"clientBranch\": \"BRANCH1\",\n    \"searchByDateType\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Content-Type request header must be application/json\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4f026ab-8c30-4558-b8ae-1cb8bfabf77e",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextPageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "numberOfRecords",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentRequestSearch\": {\n    \"clientTransactionId\": \"TX5346423452345345\",\n    \"fromDate\": \"2021-10-18T02:32:30.693Z\",\n    \"toDate\": \"2021-10-18T02:32:30.693Z\",\n    \"payID\": \"dl-12345.abc@mymerchant.com.au\",\n    \"clientBranch\": \"BRANCH1\",\n    \"searchByDateType\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d979559-4dda-4e16-90d0-9448fd0901be",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentRequest",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextPageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "numberOfRecords",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentRequestSearch\": {\n    \"clientTransactionId\": \"TX5346423452345345\",\n    \"fromDate\": \"2021-10-18T02:32:30.693Z\",\n    \"toDate\": \"2021-10-18T02:32:30.693Z\",\n    \"payID\": \"dl-12345.abc@mymerchant.com.au\",\n    \"clientBranch\": \"BRANCH1\",\n    \"searchByDateType\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-uat.azupay.com.au/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "95ba9116-45ab-40d7-b15d-2fc7e907d238",
+    "name": "Azupay Payment Request API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API Reference\n\nContact Support:\n Email: contactus@azupay.com.au",
+      "type": "text/plain"
+    }
+  }
+}

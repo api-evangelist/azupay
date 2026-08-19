@@ -1,0 +1,335 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azupay Payment Agreement API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Agreement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a Payment Agreement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/paymentAgreement",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a Payment Agreement"
+        },
+        {
+          "info": {
+            "name": "Amend a Payment Agreement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/paymentAgreement/amendment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Amend a Payment Agreement"
+        },
+        {
+          "info": {
+            "name": "Change Status of a Payment Agreement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/paymentAgreement/changeStatus",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "ID of the payment agreement to change"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "New status of the payment agreement"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Change the status of a Payment Agreement"
+        },
+        {
+          "info": {
+            "name": "Search for Payment Agreements.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/paymentAgreement/search",
+            "params": [
+              {
+                "name": "nextPageId",
+                "value": "",
+                "type": "query",
+                "description": "The next page ID that was obtained on a previous search result. Used to obtain the next set of results"
+              },
+              {
+                "name": "numberOfRecords",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to retrieve. Defaults to 100 if not provided"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search for Payment Agreements\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve a Payment Scheduler",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-uat.azupay.com.au/v1/paymentAgreement/:paymentAgreementId/scheduler",
+            "params": [
+              {
+                "name": "paymentAgreementId",
+                "value": "",
+                "type": "path",
+                "description": "The payment agreement the scheduler is attached to"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the scheduler for the given payment agreement, with its current state.\n"
+        },
+        {
+          "info": {
+            "name": "Create or amend a Payment Scheduler",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/paymentAgreement/:paymentAgreementId/scheduler",
+            "params": [
+              {
+                "name": "paymentAgreementId",
+                "value": "",
+                "type": "path",
+                "description": "The payment agreement the scheduler is attached to"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a scheduler against an active payment agreement, or amends the existing one.\nUpsert keyed on paymentAgreementId. Amendments require the current version.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payment Agreement Request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a Payment Agreement Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/paymentAgreementRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a Payment Agreement Request"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payment Initiation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a Payment Initiation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-uat.azupay.com.au/v1/paymentInitiation",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "ID of Payment Initiation to retrieve.  This is the `paymentInitiationId` returned by the **Initiate a Payment** API\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves an existing Payment Initiation (PayTo Transaction).\n"
+        },
+        {
+          "info": {
+            "name": "Initiate a Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/paymentInitiation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Initiate a Payment"
+        },
+        {
+          "info": {
+            "name": "Refund for Payment Initiation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/paymentInitiation/refund",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The ID for the Payment Initiation"
+              },
+              {
+                "name": "refundAmount",
+                "value": "",
+                "type": "query",
+                "description": "The refund amount"
+              },
+              {
+                "name": "refundBatchId",
+                "value": "",
+                "type": "query",
+                "description": "The batch Id if the refund is done through batch"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Refund for Payment Initiation (PayTo Transactions)\n"
+        },
+        {
+          "info": {
+            "name": "Search for Payment Initiation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/paymentInitiation/search",
+            "params": [
+              {
+                "name": "nextPageId",
+                "value": "",
+                "type": "query",
+                "description": "The next page ID that was obtained on a previous search result. Used to obtain the next set of results"
+              },
+              {
+                "name": "numberOfRecords",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to retrieve. Defaults to 100 if not provided"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search for Payment Initiation (PayTo Transactions)\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

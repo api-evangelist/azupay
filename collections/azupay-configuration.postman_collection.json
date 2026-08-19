@@ -1,0 +1,3583 @@
+{
+  "item": [
+    {
+      "id": "029daced-505b-4c76-a08b-120143f2a006",
+      "name": "API Keys",
+      "description": {
+        "content": "Manage API keys for your clients.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "563cbc42-30b3-478b-ba43-68a1c524cae9",
+          "name": "Create API keys for Sub Merchants",
+          "request": {
+            "name": "Create API keys for Sub Merchants",
+            "description": {
+              "content": "Create API keys",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "client",
+                ":clientId",
+                "apiKeys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"permissions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"generateHMAC\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b021405e-0170-46c3-9b84-9f29415396b2",
+              "name": "API key creation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permissions\": [\n    \"RestAPI/POST/paymentRequest\",\n    \"RestAPI/POST/paymentRequest\"\n  ],\n  \"generateHMAC\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"keyID\": \"SECRE408AB\",\n  \"apiKey\": \"XXXXXXXXX_YYYYYYYYYY_ZZZZZZZZZZZ\",\n  \"hmacKey\": \"hmac_secret_XXXXXXXXX\",\n  \"enabled\": true,\n  \"permittedOperations\": [\n    \"RestAPI/POST/paymentRequest\",\n    \"RestAPI/GET/paymentRequest\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79f84893-70e6-4e41-9639-379b248ae169",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permissions\": [\n    \"RestAPI/POST/paymentRequest\",\n    \"RestAPI/POST/paymentRequest\"\n  ],\n  \"generateHMAC\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "199513de-87b0-475a-b482-92f826b4da0e",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permissions\": [\n    \"RestAPI/POST/paymentRequest\",\n    \"RestAPI/POST/paymentRequest\"\n  ],\n  \"generateHMAC\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec32a3d4-f40c-4e20-a671-e8936b03ba62",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permissions\": [\n    \"RestAPI/POST/paymentRequest\",\n    \"RestAPI/POST/paymentRequest\"\n  ],\n  \"generateHMAC\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0fb9e98d-baa5-4aa6-95f3-f2cfedba9321",
+              "name": "Client ID not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permissions\": [\n    \"RestAPI/POST/paymentRequest\",\n    \"RestAPI/POST/paymentRequest\"\n  ],\n  \"generateHMAC\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "492f5454-54f6-46fd-b6f7-59da42773777",
+          "name": "Get API keys for Sub Merchants",
+          "request": {
+            "name": "Get API keys for Sub Merchants",
+            "description": {
+              "content": "Get API keys",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "client",
+                ":clientId",
+                "apiKeys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "335ac691-ca10-4026-a3b7-cabb3baf9e31",
+              "name": "API keys record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"keyID\": \"SECRE408AB\",\n    \"hmacEnabled\": true,\n    \"enabled\": true,\n    \"permittedOperations\": [\n      \"RestAPI/POST/paymentRequest\",\n      \"RestAPI/GET/paymentRequest\"\n    ]\n  },\n  {\n    \"keyID\": \"SECRE408AB\",\n    \"hmacEnabled\": true,\n    \"enabled\": true,\n    \"permittedOperations\": [\n      \"RestAPI/POST/paymentRequest\",\n      \"RestAPI/GET/paymentRequest\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe756d88-1993-4862-a289-16601e6630e5",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f7a6118-28b8-41f3-a758-aab66bdbd898",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b6fb01d-4359-41af-9f74-fe105d4f468e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78632ecd-c614-4c8c-8663-76d3030d1949",
+              "name": "Client ID not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1530f5c-0ee1-4eae-8b36-24df2bca96d2",
+          "name": "Gets an API key based on the API key ID.",
+          "request": {
+            "name": "Gets an API key based on the API key ID.",
+            "description": {
+              "content": "Get API key",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "client",
+                ":clientId",
+                "apiKeys",
+                ":apiKeyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "apiKeyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "02d5fb45-7b13-47eb-abd6-63aabc7a7566",
+              "name": "API key record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys",
+                    ":apiKeyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKeyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"keyID\": \"SECRE408AB\",\n  \"hmacEnabled\": true,\n  \"enabled\": true,\n  \"permittedOperations\": [\n    \"RestAPI/POST/paymentRequest\",\n    \"RestAPI/GET/paymentRequest\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47cab5bf-0b88-4769-a282-0334c8840981",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys",
+                    ":apiKeyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKeyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "072c0141-f7e9-442e-bcea-6eb6786f634d",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys",
+                    ":apiKeyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKeyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c96c6fbd-69b9-4b02-ba8a-b751a690f026",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys",
+                    ":apiKeyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKeyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35f73294-aaed-4558-9883-f2f17a8d9d55",
+              "name": "Client ID not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys",
+                    ":apiKeyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKeyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2edf7e4-a389-43c6-b371-31613248f655",
+          "name": "Update API keys for Sub Merchants",
+          "request": {
+            "name": "Update API keys for Sub Merchants",
+            "description": {
+              "content": "Update API keys",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "client",
+                ":clientId",
+                "apiKeys",
+                ":apiKeyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "apiKeyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d89d278-c2e5-4528-956f-69c0b1436354",
+              "name": "API key updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys",
+                    ":apiKeyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKeyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4b04ea49-2f82-48e5-b9cb-6edce41436ed",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys",
+                    ":apiKeyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKeyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e995eec-2986-4d3f-9134-d0d6dc35a39b",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys",
+                    ":apiKeyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKeyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20389855-4383-4671-a826-cd160fe6bf90",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys",
+                    ":apiKeyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKeyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4261723e-531b-4395-a963-00976be39474",
+              "name": "Client ID not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "apiKeys",
+                    ":apiKeyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKeyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "721166b8-04d0-41b6-a4df-fb98764fa45f",
+          "name": "Enable OAuth2 for a client",
+          "request": {
+            "name": "Enable OAuth2 for a client",
+            "description": {
+              "content": "Enable OAuth2 for a client",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "client",
+                ":clientId",
+                "oauth2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) The Azupay sub-client ID whose OAuth2 configuration is being retrieved."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aa3f8274-90e4-4d7e-9b6d-d3803c369ce9",
+              "name": "OAuth2 has been enabled and credentials issued.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "oauth2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) The Azupay sub-client ID whose OAuth2 configuration is being retrieved."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"oauth2ClientId\": \"3n8q9p1k2l4m5o6p7q8r9s0t1u\",\n  \"oauth2ClientSecret\": \"abcdef1234567890abcdef1234567890abcdef1234567890abcdef12\",\n  \"oauth2TokenUrl\": \"https://auth-uat.azupay.com.au/oauth2/token\",\n  \"oauth2GrantType\": \"client_credentials\",\n  \"oauth2TtlInSecs\": 3600,\n  \"oauth2AllowedScopes\": [\n    \"RestAPI/GET:balance\",\n    \"RestAPI/GET:paymentRequest\",\n    \"RestAPI/POST:sweepRequest\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f812e9b-b764-4eab-9d5f-5337dacf67a6",
+              "name": "Invalid request. The most common cause is that the client is not on the enterprise plan or clientId path parameter is not matching the Authorization header and is therefore not allowed to enable OAuth2.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "oauth2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) The Azupay sub-client ID whose OAuth2 configuration is being retrieved."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4ccb5f7-4545-4c97-b2d6-92f896d4fcf4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "oauth2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) The Azupay sub-client ID whose OAuth2 configuration is being retrieved."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffc8a659-e7d0-4cc5-89ac-529ac59b76de",
+          "name": "Get OAuth2 configuration for a client",
+          "request": {
+            "name": "Get OAuth2 configuration for a client",
+            "description": {
+              "content": "Get OAuth2 configuration for a client",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "client",
+                ":clientId",
+                "oauth2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) The Azupay sub-client ID whose OAuth2 configuration is being retrieved."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b0aee832-9394-4c1c-9aeb-993333a22d82",
+              "name": "The OAuth2 configuration for the client.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "oauth2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) The Azupay sub-client ID whose OAuth2 configuration is being retrieved."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"oauth2ClientId\": \"3n8q9p1k2l4m5o6p7q8r9s0t1u\",\n  \"oauth2TokenUrl\": \"https://auth-uat.azupay.com.au/oauth2/token\",\n  \"oauth2GrantType\": \"client_credentials\",\n  \"oauth2TtlInSecs\": 3600,\n  \"oauth2AllowedScopes\": [\n    \"RestAPI/GET:balance\",\n    \"RestAPI/GET:paymentRequest\",\n    \"RestAPI/POST:sweepRequest\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01471308-661f-4115-8f42-b69290063742",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "oauth2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) The Azupay sub-client ID whose OAuth2 configuration is being retrieved."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e148c757-da0e-4dff-9f69-702335ed3e4d",
+              "name": "OAuth2 is not enabled for this client, or the client does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "oauth2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) The Azupay sub-client ID whose OAuth2 configuration is being retrieved."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0ae2c47e-dbbd-416a-9873-7d60d26df232",
+      "name": "Clients",
+      "description": {
+        "content": "Would let you manage clients\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1141551c-4e7a-485b-ad26-6ae6f13cabc6",
+          "name": "Create or replace a client",
+          "request": {
+            "name": "Create or replace a client",
+            "description": {
+              "content": "Create new sub-clients. Sub-clients are children of your own client (master-client).\n\nDuplicates can be prevented by using the same value in `clientTransactionId` in the request. It would also\nreplace an existing client if the same `clientTransactionId` is provided in the request.\n\nThis API is only available to some Azupay customers. Please contact us for more information.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "clients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client\": {\n    \"clientTransactionId\": \"<string>\",\n    \"legalName\": \"<string>\",\n    \"defaultPaymentExpiryDuration\": \"<number>\",\n    \"payIDDomains\": [\n      {\n        \"domain\": \"<string>\",\n        \"merchantName\": \"<string>\"\n      }\n    ],\n    \"abn\": \"<string>\",\n    \"settlementAccountFullLegalName\": \"<string>\",\n    \"tradingName\": \"<string>\",\n    \"additionalTradingNames\": [\n      \"<string>\"\n    ],\n    \"settlementAccountBSB\": \"<string>\",\n    \"settlementAccountNumber\": \"<string>\",\n    \"settlementPayID\": \"<email>\",\n    \"sweepNotification\": {\n      \"authorizationHeader\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"clientManagementNotification\": {\n      \"url\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"dashboardUserEmail\": \"<email>\",\n    \"dashboardUserRole\": \"<string>\",\n    \"transactionPayoutLimit\": \"<string>\",\n    \"dailyTransactionPayoutLimit\": \"<string>\",\n    \"kyc\": {\n      \"businessRegistrationDate\": \"<string>\",\n      \"businessContactName\": \"<string>\",\n      \"businessEmailAddress\": \"<string>\",\n      \"businessPhoneNumber\": \"<string>\",\n      \"businessRegisteredAddress\": \"<string>\",\n      \"completion\": \"<boolean>\",\n      \"websiteURL\": \"<string>\",\n      \"instagramURL\": \"<string>\",\n      \"facebookURL\": \"<string>\",\n      \"linkedInProfileURL\": \"<string>\",\n      \"acn\": \"<string>\",\n      \"companyIncorporationDate\": \"<string>\",\n      \"afslNumber\": \"<string>\",\n      \"merchantCategoryCode\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7eb7d2c1-285f-4a6b-b117-ee18f589f083",
+              "name": "The new Client has been created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client\": {\n    \"clientTransactionId\": \"30597959-a853-44d4-bdab-54332bf7a98e\",\n    \"legalName\": \"Legal name\",\n    \"defaultPaymentExpiryDuration\": 3600,\n    \"payIDDomains\": [\n      {\n        \"domain\": \"example.com\",\n        \"merchantName\": \"Merchant Name\"\n      }\n    ],\n    \"abn\": \"12345678901\",\n    \"settlementAccountFullLegalName\": \"Account legal name\",\n    \"tradingName\": \"Legal name\",\n    \"additionalTradingNames\": [\n      \"Trading Name\",\n      \"Trading Name Pty Ltd\"\n    ],\n    \"settlementAccountBSB\": \"123456\",\n    \"settlementAccountNumber\": \"123555555\",\n    \"settlementPayID\": \"myaccount@example.com\",\n    \"sweepNotification\": {\n      \"authorizationHeader\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"clientManagementNotification\": {\n      \"url\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"dashboardUserEmail\": \"myaccount@example.com\",\n    \"dashboardUserRole\": \"<string>\",\n    \"transactionPayoutLimit\": \"500.00\",\n    \"dailyTransactionPayoutLimit\": \"10000.00\",\n    \"kyc\": {\n      \"businessRegistrationDate\": \"<string>\",\n      \"businessContactName\": \"<string>\",\n      \"businessEmailAddress\": \"<string>\",\n      \"businessPhoneNumber\": \"<string>\",\n      \"businessRegisteredAddress\": \"<string>\",\n      \"completion\": \"<boolean>\",\n      \"websiteURL\": \"<string>\",\n      \"instagramURL\": \"<string>\",\n      \"facebookURL\": \"<string>\",\n      \"linkedInProfileURL\": \"<string>\",\n      \"acn\": \"<string>\",\n      \"companyIncorporationDate\": \"<string>\",\n      \"afslNumber\": \"<string>\",\n      \"merchantCategoryCode\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"client\": {\n    \"clientTransactionId\": \"30597959-a853-44d4-bdab-54332bf7a98e\",\n    \"legalName\": \"Legal name\",\n    \"defaultPaymentExpiryDuration\": 3600,\n    \"payIDDomains\": [\n      {\n        \"domain\": \"example.com\",\n        \"merchantName\": \"Merchant Name\"\n      }\n    ],\n    \"abn\": \"12345678901\",\n    \"settlementAccountFullLegalName\": \"Account legal name\",\n    \"id\": \"731c04075258428730c3152a7904dda4\",\n    \"tradingName\": \"Legal name\",\n    \"additionalTradingNames\": [\n      \"Trading Name\",\n      \"Trading Name Pty Ltd\"\n    ],\n    \"settlementAccountBSB\": \"123456\",\n    \"settlementAccountNumber\": \"123555555\",\n    \"settlementPayID\": \"myaccount@example.com\",\n    \"sweepNotification\": {\n      \"authorizationHeader\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"clientManagementNotification\": {\n      \"url\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"topUpPayId\": \"topup1234@example.com\",\n    \"dashboardUserEmail\": \"myaccount@example.com\",\n    \"dashboardUserRole\": \"<string>\",\n    \"transactionPayoutLimit\": \"500.00\",\n    \"dailyTransactionPayoutLimit\": \"10000.00\",\n    \"kyc\": {\n      \"businessRegistrationDate\": \"<string>\",\n      \"businessContactName\": \"<string>\",\n      \"businessEmailAddress\": \"<string>\",\n      \"businessPhoneNumber\": \"<string>\",\n      \"businessRegisteredAddress\": \"<string>\",\n      \"completion\": \"<boolean>\",\n      \"websiteURL\": \"<string>\",\n      \"instagramURL\": \"<string>\",\n      \"facebookURL\": \"<string>\",\n      \"linkedInProfileURL\": \"<string>\",\n      \"acn\": \"<string>\",\n      \"companyIncorporationDate\": \"<string>\",\n      \"afslNumber\": \"<string>\",\n      \"merchantCategoryCode\": \"<string>\"\n    },\n    \"keys\": [\n      {\n        \"keyId\": \"SECR\",\n        \"bcryptKeyHash\": \"$2a$10$hi0NLji0sqAobZd0Lp7JKOBF0nc9U045jqf1co1fJSXb2C1KAVkkO\",\n        \"key\": \"SECR_731c04075258428730c3152a7904d3333_rY6JxWL333SRGhPA\"\n      },\n      {\n        \"keyId\": \"SECR\",\n        \"bcryptKeyHash\": \"$2a$10$hi0NLji0sqAobZd0Lp7JKOBF0nc9U045jqf1co1fJSXb2C1KAVkkO\",\n        \"key\": \"SECR_731c04075258428730c3152a7904d3333_rY6JxWL333SRGhPA\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09d2d519-8ac9-43fc-9ee8-fe9a35d7d6b2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client\": {\n    \"clientTransactionId\": \"30597959-a853-44d4-bdab-54332bf7a98e\",\n    \"legalName\": \"Legal name\",\n    \"defaultPaymentExpiryDuration\": 3600,\n    \"payIDDomains\": [\n      {\n        \"domain\": \"example.com\",\n        \"merchantName\": \"Merchant Name\"\n      }\n    ],\n    \"abn\": \"12345678901\",\n    \"settlementAccountFullLegalName\": \"Account legal name\",\n    \"tradingName\": \"Legal name\",\n    \"additionalTradingNames\": [\n      \"Trading Name\",\n      \"Trading Name Pty Ltd\"\n    ],\n    \"settlementAccountBSB\": \"123456\",\n    \"settlementAccountNumber\": \"123555555\",\n    \"settlementPayID\": \"myaccount@example.com\",\n    \"sweepNotification\": {\n      \"authorizationHeader\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"clientManagementNotification\": {\n      \"url\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"dashboardUserEmail\": \"myaccount@example.com\",\n    \"dashboardUserRole\": \"<string>\",\n    \"transactionPayoutLimit\": \"500.00\",\n    \"dailyTransactionPayoutLimit\": \"10000.00\",\n    \"kyc\": {\n      \"businessRegistrationDate\": \"<string>\",\n      \"businessContactName\": \"<string>\",\n      \"businessEmailAddress\": \"<string>\",\n      \"businessPhoneNumber\": \"<string>\",\n      \"businessRegisteredAddress\": \"<string>\",\n      \"completion\": \"<boolean>\",\n      \"websiteURL\": \"<string>\",\n      \"instagramURL\": \"<string>\",\n      \"facebookURL\": \"<string>\",\n      \"linkedInProfileURL\": \"<string>\",\n      \"acn\": \"<string>\",\n      \"companyIncorporationDate\": \"<string>\",\n      \"afslNumber\": \"<string>\",\n      \"merchantCategoryCode\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a074342-1cb1-4133-8b5f-81bde0641ef6",
+              "name": "Not authorised",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client\": {\n    \"clientTransactionId\": \"30597959-a853-44d4-bdab-54332bf7a98e\",\n    \"legalName\": \"Legal name\",\n    \"defaultPaymentExpiryDuration\": 3600,\n    \"payIDDomains\": [\n      {\n        \"domain\": \"example.com\",\n        \"merchantName\": \"Merchant Name\"\n      }\n    ],\n    \"abn\": \"12345678901\",\n    \"settlementAccountFullLegalName\": \"Account legal name\",\n    \"tradingName\": \"Legal name\",\n    \"additionalTradingNames\": [\n      \"Trading Name\",\n      \"Trading Name Pty Ltd\"\n    ],\n    \"settlementAccountBSB\": \"123456\",\n    \"settlementAccountNumber\": \"123555555\",\n    \"settlementPayID\": \"myaccount@example.com\",\n    \"sweepNotification\": {\n      \"authorizationHeader\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"clientManagementNotification\": {\n      \"url\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"dashboardUserEmail\": \"myaccount@example.com\",\n    \"dashboardUserRole\": \"<string>\",\n    \"transactionPayoutLimit\": \"500.00\",\n    \"dailyTransactionPayoutLimit\": \"10000.00\",\n    \"kyc\": {\n      \"businessRegistrationDate\": \"<string>\",\n      \"businessContactName\": \"<string>\",\n      \"businessEmailAddress\": \"<string>\",\n      \"businessPhoneNumber\": \"<string>\",\n      \"businessRegisteredAddress\": \"<string>\",\n      \"completion\": \"<boolean>\",\n      \"websiteURL\": \"<string>\",\n      \"instagramURL\": \"<string>\",\n      \"facebookURL\": \"<string>\",\n      \"linkedInProfileURL\": \"<string>\",\n      \"acn\": \"<string>\",\n      \"companyIncorporationDate\": \"<string>\",\n      \"afslNumber\": \"<string>\",\n      \"merchantCategoryCode\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96630df2-6fbd-4785-9dc8-384a149694a3",
+          "name": "Disable a sub-client",
+          "request": {
+            "name": "Disable a sub-client",
+            "description": {
+              "content": "Disable a sub-client. Sub-client is a child of your own client (master-client).\n\nThis API is only available to some Azupay customers. Please contact us for more information.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "clients",
+                ":clientId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Client ID of sub-client to disable"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "52f4f8ee-e41c-40ae-a4a5-faab633ff374",
+              "name": "The sub-client was successfully disabled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID of sub-client to disable"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8eb40e65-8ce3-4f5d-a61d-ca915d854c07",
+              "name": "Invalid Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID of sub-client to disable"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The sub-client already disabled\",\n  \"details\": {\n    \"failureCode\": \"ERR0.01\",\n    \"failureReason\": \"The sub-client already disabled\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ec6ae18-e9d0-475e-92c0-8ba2bdd00ffc",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID of sub-client to disable"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"User is not authorized to access this resource\",\n  \"details\": {\n    \"failureCode\": \"ERR0.01\",\n    \"failureReason\": \"User is not authorized to access this resource\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2dd988e1-da16-437c-93a1-a92955e066bc",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID of sub-client to disable"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The client can not be found\",\n  \"details\": {\n    \"failureCode\": \"ERR0.01\",\n    \"failureReason\": \"The client can not be found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f99960c-8915-4c9a-a112-e86d1e729d8f",
+          "name": "get Client Low Balance Alert Email Addresses",
+          "request": {
+            "name": "get Client Low Balance Alert Email Addresses",
+            "description": {},
+            "url": {
+              "path": [
+                "clients",
+                ":clientId",
+                "lowBalanceAlert",
+                "emailAddresses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Client ID to get the email addresses"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2f545f2f-2894-4d38-98ac-3e441c794ec4",
+              "name": "The client configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId",
+                    "lowBalanceAlert",
+                    "emailAddresses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID to get the email addresses"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emailAddresses\": [\n    \"user1@example.com\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a7e627c-d67e-4c8d-949b-e1e942869aa3",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId",
+                    "lowBalanceAlert",
+                    "emailAddresses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID to get the email addresses"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"User is not authorized to access this resource\",\n  \"details\": {\n    \"failureCode\": \"ERR0.01\",\n    \"failureReason\": \"User is not authorized to access this resource\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6feb6956-b8a7-4d5b-93c4-4aa346edc936",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId",
+                    "lowBalanceAlert",
+                    "emailAddresses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID to get the email addresses"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The client can not be found\",\n  \"details\": {\n    \"failureCode\": \"ERR0.01\",\n    \"failureReason\": \"The client can not be found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20e6fb7d-90bf-46c9-b7c2-d3d69ced6428",
+          "name": "Set email addresses to send the low balance alerts",
+          "request": {
+            "name": "Set email addresses to send the low balance alerts",
+            "description": {
+              "content": "Set the email addresses to send the alerts when the balance goes lower than the specified limit.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "clients",
+                ":clientId",
+                "lowBalanceAlert",
+                "emailAddresses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Client ID to set the email addresses"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailAddresses\": [\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b83d09e4-2f69-41fc-9c61-3fd6f777d52a",
+              "name": "The email addresses were successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId",
+                    "lowBalanceAlert",
+                    "emailAddresses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID to set the email addresses"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddresses\": [\n    \"user1@example.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c060362-e411-4ec9-b442-aa1b6e0af569",
+              "name": "Invalid Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId",
+                    "lowBalanceAlert",
+                    "emailAddresses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID to set the email addresses"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddresses\": [\n    \"user1@example.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Bad request\",\n  \"details\": {\n    \"failureCode\": \"ERR0.01\",\n    \"failureReason\": \"Wrong email addresses format\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6aacd26e-9831-4741-bb2e-29fbb0c4fb13",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId",
+                    "lowBalanceAlert",
+                    "emailAddresses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID to set the email addresses"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddresses\": [\n    \"user1@example.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"User is not authorized to access this resource\",\n  \"details\": {\n    \"failureCode\": \"ERR0.01\",\n    \"failureReason\": \"User is not authorized to access this resource\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5330e8d1-877e-48de-8ee9-9d9ec4ef9796",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId",
+                    "lowBalanceAlert",
+                    "emailAddresses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID to set the email addresses"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddresses\": [\n    \"user1@example.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The client can not be found\",\n  \"details\": {\n    \"failureCode\": \"ERR0.01\",\n    \"failureReason\": \"The client can not be found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76dedb02-1fc4-418f-afbc-d6901a4fd278",
+          "name": "get Client Low Balance Alert Threshold",
+          "request": {
+            "name": "get Client Low Balance Alert Threshold",
+            "description": {},
+            "url": {
+              "path": [
+                "clients",
+                ":clientId",
+                "lowBalanceAlert",
+                "threshold"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Client ID to get the balance threshold"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5b51b731-9472-4469-adf0-ca51b956b4ec",
+              "name": "The client configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId",
+                    "lowBalanceAlert",
+                    "threshold"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID to get the balance threshold"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"threshold\": \"500.00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ceeab48-333c-4b36-982f-1ff26f2592cf",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId",
+                    "lowBalanceAlert",
+                    "threshold"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID to get the balance threshold"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"User is not authorized to access this resource\",\n  \"details\": {\n    \"failureCode\": \"ERR0.01\",\n    \"failureReason\": \"User is not authorized to access this resource\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a465ba3-074f-4a7f-9349-75f671464c01",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId",
+                    "lowBalanceAlert",
+                    "threshold"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID to get the balance threshold"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The client can not be found\",\n  \"details\": {\n    \"failureCode\": \"ERR0.01\",\n    \"failureReason\": \"The client can not be found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b88aad3c-60cc-4ca4-9b10-5dc8086e9e35",
+          "name": "Set low balance threshold to trigger alerts",
+          "request": {
+            "name": "Set low balance threshold to trigger alerts",
+            "description": {
+              "content": "Set low balance threshold to trigger alerts when the balance goes lower than the specified limit.\nWhen this happens, an email is sent to the specified recipients.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "clients",
+                ":clientId",
+                "lowBalanceAlert",
+                "threshold"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Client ID to set the balance threshold"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"threshold\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ab637e88-a9c8-44eb-bbf1-3034c575a25a",
+              "name": "The threshold was successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId",
+                    "lowBalanceAlert",
+                    "threshold"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID to set the balance threshold"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"threshold\": \"500.00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3605149d-e25d-4a1a-a3c6-7c957d8a6cc9",
+              "name": "Invalid Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId",
+                    "lowBalanceAlert",
+                    "threshold"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID to set the balance threshold"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"threshold\": \"500.00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Bad request\",\n  \"details\": {\n    \"failureCode\": \"ERR0.01\",\n    \"failureReason\": \"Wrong threshold format\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75c977c4-f530-4184-9d29-9febe36c8265",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId",
+                    "lowBalanceAlert",
+                    "threshold"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID to set the balance threshold"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"threshold\": \"500.00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"User is not authorized to access this resource\",\n  \"details\": {\n    \"failureCode\": \"ERR0.01\",\n    \"failureReason\": \"User is not authorized to access this resource\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29dfb081-6b92-4dbf-9700-7ab80b02536d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":clientId",
+                    "lowBalanceAlert",
+                    "threshold"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client ID to set the balance threshold"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"threshold\": \"500.00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The client can not be found\",\n  \"details\": {\n    \"failureCode\": \"ERR0.01\",\n    \"failureReason\": \"The client can not be found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-uat.azupay.com.au/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e1e05bba-951b-4f0a-a1f1-d42c515fd9d6",
+    "name": "Azupay Configuration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API Reference\n\nContact Support:\n Email: contactus@azupay.com.au",
+      "type": "text/plain"
+    }
+  }
+}

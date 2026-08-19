@@ -1,0 +1,811 @@
+{
+  "item": [
+    {
+      "id": "5d04d1bd-b4d5-4119-83cf-75c4fea41c8e",
+      "name": "Payment",
+      "description": {
+        "content": "This API allows you to make outbound payments to PayID or NPP enabled BSB accounts.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "83418568-215c-4664-bb87-a920287eb22c",
+          "name": "Get a Payment.",
+          "request": {
+            "name": "Get a Payment.",
+            "description": {
+              "content": "Retrieves the status of a previous Make a Payment call. Use the contents of the response body to determine whether the payment has completed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) ID of Payment to retrieve. This is the paymentId returned by the makePayment call."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a28305ff-de62-41e1-be09-24d5733c270a",
+              "name": "The payment object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Payment\": {\n    \"payeeName\": \"Mr John Smith or ABC Corp Pty Ltd\",\n    \"clientPaymentId\": \"c8ec39dc-2a70-4440-bc92-0e8f1b263d8f\",\n    \"paymentAmount\": \"101.95\",\n    \"paymentDescription\": \"Payment for wages August 2020.\",\n    \"payID\": \"johndoe@example.com\",\n    \"payIDType\": \"PHONE\",\n    \"bsb\": \"012306\",\n    \"accountNumber\": \"12345678\",\n    \"paymentReference\": \"string\",\n    \"ultimatePayerName\": \"Mr John Smith or ABC Corp Pty Ltd\",\n    \"paymentNotification\": {\n      \"paymentNotificationAuthorizationHeaderValue\": \"string\",\n      \"paymentNotificationEndpointUrl\": \"string\"\n    },\n    \"metaData\": {\n      \"key_0\": 1497,\n      \"key_1\": true,\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    }\n  },\n  \"PaymentStatus\": {\n    \"paymentId\": \"K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=\",\n    \"status\": \"FAILED\",\n    \"createdDatetime\": \"1978-08-12T01:28:44.258Z\",\n    \"settlementDatetime\": \"2000-05-18T18:02:02.921Z\",\n    \"completedDatetime\": \"2009-03-10T04:21:27.967Z\",\n    \"failureReason\": \"AG01\",\n    \"returnedReason\": \"AG01\",\n    \"returnedDatetime\": \"1958-12-12T05:13:12.439Z\",\n    \"currentBalance\": 31050.95,\n    \"nppTransactionId\": \"string\",\n    \"sentViaDE\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afe7d645-0adf-4df2-93e7-13311ab1b263",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13f9eb52-9548-4d13-a746-e11a22ed7bdd",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4af1e019-eb5c-4a1c-9fa2-940f34985e32",
+              "name": "Payment Request Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7cbf787-d377-4bed-8c71-b059d5d8774e",
+          "name": "Make a Payment.",
+          "request": {
+            "name": "Make a Payment.",
+            "description": {
+              "content": "Make an outbound payment to the provided PayID or BSB/Account Number.\nOnce made, you can poll for PaymentStatus using getPayment to determine\nwhether or not the payment was settled to the payee.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Payment\": {\n    \"payeeName\": \"<string>\",\n    \"clientPaymentId\": \"<string>\",\n    \"paymentAmount\": \"<string>\",\n    \"paymentDescription\": \"<string>\",\n    \"payID\": \"<string>\",\n    \"payIDType\": \"<string>\",\n    \"bsb\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"paymentReference\": \"<string>\",\n    \"ultimatePayerName\": \"<string>\",\n    \"paymentNotification\": {\n      \"paymentNotificationAuthorizationHeaderValue\": \"<string>\",\n      \"paymentNotificationEndpointUrl\": \"<url>\"\n    },\n    \"metaData\": {\n      \"key_0\": false,\n      \"key_1\": 8947\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "487b5b36-0dce-4f57-b989-a71b1569fbd6",
+              "name": "Payment received",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Payment\": {\n    \"clientPaymentId\": \"update-me-to-some-unique-value\",\n    \"payeeName\": \"Edward Engineer\",\n    \"payID\": \"engineering@azupay.com.au\",\n    \"payIDType\": \"EMAIL\",\n    \"paymentAmount\": \"100.00\",\n    \"paymentDescription\": \"A successful test case when a PayID via Email succeeds\",\n    \"paymentReference\": \"update-me-to-some-unique-value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"PaymentStatus\": {\n    \"paymentId\": \"K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=\",\n    \"status\": \"RETURNED\",\n    \"createdDatetime\": \"2002-02-06T12:46:13.202Z\",\n    \"settlementDatetime\": \"2000-02-26T20:01:01.679Z\",\n    \"completedDatetime\": \"1972-01-26T19:48:15.651Z\",\n    \"failureReason\": \"AG01\",\n    \"returnedReason\": \"AG01\",\n    \"returnedDatetime\": \"1947-09-16T14:06:19.470Z\",\n    \"currentBalance\": 31050.95,\n    \"nppTransactionId\": \"string\",\n    \"sentViaDE\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd7b4fe4-8035-4f03-b2cf-0f5ae91c78b6",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Payment\": {\n    \"clientPaymentId\": \"update-me-to-some-unique-value\",\n    \"payeeName\": \"Edward Engineer\",\n    \"payID\": \"engineering@azupay.com.au\",\n    \"payIDType\": \"EMAIL\",\n    \"paymentAmount\": \"100.00\",\n    \"paymentDescription\": \"A successful test case when a PayID via Email succeeds\",\n    \"paymentReference\": \"update-me-to-some-unique-value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c87e777-d2b7-459e-b905-32b69b653102",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Payment\": {\n    \"clientPaymentId\": \"update-me-to-some-unique-value\",\n    \"payeeName\": \"Edward Engineer\",\n    \"payID\": \"engineering@azupay.com.au\",\n    \"payIDType\": \"EMAIL\",\n    \"paymentAmount\": \"100.00\",\n    \"paymentDescription\": \"A successful test case when a PayID via Email succeeds\",\n    \"paymentReference\": \"update-me-to-some-unique-value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73c33b23-8990-492f-8d4e-c1b3237b9e26",
+              "name": "Duplicated payment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Payment\": {\n    \"clientPaymentId\": \"update-me-to-some-unique-value\",\n    \"payeeName\": \"Edward Engineer\",\n    \"payID\": \"engineering@azupay.com.au\",\n    \"payIDType\": \"EMAIL\",\n    \"paymentAmount\": \"100.00\",\n    \"paymentDescription\": \"A successful test case when a PayID via Email succeeds\",\n    \"paymentReference\": \"update-me-to-some-unique-value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50dd6631-20a3-483e-adf1-2363a2f22aa5",
+          "name": "Search for Payments.",
+          "request": {
+            "name": "Search for Payments.",
+            "description": {
+              "content": "Search for Payments\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nextPageId",
+                  "value": "<string>",
+                  "description": "The next page ID that was obtained on a previous search result. Used to obtain the next set of results"
+                },
+                {
+                  "disabled": false,
+                  "key": "numberOfRecords",
+                  "value": "<number>",
+                  "description": "Number of records to retrieve. Defaults to 100 if not provided"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PaymentSearch\": {\n    \"clientPaymentId\": \"<string>\",\n    \"fromDate\": \"<string>\",\n    \"toDate\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be3a2c75-330f-4706-add7-f67a0ac91d38",
+              "name": "The requested page of outbound payments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextPageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "numberOfRecords",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentSearch\": {\n    \"clientPaymentId\": \"c8ec39dc-2a70-4440-bc92-0e8f1b263d8f\",\n    \"fromDate\": \"2021-10-18T02:32:30.693Z\",\n    \"toDate\": \"2021-10-18T02:32:30.693Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nextPageId\": \"string\",\n  \"recordCount\": 4753.610907401605,\n  \"records\": [\n    {\n      \"Payment\": {\n        \"payeeName\": \"Mr John Smith or ABC Corp Pty Ltd\",\n        \"clientPaymentId\": \"c8ec39dc-2a70-4440-bc92-0e8f1b263d8f\",\n        \"paymentAmount\": \"101.95\",\n        \"paymentDescription\": \"Payment for wages August 2020.\",\n        \"payID\": \"johndoe@example.com\",\n        \"payIDType\": \"<string>\",\n        \"bsb\": \"012306\",\n        \"accountNumber\": \"12345678\",\n        \"paymentReference\": \"<string>\",\n        \"ultimatePayerName\": \"Mr John Smith or ABC Corp Pty Ltd\",\n        \"paymentNotification\": {\n          \"paymentNotificationAuthorizationHeaderValue\": \"<string>\",\n          \"paymentNotificationEndpointUrl\": \"<url>\"\n        },\n        \"metaData\": {\n          \"key_0\": 1645.3764300910746,\n          \"key_1\": 5729.584192672976\n        }\n      },\n      \"PaymentStatus\": {\n        \"paymentId\": \"K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=\",\n        \"status\": \"FAILED\",\n        \"createdDatetime\": \"1996-11-22T23:12:04.821Z\",\n        \"settlementDatetime\": \"2015-01-11T20:41:05.869Z\",\n        \"completedDatetime\": \"2019-09-28T00:11:10.320Z\",\n        \"failureReason\": \"AG01\",\n        \"returnedReason\": \"AG01\",\n        \"returnedDatetime\": \"2008-03-28T18:35:04.823Z\",\n        \"currentBalance\": 31050.95,\n        \"nppTransactionId\": \"string\",\n        \"sentViaDE\": true\n      }\n    },\n    {\n      \"Payment\": {\n        \"payeeName\": \"Mr John Smith or ABC Corp Pty Ltd\",\n        \"clientPaymentId\": \"c8ec39dc-2a70-4440-bc92-0e8f1b263d8f\",\n        \"paymentAmount\": \"101.95\",\n        \"paymentDescription\": \"Payment for wages August 2020.\",\n        \"payID\": \"johndoe@example.com\",\n        \"payIDType\": \"<string>\",\n        \"bsb\": \"012306\",\n        \"accountNumber\": \"12345678\",\n        \"paymentReference\": \"<string>\",\n        \"ultimatePayerName\": \"Mr John Smith or ABC Corp Pty Ltd\",\n        \"paymentNotification\": {\n          \"paymentNotificationAuthorizationHeaderValue\": \"<string>\",\n          \"paymentNotificationEndpointUrl\": \"<url>\"\n        },\n        \"metaData\": {\n          \"key_0\": \"string\"\n        }\n      },\n      \"PaymentStatus\": {\n        \"paymentId\": \"K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=\",\n        \"status\": \"SETTLED\",\n        \"createdDatetime\": \"1978-08-16T22:42:57.418Z\",\n        \"settlementDatetime\": \"1946-12-20T12:07:29.151Z\",\n        \"completedDatetime\": \"2003-06-06T01:58:17.098Z\",\n        \"failureReason\": \"AG01\",\n        \"returnedReason\": \"AG01\",\n        \"returnedDatetime\": \"1986-09-21T04:53:43.258Z\",\n        \"currentBalance\": 31050.95,\n        \"nppTransactionId\": \"string\",\n        \"sentViaDE\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1d1abeb-8b51-4cf1-82ea-279231a06a0b",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextPageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "numberOfRecords",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentSearch\": {\n    \"clientPaymentId\": \"c8ec39dc-2a70-4440-bc92-0e8f1b263d8f\",\n    \"fromDate\": \"2021-10-18T02:32:30.693Z\",\n    \"toDate\": \"2021-10-18T02:32:30.693Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce02d535-b09c-4001-97d9-32b4f2e87b51",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextPageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "numberOfRecords",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentSearch\": {\n    \"clientPaymentId\": \"c8ec39dc-2a70-4440-bc92-0e8f1b263d8f\",\n    \"fromDate\": \"2021-10-18T02:32:30.693Z\",\n    \"toDate\": \"2021-10-18T02:32:30.693Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"failureCode\": \"string\",\n    \"failureReason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-uat.azupay.com.au/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b2b8f538-0a6d-4c2b-9938-3c73b610e915",
+    "name": "Azupay Payment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API Reference\n\nContact Support:\n Email: contactus@azupay.com.au",
+      "type": "text/plain"
+    }
+  }
+}

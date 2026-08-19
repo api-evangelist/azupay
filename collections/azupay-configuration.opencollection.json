@@ -1,0 +1,346 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azupay Configuration API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get API keys for Sub Merchants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-uat.azupay.com.au/v1/client/:clientId/apiKeys",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get API keys"
+        },
+        {
+          "info": {
+            "name": "Create API keys for Sub Merchants",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/client/:clientId/apiKeys",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create API keys"
+        },
+        {
+          "info": {
+            "name": "Gets an API key based on the API key ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-uat.azupay.com.au/v1/client/:clientId/apiKeys/:apiKeyId",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apiKeyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get API key"
+        },
+        {
+          "info": {
+            "name": "Update API keys for Sub Merchants",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-uat.azupay.com.au/v1/client/:clientId/apiKeys/:apiKeyId",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apiKeyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update API keys"
+        },
+        {
+          "info": {
+            "name": "Get OAuth2 configuration for a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-uat.azupay.com.au/v1/client/:clientId/oauth2",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "The Azupay sub-client ID whose OAuth2 configuration is being retrieved."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get OAuth2 configuration for a client"
+        },
+        {
+          "info": {
+            "name": "Enable OAuth2 for a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/client/:clientId/oauth2",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "The Azupay sub-client ID whose OAuth2 configuration is being retrieved."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enable OAuth2 for a client"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Clients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create or replace a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/clients",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create new sub-clients. Sub-clients are children of your own client (master-client).\n\nDuplicates can be prevented by using the same value in `clientTransactionId` in the request. It would also\nreplace an existing client if the same `clientTransactionId` is provided in the request.\n\nThis API is only available to some Azupay customers. Please contact us for more information.\n"
+        },
+        {
+          "info": {
+            "name": "Disable a sub-client",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-uat.azupay.com.au/v1/clients/:clientId",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Client ID of sub-client to disable"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Disable a sub-client. Sub-client is a child of your own client (master-client).\n\nThis API is only available to some Azupay customers. Please contact us for more information.\n"
+        },
+        {
+          "info": {
+            "name": "getClientLowBalanceAlertEmailAddresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-uat.azupay.com.au/v1/clients/:clientId/lowBalanceAlert/emailAddresses",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Client ID to get the email addresses"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Set email addresses to send the low balance alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-uat.azupay.com.au/v1/clients/:clientId/lowBalanceAlert/emailAddresses",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Client ID to set the email addresses"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Set the email addresses to send the alerts when the balance goes lower than the specified limit.\n"
+        },
+        {
+          "info": {
+            "name": "getClientLowBalanceAlertThreshold",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-uat.azupay.com.au/v1/clients/:clientId/lowBalanceAlert/threshold",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Client ID to get the balance threshold"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Set low balance threshold to trigger alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api-uat.azupay.com.au/v1/clients/:clientId/lowBalanceAlert/threshold",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Client ID to set the balance threshold"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Set low balance threshold to trigger alerts when the balance goes lower than the specified limit.\nWhen this happens, an email is sent to the specified recipients.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

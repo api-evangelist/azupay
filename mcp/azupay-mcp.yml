@@ -118,3 +118,9 @@ tools:
 - name: downloadReport
   description: Get Report download Url
   source_operation: openapi/azupay-reports.yml#downloadReport
+deployment:
+  mode: none
+  verified: derived
+  tools: 37
+  checked: '2026-08-12'
+  source: catalog MCP census

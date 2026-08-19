@@ -1,0 +1,161 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azupay Payment Request API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a Payment Request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-uat.azupay.com.au/v1/paymentRequest",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "ID of Payment Request to retrieve. \n\nThis is the `paymentRequestId` returned by the **Create a Payment Request** API\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves an existing PayID PaymentRequest.\n\nUse the contents of the response body to determine whether the customer has made their payment.\n"
+        },
+        {
+          "info": {
+            "name": "Create a Payment Request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/paymentRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a payment request. Once created, your customer can make a payment to the specified PayID. You can poll for PaymentStatus using getPaymentRequest to determine whether or not the required payment was made by the customer."
+        },
+        {
+          "info": {
+            "name": "Delete a Payment Request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-uat.azupay.com.au/v1/paymentRequest",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "ID of Payment Request to delete. This is the paymentRequestId\nreturn by the createPaymentRequest API\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete an existing payment request, de-registering the associated PayID in the process.\n"
+        },
+        {
+          "info": {
+            "name": "Refund a PaymentRequest.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/paymentRequest/refund",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "ID of Payment Request to refund. This is the paymentRequestId return by the createPaymentRequest API"
+              },
+              {
+                "name": "refundAmount",
+                "value": "",
+                "type": "query",
+                "description": "The amount to refund"
+              },
+              {
+                "name": "clientRefundID",
+                "value": "",
+                "type": "query",
+                "description": "The client refund transaction ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Refund a previously settled PaymentRequest back to the customer's source of funding. Optionally supply the amount to refund. Refunds requests can be rejected for the following failure reasons:\n\n| `failureCode`    | `failureReason`                                                                 |\n|------------------|---------------------------------------------------------------------------------|\n| ERR0.03          | Refunds can only be done on COMPLETE, RETURN_COMPLETE or RETURN_FAILED payments"
+        },
+        {
+          "info": {
+            "name": "Search for Payment Requests.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-uat.azupay.com.au/v1/paymentRequest/search",
+            "params": [
+              {
+                "name": "nextPageId",
+                "value": "",
+                "type": "query",
+                "description": "The next page ID that was obtained on a previous search result. Used to obtain the next set of results"
+              },
+              {
+                "name": "numberOfRecords",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to retrieve. Defaults to 100 if not provided"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search for Payment Requests\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
