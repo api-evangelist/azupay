@@ -128,6 +128,11 @@ apis:
   - Payments
   - Reporting
   - Reconciliation
+  - Balances
+  tags_raw:
+  - Payments
+  - Reporting
+  - Reconciliation
   - Balance
   properties:
   - type: OpenAPI
@@ -147,6 +152,11 @@ apis:
   humanURL: https://developer.azupay.com.au/docs/clients-api
   baseURL: https://api.azupay.com.au/v1
   tags:
+  - Payments
+  - Client Management
+  - APIKeys
+  - Authentication
+  tags_raw:
   - Payments
   - Client Management
   - API Keys
