@@ -15,6 +15,18 @@ description: 'Azupay is an Australian real-time payments company that moves mone
   option, plus webhooks for asynchronous payment status. Home market is Australia; the surface is genuinely
   self-serve and documented, though production access and some capabilities (sub-clients, OAuth2) are
   enabled per client by Azupay.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Payments
