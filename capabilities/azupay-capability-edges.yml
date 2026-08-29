@@ -1,0 +1,68 @@
+slug: azupay
+provider: Azupay
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Payment Initiation
+  spec_file: azupay-payment-initiation-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.85
+  evidence: POST /paymentInitiation makePaymentInitiation 'Initiate a Payment'; POST /paymentInitiation/refund
+    'Refund for Payment Initiation'
+  reason: Explicitly initiates payments against a payment agreement and handles refunds — payment instruction
+    capture, validation and authorisation.
+- tag: API Keys
+  spec_file: azupay-api-keys-api-openapi.yml
+  capability_id: BC-4270.40
+  capability_id_l1: BC-4270
+  capability_name: Developer Identity & Credential Management
+  confidence: 0.8
+  evidence: '"Create API keys for Sub Merchants", "Enable OAuth2 for a client", "Gets an API key based
+    on the API key ID."'
+  reason: Issuance and stewardship of API credentials and OAuth2 clients for platform consumers — developer
+    identity and credential management, not a banking capability.
+- tag: Payment
+  spec_file: azupay-payment-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.8
+  evidence: POST /payment makePayment 'Make a Payment.'; GET /payment 'Get a Payment.'; POST /payment/search
+  reason: Operations capture and submit outbound payment instructions (AzupayOut) and retrieve their status,
+    which is payment instruction capture/authorisation. L2 Payment Initiation fits best, though the NPP
+    rail context also touches real-time payment management.
+- tag: Payment Agreement
+  spec_file: azupay-payment-agreement-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.7
+  evidence: POST /paymentAgreement 'Create a Payment Agreement'; POST /paymentAgreement/changeStatus;
+    POST /paymentAgreement/{paymentAgreementId}/scheduler 'Create or amend a Payment Scheduler'
+  reason: PayTo mandate lifecycle — creation, amendment, status change and payment scheduling for recurring
+    debits, with PayerDetailsObj/BsbObj/PayIDObj schemas. This is authorisation and instruction setup
+    for payments; L2 assignment to Payment Initiation is the closest but mandate management is not named
+    explicitly in the taxonomy.
+- tag: Payment Agreement Request
+  spec_file: azupay-payment-agreement-request-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.7
+  evidence: POST /paymentAgreementRequest 'Create a Payment Agreement Request'; schemas PaymentAgreementRequestStatusObj,
+    PayerPayIDObj, frequency, amount
+  reason: Creates a request to a payer to establish a PayTo debit mandate (frequency, amount, payer PayID)
+    — capture and authorisation of a payment arrangement. Mapped to Payment Initiation with moderate confidence
+    given mandate origination is not a distinct L2.

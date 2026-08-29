@@ -391,6 +391,9 @@ apis:
   - type: APIReference
     url: https://developer.azupay.com.au/reference/createclient
 common:
+- type: CapabilityMap
+  url: capabilities/azupay-capability-edges.yml
+  name: Azupay Business Capability Map
 - type: Overlay
   url: overlays/azupay-payment-request-overlay.yaml
 - type: Overlay
