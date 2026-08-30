@@ -49,6 +49,8 @@ apis:
   humanURL: https://developer.azupay.com.au/docs/receiving-payments
   baseURL: https://api.azupay.com.au/v1
   tags:
+  - APIKeys
+  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI
