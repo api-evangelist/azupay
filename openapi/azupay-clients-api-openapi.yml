@@ -1,0 +1,1428 @@
+openapi: 3.2.0
+info:
+  title: Azupay Configuration Clients API
+  description: API Reference
+  version: v1
+  contact:
+    email: contactus@azupay.com.au
+servers:
+- url: https://api-uat.azupay.com.au/v1
+  description: UAT environment
+- url: https://api.azupay.com.au/v1
+  description: Production environment
+tags:
+- name: Clients
+  description: 'Would let you manage clients
+
+    '
+paths:
+  /clients:
+    post:
+      operationId: createClient
+      callbacks:
+        SweepRequestEvent:
+          '{client.sweepNotification.url}':
+            post:
+              summary: SweepRequest Status Event
+              description: 'If the merchant specifies values for the
+
+                `client.sweepNotification.url` object during the createClient invocation, then a notification
+
+                will be sent to the merchant system when the funds have settled.
+
+
+                The event will use `sweepNotification.url` as endpoint and
+
+                `sweepNotification.authorizationHeader` as `Authorization` header.
+
+
+                This call is made by Azupay on a best effort basis. Azupay will implement retry mechanisms to ensure
+
+                transient network failures do not affect the
+
+                ability to call this endpoint. Azupay may call this endpoint
+
+                more than once with the same payload so the merchant must ensure that the endpoint is implemented with
+
+                idempotent behaviour always returning a `200 OK` response even after subsequent calls.
+
+
+                If the target endpoint does not return HTTP `200`, azupay will retry the webhook call 45 times with a 20 second delay.
+
+                '
+              parameters:
+              - in: header
+                name: Authorization
+                description: 'The value will be what was specified in
+
+                  {client/sweepNotification/authorizationHeader}
+
+                  '
+                schema:
+                  type: string
+                required: true
+              requestBody:
+                required: true
+                content:
+                  application/json:
+                    schema:
+                      allOf:
+                      - $ref: '#/components/schemas/PaymentObj'
+                      - $ref: '#/components/schemas/PaymentStatusObj'
+              responses:
+                '200':
+                  description: The merchant's server should return this code
+        ClientEnabledEvent:
+          '{client.clientManagementNotification.url}':
+            post:
+              summary: Client Enabled Status Event
+              description: 'If the merchant specifies values for the
+
+                `client.clientManagementNotification.url` object during the createClient invocation, then a notification
+
+                will be sent to the merchant system when the created sub-merchant is enabled.
+
+
+                The event will use `clientManagementNotification.url` as endpoint and
+
+                `clientManagementNotification.authorizationHeader` as `Authorization` header.
+
+
+                This call is made by Azupay on a best effort basis. Azupay will implement retry mechanisms to ensure
+
+                transient network failures do not affect the
+
+                ability to call this endpoint. Azupay may call this endpoint
+
+                more than once with the same payload so the merchant must ensure that the endpoint is implemented with
+
+                idempotent behaviour always returning a `200 OK` response even after subsequent calls.
+
+
+                If the target endpoint does not return HTTP `200`, azupay will retry the webhook call 45 times with a 20 second delay.
+
+                '
+              parameters:
+              - in: header
+                name: Authorization
+                description: 'The value will be what was specified in
+
+                  {client/sweepNotification/authorizationHeader}
+
+                  '
+                schema:
+                  type: string
+                required: true
+              requestBody:
+                required: true
+                content:
+                  application/json:
+                    schema:
+                      allOf:
+                      - $ref: '#/components/schemas/ClientWebhookResponseObj'
+              responses:
+                '200':
+                  description: The merchant's server should return this code
+      tags:
+      - Clients
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientObj'
+      summary: Create or replace a client
+      security:
+      - SecretKey: []
+      description: 'Create new sub-clients. Sub-clients are children of your own client (master-client).
+
+
+        Duplicates can be prevented by using the same value in `clientTransactionId` in the request. It would also
+
+        replace an existing client if the same `clientTransactionId` is provided in the request.
+
+
+        This API is only available to some Azupay customers. Please contact us for more information.
+
+        '
+      responses:
+        '201':
+          description: The new Client has been created
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ClientObj'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+        '403':
+          description: Not authorised
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+  /clients/{clientId}:
+    delete:
+      operationId: deleteClient
+      tags:
+      - Clients
+      summary: Disable a sub-client
+      description: 'Disable a sub-client. Sub-client is a child of your own client (master-client).
+
+
+        This API is only available to some Azupay customers. Please contact us for more information.
+
+        '
+      security:
+      - SecretKey: []
+      parameters:
+      - description: Client ID of sub-client to disable
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: e6828fe0-7ca0-46a1-9261-04f0f30deabd
+      responses:
+        '204':
+          description: The sub-client was successfully disabled
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              examples:
+                alreadyDisabledError:
+                  value:
+                    message: The sub-client already disabled
+                    details:
+                      failureCode: ERR0.01
+                      failureReason: The sub-client already disabled
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              examples:
+                notAuthorizedError:
+                  value:
+                    message: User is not authorized to access this resource
+                    details:
+                      failureCode: ERR0.01
+                      failureReason: User is not authorized to access this resource
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              examples:
+                notFoundError:
+                  value:
+                    message: The client can not be found
+                    details:
+                      failureCode: ERR0.01
+                      failureReason: The client can not be found
+  /clients/{clientId}/lowBalanceAlert/emailAddresses:
+    get:
+      operationId: getClientLowBalanceAlertEmailAddresses
+      tags:
+      - Clients
+      security:
+      - SecretKey: []
+      parameters:
+      - description: Client ID to get the email addresses
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: e6828fe0-7ca0-46a1-9261-04f0f30deabd
+      responses:
+        '200':
+          description: The client configuration
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/LowBalanceEmailAddresses'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              examples:
+                notAuthorizedError:
+                  value:
+                    message: User is not authorized to access this resource
+                    details:
+                      failureCode: ERR0.01
+                      failureReason: User is not authorized to access this resource
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              examples:
+                notFoundError:
+                  value:
+                    message: The client can not be found
+                    details:
+                      failureCode: ERR0.01
+                      failureReason: The client can not be found
+    put:
+      operationId: updateClientLowBalanceAlertEmailAddresses
+      tags:
+      - Clients
+      summary: Set email addresses to send the low balance alerts
+      description: 'Set the email addresses to send the alerts when the balance goes lower than the specified limit.
+
+        '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetLowBalanceEmailAddresses'
+      security:
+      - SecretKey: []
+      parameters:
+      - description: Client ID to set the email addresses
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: e6828fe0-7ca0-46a1-9261-04f0f30deabd
+      responses:
+        '204':
+          description: The email addresses were successfully updated
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              examples:
+                alreadyDisabledError:
+                  value:
+                    message: Bad request
+                    details:
+                      failureCode: ERR0.01
+                      failureReason: Wrong email addresses format
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              examples:
+                notAuthorizedError:
+                  value:
+                    message: User is not authorized to access this resource
+                    details:
+                      failureCode: ERR0.01
+                      failureReason: User is not authorized to access this resource
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              examples:
+                notFoundError:
+                  value:
+                    message: The client can not be found
+                    details:
+                      failureCode: ERR0.01
+                      failureReason: The client can not be found
+  /clients/{clientId}/lowBalanceAlert/threshold:
+    get:
+      operationId: getClientLowBalanceAlertThreshold
+      tags:
+      - Clients
+      security:
+      - SecretKey: []
+      parameters:
+      - description: Client ID to get the balance threshold
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: e6828fe0-7ca0-46a1-9261-04f0f30deabd
+      responses:
+        '200':
+          description: The client configuration
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/LowBalanceThreshold'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              examples:
+                notAuthorizedError:
+                  value:
+                    message: User is not authorized to access this resource
+                    details:
+                      failureCode: ERR0.01
+                      failureReason: User is not authorized to access this resource
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              examples:
+                notFoundError:
+                  value:
+                    message: The client can not be found
+                    details:
+                      failureCode: ERR0.01
+                      failureReason: The client can not be found
+    put:
+      operationId: updateClientLowBalanceAlertThreshold
+      tags:
+      - Clients
+      summary: Set low balance threshold to trigger alerts
+      description: 'Set low balance threshold to trigger alerts when the balance goes lower than the specified limit.
+
+        When this happens, an email is sent to the specified recipients.
+
+        '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetLowBalanceThreshold'
+      security:
+      - SecretKey: []
+      parameters:
+      - description: Client ID to set the balance threshold
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: e6828fe0-7ca0-46a1-9261-04f0f30deabd
+      responses:
+        '204':
+          description: The threshold was successfully updated
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              examples:
+                alreadyDisabledError:
+                  value:
+                    message: Bad request
+                    details:
+                      failureCode: ERR0.01
+                      failureReason: Wrong threshold format
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              examples:
+                notAuthorizedError:
+                  value:
+                    message: User is not authorized to access this resource
+                    details:
+                      failureCode: ERR0.01
+                      failureReason: User is not authorized to access this resource
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              examples:
+                notFoundError:
+                  value:
+                    message: The client can not be found
+                    details:
+                      failureCode: ERR0.01
+                      failureReason: The client can not be found
+components:
+  schemas:
+    PayIDDomainsObj:
+      type: array
+      description: 'A list of domain names that can be use for payIDs. Optionally use `merchantName` to control the payID
+
+        description prefix.
+
+        '
+      minItems: 1
+      maxItems: 10
+      items:
+        type: object
+        additionalProperties: false
+        required:
+        - domain
+        properties:
+          domain:
+            type: string
+            description: The domain name for the PayID
+            pattern: ^\b((?=[a-z0-9-]{1,63}\.)[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}\b$
+            example: example.com
+          merchantName:
+            type: string
+            description: This name will appear as a prefix for the PayID description that the payer sees
+            maxLength: 50
+            example: Merchant Name
+    SetLowBalanceThreshold:
+      type: object
+      additionalProperties: false
+      required:
+      - threshold
+      properties:
+        threshold:
+          type: string
+          pattern: ^[0-9]+(\.[0-9]{2})$
+          description: Defines the minimum balance amount (in AUD) that will trigger and alert.
+          example: '500.00'
+    LowBalanceThreshold:
+      type: object
+      additionalProperties: false
+      required:
+      - threshold
+      properties:
+        threshold:
+          type: string
+          pattern: ^[0-9]+(\.[0-9]{2})$
+          description: Defines the minimum balance amount (in AUD) that will trigger and alert.
+          example: '500.00'
+    AdditionalTradingNamesObj:
+      type: array
+      minItems: 1
+      maxItems: 20
+      items:
+        type: string
+        maxLength: 140
+        minLength: 1
+        pattern: ^[a-zA-Z0-9\-_ ]*$
+      example:
+      - Trading Name
+      - Trading Name Pty Ltd
+      description: Additional trading names
+    MerchantCodeEnumObj:
+      type: string
+      enum:
+      - 7623
+      - 8931
+      - 7311
+      - 763
+      - 4511
+      - 4582
+      - 4119
+      - 7996
+      - 5937
+      - 5932
+      - 7998
+      - 8911
+      - 5971
+      - 5970
+      - 7531
+      - 7535
+      - 7538
+      - 5531
+      - 6011
+      - 5542
+      - 8675
+      - 5533
+      - 5532
+      - 9223
+      - 5462
+      - 7929
+      - 7230
+      - 7995
+      - 5940
+      - 7932
+      - 5551
+      - 4457
+      - 5942
+      - 5192
+      - 7933
+      - 4131
+      - 8244
+      - 7278
+      - 4899
+      - 5946
+      - 5441
+      - 7512
+      - 7542
+      - 5511
+      - 5521
+      - 1750
+      - 7217
+      - 5811
+      - 8398
+      - 5169
+      - 8351
+      - 5641
+      - 8049
+      - 8041
+      - 5993
+      - 8641
+      - 7349
+      - 7296
+      - 8220
+      - 5046
+      - 5139
+      - 7333
+      - 4111
+      - 4816
+      - 7372
+      - 7379
+      - 5734
+      - 5045
+      - 1771
+      - 5039
+      - 7392
+      - 8241
+      - 5977
+      - 7277
+      - 7997
+      - 4215
+      - 9211
+      - 7321
+      - 4411
+      - 5451
+      - 7911
+      - 7273
+      - 8021
+      - 5311
+      - 7393
+      - 5815
+      - 5817
+      - 5816
+      - 5818
+      - 5964
+      - 5965
+      - 5967
+      - 5960
+      - 5969
+      - 5966
+      - 5968
+      - 5962
+      - 5310
+      - 8011
+      - 5963
+      - 5714
+      - 5813
+      - 5912
+      - 5122
+      - 7216
+      - 5099
+      - 5309
+      - 5812
+      - 8299
+      - 5997
+      - 5552
+      - 5065
+      - 1731
+      - 7622
+      - 5732
+      - 8211
+      - 9702
+      - 7361
+      - 7394
+      - 7342
+      - 5651
+      - 5814
+      - 6012
+      - 9222
+      - 5718
+      - 5713
+      - 5992
+      - 5193
+      - 5422
+      - 5983
+      - 7261
+      - 7641
+      - 5712
+      - 5681
+      - 1520
+      - 5947
+      - 5231
+      - 5950
+      - 7992
+      - 7801
+      - 9399
+      - 7802
+      - 9406
+      - 7800
+      - 5411
+      - 5251
+      - 5072
+      - 7298
+      - 5975
+      - 1711
+      - 5945
+      - 5200
+      - 8062
+      - 7011
+      - 5722
+      - 5085
+      - 7375
+      - 6399
+      - 6300
+      - 9950
+      - 5944
+      - 780
+      - 7211
+      - 7210
+      - 8111
+      - 5948
+      - 5211
+      - 6010
+      - 4468
+      - 5262
+      - 1740
+      - 7297
+      - 8099
+      - 8071
+      - 5047
+      - 8699
+      - 5611
+      - 5691
+      - 5051
+      - 5699
+      - 5599
+      - 7399
+      - 5499
+      - 5399
+      - 7299
+      - 5719
+      - 2741
+      - 7999
+      - 7699
+      - 5999
+      - 5271
+      - 7832
+      - 4214
+      - 5592
+      - 5013
+      - 5571
+      - 5561
+      - 5733
+      - 5994
+      - 6051
+      - 6052
+      - 6053
+      - 6054
+      - 6055
+      - 6056
+      - 6057
+      - 6058
+      - 6059
+      - 6060
+      - 6061
+      - 6062
+      - 6063
+      - 6064
+      - 6065
+      - 6066
+      - 6540
+      - 5199
+      - 5261
+      - 8050
+      - 5021
+      - 8043
+      - 8042
+      - 5976
+      - 8031
+      - 5921
+      - 5198
+      - 7523
+      - 4112
+      - 5933
+      - 5995
+      - 5172
+      - 7395
+      - 7221
+      - 5044
+      - 7829
+      - 5131
+      - 5074
+      - 8651
+      - 9402
+      - 5094
+      - 8999
+      - 4225
+      - 7338
+      - 4011
+      - 6513
+      - 5735
+      - 7519
+      - 5973
+      - 8661
+      - 6530
+      - 1761
+      - 7339
+      - 6211
+      - 5541
+      - 5949
+      - 7251
+      - 5661
+      - 7629
+      - 5598
+      - 1799
+      - 2842
+      - 5941
+      - 7032
+      - 7941
+      - 5655
+      - 5972
+      - 5111
+      - 5943
+      - 5996
+      - 4723
+      - 5697
+      - 9311
+      - 7276
+      - 4121
+      - 4812
+      - 4814
+      - 4821
+      - 5998
+      - 8734
+      - 7922
+      - 7012
+      - 7534
+      - 4784
+      - 7991
+      - 7549
+      - 7033
+      - 4789
+      - 4722
+      - 7511
+      - 7513
+      - 2791
+      - 5978
+      - 9405
+      - 5137
+      - 5931
+      - 4900
+      - 5331
+      - 742
+      - 7993
+      - 7994
+      - 7841
+      - 8249
+      - 7631
+      - 7692
+      - 5300
+      - 5698
+      - 4829
+      - 5631
+      - 5621
+      - 5935
+    SetLowBalanceEmailAddresses:
+      type: object
+      additionalProperties: false
+      required:
+      - emailAddresses
+      properties:
+        emailAddresses:
+          type: array
+          maxItems: 5
+          minItems: 0
+          description: Email addresses to send the alert to.
+          example:
+          - user1@example.com
+          items:
+            type: string
+            pattern: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+    PaymentStatusObj:
+      type: object
+      additionalProperties: false
+      required:
+      - PaymentStatus
+      properties:
+        PaymentStatus:
+          type: object
+          required:
+          - paymentId
+          - status
+          - createdDatetime
+          properties:
+            paymentId:
+              type: string
+              description: 'An identifier generated by Azupay. Used to reference the object in subsequent operations such as  getPayment.
+
+                '
+              example: K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=
+              readOnly: true
+            status:
+              type: string
+              description: Status of the requested payment.
+              readOnly: true
+              enum:
+              - CREATED
+              - SETTLED
+              - FAILED
+              - PENDING
+              - RETURNED
+            createdDatetime:
+              type: string
+              format: date-time
+              description: Timestamp when the payment request was created.
+              readOnly: true
+            settlementDatetime:
+              type: string
+              format: date-time
+              description: Timestamp when the payment was settled. Only if `status=SETTLED`.
+              readOnly: true
+            completedDatetime:
+              type: string
+              format: date-time
+              description: 'Timestamp when the payment was processed by Azupay. Only for `status` different than `CREATED`.
+
+                '
+              readOnly: true
+            failureReason:
+              type: string
+              description: A reason code for a payment that is in `status=FAILED`.
+              example: AG01
+              readOnly: true
+            returnedReason:
+              type: string
+              description: A reason code for a payment that is in `status=RETURNED`.
+              example: AG01
+              readOnly: true
+            returnedDatetime:
+              type: string
+              format: date-time
+              description: Timestamp when the payment was returned. Only if `status=RETURNED`.
+              readOnly: true
+            currentBalance:
+              type: number
+              description: 'The liquidity balance of the your account with Azupay. This balance is the funds remaining in your  account after the amount for this payment has been deducted. It is approximate only as other payments  processed in parallel will also have altered the available liquidity.
+
+                '
+              example: 31050.95
+              readOnly: true
+            nppTransactionId:
+              description: The identifier of the transaction in the NPP network. This is an identifier visible to the receiving bank.
+              type: string
+              readOnly: true
+            sentViaDE:
+              description: This field is set to true when the payment was sent via the direct entry (DE) network. When true,  this payment may take between 3 and 5 business days to settle.
+              type: boolean
+              readOnly: true
+    ClientObj:
+      type: object
+      additionalProperties: false
+      required:
+      - client
+      properties:
+        client:
+          type: object
+          description: The client
+          additionalProperties: false
+          required:
+          - clientTransactionId
+          - legalName
+          - defaultPaymentExpiryDuration
+          - payIDDomains
+          - abn
+          - settlementAccountFullLegalName
+          properties:
+            id:
+              type: string
+              example: 731c04075258428730c3152a7904dda4
+              readOnly: true
+              description: 'The unique id for the new client. This client is created using the `clientTransactionId` so the client
+
+                will be replaced if the same value is sent which will return the same value for `id`.
+
+
+                It is recommended to record this id for later use.
+
+                '
+            clientTransactionId:
+              type: string
+              maxLength: 36
+              example: 30597959-a853-44d4-bdab-54332bf7a98e
+              description: 'This field is used to prevent the creation of duplicated clients in case of a message retry. It is
+
+                recommended that a unique id (like uuid) is used for each client. If the same value is used a second time
+
+                the client will be replaced.
+
+                '
+            legalName:
+              type: string
+              maxLength: 50
+              minLength: 1
+              example: Legal name
+              description: 'The client legal name.
+
+                '
+            tradingName:
+              type: string
+              maxLength: 50
+              minLength: 1
+              pattern: ^[a-zA-Z0-9\-_ ]*$
+              example: Legal name
+              description: 'The client trading name.
+
+                '
+            additionalTradingNames:
+              $ref: '#/components/schemas/AdditionalTradingNamesObj'
+            defaultPaymentExpiryDuration:
+              type: number
+              minimum: 60
+              example: 3600
+              description: 'The default expiry duration of a `PaymentRequest` in **minutes**.
+
+                '
+            payIDDomains:
+              $ref: '#/components/schemas/PayIDDomainsObj'
+            abn:
+              type: string
+              minLength: 11
+              maxLength: 11
+              pattern: ^\d*$
+              example: '12345678901'
+              description: 'The Australian Business Number for the client.
+
+                '
+            settlementAccountBSB:
+              type: string
+              minLength: 6
+              maxLength: 6
+              pattern: ^\d*$
+              example: '123456'
+              description: 'The BSB of the account used to sweep collected funds for this client.
+
+
+                It has to be provided if `settlementAccountNumber` is provided.
+
+                '
+            settlementAccountNumber:
+              type: string
+              minLength: 5
+              maxLength: 9
+              pattern: ^\d*$
+              example: '123555555'
+              description: 'The Account Number (without the BSB) used to sweep collected funds for this client. By default funds
+
+                will be swept every day.
+
+
+                It has to be provided if `settlementAccountBSB` is provided.
+
+                '
+            settlementPayID:
+              type: string
+              format: email
+              example: myaccount@example.com
+              description: 'Fill if the client funds are to be swept to a PayID instead of a BSB and Account Number. If provided both
+
+                `settlementAccountBSB` and `settlementAccountNumber` will be ignored and this will be used.
+
+                '
+            settlementAccountFullLegalName:
+              type: string
+              maxLength: 50
+              minLength: 1
+              example: Account legal name
+              description: 'The legal name that is attached to the client''s account.
+
+                '
+            sweepNotification:
+              type: object
+              additionalProperties: false
+              description: 'Populate this object if you would like Azupay to send a sweep notification webhook when Azupay settles
+
+                to your account.
+
+                '
+              required:
+              - authorizationHeader
+              - url
+              properties:
+                url:
+                  type: string
+                  pattern: ^https://
+                  description: 'Provide a https endpoint accessible over the internet
+
+                    '
+                authorizationHeader:
+                  type: string
+                  description: 'The value you want populated in the Authorization request header when Azupay calls the endpoint specified in the `url` field.
+
+                    '
+            clientManagementNotification:
+              type: object
+              description: 'Populate this object if you would like Azupay to send a notification webhook when the sub-merchant account is enabled.
+
+                '
+              additionalProperties: false
+              required:
+              - url
+              - authorizationHeader
+              properties:
+                url:
+                  type: string
+                  pattern: ^https://
+                  description: 'Provide a https endpoint accessible over the internet
+
+                    '
+                authorizationHeader:
+                  type: string
+                  description: 'The value you want populated in the Authorization request header when Azupay calls the endpoint specified in the `url` field.
+
+                    '
+            topUpPayId:
+              type: string
+              format: email
+              example: topup1234@example.com
+              description: 'The payID that can be used to topup the balance for the newly created client. This is a read only field
+
+                only provided in the response.
+
+                '
+              readOnly: true
+            dashboardUserEmail:
+              type: string
+              format: email
+              example: myaccount@example.com
+              description: "If provided, this email will receive a message with a temporary \npassword to sign-in to the dashboard as an admin user. If the user is already exists and has not accepted\nchanged the password, it will resend the invite. Else if the user has an account and is attached to a\ndifferent clientId, the request will fail.\n"
+            dashboardUserRole:
+              type: string
+              description: "The role for the dashboard user, if not supplied it will be defaulted to `ADMIN`. \nNote `FINANCE_WRITE` has been deprecated and replaced by `FINANCE_ADMIN`.\n"
+              enum:
+              - ADMIN
+              - FINANCE_WRITE
+              - FINANCE_ADMIN
+            transactionPayoutLimit:
+              type: string
+              pattern: ^[0-9]+(\.[0-9]{2})$
+              description: Defines the maximum amount (in AUD) for a single outbound payment that the client is allowed to process.
+              example: '500.00'
+            dailyTransactionPayoutLimit:
+              type: string
+              pattern: ^[0-9]+(\.[0-9]{2})$
+              description: Defines the maximum amount (in AUD) for the total value of outbound payments that the client is allowed to process within a single day.
+              example: '10000.00'
+            kyc:
+              type: object
+              additionalProperties: false
+              description: KYC check object. *This property may be mandatory for some clients
+              required:
+              - businessRegistrationDate
+              - businessContactName
+              - businessEmailAddress
+              - businessPhoneNumber
+              - businessRegisteredAddress
+              - completion
+              - websiteURL
+              properties:
+                businessRegistrationDate:
+                  type: string
+                  pattern: ^(?:[1-9]\d{3}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1\d|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[1-9]\d(?:0[48]|[2468][048]|[13579][26])|(?:[2468][048]|[13579][26])00)-02-29)$
+                businessContactName:
+                  type: string
+                  maxLength: 100
+                  minLength: 1
+                businessEmailAddress:
+                  type: string
+                  minLength: 1
+                  maxLength: 2048
+                  pattern: ^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)$
+                businessPhoneNumber:
+                  type: string
+                  pattern: ^\+[0-9]{1,3}-[1-9]{1,1}[0-9]{1,29}$
+                businessRegisteredAddress:
+                  type: string
+                  maxLength: 255
+                  minLength: 10
+                  pattern: ^[A-Za-z0-9\s,.-]+$
+                completion:
+                  type: boolean
+                websiteURL:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  pattern: ^https?:\/\/([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$
+                instagramURL:
+                  type: string
+                  pattern: ^https?:\/\/([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$
+                facebookURL:
+                  type: string
+                  pattern: ^https?:\/\/([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$
+                linkedInProfileURL:
+                  type: string
+                  pattern: ^https?:\/\/([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$
+                acn:
+                  type: string
+                  minLength: 9
+                  maxLength: 9
+                  pattern: ^\d{9}$
+                  description: Australian Company Number (ACN) must be provided if merchant is a registered company.
+                companyIncorporationDate:
+                  type: string
+                  pattern: ^(?:[1-9]\d{3}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1\d|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[1-9]\d(?:0[48]|[2468][048]|[13579][26])|(?:[2468][048]|[13579][26])00)-02-29)$
+                  description: Company Incorporation Date must be provided if ACN is provided
+                afslNumber:
+                  type: string
+                  minLength: 1
+                  maxLength: 9
+                  pattern: ^\d{1,9}$
+                merchantCategoryCode:
+                  $ref: '#/components/schemas/MerchantCodeEnumObj'
+            keys:
+              type: array
+              readOnly: true
+              description: 'These are the API keys generated once the client is created. Keep in a secure place.
+
+                '
+              items:
+                type: object
+                required:
+                - keyId
+                - bcryptKeyHash
+                properties:
+                  keyId:
+                    type: string
+                    example: SECR
+                    description: Unique identifier for the key
+                  bcryptKeyHash:
+                    type: string
+                    example: $2a$10$hi0NLji0sqAobZd0Lp7JKOBF0nc9U045jqf1co1fJSXb2C1KAVkkO
+                    description: The one way hash for the key.
+                  key:
+                    type: string
+                    readOnly: true
+                    description: The actual value used on the `Authorization` header for the API.
+                    example: SECR_731c04075258428730c3152a7904d3333_rY6JxWL333SRGhPA
+    PaymentObj:
+      type: object
+      additionalProperties: false
+      required:
+      - Payment
+      properties:
+        Payment:
+          type: object
+          additionalProperties: false
+          required:
+          - payeeName
+          - clientPaymentId
+          - paymentAmount
+          - paymentDescription
+          properties:
+            clientPaymentId:
+              description: Unique Id for the payment created by the merchant system
+              type: string
+              minLength: 5
+              maxLength: 100
+              pattern: ^[a-zA-Z0-9\-_]*$
+              example: c8ec39dc-2a70-4440-bc92-0e8f1b263d8f
+            payeeName:
+              description: The name of the Payee this payment is being sent to.
+              type: string
+              pattern: ^[ -~]{1,140}$
+              example: Mr John Smith or ABC Corp Pty Ltd
+            payID:
+              type: string
+              minLength: 1
+              maxLength: 140
+              description: 'The PayID for this payment. Payer can supply either a PayID or BSB/Account Number  combination but not both.
+
+                '
+              example: johndoe@example.com
+            payIDType:
+              type: string
+              description: 'PayID Type. Only used when payment is addressed to a PayID. Valid Values:
+
+                - ''PHONE’ Can be a mobile phone number or landline with area code. For example `+61-400000000
+
+                - ‘EMAIL’ Email address
+
+                - ‘ABN’ Australian Business Number
+
+                - ‘ORG’ Organisation Name'
+              enum:
+              - PHONE
+              - EMAIL
+              - ABN
+              - ORG
+            bsb:
+              description: 'The BSB of the recipients bank. When using a BSB/Account number payments you should verify that the bsb is valid.
+
+                '
+              type: string
+              pattern: ^[0-9]*$
+              minLength: 6
+              maxLength: 6
+              example: '012306'
+            accountNumber:
+              description: The payee's account number at the receiving financial institution.
+              type: string
+              pattern: ^[0-9]*$
+              minLength: 4
+              maxLength: 12
+              example: '12345678'
+            paymentAmount:
+              type: string
+              pattern: ^[0-9]+(\.[0-9]{2})$
+              description: Amount in AUD to be paid to the Payee
+              example: '101.95'
+            paymentDescription:
+              description: Description of this payment. Will appear as the payment description in the Payee's online banking and bank statement.
+              type: string
+              minLength: 5
+              maxLength: 280
+              example: Payment for wages August 2020.
+            paymentReference:
+              type: string
+              maxLength: 35
+              description: 'A reference to the payee so that they can easily identify the payer or purpose of the transaction
+
+                '
+              example: ec6507a4-7f2c-4f41-b3b8-a989c222648d
+            ultimatePayerName:
+              description: "The name of the ultimate payer. Lets you control the Payer description (visible to the payee) on the \npayment:\n- If not populated, then your business name will appear i.e. \"My business name\".\n- If populated, then the ultimate payer name will appear instead.\n"
+              type: string
+              pattern: ^[a-zA-Z0-9\-_ ]*$
+              minLength: 1
+              maxLength: 140
+              example: Mr John Smith or ABC Corp Pty Ltd
+            paymentNotification:
+              description: Definition of the endpoint used to notify about payment updates.
+              type: object
+              additionalProperties: false
+              required:
+              - paymentNotificationAuthorizationHeaderValue
+              - paymentNotificationEndpointUrl
+              properties:
+                paymentNotificationEndpointUrl:
+                  description: 'An internet accessible url which Azupay will invoke when the status of a Payment has reached  "COMPLETE" status. The call will be done using the HTTP POST method. The endpoint exposed by  the client must be TLS 1.2 and the server certificate must be issued by a well known commercial  certificate authority and that self-signed or internally signed certs are not acceptable.
+
+                    '
+                  type: string
+                  format: url
+                paymentNotificationAuthorizationHeaderValue:
+                  description: The string that Azupay will put into the Authorization request header when making the payment notification call.
+                  type: string
+            metaData:
+              type: object
+              additionalProperties: true
+              description: An object containing metaData field about the payment
+    ErrorModel:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: false
+          properties:
+            failureCode:
+              type: string
+            failureReason:
+              type: string
+          required:
+          - failureCode
+          - failureReason
+    LowBalanceEmailAddresses:
+      type: object
+      additionalProperties: false
+      required:
+      - emailAddresses
+      properties:
+        emailAddresses:
+          type: array
+          maxItems: 5
+          description: Email addresses to send the alert to.
+          example:
+          - user1@example.com
+          items:
+            type: string
+            pattern: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+    ClientWebhookResponseObj:
+      type: object
+      required:
+      - client
+      properties:
+        client:
+          type: object
+          description: The client
+          properties:
+            enabled:
+              type: boolean
+              example: true
+              description: 'The status of the created sub-merchant
+
+                '
+            enabledDateTime:
+              type: string
+              format: date-time
+              description: Timestamp when the sub-merchant was created.
+            id:
+              type: string
+              example: 731c04075258428730c3152a7904dda4
+              description: 'The unique id for the new client. This client is created using the `clientTransactionId` so the client
+
+                will be replaced if the same value is sent which will return the same value for `id`.
+
+
+                It is recommended to record this id for later use.
+
+                '
+            legalName:
+              type: string
+              maxLength: 50
+              minLength: 1
+              example: Legal name
+              description: 'The client legal name.
+
+                '
+  securitySchemes:
+    SecretKey:
+      description: 'The secret key is used to access restricted functions and should be stored
+
+        securely in your system. It is required for operations which may result in
+
+        additional charges to you as a merchant. Please protect the key by storing
+
+        it encrypted granting access only to a limited set of users and applications
+
+        requiring its use.
+
+        '
+      in: header
+      name: Authorization
+      type: apiKey
+    DistributableKey:
+      description: 'The distributable key has limited access and may be exposed publicly to
+
+        your payers.
+
+        '
+      in: header
+      name: Authorization
+      type: apiKey

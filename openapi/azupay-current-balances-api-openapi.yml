@@ -1,0 +1,106 @@
+openapi: 3.2.0
+info:
+  title: Azupay Reports & Balance Current Balances API
+  description: API Reference
+  version: v1
+  contact:
+    email: contactus@azupay.com.au
+servers:
+- url: https://api-uat.azupay.com.au/v1
+  description: UAT environment
+- url: https://api.azupay.com.au/v1
+  description: Production environment
+tags:
+- name: Current Balances
+  description: 'Obtain current dollar balances for Azupay products
+
+    '
+paths:
+  /balance:
+    get:
+      operationId: getBalance
+      security:
+      - SecretKey: []
+      tags:
+      - Current Balances
+      summary: Get current balance
+      description: 'Returns balance of your Azupay account.
+
+        '
+      parameters:
+      - in: query
+        name: timestamp
+        required: false
+        schema:
+          type: string
+        description: "An optional parameter can be supplied to retrieve the account balance at a specified point in time. \nIn ISO date/time string format in UTC.\n"
+        example: '2024-11-04T03:16:53.350Z'
+      responses:
+        '200':
+          description: The balance object
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BalanceObj'
+        '401':
+          description: Invalid Authorization header
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+components:
+  schemas:
+    ErrorModel:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: false
+          properties:
+            failureCode:
+              type: string
+            failureReason:
+              type: string
+          required:
+          - failureCode
+          - failureReason
+    BalanceObj:
+      type: object
+      properties:
+        balance:
+          type: number
+          description: 'The balance of your Azupay account in AUD.
+
+            '
+  securitySchemes:
+    SecretKey:
+      description: 'The secret key is used to access restricted functions and should be stored
+
+        securely in your system. It is required for operations which may result in
+
+        additional charges to you as a merchant. Please protect the key by storing
+
+        it encrypted granting access only to a limited set of users and applications
+
+        requiring its use.
+
+        '
+      in: header
+      name: Authorization
+      type: apiKey
+    DistributableKey:
+      description: 'The distributable key has limited access and may be exposed publicly to
+
+        your payers.
+
+        '
+      in: header
+      name: Authorization
+      type: apiKey

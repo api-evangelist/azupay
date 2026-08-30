@@ -1,0 +1,330 @@
+openapi: 3.2.0
+info:
+  title: Azupay Payment Agreement Payment Agreement Request API
+  description: API Reference
+  version: v1
+  contact:
+    email: contactus@azupay.com.au
+servers:
+- url: https://api-uat.azupay.com.au/v1
+  description: UAT environment
+- url: https://api.azupay.com.au/v1
+  description: Production environment
+tags:
+- name: Payment Agreement Request
+  x-displayName: Payment Agreement Request
+  description: "This API generates a link to a one-time UX experience that enables payers to create and approve a PayTo Agreement, \nfacilitating the setup of recurring payments through the Payment Initiation API or batch processing. \nIt is ideal for subscription-based products, such as monthly fees.\n"
+paths:
+  /paymentAgreementRequest:
+    post:
+      security:
+      - SecretKey: []
+      tags:
+      - Payment Agreement Request
+      summary: Create a Payment Agreement Request
+      description: Create a Payment Agreement Request
+      operationId: createPaymentAgreementRequest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentAgreementRequestObj'
+      responses:
+        '201':
+          description: Payment Agreement Request Created
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaymentAgreementRequestObj'
+                - $ref: '#/components/schemas/PaymentAgreementRequestStatusObj'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayToErrorModel'
+              examples:
+                contentTypeError:
+                  value:
+                    message: Content-Type request header must be application/json
+                missingTransactionId:
+                  value:
+                    message: '[object has missing required properties (["clientTransactionId"])]'
+                startDateError:
+                  value:
+                    message: Start date must be today or future dated
+                endDateError:
+                  value:
+                    message: End date must be equal to or after start date
+                suggestedPayerPayIDError:
+                  value:
+                    message: '[suggestedPayerPayID] format is incorrect'
+        '401':
+          description: Invalid Authorization header
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: User is not authorized to access this resource with an explicit deny
+components:
+  schemas:
+    endDate:
+      type: string
+      description: A date in the calendar year expressed in this format YYYY-MM-DD. This date would be in Australia/Sydney timezone
+      pattern: ^(?:[1-9]\d{3}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1\d|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[1-9]\d(?:0[48]|[2468][048]|[13579][26])|(?:[2468][048]|[13579][26])00)-02-29)$
+      example: '2022-12-01'
+    suggestedPayerDetailsObj:
+      type: object
+      additionalProperties: false
+      description: 'Payer details to pre-populate the UI. Only one of `payIDDetails` or `bankAccountDetails` allowed.
+
+        '
+      properties:
+        payIDDetails:
+          type: object
+          description: PayID Details
+          additionalProperties: false
+          required:
+          - payID
+          properties:
+            payID:
+              $ref: '#/components/schemas/PayerPayIDObj'
+        bankAccountDetails:
+          description: Bank Account Details
+          additionalProperties: false
+          type: object
+          properties:
+            bsb:
+              $ref: '#/components/schemas/BsbObj'
+            accountNumber:
+              $ref: '#/components/schemas/AccountNumberObj'
+            accountName:
+              $ref: '#/components/schemas/AccountNameObj'
+    endpointURL:
+      type: string
+      format: url
+      description: "An internet accessible url which Azupay will invoke when the status of the transaction has \nchanged. The call will be done using the HTTP POST method. The endpoint exposed by the client \nmust be TLS 1.2 and the server certificate must be issued by a well known commercial certificate \nauthority and that self-signed or internally signed certs are not acceptable.\n"
+      example: https://example.org
+    countPerPeriod:
+      type: string
+      description: Number of payments within a specified period based on the frequency
+      pattern: ^[1-9][0-9]{0,2}$
+      example: '5'
+    NotificationObj:
+      type: object
+      description: Merchant Callback Details
+      required:
+      - endpointURL
+      - authorizationHeader
+      properties:
+        endpointURL:
+          $ref: '#/components/schemas/endpointURL'
+        authorizationHeader:
+          $ref: '#/components/schemas/authorizationHeader'
+    amount:
+      type: string
+      description: Amount in AUD
+      pattern: ^[0-9]+(\.[0-9]{2})$
+      example: '1001.95'
+    AccountNameObj:
+      type: string
+      description: The Account Name
+      minLength: 1
+      maxLength: 100
+      pattern: '[^\x00-\x1F\x7F]+'
+      example: Jane Doe
+    frequency:
+      type: string
+      description: Payment Frequency
+      enum:
+      - ADHOC
+      - DAILY
+      - FORTNIGHTLY
+      - INTRADAY
+      - SEMIANNUAL
+      - MONTHLY
+      - QUARTERLY
+      - WEEKLY
+      - ANNUAL
+    BsbObj:
+      type: string
+      description: The BSB of the account number
+      minLength: 6
+      maxLength: 6
+      pattern: ^\d*$
+      example: '123456'
+    StartDateObj:
+      type: string
+      description: A date in the calendar year expressed in this format YYYY-MM-DD. This date would be in Australia/Sydney timezone
+      pattern: ^(?:[1-9]\d{3}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1\d|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[1-9]\d(?:0[48]|[2468][048]|[13579][26])|(?:[2468][048]|[13579][26])00)-02-29)$
+      example: '2022-01-01'
+    PaymentAgreementRequestStatusObj:
+      type: object
+      properties:
+        PaymentAgreementRequestStatus:
+          type: object
+          required:
+          - paymentAgreementId
+          - sessionUrl
+          properties:
+            paymentAgreementId:
+              type: string
+              description: Payment Agreement Id that can be used with the Payment Initiation API or batch.  This Id will only be valid once the payer has completed the one-time UX experience on the `sessionUrl` successfully.
+              example: K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=
+            sessionUrl:
+              description: Url link to a one-time UX experience that enables payers to create and approve a PayTo Agreement.  Attach encoded `redirectURL` and `cancelRedirectURL` as query parameters. If the `redirectURL` is invoked,  then the `paymentAgreementId` can be used later to take payments. If `cancelRedirectURL` is invoked a new `sessionUrl` must be generated for the payer to try again.
+              type: string
+              readOnly: true
+              format: url
+              example: https://pay.azupay.com.au/checkout/123435
+    authorizationHeader:
+      type: string
+      description: 'The string that Azupay will put into the Authorization request header when calling the Callback url.
+
+
+        Will be obfuscated (shown as ****) in API responses.
+
+        '
+      example: SECRET
+    agreementDescription:
+      type: string
+      minLength: 5
+      maxLength: 140
+      pattern: ^[ -~]*$
+      description: Description of the Payment Agreement visible to the payer.
+    PayerPayIDObj:
+      type: string
+      minLength: 1
+      maxLength: 140
+      example: '0400123123'
+      description: 'The payer''s PayID. Valid examples are `0432123321` (mobile) and `jane.smith@example.com` (email).
+
+        '
+    ErrorModel:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: false
+          properties:
+            failureCode:
+              type: string
+            failureReason:
+              type: string
+          required:
+          - failureCode
+          - failureReason
+    PaymentAgreementRequestObj:
+      type: object
+      additionalProperties: false
+      properties:
+        PaymentAgreementRequest:
+          type: object
+          additionalProperties: false
+          required:
+          - clientTransactionId
+          properties:
+            clientTransactionId:
+              type: string
+              minLength: 5
+              maxLength: 36
+            agreementMaximumAmount:
+              $ref: '#/components/schemas/amount'
+            agreementStartDate:
+              $ref: '#/components/schemas/StartDateObj'
+            agreementEndDate:
+              $ref: '#/components/schemas/endDate'
+            agreementFrequency:
+              $ref: '#/components/schemas/frequency'
+            agreementDescription:
+              $ref: '#/components/schemas/agreementDescription'
+            agreementCountPerPeriod:
+              $ref: '#/components/schemas/countPerPeriod'
+            suggestedPayerDetails:
+              $ref: '#/components/schemas/suggestedPayerDetailsObj'
+            paymentAgreementRequestNotification:
+              $ref: '#/components/schemas/NotificationObj'
+    AccountNumberObj:
+      type: string
+      description: The Account Number (without the BSB)
+      minLength: 4
+      maxLength: 9
+      pattern: ^\d*$
+      example: '123555555'
+    PayToErrorModel:
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+        details:
+          type: object
+          description: 'An object containing details of the error
+
+            '
+          properties:
+            failureCode:
+              type: string
+              example: AZP5.1
+              description: 'A failure code for the error response.
+
+                For the full list, please refer to the
+
+                [Failure Codes and Failure Reasons](/guide/receiving-recurring-payments.html#failure-codes-and-failure-reasons) page
+
+                '
+            failureReason:
+              type: string
+              example: PayID format is incorrect
+              description: 'A reason message for the error response
+
+                For the full list, please refer to the
+
+                [Failure Codes and Failure Reasons ](/guide/receiving-recurring-payments.html#failure-codes-and-failure-reasons) page
+
+                '
+  securitySchemes:
+    SecretKey:
+      description: 'The secret key is used to access restricted functions and should be stored
+
+        securely in your system. It is required for operations which may result in
+
+        additional charges to you as a merchant. Please protect the key by storing
+
+        it encrypted granting access only to a limited set of users and applications
+
+        requiring its use.
+
+        '
+      in: header
+      name: Authorization
+      type: apiKey
+    DistributableKey:
+      description: 'The distributable key has limited access and may be exposed publicly to
+
+        your payers.
+
+        '
+      in: header
+      name: Authorization
+      type: apiKey

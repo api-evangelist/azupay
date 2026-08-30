@@ -1,0 +1,604 @@
+openapi: 3.2.0
+info:
+  title: Azupay Configuration API Keys API
+  description: API Reference
+  version: v1
+  contact:
+    email: contactus@azupay.com.au
+servers:
+- url: https://api-uat.azupay.com.au/v1
+  description: UAT environment
+- url: https://api.azupay.com.au/v1
+  description: Production environment
+tags:
+- name: API Keys
+  description: 'Manage API keys for your clients.
+
+    '
+paths:
+  /client/{clientId}/apiKeys:
+    post:
+      security:
+      - SecretKey: []
+      tags:
+      - API Keys
+      summary: Create API keys for Sub Merchants
+      description: Create API keys
+      operationId: apiKeysProvision
+      parameters:
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/SubClientIdObj'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/apiKeysProvisionObj'
+      responses:
+        '201':
+          description: API key creation
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/apiKeysProvisionResponseObj'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+        '401':
+          description: Invalid Authorization header
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: User is not authorized to access this resource with an explicit deny
+        '404':
+          description: Client ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+    get:
+      parameters:
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/SubClientIdObj'
+      security:
+      - SecretKey: []
+      tags:
+      - API Keys
+      summary: Get API keys for Sub Merchants
+      description: Get API keys
+      operationId: getApiKeys
+      responses:
+        '200':
+          description: API keys record
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/GetApiKeysResponseObj'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+        '401':
+          description: Invalid Authorization header
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: User is not authorized to access this resource with an explicit deny
+        '404':
+          description: Client ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+  /client/{clientId}/apiKeys/{apiKeyId}:
+    get:
+      parameters:
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/SubClientIdObj'
+      - name: apiKeyId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ApiKeyIdObj'
+      security:
+      - SecretKey: []
+      tags:
+      - API Keys
+      summary: Gets an API key based on the API key ID.
+      description: Get API key
+      operationId: getApiKey
+      responses:
+        '200':
+          description: API key record
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/GetApiKeyResponseObj'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+        '401':
+          description: Invalid Authorization header
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: User is not authorized to access this resource with an explicit deny
+        '404':
+          description: Client ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+    patch:
+      security:
+      - SecretKey: []
+      tags:
+      - API Keys
+      parameters:
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/SubClientIdObj'
+      - name: apiKeyId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ApiKeyIdObj'
+      summary: Update API keys for Sub Merchants
+      description: Update API keys
+      operationId: updateApiKeys
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiKeyUpdateObj'
+      responses:
+        '204':
+          description: API key updated
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+        '401':
+          description: Invalid Authorization header
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: User is not authorized to access this resource with an explicit deny
+        '404':
+          description: Client ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+  /client/{clientId}/oauth2:
+    post:
+      security:
+      - SecretKey: []
+      tags:
+      - API Keys
+      summary: Enable OAuth2 for a client
+      description: Enable OAuth2 for a client
+      operationId: enableClientOAuth2
+      parameters:
+      - name: clientId
+        in: path
+        required: true
+        description: The Azupay sub-client ID whose OAuth2 configuration is being retrieved.
+        schema:
+          $ref: '#/components/schemas/SubClientIdObj'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              description: Optional configuration when enabling OAuth2. Currently has no fields.
+      responses:
+        '201':
+          description: OAuth2 has been enabled and credentials issued.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/EnableOAuth2ResponseObj'
+        '400':
+          description: Invalid request. The most common cause is that the client is not on the enterprise plan or clientId path parameter is not matching the Authorization header and is therefore not allowed to enable OAuth2.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: User is not authorized to access this resource with an explicit deny
+    get:
+      security:
+      - SecretKey: []
+      tags:
+      - API Keys
+      summary: Get OAuth2 configuration for a client
+      description: Get OAuth2 configuration for a client
+      operationId: getClientOAuth2
+      parameters:
+      - name: clientId
+        in: path
+        required: true
+        description: The Azupay sub-client ID whose OAuth2 configuration is being retrieved.
+        schema:
+          $ref: '#/components/schemas/SubClientIdObj'
+      responses:
+        '200':
+          description: The OAuth2 configuration for the client.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/GetOAuth2ResponseObj'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: User is not authorized to access this resource with an explicit deny
+        '404':
+          description: OAuth2 is not enabled for this client, or the client does not exist.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+components:
+  schemas:
+    GetOAuth2ResponseObj:
+      type: object
+      description: 'Response returned when retrieving the OAuth2 configuration for a client. Identical to `EnableOAuth2ResponseObj` except that `oauth2ClientSecret` is **not** returned because the secret is only ever exposed at enablement time.
+
+        '
+      additionalProperties: false
+      required:
+      - oauth2ClientId
+      - oauth2TokenUrl
+      - oauth2GrantType
+      - oauth2TtlInSecs
+      - oauth2AllowedScopes
+      properties:
+        oauth2ClientId:
+          type: string
+          description: The OAuth2 client identifier issued for this Azupay client.
+          example: 3n8q9p1k2l4m5o6p7q8r9s0t1u
+        oauth2TokenUrl:
+          type: string
+          format: url
+          description: The OAuth2 token endpoint to request access tokens from.
+          example: https://auth-uat.azupay.com.au/oauth2/token
+        oauth2GrantType:
+          type: string
+          description: The OAuth2 grant type supported by this client.
+          enum:
+          - client_credentials
+          example: client_credentials
+        oauth2TtlInSecs:
+          type: integer
+          description: The lifetime, in seconds, of access tokens issued for this client.
+          example: 3600
+        oauth2AllowedScopes:
+          type: array
+          description: The list of OAuth2 scopes that this client is allowed to request.
+          items:
+            type: string
+          example:
+          - RestAPI/GET:balance
+          - RestAPI/GET:paymentRequest
+          - RestAPI/POST:sweepRequest
+    GetApiKeysResponseObj:
+      type: array
+      items:
+        $ref: '#/components/schemas/GetApiKeyResponseObj'
+    apiKeysProvisionObj:
+      type: object
+      additionalProperties: false
+      required:
+      - permissions
+      properties:
+        permissions:
+          type: array
+          items:
+            type: string
+            example: RestAPI/POST/paymentRequest
+            description: List of permissions for api key
+        generateHMAC:
+          type: boolean
+    EnableOAuth2ResponseObj:
+      type: object
+      description: 'Response returned when OAuth2 is successfully enabled for a client. Contains the credentials and metadata required to obtain access tokens via the OAuth2 `client_credentials` grant.
+
+        The `oauth2ClientSecret` is returned only once at enablement time and cannot be retrieved later. Store it securely.
+
+        '
+      additionalProperties: false
+      required:
+      - oauth2ClientId
+      - oauth2ClientSecret
+      - oauth2TokenUrl
+      - oauth2GrantType
+      - oauth2TtlInSecs
+      - oauth2AllowedScopes
+      properties:
+        oauth2ClientId:
+          type: string
+          description: 'The OAuth2 client identifier issued for this Azupay client. Use this value as the `client_id` parameter when requesting an access token from `oauth2TokenUrl`.
+
+            '
+          example: 3n8q9p1k2l4m5o6p7q8r9s0t1u
+        oauth2ClientSecret:
+          type: string
+          description: 'The OAuth2 client secret issued for this Azupay client. Use this value as the `client_secret` parameter when requesting an access token from `oauth2TokenUrl`.
+
+            **This value is returned only once when OAuth2 is enabled and is never returned again by subsequent GET requests. Store it securely.**
+
+            '
+          example: abcdef1234567890abcdef1234567890abcdef1234567890abcdef12
+        oauth2TokenUrl:
+          type: string
+          format: url
+          description: 'The OAuth2 token endpoint. POST to this URL with `application/x-www-form-urlencoded` body containing `grant_type`, `client_id` and `client_secret` to obtain an access token.
+
+            '
+          example: https://auth-uat.azupay.com.au/oauth2/token
+        oauth2GrantType:
+          type: string
+          description: The OAuth2 grant type supported by this client.
+          enum:
+          - client_credentials
+          example: client_credentials
+        oauth2TtlInSecs:
+          type: integer
+          description: The lifetime, in seconds, of access tokens issued for this client.
+          example: 3600
+        oauth2AllowedScopes:
+          type: array
+          description: The list of OAuth2 scopes that this client is allowed to request.
+          items:
+            type: string
+          example:
+          - RestAPI/GET:balance
+          - RestAPI/GET:paymentRequest
+          - RestAPI/POST:sweepRequest
+    apiKeysProvisionResponseObj:
+      type: object
+      description: 'Response object returned upon successful provisioning of a new API key. Contains the newly created API key details including credentials and permissions.
+
+        '
+      additionalProperties: false
+      properties:
+        keyID:
+          type: string
+          description: 'A unique identifier assigned to the newly created API key.
+
+            '
+          example: SECRE408AB
+        apiKey:
+          type: string
+          description: 'The actual API key string that clients will use for authentication. This should be stored securely by the client, as it is only returned once.
+
+            '
+          example: XXXXXXXXX_YYYYYYYYYY_ZZZZZZZZZZZ
+        hmacKey:
+          type: string
+          description: 'The HMAC secret key associated with the API key, used for request signing. Like the apiKey, this should be treated as sensitive and stored securely.
+
+            '
+          example: hmac_secret_XXXXXXXXX
+        enabled:
+          type: boolean
+          description: 'Indicates whether the newly provisioned API key is active and usable.
+
+            '
+          example: true
+        permittedOperations:
+          type: array
+          description: 'A list of operations or permissions granted to this API key. These define what actions can be performed using the key.
+
+            '
+          items:
+            type: string
+            example: RestAPI/POST/paymentRequest
+          example:
+          - RestAPI/POST/paymentRequest
+          - RestAPI/GET/paymentRequest
+    ApiKeyIdObj:
+      type: string
+      example: SECR
+      description: The ID provided when the API Key was generated via the API or from the dashboard.
+    GetApiKeyResponseObj:
+      type: object
+      description: 'Response object that provides detailed information about an existing API key, including its current status, capabilities, and permissions.
+
+        '
+      additionalProperties: false
+      properties:
+        keyID:
+          type: string
+          description: 'A unique identifier for the API key. This ID is used to reference and manage the key programmatically.
+
+            '
+          example: SECRE408AB
+        hmacEnabled:
+          type: boolean
+          description: 'Indicates whether HMAC-based authentication is enabled for this API key. If true, requests authenticated with this key must be signed using HMAC.
+
+            '
+          example: true
+        enabled:
+          type: boolean
+          description: 'Represents whether the API key is currently active and allowed to be used. If set to false, the key is considered disabled and cannot be used for authentication.
+
+            '
+          example: true
+        permittedOperations:
+          type: array
+          description: 'A list of operations that the API key is authorized to perform. These may correspond to specific API actions, endpoints, or permission scopes.
+
+            '
+          items:
+            type: string
+            example: RestAPI/POST/paymentRequest
+          example:
+          - RestAPI/POST/paymentRequest
+          - RestAPI/GET/paymentRequest
+    ErrorModel:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: false
+          properties:
+            failureCode:
+              type: string
+            failureReason:
+              type: string
+          required:
+          - failureCode
+          - failureReason
+    ApiKeyUpdateObj:
+      type: object
+      description: 'Object used to update API key state (Active / Disabled).
+
+        '
+      additionalProperties: false
+      minProperties: 1
+      required:
+      - enabled
+      properties:
+        enabled:
+          type: boolean
+          description: 'Indicates whether the API key is currently active. Set to `true` to enable the key, or `false` to disable it.
+
+            '
+          example: true
+    SubClientIdObj:
+      type: string
+      description: 'Your client’s unique identifier that we provide you during the initial onboarding request.
+
+        '
+      minLength: 5
+      maxLength: 50
+      example: CLIENT1
+  securitySchemes:
+    SecretKey:
+      description: 'The secret key is used to access restricted functions and should be stored
+
+        securely in your system. It is required for operations which may result in
+
+        additional charges to you as a merchant. Please protect the key by storing
+
+        it encrypted granting access only to a limited set of users and applications
+
+        requiring its use.
+
+        '
+      in: header
+      name: Authorization
+      type: apiKey
+    DistributableKey:
+      description: 'The distributable key has limited access and may be exposed publicly to
+
+        your payers.
+
+        '
+      in: header
+      name: Authorization
+      type: apiKey

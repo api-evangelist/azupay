@@ -1,0 +1,1004 @@
+openapi: 3.2.0
+info:
+  title: Azupay Payment Request API
+  description: API Reference
+  version: v1
+  contact:
+    email: contactus@azupay.com.au
+servers:
+- url: https://api-uat.azupay.com.au/v1
+  description: UAT environment
+- url: https://api.azupay.com.au/v1
+  description: Production environment
+tags:
+- name: Payment Request
+  description: 'This API allows your customers to make payments using PayID on your website, mobile app or over the counter.
+
+    '
+paths:
+  /paymentRequest:
+    post:
+      security:
+      - SecretKey: []
+      tags:
+      - Payment Request
+      summary: Create a Payment Request.
+      description: Creates a payment request. Once created, your customer can make a payment to the specified PayID. You can poll for PaymentStatus using getPaymentRequest to determine whether or not the required payment was made by the customer.
+      operationId: createPayIdPaymentRequest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequestObj'
+            examples:
+              Single use PayId (Test Case):
+                value:
+                  PaymentRequest:
+                    payID: update-me-to-a-unique-payid@yourdomain.com.au
+                    clientId: update-me-to-your-client-id
+                    clientTransactionId: update-me-to-some-unique-value-single-use-payid
+                    paymentAmount: 100
+                    paymentDescription: A single use PayId Test case for dynamic once-off PayId payments. Make sure to update the values required.
+              Open static payId with payment limit (Test Case):
+                value:
+                  PaymentRequest:
+                    payID: update-me-to-a-unique-payid@yourdomain.com.au
+                    clientId: update-me-to-your-client-id
+                    clientTransactionId: update-me-to-some-unique-value-open-static-payid
+                    paymentAmount: 100
+                    paymentDescription: An open static PayId Test case with a payment limit. Make sure to update the values required.
+                    multiPayment: true
+              Multi use PayId with No set amount (Test Case):
+                value:
+                  PaymentRequest:
+                    payID: update-me-to-a-unique-payid@yourdomain.com.au
+                    clientId: update-me-to-your-client-id
+                    clientTransactionId: update-me-to-some-unique-value-multi-use-no-set-amount
+                    paymentDescription: An open static PayId Test case without a payment limit - useful for wallets etc. Make sure to update the values required.
+                    multiPayment: true
+              Multi use PayId with an expiry time (Test Case):
+                value:
+                  PaymentRequest:
+                    payID: update-me-to-a-unique-payid@yourdomain.com.au
+                    clientId: update-me-to-your-client-id
+                    clientTransactionId: update-me-to-some-unique-value-multi-use-with-expiry
+                    paymentAmount: 100
+                    paymentDescription: An open static PayId Test case with a payment limit and expiry date. Make sure to update the values required.
+                    multiPayment: true
+                    paymentExpiryDatetime: '2024-11-16T06:32:31.250Z'
+              Single use PayId that fails due to missing description field (Test Case):
+                value:
+                  PaymentRequest:
+                    payID: update-me-to-a-unique-payid@yourdomain.com.au
+                    clientId: update-me-to-your-client-id
+                    clientTransactionId: update-me-to-some-unique-value-single-use-missing-description
+                    paymentAmount: 100
+              Single use PayId that fails due to missing clientId field (Test Case):
+                value:
+                  PaymentRequest:
+                    payID: update-me-to-a-unique-payid@yourdomain.com.au
+                    clientId: update-me-to-your-client-id
+                    clientTransactionId: update-me-to-some-unique-value-single-use-missing-clientid
+                    paymentDescription: This will fail due to a lack of a client Id. Make sure to update the values required.
+                    paymentAmount: 100
+              Single use PayId that fails due to negative payment amount (Test Case):
+                value:
+                  PaymentRequest:
+                    payID: update-me-to-a-unique-payid@yourdomain.com.au
+                    clientId: update-me-to-your-client-id
+                    clientTransactionId: update-me-to-some-unique-value-negative-amount
+                    paymentAmount: -100
+                    paymentDescription: A single use PayId Test case for dynamic once-off PayId payments. Make sure to update the values required.
+              Single use PayId that fails due to duplicate Transaction ID - Run me twice (Test Case):
+                value:
+                  PaymentRequest:
+                    payID: update-me-to-a-unique-payid@yourdomain.com.au
+                    clientId: update-me-to-your-client-id
+                    clientTransactionId: dont-change-me-1234
+                    paymentAmount: 100
+                    paymentDescription: A single use PayId Test case to raise a duplicate transaction ID error. Run twice without changing clientTransactionId.
+      responses:
+        '200':
+          description: Payment Request Created
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaymentRequestObj'
+                - $ref: '#/components/schemas/PaymentRequestStatusObj'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: User is not authorized to access this resource
+      callbacks:
+        PaymentRequestStatus:
+          '{$request.body#/PaymentRequest/paymentNotification/paymentNotificationEndpointUrl}':
+            post:
+              summary: PaymentRequest Status Event
+              description: 'If the merchant specifies values for the
+
+                `PaymentRequest/paymentNotification` object during the createPaymentRequest invocation, then a notification
+
+                will be sent to the merchant system when it has reached a status of `COMPLETE`.
+
+
+                The event will use `paymentNotification.paymentNotificationEndpointUrl` as endpoint and
+
+                `paymentNotification.paymentNotificationAuthorizationHeaderValue` as `Authorization` header.
+
+                We **strongly** recommend to use a different value for `paymentNotificationAuthorizationHeaderValue`
+
+                on each payment request to increase the level of security.
+
+
+                This call is made by Azupay on a best effort basis. Azupay will implement retry mechanisms to ensure
+
+                transient network failures do not affect the
+
+                ability to call this endpoint. Azupay may call this endpoint
+
+                more than once with the same payload so the merchant must ensure that the endpoint is implemented with
+
+                idempotent behaviour always returning a `200 OK` response even after subsequent calls.
+
+
+                If the target endpoint does not return HTTP `200`, azupay will retry the webhook call 45 times with a 20 second delay.
+
+
+                The merchant system can correlate the event message using either the `PaymentRequest.clientTransactionId` provided on the
+
+                original request or the `PaymentRequestStatus.paymentRequestId` provided in the response of the original
+
+                request.
+
+                '
+              parameters:
+              - in: header
+                name: Authorization
+                description: 'The value will be what was specified in
+
+                  {$request.body#/PaymentRequest/paymentNotification/paymentNotificationAuthorizationHeaderValue}
+
+                  '
+                schema:
+                  type: string
+                required: true
+              requestBody:
+                required: true
+                content:
+                  application/json:
+                    schema:
+                      allOf:
+                      - $ref: '#/components/schemas/PaymentRequestObj'
+                      - $ref: '#/components/schemas/PaymentRequestStatusObj'
+              responses:
+                '200':
+                  description: The merchant's server should return this code
+    delete:
+      security:
+      - SecretKey: []
+      summary: Delete a Payment Request.
+      tags:
+      - Payment Request
+      description: 'Delete an existing payment request, de-registering the associated PayID in the process.
+
+        '
+      operationId: deletePaymentRequest
+      parameters:
+      - description: 'ID of Payment Request to delete. This is the paymentRequestId
+
+          return by the createPaymentRequest API
+
+          '
+        in: query
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: The payment request was deleted
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+        '401':
+          description: Invalid Authorization header
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+    get:
+      operationId: getPaymentRequest
+      security:
+      - DistributableKey: []
+      tags:
+      - Payment Request
+      summary: Get a Payment Request.
+      description: 'Retrieves an existing PayID PaymentRequest.
+
+
+        Use the contents of the response body to determine whether the customer has made their payment.
+
+        '
+      parameters:
+      - in: query
+        description: "ID of Payment Request to retrieve. \n\nThis is the `paymentRequestId` returned by the **Create a Payment Request** API\n"
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The payment request object
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaymentRequestObj'
+                - $ref: '#/components/schemas/PaymentRequestStatusObj'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: 'paymentRequestId: ... not found'
+        '401':
+          description: Invalid Authorization header
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: Unauthorized
+        '404':
+          description: Payment Request Not Found
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: User is not authorized to access this resource
+  /paymentRequest/refund:
+    post:
+      operationId: refundPaymentRequest
+      security:
+      - SecretKey: []
+      tags:
+      - Payment Request
+      summary: Refund a PaymentRequest.
+      description: 'Refund a previously settled PaymentRequest back to the customer''s source of funding. Optionally supply the amount to refund. Refunds requests can be rejected for the following failure reasons:
+
+
+        | `failureCode`    | `failureReason`                                                                 |
+
+        |------------------|---------------------------------------------------------------------------------|
+
+        | ERR0.03          | Refunds can only be done on COMPLETE, RETURN_COMPLETE or RETURN_FAILED payments |
+
+        | ERR0.05          | Missing id.                                                                     |
+
+        | ERR0.06          | Refund amount value must be a number                                            |
+
+        | ERR0.07          | Refunds cannot be done against PaymentRequest\''s with multiPayment set to true  |
+
+        | ERR0.08          | Refunds can only be done on COMPLETE, RETURN_COMPLETE or RETURN_FAILED payments |
+
+        | ERR0.09          | Refund for this client can only be for the full amount                          |
+
+        | ERR0.10          | Refund amount must be less than or equal to original payment amount             |
+
+        | ERR0.11          | Insufficient funds to process this refund                                       |
+
+        '
+      parameters:
+      - in: query
+        name: id
+        description: ID of Payment Request to refund. This is the paymentRequestId return by the createPaymentRequest API
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: refundAmount
+        description: The amount to refund
+        required: false
+        schema:
+          type: number
+      - in: query
+        name: clientRefundID
+        description: The client refund transaction ID
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Payment refunded
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaymentRequestObj'
+                - $ref: '#/components/schemas/PaymentRequestStatusObj'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+        '401':
+          description: Invalid Authorization header
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+        '404':
+          description: Payment Request Not Found
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+  /paymentRequest/search:
+    post:
+      security:
+      - SecretKey: []
+      tags:
+      - Payment Request
+      summary: Search for Payment Requests.
+      description: 'Search for Payment Requests
+
+        '
+      operationId: searchPaymentRequest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequestSearchObj'
+      parameters:
+      - in: query
+        name: nextPageId
+        description: The next page ID that was obtained on a previous search result. Used to obtain the next set of results
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: numberOfRecords
+        description: Number of records to retrieve. Defaults to 100 if not provided
+        required: false
+        schema:
+          type: number
+      responses:
+        '200':
+          description: The requested page of payment requests
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - records
+                properties:
+                  nextPageId:
+                    $ref: '#/components/schemas/nextPageIdResponse'
+                  recordCount:
+                    $ref: '#/components/schemas/recordCount'
+                  records:
+                    type: array
+                    description: The result from the search
+                    items:
+                      $ref: '#/components/schemas/PaymentRequestSearchResponseObj'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              examples:
+                contentTypeError:
+                  value:
+                    message: Content-Type request header must be application/json
+                idTooShortError:
+                  value:
+                    message: '[string "" is too short (length: 0, required minimum: 1)]
+
+                      '
+                idTooLongError:
+                  value:
+                    message: '[string "...more than 40 chars..." is too long (length: 41, maximum allowed: 40)]
+
+                      '
+                extraFieldsError:
+                  value:
+                    message: '[object instance has properties which are not allowed by the schema: ["..."]]
+
+                      '
+        '401':
+          description: Invalid Authorization header
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ErrorModel'
+                - properties:
+                    message:
+                      example: User is not authorized to access this resource with an explicit deny
+components:
+  schemas:
+    AccountNumberObj:
+      type: string
+      description: The Account Number (without the BSB)
+      minLength: 4
+      maxLength: 9
+      pattern: ^\d*$
+      example: '123555555'
+    PaymentRequestSearchObj:
+      type: object
+      additionalProperties: false
+      properties:
+        PaymentRequestSearch:
+          type: object
+          additionalProperties: false
+          description: 'Please note `clientTransactionId` and `clientBranch` can''t be included in the same request with the other fields.
+
+
+            `payID` can be included with date but not with the other fields
+
+            '
+          properties:
+            clientTransactionId:
+              $ref: '#/components/schemas/ClientTransactionIdObj'
+            fromDate:
+              $ref: '#/components/schemas/fromDateUTC'
+            toDate:
+              $ref: '#/components/schemas/toDateUTC'
+            payID:
+              type: string
+              format: email
+              example: dl-12345.abc@mymerchant.com.au
+            clientBranch:
+              $ref: '#/components/schemas/clientBranch'
+            searchByDateType:
+              type: string
+              description: Defines if the search will be based on the creation or completion date time. Default to CREATED_DESC
+              enum:
+              - CREATED_DESC
+              - COMPLETED_DESC
+    fromDateUTC:
+      type: string
+      pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$
+      description: The report date in ISO date/time string format in UTC
+      example: '2021-10-18T02:32:30.693Z'
+    ClientTransactionIdObj:
+      description: 'Unique Id for the transaction created by the merchant system
+
+
+        This field is used to prevent the creation of duplicated clients in case of a message retry. It is
+
+        recommended that a unique id (like uuid) is used for each client. If the same value is used a second time
+
+        the client will be replaced.
+
+        '
+      minLength: 5
+      maxLength: 100
+      type: string
+      example: TX5346423452345345
+    PaymentRequestObj:
+      type: object
+      additionalProperties: false
+      required:
+      - PaymentRequest
+      properties:
+        PaymentRequest:
+          type: object
+          additionalProperties: false
+          required:
+          - clientId
+          - clientTransactionId
+          - paymentDescription
+          properties:
+            payID:
+              type: string
+              minLength: 5
+              maxLength: 50
+              description: Unique email PayID for this transaction. Value supplied here is the PayID used by your customer to make payment. If not supplied, Azupay will generate one automatically. The PayID's domain must match one of the configured domains for the client.
+              example: dl-12345.abc@mymerchant.com.au
+              pattern: ^([a-z0-9_\-\.]+)@([a-z0-9_\-\.]+)\.([a-z]+)$
+            payIDSuffix:
+              type: string
+              minLength: 5
+              maxLength: 50
+              description: The email domain to use when Azupay generates the PayID. All domains must be validated and preconfigured by Azupay before they can be used. If supplied value is not configured an error is returned. If a PayID is supplied this value is ignored. If not supplied the default email domain configured in the system is used.
+              example: otherdomain.com.au
+            clientId:
+              type: string
+              minLength: 5
+              maxLength: 50
+              description: Id of the client creating the request for payment. This is supplied by Azupay and only changes between environments. For example, you might be allocated CLIENT1TEST for the UAT environment and CLIENT1 for production.
+              example: CLIENT1
+            suggestedPayerDetails:
+              $ref: '#/components/schemas/suggestedPayerDetailsObj'
+            clientBranch:
+              $ref: '#/components/schemas/clientBranch'
+            clientTransactionId:
+              type: string
+              minLength: 3
+              maxLength: 100
+              description: Unique Id for the transaction created by the merchant system
+              example: TX5346423452345345
+            multiPayment:
+              description: When set to true and a paymentAmount has been set, we will allow multiple payments to be made to the PayID, up to the value of the paymentAmount. When set to false and a paymentAmount has not been set, the PayID can accept any number of payments for any amount. A refund will be issued automatically if a payment exceeds this amount.                 If multiPayment has not been set, the default is false.
+              type: boolean
+            metaData:
+              type: object
+              additionalProperties: true
+              description: An object containing metadata about payment request.
+            payerNotificationEmail:
+              description: Customer/Payer Email address to notify based on client configuration.
+              maxLength: 140
+              type: string
+              format: email
+            payerNotificationMobile:
+              description: Customer/Payer mobile number to notify based on client configuration. Must start with +61.
+              maxLength: 20
+              type: string
+            paymentAmount:
+              type: number
+              description: Amount in AUD requested to pay for the transaction. Not mandatory if multiPayment is true. If multiPayment is true then it can be set to accept adhoc payments up to this amount.
+              example: 101.95
+              minimum: 0.01
+              multipleOf: 0.01
+            paymentDescription:
+              type: string
+              minLength: 5
+              maxLength: 140
+              description: "Description of this transaction. It will be the last part of the PayID name that appears in the customer's online banking when they lookup the PayID. Must not contain any of the customer's personal information.\nThis description could be truncated to accommodate a maximum of 140 characters allowed on a PayID name so it is \nrecommended not to exceed 110 characters.\n"
+              example: Payment for Drivers' licence renewal.
+            enableVirtualAccount:
+              type: boolean
+              description: Enable virtual account for this payment request. This field is only applied if your client is configured to support virtual accounts.
+            paymentExpiryDatetime:
+              type: string
+              format: date-time
+              description: Timestamp when the payment request expires and is no longer able to accept payments. The associated PayID is also de-registered within 48 hours of the specified time.
+            checkoutUrl:
+              description: Share this url with your customer to request payment using a web interface and qr code. You can enable this feature by going to Azupay Client Dashboard > Apps and enabling the Checkout Web App.
+              type: string
+              readOnly: true
+              format: url
+              example: https://pay.azupay.com.au/checkout/123435
+            paymentNotification:
+              type: object
+              additionalProperties: false
+              properties:
+                paymentNotificationEndpointUrl:
+                  description: An internet accessible url which azupay will invoke when the status of an inflight PaymentRequest has reached either "COMPLETED", "FAILED" or "RETURNED" status. The call will be done using the HTTP POST verb. The url should end in /paymentRequestStatus. The endpoint exposed by the client must be TLS 1.2 and the server certificate must be issued by a well known commercial certificate authority and that self-signed or internally signed certs are not acceptable.
+                  type: string
+                  format: url
+                paymentNotificationAuthorizationHeaderValue:
+                  description: The string that azupay will put into the Authorization request header when making the paymentNotification call.
+                  type: string
+            lineItems:
+              description: An array of line items associated with the current payment request
+              type: array
+              items: {}
+            ultimatePayeeName:
+              type: string
+              minLength: 1
+              maxLength: 140
+              pattern: ^[a-zA-Z0-9\-_ ]*$
+              description: Used for specifying the name of the sub merchant for whom you are creating the PaymentRequest for.
+            variant:
+              type: string
+              minLength: 1
+              maxLength: 50
+              description: 'The Variant field will determine the type of checkoutURL in the response.</br>
+
+                For users who are not using Azupay UX, this field is optional and does not need to be provided.</br>
+
+                If the field is set to PayID, the checkoutURL will have the Payment Request - PayID App.</br>
+
+                If the field is set to 1Click, the checkoutURL will have the Payment Request - 1 Click App.</br>
+
+                '
+            suggestedPayerPayID:
+              $ref: '#/components/schemas/SuggestedPayerPayIDObj'
+            recurringPaymentAmount:
+              type: number
+              description: "Amount in AUD for recurring payments. Must be provided along with `recurringPaymentFrequency` \nand `paymentAmount` fields for recurring payment requests.\nThis field applies only when the Checkout\nApp V3 is enabled with payTo. Go to Dashboard -> Apps -> Checkout and enable V3 with PayId+PayTO.\nWhen this field is provided the Checkout App will create a PaymentAgreement with an initialPayment amount\ncorresponding to the `paymentAmount` and an amount corresponding to `recurringPaymentAmount` with frequency\nof `recurringPaymentFrequency`. You can obtain the `paymentAgreementId` from the `PaymentRequestStatus`\nto collect the recurring payments later.\n"
+              example: 500
+              minimum: 0.01
+              multipleOf: 0.01
+            recurringPaymentFrequency:
+              type: string
+              description: "Frequency for recurring payments. Must be provided along with `recurringPaymentAmount` \nand and `paymentAmount` fields. This field applies only when the Checkout\nApp V3 is enabled with payTo. Go to Dashboard -> Apps -> Checkout and enable V3 with PayId+PayTO\n"
+              enum:
+              - FORTNIGHTLY
+              - SEMIANNUAL
+              - MONTHLY
+              - QUARTERLY
+              - WEEKLY
+              - ANNUAL
+              - ADHOC
+              - DAILY
+              example: MONTHLY
+            recurringPaymentType:
+              type: string
+              description: 'Type of recurring payment agreement. FIXED means exact recurring amount (default behavior),
+
+                VARIABLE means maximum recurring amount cap. When VARIABLE, the recurringPaymentAmount
+
+                represents the maximum amount that can be charged, and paymentAmount (initial payment)
+
+                must not exceed this maximum. Defaults to FIXED if not specified.
+
+                '
+              enum:
+              - FIXED
+              - VARIABLE
+              example: VARIABLE
+            recurringPaymentEndDate:
+              type: string
+              description: 'Optional end date for the recurring payment agreement in YYYY-MM-DD format.
+
+                Must be at least current date + 1 day (Australia/Sydney timezone).
+
+                Applies to both FIXED and VARIABLE agreement types.
+
+                Enables automatic agreement expiration without manual intervention.
+
+                '
+              pattern: ^(?:[1-9]\d{3}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1\d|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[1-9]\d(?:0[48]|[2468][048]|[13579][26])|(?:[2468][048]|[13579][26])00)-02-29)$
+              example: '2025-12-31'
+    SuggestedPayerPayIDObj:
+      type: string
+      minLength: 1
+      maxLength: 140
+      example: '0400123123'
+      description: 'Note `SuggestedPayerPayID` has been deprecated and replaced by `SuggestedPayerDetails`.
+
+        The payer''s PayID. Valid examples are `0432123321` (mobile) and `jane.smith@example.com` (email).
+
+        Use this field to pre-populate the payID that gets entered within a 1Click transaction.
+
+        This can only be used with a payment request with the variant 1Click.
+
+        '
+    PaymentRequestSearchResponseObj:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/PaymentRequestObj'
+      - $ref: '#/components/schemas/PaymentRequestStatusObj'
+    PaymentRequestStatusObj:
+      type: object
+      properties:
+        PaymentRequestStatus:
+          type: object
+          required:
+          - paymentRequestId
+          - status
+          - createdDateTime
+          additionalProperties: false
+          properties:
+            settledBy:
+              type: string
+              description: Specifies how this PaymentRequest was completed
+              enum:
+              - PayID
+              - PayTo
+              - BSBAndAccountNumber
+            completedDatetime:
+              type: string
+              format: date-time
+              description: Timestamp when the payment was finalised in Azupay
+            createdDateTime:
+              description: Timestamp when the payment request was created
+              format: date-time
+              type: string
+            refundInformation:
+              description: This object is present when a partial refund is requested.
+              type: object
+              additionalProperties: false
+              properties:
+                availableBalance:
+                  type: string
+                  description: The remaining balance after completion of all the refunds.
+                requests:
+                  type: array
+                  description: An array of objects capturing log of completed refund requests
+                  items:
+                    type: object
+                    description: Refund information
+                    required:
+                    - refundTrigger
+                    properties:
+                      dateTime:
+                        type: string
+                        format: date-time
+                        deprecated: true
+                        description: Same as createdDateTime. Deprecated, Use `createdDateTime`
+                      createdDateTime:
+                        type: string
+                        format: date-time
+                        description: Timestamp when refund request was initiated
+                      completedDateTime:
+                        type: string
+                        format: date-time
+                        description: Timestamp when refund request was completed. Replaces deprecated `dateTime`.
+                      amount:
+                        type: string
+                        description: The refund amount
+                      nppTransactionId:
+                        description: The identifier of the transaction in the NPP network. This is an identifier known by the initiating bank and serves as unique identifier for the refund.
+                        type: string
+                      status:
+                        description: The status of the refund
+                        type: string
+                        enum:
+                        - IN_PROGRESS
+                        - COMPLETE
+                        - FAILED
+                      refundTrigger:
+                        description: Channel that triggered this refund
+                        type: string
+                        enum:
+                        - REFUND_API
+                        - PAYMENT_VALIDATION
+                        - WEBHOOK_ACTION
+            failureReason:
+              description: If status is failed or returned, this field will describe the reason for the failure.
+              type: string
+            paymentRequestId:
+              type: string
+              description: An identifier generated by Azupay. Used to reference the object in subsequent operations such as getPaymentRequest and refundPaymentRequest
+              example: K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=
+            rbaSettlementDatetime:
+              description: Timestamp when the payment was settled by the RBA
+              format: date-time
+              type: string
+            returnCompletedDatetime:
+              type: string
+              format: date-time
+              deprecated: true
+              description: Timestamp when the last refund was completed to either COMPLETED or FAILED. Use the `completedDateTime` on  each individual refund request instead.
+            returnInitiator:
+              description: AUTOMATIC for returns initiated by Azupay due to incorrect amount or duplicate payment. MANUAL for returns initiated by client due to product fulfillment or other client error.
+              enum:
+              - AUTOMATIC
+              - MANUAL
+              type: string
+            parentPaymentRequestId:
+              type: string
+              description: The paymentRequestId of a paymentRequest created with multiPayment set to true and for which this PaymentRequest was created and paid against.
+              example: K+9p4EE0rJnMtomRfWKWEDRh82BnAboHP2KwgIPyEIA=
+            status:
+              description: Status of the requested payment.
+              enum:
+              - WAITING
+              - EXPIRED
+              - COMPLETE
+              - RETURN_IN_PROGRESS
+              - RETURN_COMPLETE
+              - RETURN_FAILED
+              type: string
+            amountReceived:
+              type: number
+              description: The amount received from the customer
+            overpaymentAmount:
+              type: number
+              description: 'When the payment Request is `multiPayment` and has a `paymentAmount` defined, the payer can
+
+                overpay by mistake in which case the extra amount is refunded back to their account. This value represents
+
+                the extra amount that was refunded back to the payer. If the payment was for the exact amount, the value of this
+
+                field is zero.
+
+                This field will only be present when the payment request is in `COMPLETE` state.
+
+                '
+            payerPaymentDescription:
+              description: The description supplied by the payer when making the payment
+              type: string
+            payerPaymentReference:
+              description: The reference supplied by the payer when making the payment
+              type: string
+            failedPaymentAttempts:
+              description: This object is present when the payer has made invalid payments
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  attemptAmount:
+                    type: number
+                    description: The amount
+                  attemptDateTime:
+                    type: string
+                    description: The date time
+                  attemptFailureReason:
+                    type: string
+                    description: The reason for payment failure
+            payerInformation:
+              description: This object is present when the payment is completed and your client is configured to expose payer information.
+              type: object
+              additionalProperties: false
+              properties:
+                bsb:
+                  type: string
+                  description: The bsb
+                accountNumber:
+                  type: string
+                  description: The account number
+                fullLegalAccountName:
+                  type: string
+                  description: The full legal account name
+            nppTransactionId:
+              description: The identifier of the transaction in the NPP network. This is an identifier known by the initiating bank.
+              type: string
+            virtualBsb:
+              description: The BSB that can be used to pay for this payment request
+              type: string
+              pattern: ^\d{6}$
+              minLength: 6
+              maxLength: 6
+              example: '123456'
+            virtualAccountNumber:
+              description: The Account Number that can be used to pay for this payment request.
+              type: string
+              pattern: ^\d{5,9}$
+              minLength: 5
+              maxLength: 9
+            paidViaVirtualAccount:
+              deprecated: true
+              description: Please use `settledBy` instead. This field will be true if this payment request was paid using the `virtualBsb` and `virtualAccountNumber` instead of the `payID`.
+              type: boolean
+            paymentAgreementId:
+              type: string
+              minLength: 1
+              maxLength: 40
+              description: ID of the payment agreement created for for this PaymentRequest.  This is only populated when a PayTo paymentInitiation is created using a paymentRequestId and completes successfully.
+              example: K+9p4EE0rJnMtomRfWKWE2BnAboHP2KwgIPyEIA=
+    AccountNameObj:
+      type: string
+      description: The Account Name
+      minLength: 1
+      maxLength: 100
+      pattern: '[^\x00-\x1F\x7F]+'
+      example: Jane Doe
+    BsbObj:
+      type: string
+      description: The BSB of the account number
+      minLength: 6
+      maxLength: 6
+      pattern: ^\d*$
+      example: '123456'
+    nextPageIdResponse:
+      type: string
+      description: 'If there are more results you can invoke this search again by providing the nextPageId in
+
+        the query parameters to retrieve the next set of results.
+
+        '
+    PayerPayIDObj:
+      type: string
+      minLength: 1
+      maxLength: 140
+      example: '0400123123'
+      description: 'The payer''s PayID. Valid examples are `0432123321` (mobile) and `jane.smith@example.com` (email).
+
+        '
+    ErrorModel:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: false
+          properties:
+            failureCode:
+              type: string
+            failureReason:
+              type: string
+          required:
+          - failureCode
+          - failureReason
+    toDateUTC:
+      type: string
+      pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$
+      description: The report date in ISO date/time string format in UTC
+      example: '2021-10-18T02:32:30.693Z'
+    clientBranch:
+      type: string
+      minLength: 5
+      maxLength: 50
+      description: Optional branch identifier within the client
+      example: BRANCH1
+    recordCount:
+      type: number
+      description: The number of records that were retrieved.
+    suggestedPayerDetailsObj:
+      type: object
+      additionalProperties: false
+      description: 'Payer details to pre-populate the UI. Only one of `payIDDetails` or `bankAccountDetails` allowed.
+
+        '
+      properties:
+        payIDDetails:
+          type: object
+          description: PayID Details
+          additionalProperties: false
+          required:
+          - payID
+          properties:
+            payID:
+              $ref: '#/components/schemas/PayerPayIDObj'
+        bankAccountDetails:
+          description: Bank Account Details
+          additionalProperties: false
+          type: object
+          properties:
+            bsb:
+              $ref: '#/components/schemas/BsbObj'
+            accountNumber:
+              $ref: '#/components/schemas/AccountNumberObj'
+            accountName:
+              $ref: '#/components/schemas/AccountNameObj'
+  securitySchemes:
+    SecretKey:
+      description: 'The secret key is used to access restricted functions and should be stored
+
+        securely in your system. It is required for operations which may result in
+
+        additional charges to you as a merchant. Please protect the key by storing
+
+        it encrypted granting access only to a limited set of users and applications
+
+        requiring its use.
+
+        '
+      in: header
+      name: Authorization
+      type: apiKey
+    DistributableKey:
+      description: 'The distributable key has limited access and may be exposed publicly to
+
+        your payers.
+
+        '
+      in: header
+      name: Authorization
+      type: apiKey
