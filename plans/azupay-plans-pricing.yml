@@ -1,0 +1,31 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://azupay.com.au/pricing/
+sources:
+- https://azupay.com.au/pricing/
+- https://azupay.com.au/pricing
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: negotiated
+published: false
+note: Pricing page shows no numeric prices; directs users to 'Get a quote' and 'Talk to our team' for
+  tailored pricing.
+plan_count: 3
+plans:
+- name: Dashboard access
+  price_text: Get started
+  period: none
+  included_quota: Start fast, no integration needed; Real-time PayID and Payouts access; 24/7 Dashboard
+    access
+- name: Platform connection
+  price_text: See our partners
+  period: none
+  included_quota: Prebuilt partner integrations; Simplified reconciliation; Security and compliance handled
+- name: Direct integration
+  price_text: Book a demo
+  period: none
+  included_quota: Configurable workflows; Scalable pricing; Optimised performance and reliability

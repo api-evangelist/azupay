@@ -413,6 +413,8 @@ apis:
   - type: APIReference
     url: https://developer.azupay.com.au/reference/createclient
 common:
+- type: Plans
+  url: plans/azupay-plans-pricing.yml
 - type: CapabilityMap
   url: capabilities/azupay-capability-edges.yml
   name: Azupay Business Capability Map
