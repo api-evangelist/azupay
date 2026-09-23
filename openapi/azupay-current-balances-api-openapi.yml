@@ -12,9 +12,7 @@ servers:
   description: Production environment
 tags:
 - name: Current Balances
-  description: 'Obtain current dollar balances for Azupay products
-
-    '
+  description: Obtain current dollar balances for Azupay products
 paths:
   /balance:
     get:
@@ -24,9 +22,7 @@ paths:
       tags:
       - Current Balances
       summary: Get current balance
-      description: 'Returns balance of your Azupay account.
-
-        '
+      description: Returns balance of your Azupay account.
       parameters:
       - in: query
         name: timestamp
@@ -52,6 +48,14 @@ paths:
                 - $ref: '#/components/schemas/ErrorModel'
 components:
   schemas:
+    BalanceObj:
+      type: object
+      properties:
+        balance:
+          type: number
+          description: 'The balance of your Azupay account in AUD.
+
+            '
     ErrorModel:
       type: object
       additionalProperties: false
@@ -71,14 +75,6 @@ components:
           required:
           - failureCode
           - failureReason
-    BalanceObj:
-      type: object
-      properties:
-        balance:
-          type: number
-          description: 'The balance of your Azupay account in AUD.
-
-            '
   securitySchemes:
     SecretKey:
       description: 'The secret key is used to access restricted functions and should be stored

@@ -1,0 +1,48 @@
+{
+  "provider": "azupay",
+  "sources": [
+    "_original/azupay-check-accounts.yml",
+    "_original/azupay-configuration.yml",
+    "_original/azupay-payment-agreement.yml",
+    "_original/azupay-payment-request.yml",
+    "_original/azupay-payment.yml",
+    "_original/azupay-reports.yml"
+  ],
+  "outputs": [
+    "azupay-check-accounts-api-openapi.yml",
+    "azupay-api-keys-api-openapi.yml",
+    "azupay-clients-api-openapi.yml",
+    "azupay-payment-agreement-api-openapi.yml",
+    "azupay-payment-agreement-request-api-openapi.yml",
+    "azupay-payment-initiation-api-openapi.yml",
+    "azupay-payment-request-api-openapi.yml",
+    "azupay-payment-api-openapi.yml",
+    "azupay-billing-and-transaction-reports-api-openapi.yml",
+    "azupay-current-balances-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (6 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "azupay-check-accounts.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "azupay-configuration.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "azupay-payment-agreement.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "azupay-payment-request.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "azupay-payment.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "azupay-reports.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "azupay-api-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azupay-billing-and-transaction-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azupay-check-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azupay-clients-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azupay-current-balances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azupay-payment-agreement-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azupay-payment-agreement-request-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azupay-payment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azupay-payment-initiation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azupay-payment-request-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

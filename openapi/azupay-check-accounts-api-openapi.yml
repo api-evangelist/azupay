@@ -14,9 +14,7 @@ tags:
 - name: Check Accounts
   description: 'Before you submit a Payment you can validate if the PayID or BSB account of the recipient exists and
 
-    is eligible to receive payments.
-
-    '
+    is eligible to receive payments.'
 paths:
   /accountCheck:
     post:
@@ -25,7 +23,7 @@ paths:
       - SecretKey: []
       tags:
       - Check Accounts
-      summary: Confirm the BSB/account number and name of a payee.
+      summary: Confirm the BSB/account number and name of a payee
       description: The purpose of this operation is to validate the BSB/account number and name via Confirmation of Payee (CoP).
       requestBody:
         required: true
@@ -69,7 +67,7 @@ paths:
       - SecretKey: []
       tags:
       - Check Accounts
-      summary: Check account BSB for NPP and PayTo reachability.
+      summary: Check account BSB for NPP and PayTo reachability
       description: Check if NPP or AzupayTo payments can be sent to the account issuer identified by the given BSB.
       requestBody:
         required: true
@@ -128,8 +126,10 @@ paths:
       operationId: checkPayID
       tags:
       - Check Accounts
-      summary: Check the status of the PayID.
-      description: "Check if the PayID is registered and able to accept NPP and PayTo payments. \nAlso support validation of bsb and account number attached to the PayID.\n"
+      summary: Check the status of the PayID
+      description: 'Check if the PayID is registered and able to accept NPP and PayTo payments.
+
+        Also support validation of bsb and account number attached to the PayID.'
       requestBody:
         required: true
         content:
@@ -170,133 +170,6 @@ paths:
       - SecretKey: []
 components:
   schemas:
-    AccountStatusExtraForPayIdObj:
-      type: object
-      properties:
-        AccountStatus:
-          type: object
-          properties:
-            paytoReachable:
-              type: boolean
-              description: True if the PayID is PayTo reachable.
-            aliasName:
-              type: string
-              description: The alias name registered against the PayID.
-            validAccountName:
-              type: boolean
-              description: 'Whether the accountName provided in the parameter matches with the legal account name attached to the PayID
-
-                '
-    AccountStatusObj:
-      type: object
-      properties:
-        AccountStatus:
-          type: object
-          required:
-          - nppReachable
-          - paytoReachable
-          properties:
-            nppReachable:
-              type: boolean
-              description: "True if the account can accept deposits via NPP. Does not check if the account is closed or has \nsanctions that may prevent deposits clearing.\n"
-            accountServices:
-              type: array
-              items:
-                type: string
-                example: x2p1
-              description: "List of NPP services that can be used to send to deposits to this account. eg x2p1- OSKO, \nsct- Single Credit Transfer.\n"
-            validBsb:
-              type: boolean
-              description: Whether the bsb provided in the parameter matches with the account attached to the PayID
-            validAccountNumber:
-              type: boolean
-              description: 'Whether the accountNumber provided in the parameter matches with the account attached to the PayID
-
-                '
-            bic11:
-              type: string
-              description: "The BIC11 of the bank where the account is held. Only provided when both `bsb` and `accountNumber` is \nprovided in the parameters\n"
-    AccountStatusExtraForBSBObj:
-      type: object
-      properties:
-        AccountStatus:
-          type: object
-          properties:
-            paytoReachable:
-              type: boolean
-              description: True if the BSB is PayTo reachable.
-    PayIDEnquiryObj:
-      type: object
-      additionalProperties: false
-      required:
-      - payID
-      - payIDType
-      properties:
-        payID:
-          type: string
-          minLength: 1
-          maxLength: 140
-          example: johndoe@example.com
-          description: The PayID to check.
-        payIDType:
-          type: string
-          example: EMAIL
-          description: 'PayID Type. Valid Values:
-
-            - ''PHONE’ Can be a mobile phone number or landline with area code
-
-            - ‘EMAIL’ Email address
-
-            - ‘ABN’ Australian Business Number
-
-            - ‘ORG’ Organisation Name'
-          enum:
-          - PHONE
-          - EMAIL
-          - ABN
-          - ORG
-        bsb:
-          type: string
-          description: Bsb to validate. If provided, `accountNumber` must be present.
-        accountNumber:
-          type: string
-          description: Account number to validate. If provided, `bsb` must be present.
-        accountName:
-          type: string
-          minLength: 1
-          maxLength: 140
-          description: Account name to check against the payId legal account name.
-    ErrorModel:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-        details:
-          type: object
-          additionalProperties: false
-          properties:
-            failureCode:
-              type: string
-            failureReason:
-              type: string
-          required:
-          - failureCode
-          - failureReason
-    BSBEnquiryObj:
-      type: object
-      additionalProperties: false
-      required:
-      - bsb
-      properties:
-        bsb:
-          description: The BSB that is going to be validated against npp eligibility
-          maxLength: 6
-          minLength: 6
-          pattern: ^\d{6}$
-          type: string
     AccountCheckObj:
       type: object
       additionalProperties: false
@@ -378,6 +251,133 @@ components:
         retryAdvice:
           type: boolean
           description: Indicates whether the merchant should retry the CoP lookup. True for retryable errors (NAVL, RFSL, TMNY, TIME, TECH), false for non-retryable errors (BSBN, NCOP, OOUT, CNPF).
+    AccountStatusExtraForBSBObj:
+      type: object
+      properties:
+        AccountStatus:
+          type: object
+          properties:
+            paytoReachable:
+              type: boolean
+              description: True if the BSB is PayTo reachable.
+    ErrorModel:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: false
+          properties:
+            failureCode:
+              type: string
+            failureReason:
+              type: string
+          required:
+          - failureCode
+          - failureReason
+    AccountStatusObj:
+      type: object
+      properties:
+        AccountStatus:
+          type: object
+          required:
+          - nppReachable
+          - paytoReachable
+          properties:
+            nppReachable:
+              type: boolean
+              description: "True if the account can accept deposits via NPP. Does not check if the account is closed or has \nsanctions that may prevent deposits clearing.\n"
+            accountServices:
+              type: array
+              items:
+                type: string
+                example: x2p1
+              description: "List of NPP services that can be used to send to deposits to this account. eg x2p1- OSKO, \nsct- Single Credit Transfer.\n"
+            validBsb:
+              type: boolean
+              description: Whether the bsb provided in the parameter matches with the account attached to the PayID
+            validAccountNumber:
+              type: boolean
+              description: 'Whether the accountNumber provided in the parameter matches with the account attached to the PayID
+
+                '
+            bic11:
+              type: string
+              description: "The BIC11 of the bank where the account is held. Only provided when both `bsb` and `accountNumber` is \nprovided in the parameters\n"
+    PayIDEnquiryObj:
+      type: object
+      additionalProperties: false
+      required:
+      - payID
+      - payIDType
+      properties:
+        payID:
+          type: string
+          minLength: 1
+          maxLength: 140
+          example: johndoe@example.com
+          description: The PayID to check.
+        payIDType:
+          type: string
+          example: EMAIL
+          description: 'PayID Type. Valid Values:
+
+            - ''PHONE’ Can be a mobile phone number or landline with area code
+
+            - ‘EMAIL’ Email address
+
+            - ‘ABN’ Australian Business Number
+
+            - ‘ORG’ Organisation Name'
+          enum:
+          - PHONE
+          - EMAIL
+          - ABN
+          - ORG
+        bsb:
+          type: string
+          description: Bsb to validate. If provided, `accountNumber` must be present.
+        accountNumber:
+          type: string
+          description: Account number to validate. If provided, `bsb` must be present.
+        accountName:
+          type: string
+          minLength: 1
+          maxLength: 140
+          description: Account name to check against the payId legal account name.
+    AccountStatusExtraForPayIdObj:
+      type: object
+      properties:
+        AccountStatus:
+          type: object
+          properties:
+            paytoReachable:
+              type: boolean
+              description: True if the PayID is PayTo reachable.
+            aliasName:
+              type: string
+              description: The alias name registered against the PayID.
+            validAccountName:
+              type: boolean
+              description: 'Whether the accountName provided in the parameter matches with the legal account name attached to the PayID
+
+                '
+    BSBEnquiryObj:
+      type: object
+      additionalProperties: false
+      required:
+      - bsb
+      properties:
+        bsb:
+          description: The BSB that is going to be validated against npp eligibility
+          maxLength: 6
+          minLength: 6
+          pattern: ^\d{6}$
+          type: string
   securitySchemes:
     SecretKey:
       description: 'The secret key is used to access restricted functions and should be stored
