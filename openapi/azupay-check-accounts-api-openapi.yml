@@ -170,6 +170,23 @@ paths:
       - SecretKey: []
 components:
   schemas:
+    AccountStatusExtraForPayIdObj:
+      type: object
+      properties:
+        AccountStatus:
+          type: object
+          properties:
+            paytoReachable:
+              type: boolean
+              description: True if the PayID is PayTo reachable.
+            aliasName:
+              type: string
+              description: The alias name registered against the PayID.
+            validAccountName:
+              type: boolean
+              description: 'Whether the accountName provided in the parameter matches with the legal account name attached to the PayID
+
+                '
     AccountCheckObj:
       type: object
       additionalProperties: false
@@ -232,25 +249,18 @@ components:
               minLength: 1
               maxLength: 34
               pattern: ^[ -~]*$
-    AccountCheckResponseObj:
+    BSBEnquiryObj:
       type: object
+      additionalProperties: false
       required:
-      - accountCheckResultCode
-      - accountCheckResult
+      - bsb
       properties:
-        displayAccountName:
+        bsb:
+          description: The BSB that is going to be validated against npp eligibility
+          maxLength: 6
+          minLength: 6
+          pattern: ^\d{6}$
           type: string
-        accountCheckResultCode:
-          type: string
-        accountCheckResult:
-          type: string
-        errorReasonCode:
-          type: string
-        errorReasonDescription:
-          type: string
-        retryAdvice:
-          type: boolean
-          description: Indicates whether the merchant should retry the CoP lookup. True for retryable errors (NAVL, RFSL, TMNY, TIME, TECH), false for non-retryable errors (BSBN, NCOP, OOUT, CNPF).
     AccountStatusExtraForBSBObj:
       type: object
       properties:
@@ -260,6 +270,47 @@ components:
             paytoReachable:
               type: boolean
               description: True if the BSB is PayTo reachable.
+    PayIDEnquiryObj:
+      type: object
+      additionalProperties: false
+      required:
+      - payID
+      - payIDType
+      properties:
+        payID:
+          type: string
+          minLength: 1
+          maxLength: 140
+          example: johndoe@example.com
+          description: The PayID to check.
+        payIDType:
+          type: string
+          example: EMAIL
+          description: 'PayID Type. Valid Values:
+
+            - ''PHONE’ Can be a mobile phone number or landline with area code
+
+            - ‘EMAIL’ Email address
+
+            - ‘ABN’ Australian Business Number
+
+            - ‘ORG’ Organisation Name'
+          enum:
+          - PHONE
+          - EMAIL
+          - ABN
+          - ORG
+        bsb:
+          type: string
+          description: Bsb to validate. If provided, `accountNumber` must be present.
+        accountNumber:
+          type: string
+          description: Account number to validate. If provided, `bsb` must be present.
+        accountName:
+          type: string
+          minLength: 1
+          maxLength: 140
+          description: Account name to check against the payId legal account name.
     ErrorModel:
       type: object
       additionalProperties: false
@@ -308,76 +359,25 @@ components:
             bic11:
               type: string
               description: "The BIC11 of the bank where the account is held. Only provided when both `bsb` and `accountNumber` is \nprovided in the parameters\n"
-    PayIDEnquiryObj:
+    AccountCheckResponseObj:
       type: object
-      additionalProperties: false
       required:
-      - payID
-      - payIDType
+      - accountCheckResultCode
+      - accountCheckResult
       properties:
-        payID:
+        displayAccountName:
           type: string
-          minLength: 1
-          maxLength: 140
-          example: johndoe@example.com
-          description: The PayID to check.
-        payIDType:
+        accountCheckResultCode:
           type: string
-          example: EMAIL
-          description: 'PayID Type. Valid Values:
-
-            - ''PHONE’ Can be a mobile phone number or landline with area code
-
-            - ‘EMAIL’ Email address
-
-            - ‘ABN’ Australian Business Number
-
-            - ‘ORG’ Organisation Name'
-          enum:
-          - PHONE
-          - EMAIL
-          - ABN
-          - ORG
-        bsb:
+        accountCheckResult:
           type: string
-          description: Bsb to validate. If provided, `accountNumber` must be present.
-        accountNumber:
+        errorReasonCode:
           type: string
-          description: Account number to validate. If provided, `bsb` must be present.
-        accountName:
+        errorReasonDescription:
           type: string
-          minLength: 1
-          maxLength: 140
-          description: Account name to check against the payId legal account name.
-    AccountStatusExtraForPayIdObj:
-      type: object
-      properties:
-        AccountStatus:
-          type: object
-          properties:
-            paytoReachable:
-              type: boolean
-              description: True if the PayID is PayTo reachable.
-            aliasName:
-              type: string
-              description: The alias name registered against the PayID.
-            validAccountName:
-              type: boolean
-              description: 'Whether the accountName provided in the parameter matches with the legal account name attached to the PayID
-
-                '
-    BSBEnquiryObj:
-      type: object
-      additionalProperties: false
-      required:
-      - bsb
-      properties:
-        bsb:
-          description: The BSB that is going to be validated against npp eligibility
-          maxLength: 6
-          minLength: 6
-          pattern: ^\d{6}$
-          type: string
+        retryAdvice:
+          type: boolean
+          description: Indicates whether the merchant should retry the CoP lookup. True for retryable errors (NAVL, RFSL, TMNY, TIME, TECH), false for non-retryable errors (BSBN, NCOP, OOUT, CNPF).
   securitySchemes:
     SecretKey:
       description: 'The secret key is used to access restricted functions and should be stored
