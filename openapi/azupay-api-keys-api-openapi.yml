@@ -333,14 +333,6 @@ paths:
                 $ref: '#/components/schemas/ErrorModel'
 components:
   schemas:
-    SubClientIdObj:
-      type: string
-      description: 'Your client’s unique identifier that we provide you during the initial onboarding request.
-
-        '
-      minLength: 5
-      maxLength: 50
-      example: CLIENT1
     apiKeysProvisionObj:
       type: object
       additionalProperties: false
@@ -447,6 +439,66 @@ components:
           - RestAPI/GET:balance
           - RestAPI/GET:paymentRequest
           - RestAPI/POST:sweepRequest
+    ErrorModel:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: false
+          properties:
+            failureCode:
+              type: string
+            failureReason:
+              type: string
+          required:
+          - failureCode
+          - failureReason
+    GetOAuth2ResponseObj:
+      type: object
+      description: 'Response returned when retrieving the OAuth2 configuration for a client. Identical to `EnableOAuth2ResponseObj` except that `oauth2ClientSecret` is **not** returned because the secret is only ever exposed at enablement time.
+
+        '
+      additionalProperties: false
+      required:
+      - oauth2ClientId
+      - oauth2TokenUrl
+      - oauth2GrantType
+      - oauth2TtlInSecs
+      - oauth2AllowedScopes
+      properties:
+        oauth2ClientId:
+          type: string
+          description: The OAuth2 client identifier issued for this Azupay client.
+          example: 3n8q9p1k2l4m5o6p7q8r9s0t1u
+        oauth2TokenUrl:
+          type: string
+          format: url
+          description: The OAuth2 token endpoint to request access tokens from.
+          example: https://auth-uat.azupay.com.au/oauth2/token
+        oauth2GrantType:
+          type: string
+          description: The OAuth2 grant type supported by this client.
+          enum:
+          - client_credentials
+          example: client_credentials
+        oauth2TtlInSecs:
+          type: integer
+          description: The lifetime, in seconds, of access tokens issued for this client.
+          example: 3600
+        oauth2AllowedScopes:
+          type: array
+          description: The list of OAuth2 scopes that this client is allowed to request.
+          items:
+            type: string
+          example:
+          - RestAPI/GET:balance
+          - RestAPI/GET:paymentRequest
+          - RestAPI/POST:sweepRequest
     apiKeysProvisionResponseObj:
       type: object
       description: 'Response object returned upon successful provisioning of a new API key. Contains the newly created API key details including credentials and permissions.
@@ -489,70 +541,6 @@ components:
           example:
           - RestAPI/POST/paymentRequest
           - RestAPI/GET/paymentRequest
-    GetOAuth2ResponseObj:
-      type: object
-      description: 'Response returned when retrieving the OAuth2 configuration for a client. Identical to `EnableOAuth2ResponseObj` except that `oauth2ClientSecret` is **not** returned because the secret is only ever exposed at enablement time.
-
-        '
-      additionalProperties: false
-      required:
-      - oauth2ClientId
-      - oauth2TokenUrl
-      - oauth2GrantType
-      - oauth2TtlInSecs
-      - oauth2AllowedScopes
-      properties:
-        oauth2ClientId:
-          type: string
-          description: The OAuth2 client identifier issued for this Azupay client.
-          example: 3n8q9p1k2l4m5o6p7q8r9s0t1u
-        oauth2TokenUrl:
-          type: string
-          format: url
-          description: The OAuth2 token endpoint to request access tokens from.
-          example: https://auth-uat.azupay.com.au/oauth2/token
-        oauth2GrantType:
-          type: string
-          description: The OAuth2 grant type supported by this client.
-          enum:
-          - client_credentials
-          example: client_credentials
-        oauth2TtlInSecs:
-          type: integer
-          description: The lifetime, in seconds, of access tokens issued for this client.
-          example: 3600
-        oauth2AllowedScopes:
-          type: array
-          description: The list of OAuth2 scopes that this client is allowed to request.
-          items:
-            type: string
-          example:
-          - RestAPI/GET:balance
-          - RestAPI/GET:paymentRequest
-          - RestAPI/POST:sweepRequest
-    ApiKeyIdObj:
-      type: string
-      example: SECR
-      description: The ID provided when the API Key was generated via the API or from the dashboard.
-    ErrorModel:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-        details:
-          type: object
-          additionalProperties: false
-          properties:
-            failureCode:
-              type: string
-            failureReason:
-              type: string
-          required:
-          - failureCode
-          - failureReason
     ApiKeyUpdateObj:
       type: object
       description: 'Object used to update API key state (Active / Disabled).
@@ -569,10 +557,22 @@ components:
 
             '
           example: true
+    ApiKeyIdObj:
+      type: string
+      example: SECR
+      description: The ID provided when the API Key was generated via the API or from the dashboard.
     GetApiKeysResponseObj:
       type: array
       items:
         $ref: '#/components/schemas/GetApiKeyResponseObj'
+    SubClientIdObj:
+      type: string
+      description: 'Your client’s unique identifier that we provide you during the initial onboarding request.
+
+        '
+      minLength: 5
+      maxLength: 50
+      example: CLIENT1
   securitySchemes:
     SecretKey:
       description: 'The secret key is used to access restricted functions and should be stored
