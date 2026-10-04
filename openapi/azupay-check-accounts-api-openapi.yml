@@ -170,23 +170,6 @@ paths:
       - SecretKey: []
 components:
   schemas:
-    AccountStatusExtraForPayIdObj:
-      type: object
-      properties:
-        AccountStatus:
-          type: object
-          properties:
-            paytoReachable:
-              type: boolean
-              description: True if the PayID is PayTo reachable.
-            aliasName:
-              type: string
-              description: The alias name registered against the PayID.
-            validAccountName:
-              type: boolean
-              description: 'Whether the accountName provided in the parameter matches with the legal account name attached to the PayID
-
-                '
     AccountStatusObj:
       type: object
       properties:
@@ -257,15 +240,6 @@ components:
           minLength: 1
           maxLength: 140
           description: Account name to check against the payId legal account name.
-    AccountStatusExtraForBSBObj:
-      type: object
-      properties:
-        AccountStatus:
-          type: object
-          properties:
-            paytoReachable:
-              type: boolean
-              description: True if the BSB is PayTo reachable.
     ErrorModel:
       type: object
       additionalProperties: false
@@ -285,6 +259,25 @@ components:
           required:
           - failureCode
           - failureReason
+    AccountCheckResponseObj:
+      type: object
+      required:
+      - accountCheckResultCode
+      - accountCheckResult
+      properties:
+        displayAccountName:
+          type: string
+        accountCheckResultCode:
+          type: string
+        accountCheckResult:
+          type: string
+        errorReasonCode:
+          type: string
+        errorReasonDescription:
+          type: string
+        retryAdvice:
+          type: boolean
+          description: Indicates whether the merchant should retry the CoP lookup. True for retryable errors (NAVL, RFSL, TMNY, TIME, TECH), false for non-retryable errors (BSBN, NCOP, OOUT, CNPF).
     BSBEnquiryObj:
       type: object
       additionalProperties: false
@@ -297,6 +290,23 @@ components:
           minLength: 6
           pattern: ^\d{6}$
           type: string
+    AccountStatusExtraForPayIdObj:
+      type: object
+      properties:
+        AccountStatus:
+          type: object
+          properties:
+            paytoReachable:
+              type: boolean
+              description: True if the PayID is PayTo reachable.
+            aliasName:
+              type: string
+              description: The alias name registered against the PayID.
+            validAccountName:
+              type: boolean
+              description: 'Whether the accountName provided in the parameter matches with the legal account name attached to the PayID
+
+                '
     AccountCheckObj:
       type: object
       additionalProperties: false
@@ -359,25 +369,15 @@ components:
               minLength: 1
               maxLength: 34
               pattern: ^[ -~]*$
-    AccountCheckResponseObj:
+    AccountStatusExtraForBSBObj:
       type: object
-      required:
-      - accountCheckResultCode
-      - accountCheckResult
       properties:
-        displayAccountName:
-          type: string
-        accountCheckResultCode:
-          type: string
-        accountCheckResult:
-          type: string
-        errorReasonCode:
-          type: string
-        errorReasonDescription:
-          type: string
-        retryAdvice:
-          type: boolean
-          description: Indicates whether the merchant should retry the CoP lookup. True for retryable errors (NAVL, RFSL, TMNY, TIME, TECH), false for non-retryable errors (BSBN, NCOP, OOUT, CNPF).
+        AccountStatus:
+          type: object
+          properties:
+            paytoReachable:
+              type: boolean
+              description: True if the BSB is PayTo reachable.
   securitySchemes:
     SecretKey:
       description: 'The secret key is used to access restricted functions and should be stored

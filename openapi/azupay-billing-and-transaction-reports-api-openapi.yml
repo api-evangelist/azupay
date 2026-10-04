@@ -176,23 +176,11 @@ components:
           required:
           - failureCode
           - failureReason
-    fromDateWithTZO:
-      type: string
-      pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}[+\-]\d{2}:\d{2}$
-      description: The report date in ISO date/time string format with timezone offset
-      example: '2020-01-01T00:00:00.004+11:00'
     toDateWithTZO:
       type: string
       pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}[+\-]\d{2}:\d{2}$
       description: The report date in ISO date/time string format with timezone offset
       example: '2020-01-01T00:00:00.004+11:00'
-    ReportLinkModel:
-      type: object
-      properties:
-        reportUrl:
-          type: string
-      required:
-      - reportUrl
     ReportListModel:
       type: object
       properties:
@@ -228,6 +216,18 @@ components:
             - fromDate
             - toDate
             - clientId
+    fromDateWithTZO:
+      type: string
+      pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}[+\-]\d{2}:\d{2}$
+      description: The report date in ISO date/time string format with timezone offset
+      example: '2020-01-01T00:00:00.004+11:00'
+    ReportLinkModel:
+      type: object
+      properties:
+        reportUrl:
+          type: string
+      required:
+      - reportUrl
   securitySchemes:
     SecretKey:
       description: 'The secret key is used to access restricted functions and should be stored
