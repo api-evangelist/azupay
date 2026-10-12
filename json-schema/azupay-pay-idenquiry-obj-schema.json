@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azupay/main/json-schema/azupay-pay-idenquiry-obj-schema.json",
+  "title": "PayIDEnquiryObj",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/azupay-check-accounts-api-openapi.yml#/components/schemas/PayIDEnquiryObj",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "payID",
+    "payIDType"
+  ],
+  "properties": {
+    "payID": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 140,
+      "description": "The PayID to check."
+    },
+    "payIDType": {
+      "type": "string",
+      "description": "PayID Type. Valid Values:\n- 'PHONE’ Can be a mobile phone number or landline with area code\n- ‘EMAIL’ Email address\n- ‘ABN’ Australian Business Number\n- ‘ORG’ Organisation Name",
+      "enum": [
+        "PHONE",
+        "EMAIL",
+        "ABN",
+        "ORG"
+      ]
+    },
+    "bsb": {
+      "type": "string",
+      "description": "Bsb to validate. If provided, `accountNumber` must be present."
+    },
+    "accountNumber": {
+      "type": "string",
+      "description": "Account number to validate. If provided, `bsb` must be present."
+    },
+    "accountName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 140,
+      "description": "Account name to check against the payId legal account name."
+    }
+  }
+}

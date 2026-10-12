@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azupay/main/json-schema/azupay-enable-oauth2-response-obj-schema.json",
+  "title": "EnableOAuth2ResponseObj",
+  "description": "Response returned when OAuth2 is successfully enabled for a client. Contains the credentials and metadata required to obtain access tokens via the OAuth2 `client_credentials` grant.\nThe `oauth2ClientSecret` is returned only once at enablement time and cannot be retrieved later. Store it securely.\n",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/azupay-api-keys-api-openapi.yml#/components/schemas/EnableOAuth2ResponseObj",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "oauth2ClientId",
+    "oauth2ClientSecret",
+    "oauth2TokenUrl",
+    "oauth2GrantType",
+    "oauth2TtlInSecs",
+    "oauth2AllowedScopes"
+  ],
+  "properties": {
+    "oauth2ClientId": {
+      "type": "string",
+      "description": "The OAuth2 client identifier issued for this Azupay client. Use this value as the `client_id` parameter when requesting an access token from `oauth2TokenUrl`.\n"
+    },
+    "oauth2ClientSecret": {
+      "type": "string",
+      "description": "The OAuth2 client secret issued for this Azupay client. Use this value as the `client_secret` parameter when requesting an access token from `oauth2TokenUrl`.\n**This value is returned only once when OAuth2 is enabled and is never returned again by subsequent GET requests. Store it securely.**\n"
+    },
+    "oauth2TokenUrl": {
+      "type": "string",
+      "format": "url",
+      "description": "The OAuth2 token endpoint. POST to this URL with `application/x-www-form-urlencoded` body containing `grant_type`, `client_id` and `client_secret` to obtain an access token.\n"
+    },
+    "oauth2GrantType": {
+      "type": "string",
+      "description": "The OAuth2 grant type supported by this client.",
+      "enum": [
+        "client_credentials"
+      ]
+    },
+    "oauth2TtlInSecs": {
+      "type": "integer",
+      "description": "The lifetime, in seconds, of access tokens issued for this client."
+    },
+    "oauth2AllowedScopes": {
+      "type": "array",
+      "description": "The list of OAuth2 scopes that this client is allowed to request.",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

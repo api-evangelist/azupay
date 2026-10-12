@@ -1,5 +1,5 @@
 ---
-name: Set up a PayTo agreement and debit it
+name: azupay-payto-agreement-and-debit
 description: Establish a PayTo mandate and initiate debits against it.
 api: openapi/azupay-payment-agreement.yml
 operations: [createPaymentAgreementRequest, createPaymentAgreement, changeStatusOfPaymentAgreement, makePaymentInitiation, getPaymentInitiation, refundPaymentInitation, createOrUpdatePaymentScheduler]

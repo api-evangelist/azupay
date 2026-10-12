@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azupay/main/json-schema/azupay-payment-scheduler-response-schema.json",
+  "title": "PaymentSchedulerResponse",
+  "description": "Standard scheduler response: the resource plus its server-managed state.",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PaymentSchedulerResponse",
+  "type": "object",
+  "required": [
+    "PaymentScheduler",
+    "PaymentSchedulerStatus"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "PaymentScheduler": {
+      "$ref": "#/$defs/PaymentScheduler"
+    },
+    "PaymentSchedulerStatus": {
+      "$ref": "#/$defs/PaymentSchedulerStatus"
+    }
+  },
+  "$defs": {
+    "PaymentScheduler": {
+      "type": "object",
+      "description": "Scheduler attached to an active PayTo payment agreement. On create/amend, status accepts ACTIVE or INACTIVE only;\nother lifecycle states (PAUSED, CANCELLED, COMPLETED) may appear on read responses.\n",
+      "required": [
+        "status",
+        "frequency",
+        "startDate",
+        "amount",
+        "timezone"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "paymentAgreementId": {
+          "type": "string",
+          "description": "The payment agreement the scheduler is attached to.",
+          "minLength": 1,
+          "maxLength": 50
+        },
+        "status": {
+          "type": "string",
+          "description": "Scheduler state. Create/amend accept ACTIVE or INACTIVE only.",
+          "enum": [
+            "ACTIVE",
+            "INACTIVE"
+          ]
+        },
+        "frequency": {
+          "type": "string",
+          "description": "Run frequency. Must match the underlying agreement's frequency.",
+          "enum": [
+            "WEEKLY",
+            "FORTNIGHTLY",
+            "MONTHLY",
+            "ANNUAL",
+            "ONCE"
+          ]
+        },
+        "amount": {
+          "type": "string",
+          "description": "Run amount in AUD as a string. Must fit inside the agreement's per-payment and per-period caps.",
+          "pattern": "^\\d+\\.\\d{2}$"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date",
+          "description": "First run date (YYYY-MM-DD). Must be strictly after today in the scheduler's timezone.",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "endDate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date",
+          "description": "Last permitted run date (YYYY-MM-DD). Omit for an open-ended scheduler; send null to clear on amend.",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "timezone": {
+          "type": "string",
+          "description": "IANA timezone name (e.g. Australia/Sydney, Australia/Perth, UTC). No implicit default.",
+          "pattern": "^([A-Za-z]+/[A-Za-z_]+|UTC)$"
+        },
+        "version": {
+          "type": "integer",
+          "description": "Version required when updating this scheduler"
+        }
+      }
+    },
+    "PaymentSchedulerStatus": {
+      "type": "object",
+      "description": "Server-managed state returned on every GET/POST response.",
+      "required": [
+        "version",
+        "createdDatetime"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "integer",
+          "description": "Monotonically incrementing version, updated on each successful mutation."
+        },
+        "lastRunDatetime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Datetime of the most recent recorded run, if any (ISO 8601 UTC, millisecond precision)."
+        },
+        "createdDatetime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Scheduler creation timestamp (ISO 8601 UTC)."
+        },
+        "updatedDatetime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the most recent amendment, if any (ISO 8601 UTC)."
+        }
+      }
+    }
+  }
+}

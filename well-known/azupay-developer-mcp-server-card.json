@@ -1,0 +1,1 @@
+{"$schema":"https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json","name":"com.readme/azupay","version":"1","title":"Azupay Developer Docs","description":"MCP server for Azupay Developer Docs. Lets AI agents explore this project's API reference and documentation.","remotes":[{"type":"streamable-http","url":"https://developer.azupay.com.au/mcp"}]}

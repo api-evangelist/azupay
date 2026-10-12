@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azupay/main/json-schema/azupay-payment-agreement-status-obj-schema.json",
+  "title": "PaymentAgreementStatusObj",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PaymentAgreementStatusObj",
+  "type": "object",
+  "required": [
+    "PaymentAgreementStatus"
+  ],
+  "properties": {
+    "PaymentAgreementStatus": {
+      "type": "object",
+      "required": [
+        "paymentAgreementId",
+        "status",
+        "createdDatetime"
+      ],
+      "properties": {
+        "paymentAgreementId": {
+          "$ref": "#/$defs/azupayId"
+        },
+        "registrationDatetime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the payment agreement was registered"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the requested payment agreement.",
+          "enum": [
+            "CREATED",
+            "ACTIVE",
+            "SUSPENDED",
+            "CANCELLED",
+            "FAILED"
+          ]
+        },
+        "previousStatus": {
+          "type": "string",
+          "description": "Previous status of the requested payment agreement.",
+          "enum": [
+            "CREATED",
+            "ACTIVE",
+            "SUSPENDED"
+          ]
+        },
+        "lastStatusBy": {
+          "type": "string",
+          "description": "The party who last changed the status.",
+          "enum": [
+            "MERCHANT",
+            "PAYER",
+            "AZUPAY"
+          ]
+        },
+        "payerBsb": {
+          "type": "string",
+          "description": "The BSB of the payer"
+        },
+        "reasonDescription": {
+          "type": "string",
+          "description": "The reasonCode description (a detailed list is available under the `reasonCode` field)."
+        },
+        "reasonCode": {
+          "type": "string",
+          "description": "A reason code for a payment agreement that was initially ACTIVE/CREATED then CANCELLED\n\n| `reasonCode` | Description                                                                                                                                                                                                                                                                                                                                                                         |\n|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| AC02         | Account to be debited does not exist within NPP and outside of NPP and cannot be reached by any other payment method. This code is also to be used when a Participant attempts to resolve a Debtor PayID and no account details are returned.                                                                                                                                       |\n| AC04         | The account has been closed and the Mandate is no longer valid.                                                                                                                                                                                                                                                                                                                     |\n| AC05         | The Payer Customer Account number is closed and the Mandate is no longer valid.                                                                                                                                                                                                                                                                                                     |\n| AC06         | Account is temporarily blocked where it can identify that the Account currently exists.                                                                                                                                                                                                                                                                                              |\n| AC13         | Account to be debited cannot debit funds within NPP where it is able to identify that the Account currently exists.                                                                                                                                                                                                                                                                 |\n| AG01         | Account to be debited is unable to be debited where it can identify that the Account currently exists                                                                                                                                                                                                                                                                               |\n| AG03         | Where a Mandate has been amended by the Initiating Participant such that payment initiation (the combination of debtor account and creditor account) resolves to an Account type that is not supported for sending or receiving NPP Payments.                                                                                                                                       |\n| AM03         | Account to be debited cannot draw funds in AUD where it is able to identify that the Account currently exists.                                                                                                                                                                                                                                                                      |\n| AM12         | No amount and/or no maximum amount are specified in the Mandate.                                                                                                                                                                                                                                                                                                                    |\n| AM14         | The specified Mandate amount (when supplied) exceeds the allowed transaction amount for the account for the specified Mandate. This code is appropriate in instances when account limits change, impacting Mandates referencing that account.                                                                                                                                       |\n| CTAM         | Mandate suspended due to amendment of the contract.                                                                                                                                                                                                                                                                                                                                 |\n| CTCA         | Mandate suspended due to cancellation of the contract, requested by the debtor.                                                                                                                                                                                                                                                                                                     |\n| CTEX         | Mandate suspended due to the contract that expired.                                                                                                                                                                                                                                                                                                                                 |\n| MCFC         | Mandate suspended as final collection took place.                                                                                                                                                                                                                                                                                                                                   |\n| MCOC         | Mandate suspended as the once off collection took place.                                                                                                                                                                                                                                                                                                                            |\n| MD07         | End customer is deceased.                                                                                                                                                                                                                                                                                                                                                           |\n| MD08         | The Mandate Service is no longer supported by the Agent                                                                                                                                                                                                                                                                                                                             |\n| MD09         | The Payer Customer or Payer Customer Account does not support the Mandate or no longer supports Mandate Services. For example, based on the Mandate purpose code, the Payer Customer may be ineligible for the Mandate service requested (e.g.: use of gambling-type Mandates are not permitted where it is identified that a Payer Customer is a minor or a vulnerable customer).  |\n| MD16         | Cancellation/amendment requested by the debtor                                                                                                                                                                                                                                                                                                                                      |\n| MD17         | Cancellation/amendment requested by the creditor or by the initiating party                                                                                                                                                                                                                                                                                                         |\n| MD20         | Mandate cancellation following validity expiration                                                                                                                                                                                                                                                                                                                                  |\n| MS02         | Reason has not been specified by end customer                                                                                                                                                                                                                                                                                                                                       |\n| MS03         | Reason has not been specified by agent.                                                                                                                                                                                                                                                                                                                                             |\n| MSUC         | Mandate suspended after 7 consecutive unsuccessful collections.                                                                                                                                                                                                                                                                                                                     |\n| NARR         | Technical error encountered                                                                                                                                                                                                                                                                                                                                                         |\n| NOAS         | Participant received no response from beneficiary (to authorise or reject a Mandate creation or amendment request).                                                                                                                                                                                                                                                                 |\n| RR04         | The Mandate is suspended or cancelled due to regulatory reasons (e.g. Sanctions, AML).                                                                                                                                                                                                                                                                                              |\n| SL01         | Due to specific service offered by the Debtor Agent                                                                                                                                                                                                                                                                                                                                 |\n| SL11         | The Mandate is suspended or cancelled due to the Payee or the Initiating Party nominated in the Mandate not being included or being removed from the Payer Customer’s “whitelist”.                                                                                                                                                                                                  |\n| SL12         | The Mandate is suspended or cancelled due to the Payee or the Initiating Party nominated in the Mandate being included on the Payer Customer’s “blacklist”.                                                                                                                                                                                                                         |\n"
+        },
+        "failureCode": {
+          "type": "string",
+          "description": "A failure code for a payment agreement that is in `status=FAILED`. The codes are:\n\n| `failureCode` | `failureReason`                                                              |\n|---------------|------------------------------------------------------------------------------|\n| AZP2.1        | \tAn error has occurred with this Payment Agreement. Please contact support. |\n| AZP2.2        | \tThe payer account is not eligible for PayTo payments.                      |\n| AZP2.3        | \tThe payer account is not eligible for NPP payments.                        |\n| AZP2.4        | \tPayee alias details are invalid.                                           |\n| AZP3.1        | \tLast payment date must be equal to or after start date.                    |\n| AZP3.2        | \tStart date must be today or future dated.                                  |\n| AZP3.3        | \tEnd date must be equal to or after start date.                             |\n| AZP4.1        | \tRequest Timed Out. Please Try again.                                       |\n| AZP4.2        | \tPossible NPP outage. Please try again later.                               |\n| AZP9.9        | \tFatal Error. Please contact support.                                       |\n"
+        },
+        "failureReason": {
+          "type": "string",
+          "description": "A reason message for a payment agreement that is in `status=FAILED`."
+        },
+        "createdDatetime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the payment agreement was created"
+        },
+        "cancelledDatetime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the payment agreement was cancelled"
+        },
+        "bilateralAmendment": {
+          "type": "object",
+          "properties": {
+            "inProgress": {
+              "type": "boolean",
+              "description": "True if bilateral amendment of payment agreement is in progress"
+            },
+            "paymentAgreementAmendmentId": {
+              "type": "string",
+              "description": "ID of the last amendment for reference"
+            }
+          }
+        },
+        "unilateralAmendment": {
+          "type": "object",
+          "properties": {
+            "paymentAgreementAmendmentId": {
+              "type": "string",
+              "description": "ID of the last amendment for reference"
+            }
+          }
+        },
+        "changeStatusAmendment": {
+          "type": "object",
+          "properties": {
+            "inProgress": {
+              "type": "boolean",
+              "description": "True if payment agreement change status is in progress"
+            },
+            "paymentAgreementAmendmentId": {
+              "type": "string",
+              "description": "ID of the last amendment for reference"
+            }
+          }
+        },
+        "nppAgreementId": {
+          "type": "string",
+          "description": "The npp agreement id. A npp wide identifier used between banks, businesses and payment facilitators \nsuch as Azupay to reference a PayTo agreement. This identifier is made available shortly after the \ninitial creation of an agreement either via webhook or by querying existing agreement objects using \nthe API.\n"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "azupayId": {
+      "type": "string",
+      "description": "An identifier generated by Azupay. Used to reference the object in subsequent operations"
+    }
+  }
+}

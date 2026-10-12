@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azupay/main/json-schema/azupay-payment-initiation-status-obj-schema.json",
+  "title": "PaymentInitiationStatusObj",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/azupay-payment-initiation-api-openapi.yml#/components/schemas/PaymentInitiationStatusObj",
+  "type": "object",
+  "required": [
+    "PaymentInitiationStatus"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "PaymentInitiationStatus": {
+      "additionalProperties": false,
+      "required": [
+        "paymentInitiationId",
+        "status",
+        "createdDatetime"
+      ],
+      "type": "object",
+      "properties": {
+        "paymentInitiationId": {
+          "$ref": "#/$defs/azupayId"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the requested payment initiation.",
+          "enum": [
+            "CREATED",
+            "SETTLED",
+            "FAILED",
+            "PENDING",
+            "RETURN_IN_PROGRESS",
+            "RETURN_FAILED",
+            "RETURN_COMPLETE"
+          ]
+        },
+        "createdDatetime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the payment initiation was created."
+        },
+        "completedDatetime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the payment initiation was completed. Only for `status` different than `CREATED`.\n"
+        },
+        "statusCode": {
+          "type": "string",
+          "description": "A transaction status reason code returned by the destination institution. \n\nStandardized among NPP network participants.\n"
+        },
+        "statusReason": {
+          "type": "string",
+          "description": "A description corresponds to the value of the `statusCode` field.\n\nFor the full list, please refer to the\n[Status Code and Status Reason](/guide/receiving-recurring-payments.html#status-code-and-status-reason) page\n"
+        },
+        "nppTransactionId": {
+          "type": "string",
+          "description": "An identifier used to reference a payment pulled from a bank account between banks, businesses and \npayment facilitators such as Azupay.\n"
+        },
+        "payerInformation": {
+          "description": "This object is present when the payment is completed and your client is configured to expose payer information.",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "bsb": {
+              "type": "string",
+              "description": "The bsb"
+            },
+            "accountNumber": {
+              "type": "string",
+              "description": "The account number"
+            },
+            "fullLegalAccountName": {
+              "type": "string",
+              "description": "The full legal account name"
+            }
+          }
+        },
+        "refundInformation": {
+          "description": "This object is present when a refund is requested.",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "availableBalance": {
+              "type": "string",
+              "description": "The remaining balance after completion of all the refunds."
+            },
+            "requests": {
+              "type": "array",
+              "description": "An array of objects capturing log of completed refund requests",
+              "items": {
+                "type": "object",
+                "description": "Refund information",
+                "properties": {
+                  "createdDateTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp when refund request was initiated"
+                  },
+                  "completedDateTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp when refund request was completed."
+                  },
+                  "amount": {
+                    "type": "string",
+                    "description": "The refund amount"
+                  },
+                  "nppTransactionId": {
+                    "description": "The identifier of the transaction in the NPP network. This is an identifier known by the initiating bank and serves as unique identifier for the refund.",
+                    "type": "string"
+                  },
+                  "status": {
+                    "description": "The status of the refund",
+                    "type": "string",
+                    "enum": [
+                      "IN_PROGRESS",
+                      "COMPLETE",
+                      "FAILED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "azupayId": {
+      "type": "string",
+      "description": "An identifier generated by Azupay. Used to reference the object in subsequent operations"
+    }
+  }
+}

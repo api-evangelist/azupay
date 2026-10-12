@@ -2,6 +2,7 @@
 generated: '2026-09-20'
 method: searched
 source: https://azupay.com.au/pricing/
+name: Azupay API Plans
 sources:
 - https://azupay.com.au/pricing/
 - https://azupay.com.au/pricing

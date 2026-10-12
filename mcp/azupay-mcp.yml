@@ -4,8 +4,8 @@ status: candidate
 server:
   name: azupay
   transport: http
-  note: No official Azupay MCP server is published as of this date; this is a candidate tool surface derived
-    1:1 from the REST OpenAPI operations to guide an agent integration.
+  note: No official Azupay MCP server is published as of this date; this is a candidate tool surface derived 1:1
+    from the REST OpenAPI operations to guide an agent integration.
 tools:
 - name: checkAccountDetails
   description: Confirm the BSB/account number and name of a payee.
@@ -124,3 +124,4 @@ deployment:
   tools: 37
   checked: '2026-08-12'
   source: catalog MCP census
+source: openapi/ (derived 1:1 from REST operations; no official MCP server published)

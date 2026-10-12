@@ -1,0 +1,367 @@
+{
+  "@context": {
+    "@vocab": "https://azupay.com.au/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "azupay": "https://azupay.com.au/schema#",
+    "GetOAuth2ResponseObj": "azupay:GetOAuth2ResponseObj",
+    "oauth2ClientId": {
+      "@id": "azupay:oauth2ClientId",
+      "@type": "xsd:string"
+    },
+    "oauth2TokenUrl": {
+      "@id": "azupay:oauth2TokenUrl",
+      "@type": "@id"
+    },
+    "oauth2GrantType": {
+      "@id": "azupay:oauth2GrantType",
+      "@type": "xsd:string"
+    },
+    "oauth2TtlInSecs": {
+      "@id": "azupay:oauth2TtlInSecs",
+      "@type": "xsd:integer"
+    },
+    "oauth2AllowedScopes": {
+      "@id": "azupay:oauth2AllowedScopes",
+      "@container": "@list"
+    },
+    "EnableOAuth2ResponseObj": "azupay:EnableOAuth2ResponseObj",
+    "oauth2ClientSecret": {
+      "@id": "azupay:oauth2ClientSecret",
+      "@type": "xsd:string"
+    },
+    "GetApiKeyResponseObj": "azupay:GetApiKeyResponseObj",
+    "keyID": {
+      "@id": "azupay:keyID",
+      "@type": "xsd:string"
+    },
+    "hmacEnabled": {
+      "@id": "azupay:hmacEnabled",
+      "@type": "xsd:boolean"
+    },
+    "enabled": {
+      "@id": "azupay:enabled",
+      "@type": "xsd:boolean"
+    },
+    "permittedOperations": {
+      "@id": "azupay:permittedOperations",
+      "@container": "@list"
+    },
+    "ErrorModel": "azupay:ErrorModel",
+    "message": {
+      "@id": "azupay:message",
+      "@type": "xsd:string"
+    },
+    "details": {
+      "@id": "azupay:details"
+    },
+    "ApiKeyUpdateObj": "azupay:ApiKeyUpdateObj",
+    "apiKeysProvisionObj": "azupay:apiKeysProvisionObj",
+    "permissions": {
+      "@id": "azupay:permissions",
+      "@container": "@list"
+    },
+    "generateHMAC": {
+      "@id": "azupay:generateHMAC",
+      "@type": "xsd:boolean"
+    },
+    "apiKeysProvisionResponseObj": "azupay:apiKeysProvisionResponseObj",
+    "apiKey": {
+      "@id": "azupay:apiKey",
+      "@type": "xsd:string"
+    },
+    "hmacKey": {
+      "@id": "azupay:hmacKey",
+      "@type": "xsd:string"
+    },
+    "ReportListModel": "azupay:ReportListModel",
+    "month": {
+      "@id": "azupay:month",
+      "@type": "xsd:string"
+    },
+    "reports": {
+      "@id": "azupay:reports",
+      "@container": "@list"
+    },
+    "ReportLinkModel": "azupay:ReportLinkModel",
+    "reportUrl": {
+      "@id": "azupay:reportUrl",
+      "@type": "xsd:string"
+    },
+    "AccountStatusObj": "azupay:AccountStatusObj",
+    "AccountStatus": {
+      "@id": "azupay:AccountStatus"
+    },
+    "PayIDEnquiryObj": "azupay:PayIDEnquiryObj",
+    "payID": {
+      "@id": "azupay:payID",
+      "@type": "xsd:string"
+    },
+    "payIDType": {
+      "@id": "azupay:payIDType",
+      "@type": "xsd:string"
+    },
+    "bsb": {
+      "@id": "azupay:bsb",
+      "@type": "xsd:string"
+    },
+    "accountNumber": {
+      "@id": "azupay:accountNumber",
+      "@type": "xsd:string"
+    },
+    "accountName": {
+      "@id": "azupay:accountName",
+      "@type": "xsd:string"
+    },
+    "AccountCheckResponseObj": "azupay:AccountCheckResponseObj",
+    "displayAccountName": {
+      "@id": "azupay:displayAccountName",
+      "@type": "xsd:string"
+    },
+    "accountCheckResultCode": {
+      "@id": "azupay:accountCheckResultCode",
+      "@type": "xsd:string"
+    },
+    "accountCheckResult": {
+      "@id": "azupay:accountCheckResult",
+      "@type": "xsd:string"
+    },
+    "errorReasonCode": {
+      "@id": "azupay:errorReasonCode",
+      "@type": "xsd:string"
+    },
+    "errorReasonDescription": {
+      "@id": "azupay:errorReasonDescription",
+      "@type": "xsd:string"
+    },
+    "retryAdvice": {
+      "@id": "azupay:retryAdvice",
+      "@type": "xsd:boolean"
+    },
+    "BSBEnquiryObj": "azupay:BSBEnquiryObj",
+    "AccountStatusExtraForPayIdObj": "azupay:AccountStatusExtraForPayIdObj",
+    "AccountCheckObj": "azupay:AccountCheckObj",
+    "accountCheckId": {
+      "@id": "azupay:accountCheckId",
+      "@type": "xsd:string"
+    },
+    "purposeCode": {
+      "@id": "azupay:purposeCode",
+      "@type": "xsd:string"
+    },
+    "additionalDetails": {
+      "@id": "azupay:additionalDetails"
+    },
+    "AccountStatusExtraForBSBObj": "azupay:AccountStatusExtraForBSBObj",
+    "SetLowBalanceThreshold": "azupay:SetLowBalanceThreshold",
+    "threshold": {
+      "@id": "azupay:threshold",
+      "@type": "xsd:string"
+    },
+    "PaymentStatusObj": "azupay:PaymentStatusObj",
+    "PaymentStatus": {
+      "@id": "azupay:PaymentStatus"
+    },
+    "PaymentObj": "azupay:PaymentObj",
+    "Payment": {
+      "@id": "azupay:Payment"
+    },
+    "LowBalanceThreshold": "azupay:LowBalanceThreshold",
+    "MerchantCodeEnumObj": "azupay:MerchantCodeEnumObj",
+    "LowBalanceEmailAddresses": "azupay:LowBalanceEmailAddresses",
+    "emailAddresses": {
+      "@id": "azupay:emailAddresses",
+      "@container": "@list"
+    },
+    "ClientObj": "azupay:ClientObj",
+    "client": {
+      "@id": "azupay:client"
+    },
+    "ClientWebhookResponseObj": "azupay:ClientWebhookResponseObj",
+    "SetLowBalanceEmailAddresses": "azupay:SetLowBalanceEmailAddresses",
+    "BalanceObj": "azupay:BalanceObj",
+    "balance": {
+      "@id": "azupay:balance",
+      "@type": "xsd:decimal"
+    },
+    "PaymentScheduler": "azupay:PaymentScheduler",
+    "paymentAgreementId": {
+      "@id": "azupay:paymentAgreementId",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "azupay:status",
+      "@type": "xsd:string"
+    },
+    "frequency": {
+      "@id": "azupay:frequency",
+      "@type": "xsd:string"
+    },
+    "amount": {
+      "@id": "azupay:amount",
+      "@type": "xsd:string"
+    },
+    "startDate": {
+      "@id": "azupay:startDate",
+      "@type": "xsd:date"
+    },
+    "endDate": {
+      "@id": "azupay:endDate",
+      "@type": "xsd:date"
+    },
+    "timezone": {
+      "@id": "azupay:timezone",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "azupay:version",
+      "@type": "xsd:integer"
+    },
+    "AdditionalDetailsObj": "azupay:AdditionalDetailsObj",
+    "customerNumber": {
+      "@id": "azupay:customerNumber",
+      "@type": "xsd:string"
+    },
+    "userID": {
+      "@id": "azupay:userID",
+      "@type": "xsd:string"
+    },
+    "authMethod": {
+      "@id": "azupay:authMethod",
+      "@type": "xsd:string"
+    },
+    "channelType": {
+      "@id": "azupay:channelType",
+      "@type": "xsd:string"
+    },
+    "ipAddress": {
+      "@id": "azupay:ipAddress",
+      "@type": "xsd:string"
+    },
+    "fraudScore": {
+      "@id": "azupay:fraudScore",
+      "@type": "xsd:string"
+    },
+    "deviceFingerprint": {
+      "@id": "azupay:deviceFingerprint",
+      "@type": "xsd:string"
+    },
+    "notes": {
+      "@id": "azupay:notes",
+      "@type": "xsd:string"
+    },
+    "geoLocation": {
+      "@id": "azupay:geoLocation",
+      "@type": "xsd:string"
+    },
+    "PaymentSchedulerResponse": "azupay:PaymentSchedulerResponse",
+    "PaymentSchedulerStatus": {
+      "@id": "azupay:PaymentSchedulerStatus",
+      "@type": "@id"
+    },
+    "PaymentSchedulerRequest": "azupay:PaymentSchedulerRequest",
+    "PayeeDetailsObj": "azupay:PayeeDetailsObj",
+    "becsUserId": {
+      "@id": "azupay:becsUserId",
+      "@type": "xsd:string"
+    },
+    "payeeName": {
+      "@id": "azupay:payeeName",
+      "@type": "@id"
+    },
+    "PayToErrorModel": "azupay:PayToErrorModel",
+    "PaymentAgreementSearchObj": "azupay:PaymentAgreementSearchObj",
+    "PaymentAgreementSearch": {
+      "@id": "azupay:PaymentAgreementSearch"
+    },
+    "NotificationObj": "azupay:NotificationObj",
+    "endpointURL": {
+      "@id": "azupay:endpointURL",
+      "@type": "@id"
+    },
+    "authorizationHeader": {
+      "@id": "azupay:authorizationHeader",
+      "@type": "@id"
+    },
+    "PayerDetailsObj": "azupay:PayerDetailsObj",
+    "name": {
+      "@id": "azupay:name",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "azupay:type",
+      "@type": "xsd:string"
+    },
+    "payIDDetails": {
+      "@id": "azupay:payIDDetails"
+    },
+    "bankAccountDetails": {
+      "@id": "azupay:bankAccountDetails"
+    },
+    "PaymentAgreementObj": "azupay:PaymentAgreementObj",
+    "PaymentAgreement": {
+      "@id": "azupay:PaymentAgreement"
+    },
+    "PaymentAgreementAmendmentStatusObj": "azupay:PaymentAgreementAmendmentStatusObj",
+    "PaymentAgreementAmendmentStatus": {
+      "@id": "azupay:PaymentAgreementAmendmentStatus"
+    },
+    "PaymentAgreementAmendmentObj": "azupay:PaymentAgreementAmendmentObj",
+    "PaymentAgreementAmendment": {
+      "@id": "azupay:PaymentAgreementAmendment"
+    },
+    "PaymentAgreementStatusObj": "azupay:PaymentAgreementStatusObj",
+    "PaymentAgreementStatus": {
+      "@id": "azupay:PaymentAgreementStatus"
+    },
+    "suggestedPayerDetailsObj": "azupay:suggestedPayerDetailsObj",
+    "PaymentAgreementRequestStatusObj": "azupay:PaymentAgreementRequestStatusObj",
+    "PaymentAgreementRequestStatus": {
+      "@id": "azupay:PaymentAgreementRequestStatus"
+    },
+    "PaymentAgreementRequestObj": "azupay:PaymentAgreementRequestObj",
+    "PaymentAgreementRequest": {
+      "@id": "azupay:PaymentAgreementRequest"
+    },
+    "PaymentSearchObj": "azupay:PaymentSearchObj",
+    "PaymentSearch": {
+      "@id": "azupay:PaymentSearch"
+    },
+    "PaymentInitiationObj": "azupay:PaymentInitiationObj",
+    "PaymentInitiation": {
+      "@id": "azupay:PaymentInitiation"
+    },
+    "PaymentInitiationStatusObj": "azupay:PaymentInitiationStatusObj",
+    "PaymentInitiationStatus": {
+      "@id": "azupay:PaymentInitiationStatus"
+    },
+    "PaymentInitiationSearchObj": "azupay:PaymentInitiationSearchObj",
+    "PaymentInitiationSearch": {
+      "@id": "azupay:PaymentInitiationSearch"
+    },
+    "PaymentRequestStatusObj": "azupay:PaymentRequestStatusObj",
+    "PaymentRequestStatus": {
+      "@id": "azupay:PaymentRequestStatus"
+    },
+    "PaymentRequestObj": "azupay:PaymentRequestObj",
+    "PaymentRequest": {
+      "@id": "azupay:PaymentRequest"
+    },
+    "PaymentRequestSearchObj": "azupay:PaymentRequestSearchObj",
+    "PaymentRequestSearch": {
+      "@id": "azupay:PaymentRequestSearch"
+    }
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Azupay API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Azupay's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-12) from openapi/azupay-api-keys-api-openapi.yml, openapi/azupay-billing-and-transaction-reports-api-openapi.yml, openapi/azupay-check-accounts-api-openapi.yml.",
+  "dcterms:created": "2026-10-12",
+  "dcterms:source": [
+    "openapi/azupay-api-keys-api-openapi.yml",
+    "openapi/azupay-billing-and-transaction-reports-api-openapi.yml",
+    "openapi/azupay-check-accounts-api-openapi.yml",
+    "openapi/azupay-clients-api-openapi.yml",
+    "openapi/azupay-current-balances-api-openapi.yml"
+  ]
+}

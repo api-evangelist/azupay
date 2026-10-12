@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azupay/main/json-schema/azupay-payment-search-obj-schema.json",
+  "title": "PaymentSearchObj",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/azupay-payment-api-openapi.yml#/components/schemas/PaymentSearchObj",
+  "type": "object",
+  "properties": {
+    "PaymentSearch": {
+      "type": "object",
+      "properties": {
+        "clientPaymentId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-_]*$",
+          "minLength": 5,
+          "maxLength": 100,
+          "description": "Unique Id for the payment created by the merchant system"
+        },
+        "fromDate": {
+          "$ref": "#/$defs/fromDateUTC"
+        },
+        "toDate": {
+          "$ref": "#/$defs/toDateUTC"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "fromDateUTC": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$",
+      "description": "The report date in ISO date/time string format in UTC"
+    },
+    "toDateUTC": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$",
+      "description": "The report date in ISO date/time string format in UTC"
+    }
+  }
+}

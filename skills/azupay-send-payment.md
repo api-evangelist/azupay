@@ -1,5 +1,5 @@
 ---
-name: Send an outbound payment
+name: azupay-send-payment
 description: Send an NPP payment to a PayID or BSB/account and confirm settlement.
 api: openapi/azupay-payment.yml
 operations: [makePayment, getPayment, searchPayment]

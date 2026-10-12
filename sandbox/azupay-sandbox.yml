@@ -7,10 +7,10 @@ environments:
   description: Integration/UAT test environment. Access requires signed NDA and Azupay onboarding.
 - name: Production
   base_url: https://api.azupay.com.au/v1
-auth: Same Secret (SECR) and Distributable (DIST) API keys per environment, generated from the client
-  Dashboard; UAT uses fictitious accounts.
-notes: Azupay publishes fixed test PayIDs, phone/ABN/ORG identifiers and BSB/account numbers whose behaviour
-  is deterministic in UAT. Values below are published verbatim; never use in production.
+auth: Same Secret (SECR) and Distributable (DIST) API keys per environment, generated from the client Dashboard;
+  UAT uses fictitious accounts.
+notes: Azupay publishes fixed test PayIDs, phone/ABN/ORG identifiers and BSB/account numbers whose behaviour is
+  deterministic in UAT. Values below are published verbatim; never use in production.
 test_payids:
 - payid: johnsmith@test.com.au
   type: EMAIL
@@ -68,3 +68,6 @@ related_docs:
 - https://developer.azupay.com.au/docs/test-accounts-paymentinitiation-api
 - https://developer.azupay.com.au/docs/testing
 - https://developer.azupay.com.au/docs/account-references
+description: Azupay UAT test environment (api-uat.azupay.com.au/v1) with published deterministic test PayIDs and
+  BSB/account numbers.
+docs: https://developer.azupay.com.au/docs/test-accounts-payment-apis

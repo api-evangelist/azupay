@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azupay/main/json-schema/azupay-balance-obj-schema.json",
+  "title": "BalanceObj",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/azupay-current-balances-api-openapi.yml#/components/schemas/BalanceObj",
+  "type": "object",
+  "properties": {
+    "balance": {
+      "type": "number",
+      "description": "The balance of your Azupay account in AUD.\n"
+    }
+  }
+}

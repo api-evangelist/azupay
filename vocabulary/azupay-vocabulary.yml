@@ -1,0 +1,436 @@
+generated: '2026-10-12'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/azupay-api-keys-api-openapi.yml
+- openapi/azupay-billing-and-transaction-reports-api-openapi.yml
+- openapi/azupay-check-accounts-api-openapi.yml
+- openapi/azupay-clients-api-openapi.yml
+- openapi/azupay-current-balances-api-openapi.yml
+vocabulary:
+  name: Azupay Domain Vocabulary
+  description: 'Terms declared by Azupay''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-12'
+  terms:
+  - term: API Keys
+    definition: Manage API keys for your clients.
+    tags:
+    - Resource Group
+    source: openapi/azupay-api-keys-api-openapi.yml
+  - term: Billing and Transaction Reports
+    definition: Fetch transaction, billing and other reports.
+    tags:
+    - Resource Group
+    source: openapi/azupay-billing-and-transaction-reports-api-openapi.yml
+  - term: Check Accounts
+    definition: Before you submit a Payment you can validate if the PayID or BSB account of the recipient exists and is eligible to receive payments.
+    tags:
+    - Resource Group
+    source: openapi/azupay-check-accounts-api-openapi.yml
+  - term: Clients
+    definition: Would let you manage clients
+    tags:
+    - Resource Group
+    source: openapi/azupay-clients-api-openapi.yml
+  - term: Current Balances
+    definition: Obtain current dollar balances for Azupay products
+    tags:
+    - Resource Group
+    source: openapi/azupay-current-balances-api-openapi.yml
+  - term: Payment Agreement
+    definition: This API allows you to request Payments using mandates.
+    tags:
+    - Resource Group
+    source: openapi/azupay-payment-agreement-api-openapi.yml
+  - term: Payment Agreement Request
+    definition: This API generates a link to a one-time UX experience that enables payers to create and approve a PayTo Agreement, facilitating
+      the setup of recurring payments through the Payment Initiation API or batch processing. It is ideal for subscription-based products, such
+      as monthly fees.
+    tags:
+    - Resource Group
+    source: openapi/azupay-payment-agreement-request-api-openapi.yml
+  - term: Payment
+    definition: This API allows you to make outbound payments to PayID or NPP enabled BSB accounts.
+    tags:
+    - Resource Group
+    source: openapi/azupay-payment-api-openapi.yml
+  - term: Payment Initiation
+    definition: This API allows you to initiate Payments using mandates.
+    tags:
+    - Resource Group
+    source: openapi/azupay-payment-initiation-api-openapi.yml
+  - term: Payment Request
+    definition: This API allows your customers to make payments using PayID on your website, mobile app or over the counter.
+    tags:
+    - Resource Group
+    source: openapi/azupay-payment-request-api-openapi.yml
+  - term: GetOAuth2ResponseObj
+    definition: Response returned when retrieving the OAuth2 configuration for a client. Identical to `EnableOAuth2ResponseObj` except that `oauth2ClientSecret`
+      is **not** returned because the secret is only ever exposed at enablement time.
+    tags:
+    - Object
+    source: openapi/azupay-api-keys-api-openapi.yml#/components/schemas/GetOAuth2ResponseObj
+  - term: EnableOAuth2ResponseObj
+    definition: Response returned when OAuth2 is successfully enabled for a client. Contains the credentials and metadata required to obtain access
+      tokens via the OAuth2 `client_credentials` grant. The `oauth2ClientSecret` is returned only once at enablement time and cannot be retrieved
+      later. Store it securely.
+    tags:
+    - Object
+    source: openapi/azupay-api-keys-api-openapi.yml#/components/schemas/EnableOAuth2ResponseObj
+  - term: GetApiKeyResponseObj
+    definition: Response object that provides detailed information about an existing API key, including its current status, capabilities, and
+      permissions.
+    tags:
+    - Object
+    source: openapi/azupay-api-keys-api-openapi.yml#/components/schemas/GetApiKeyResponseObj
+  - term: ErrorModel
+    definition: 'Object declared by the contract with fields: message, details.'
+    tags:
+    - Object
+    source: openapi/azupay-api-keys-api-openapi.yml#/components/schemas/ErrorModel
+  - term: ApiKeyIdObj
+    definition: The ID provided when the API Key was generated via the API or from the dashboard.
+    tags:
+    - Object
+    source: openapi/azupay-api-keys-api-openapi.yml#/components/schemas/ApiKeyIdObj
+  - term: SubClientIdObj
+    definition: Your client’s unique identifier that we provide you during the initial onboarding request.
+    tags:
+    - Object
+    source: openapi/azupay-api-keys-api-openapi.yml#/components/schemas/SubClientIdObj
+  - term: ApiKeyUpdateObj
+    definition: Object used to update API key state (Active / Disabled).
+    tags:
+    - Object
+    source: openapi/azupay-api-keys-api-openapi.yml#/components/schemas/ApiKeyUpdateObj
+  - term: apiKeysProvisionObj
+    definition: 'Object declared by the contract with fields: permissions, generateHMAC.'
+    tags:
+    - Object
+    source: openapi/azupay-api-keys-api-openapi.yml#/components/schemas/apiKeysProvisionObj
+  - term: apiKeysProvisionResponseObj
+    definition: Response object returned upon successful provisioning of a new API key. Contains the newly created API key details including credentials
+      and permissions.
+    tags:
+    - Object
+    source: openapi/azupay-api-keys-api-openapi.yml#/components/schemas/apiKeysProvisionResponseObj
+  - term: toDateWithTZO
+    definition: The report date in ISO date/time string format with timezone offset
+    tags:
+    - Object
+    source: openapi/azupay-billing-and-transaction-reports-api-openapi.yml#/components/schemas/toDateWithTZO
+  - term: ReportListModel
+    definition: 'Object declared by the contract with fields: month, reports.'
+    tags:
+    - Object
+    source: openapi/azupay-billing-and-transaction-reports-api-openapi.yml#/components/schemas/ReportListModel
+  - term: fromDateWithTZO
+    definition: The report date in ISO date/time string format with timezone offset
+    tags:
+    - Object
+    source: openapi/azupay-billing-and-transaction-reports-api-openapi.yml#/components/schemas/fromDateWithTZO
+  - term: ReportLinkModel
+    definition: 'Object declared by the contract with fields: reportUrl.'
+    tags:
+    - Object
+    source: openapi/azupay-billing-and-transaction-reports-api-openapi.yml#/components/schemas/ReportLinkModel
+  - term: AccountStatusObj
+    definition: 'Object declared by the contract with fields: AccountStatus.'
+    tags:
+    - Object
+    source: openapi/azupay-check-accounts-api-openapi.yml#/components/schemas/AccountStatusObj
+  - term: PayIDEnquiryObj
+    definition: 'Object declared by the contract with fields: payID, payIDType, bsb, accountNumber, accountName.'
+    tags:
+    - Object
+    source: openapi/azupay-check-accounts-api-openapi.yml#/components/schemas/PayIDEnquiryObj
+  - term: AccountCheckResponseObj
+    definition: 'Object declared by the contract with fields: displayAccountName, accountCheckResultCode, accountCheckResult, errorReasonCode,
+      errorReasonDescription, retryAdvice.'
+    tags:
+    - Object
+    source: openapi/azupay-check-accounts-api-openapi.yml#/components/schemas/AccountCheckResponseObj
+  - term: BSBEnquiryObj
+    definition: 'Object declared by the contract with fields: bsb.'
+    tags:
+    - Object
+    source: openapi/azupay-check-accounts-api-openapi.yml#/components/schemas/BSBEnquiryObj
+  - term: AccountStatusExtraForPayIdObj
+    definition: 'Object declared by the contract with fields: AccountStatus.'
+    tags:
+    - Object
+    source: openapi/azupay-check-accounts-api-openapi.yml#/components/schemas/AccountStatusExtraForPayIdObj
+  - term: AccountCheckObj
+    definition: 'Object declared by the contract with fields: accountCheckId, bsb, accountNumber, accountName, purposeCode, additionalDetails.'
+    tags:
+    - Object
+    source: openapi/azupay-check-accounts-api-openapi.yml#/components/schemas/AccountCheckObj
+  - term: AccountStatusExtraForBSBObj
+    definition: 'Object declared by the contract with fields: AccountStatus.'
+    tags:
+    - Object
+    source: openapi/azupay-check-accounts-api-openapi.yml#/components/schemas/AccountStatusExtraForBSBObj
+  - term: SetLowBalanceThreshold
+    definition: 'Object declared by the contract with fields: threshold.'
+    tags:
+    - Object
+    source: openapi/azupay-clients-api-openapi.yml#/components/schemas/SetLowBalanceThreshold
+  - term: AdditionalTradingNamesObj
+    definition: Additional trading names
+    tags:
+    - Object
+    source: openapi/azupay-clients-api-openapi.yml#/components/schemas/AdditionalTradingNamesObj
+  - term: PaymentStatusObj
+    definition: 'Object declared by the contract with fields: PaymentStatus.'
+    tags:
+    - Object
+    source: openapi/azupay-clients-api-openapi.yml#/components/schemas/PaymentStatusObj
+  - term: PaymentObj
+    definition: 'Object declared by the contract with fields: Payment.'
+    tags:
+    - Object
+    source: openapi/azupay-clients-api-openapi.yml#/components/schemas/PaymentObj
+  - term: LowBalanceThreshold
+    definition: 'Object declared by the contract with fields: threshold.'
+    tags:
+    - Object
+    source: openapi/azupay-clients-api-openapi.yml#/components/schemas/LowBalanceThreshold
+  - term: PayIDDomainsObj
+    definition: A list of domain names that can be use for payIDs. Optionally use `merchantName` to control the payID description prefix.
+    tags:
+    - Object
+    source: openapi/azupay-clients-api-openapi.yml#/components/schemas/PayIDDomainsObj
+  - term: MerchantCodeEnumObj
+    definition: 'Enumeration declared by the contract with values: 7623, 8931, 7311, 763, 4511, 4582, 4119, 7996, 5937, 5932, 7998, 8911. (298
+      more)'
+    tags:
+    - Enumeration
+    source: openapi/azupay-clients-api-openapi.yml#/components/schemas/MerchantCodeEnumObj
+  - term: LowBalanceEmailAddresses
+    definition: 'Object declared by the contract with fields: emailAddresses.'
+    tags:
+    - Object
+    source: openapi/azupay-clients-api-openapi.yml#/components/schemas/LowBalanceEmailAddresses
+  - term: ClientObj
+    definition: 'Object declared by the contract with fields: client.'
+    tags:
+    - Object
+    source: openapi/azupay-clients-api-openapi.yml#/components/schemas/ClientObj
+  - term: ClientWebhookResponseObj
+    definition: 'Object declared by the contract with fields: client.'
+    tags:
+    - Object
+    source: openapi/azupay-clients-api-openapi.yml#/components/schemas/ClientWebhookResponseObj
+  - term: SetLowBalanceEmailAddresses
+    definition: 'Object declared by the contract with fields: emailAddresses.'
+    tags:
+    - Object
+    source: openapi/azupay-clients-api-openapi.yml#/components/schemas/SetLowBalanceEmailAddresses
+  - term: BalanceObj
+    definition: 'Object declared by the contract with fields: balance.'
+    tags:
+    - Object
+    source: openapi/azupay-current-balances-api-openapi.yml#/components/schemas/BalanceObj
+  - term: PaymentScheduler
+    definition: Scheduler attached to an active PayTo payment agreement. On create/amend, status accepts ACTIVE or INACTIVE only; other lifecycle
+      states (PAUSED, CANCELLED, COMPLETED) may appear on read responses.
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PaymentScheduler
+  - term: AdditionalDetailsObj
+    definition: Additional details for auditing purposes
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/AdditionalDetailsObj
+  - term: toDateUTC
+    definition: The report date in ISO date/time string format in UTC
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/toDateUTC
+  - term: PaymentSchedulerResponse
+    definition: 'Standard scheduler response: the resource plus its server-managed state.'
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PaymentSchedulerResponse
+  - term: countPerPeriod
+    definition: Number of payments within a specified period based on the frequency
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/countPerPeriod
+  - term: endpointURL
+    definition: An internet accessible url which Azupay will invoke when the status of the transaction has changed. The call will be done using
+      the HTTP POST method. The endpoint exposed by the client must be TLS 1.2 and the server certificate must be issued by a well known commercial
+      certificate authority and that self-signed or internally signed certs are not acceptable.
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/endpointURL
+  - term: AccountNumberObj
+    definition: The Account Number (without the BSB)
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/AccountNumberObj
+  - term: PaymentSchedulerRequest
+    definition: Create/amend request envelope.
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PaymentSchedulerRequest
+  - term: PayToAmountObj
+    definition: Amount in AUD to be requested from the Payee
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PayToAmountObj
+  - term: PayeeDetailsObj
+    definition: Payee Details
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PayeeDetailsObj
+  - term: PayToErrorModel
+    definition: 'Object declared by the contract with fields: message, details.'
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PayToErrorModel
+  - term: agreementPayeeName
+    definition: 'Lets you control the Payee description (visible to they payer) on the payment agreement: * If not populated, then your business
+      name will appear i.e. "My business name". * If populated, then your business appears as a facilitator so the description will read something
+      like "My business name on behalf of `payeeName`".'
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/agreementPayeeName
+  - term: azupayId
+    definition: An identifier generated by Azupay. Used to reference the object in subsequent operations
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/azupayId
+  - term: ContractIdObj
+    definition: Unique Id for the merchant side contract. This field is used to prevent the creation of duplicated payment agreements in CREATED,
+      SUSPENDED, ACTIVE status. Payment agreements in statuses such as CANCELLED, FAILED are not considered duplicates.
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/ContractIdObj
+  - term: PaymentAgreementSearchObj
+    definition: 'Object declared by the contract with fields: PaymentAgreementSearch.'
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PaymentAgreementSearchObj
+  - term: lastPaymentAmount
+    definition: Amount in AUD
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/lastPaymentAmount
+  - term: paymentAgreementIdForSearch
+    definition: ID of the payment agreement being searched.
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/paymentAgreementIdForSearch
+  - term: frequency
+    definition: Payment Frequency
+    tags:
+    - Enumeration
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/frequency
+  - term: NotificationObj
+    definition: Merchant Callback Details
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/NotificationObj
+  - term: lastPaymentDate
+    definition: A date in the calendar year expressed in this format YYYY-MM-DD. This date would be in Australia/Sydney timezone
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/lastPaymentDate
+  - term: endDate
+    definition: A date in the calendar year expressed in this format YYYY-MM-DD. This date would be in Australia/Sydney timezone
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/endDate
+  - term: PayerDetailsObj
+    definition: Provide either `payIDDetails` or `bankAccountDetails`
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PayerDetailsObj
+  - term: PaymentAgreementObj
+    definition: 'Object declared by the contract with fields: PaymentAgreement.'
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PaymentAgreementObj
+  - term: recordCount
+    definition: The number of records that were retrieved.
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/recordCount
+  - term: PaymentSchedulerStatus
+    definition: Server-managed state returned on every GET/POST response.
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PaymentSchedulerStatus
+  - term: PaymentAgreementAmendmentStatusObj
+    definition: 'Object declared by the contract with fields: PaymentAgreementAmendmentStatus.'
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PaymentAgreementAmendmentStatusObj
+  - term: StartDateObj
+    definition: A date in the calendar year expressed in this format YYYY-MM-DD. This date would be in Australia/Sydney timezone
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/StartDateObj
+  - term: maximumAmount
+    definition: Amount in AUD
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/maximumAmount
+  - term: ClientIdObj
+    definition: Id of the client initiating the transaction. This is supplied by Azupay and only changes between environments. For example, you
+      might be allocated CLIENT1TEST for the UAT environment and CLIENT1 for production.
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/ClientIdObj
+  - term: PaymentAgreementAmendmentObj
+    definition: 'Object declared by the contract with fields: PaymentAgreementAmendment.'
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PaymentAgreementAmendmentObj
+  - term: nextPageIdResponse
+    definition: If there are more results you can invoke this search again by providing the nextPageId in the query parameters to retrieve the
+      next set of results.
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/nextPageIdResponse
+  - term: fromDateUTC
+    definition: The report date in ISO date/time string format in UTC
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/fromDateUTC
+  - term: ClientTransactionIdObj
+    definition: Unique Id for the transaction created by the merchant system This field is used to prevent the creation of duplicated clients
+      in case of a message retry. It is recommended that a unique id (like uuid) is used for each client. If the same value is used a second time
+      the client will be replaced.
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/ClientTransactionIdObj
+  - term: amount
+    definition: Amount in AUD
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/amount
+  - term: AgreementExpiryMinutesObj
+    definition: An integer value representing the total number of minutes before a payment agreement expires. This field has a minimum value of
+      5 and a max of 7199
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/AgreementExpiryMinutesObj
+  - term: authorizationHeader
+    definition: The string that Azupay will put into the Authorization request header when calling the Callback url. Will be obfuscated (shown
+      as ****) in API responses.
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/authorizationHeader
+  - term: PaymentAgreementStatusObj
+    definition: 'Object declared by the contract with fields: PaymentAgreementStatus.'
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/PaymentAgreementStatusObj
+  - term: firstPaymentAmount
+    definition: Amount in AUD
+    tags:
+    - Object
+    source: openapi/azupay-payment-agreement-api-openapi.yml#/components/schemas/firstPaymentAmount

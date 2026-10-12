@@ -1,5 +1,5 @@
 ---
-name: Confirm a payee before paying
+name: azupay-confirmation-of-payee
 description: Verify account/PayID details with Confirmation of Payee to reduce misdirected payments.
 api: openapi/azupay-check-accounts.yml
 operations: [checkAccountDetails, enquireAccount, checkPayID]

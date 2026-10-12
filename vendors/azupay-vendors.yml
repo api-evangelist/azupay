@@ -1,0 +1,74 @@
+generated: '2026-10-12'
+method: probed
+source: pre-flight dossier (docs platform, portal detections) + CNAME chains and response headers of the hosts apis.yml names
+registry: all/0-working/vendors.yml
+areas_vocabulary:
+- documentation
+- developer-portal
+- api-gateway
+- cdn
+- hosting
+- sdk-generation
+- api-collections
+- status-page
+- support
+- community
+- identity
+- mcp-hosting
+vendors:
+- vendor: aws-api-gateway
+  name: Amazon API Gateway
+  area: api-gateway
+  host: api.azupay.com.au
+  evidence: cname:execute-api.
+  signal: cname
+  confidence: high
+  kin_score: []
+- vendor: cloudflare
+  name: Cloudflare
+  area: cdn
+  host: azupay.com.au
+  evidence: header:cf-ray
+  signal: header
+  confidence: high
+  kin_score:
+  - https_enforced
+  - hsts
+- vendor: cloudfront
+  name: Amazon CloudFront
+  area: cdn
+  host: dashboard.azupay.com.au
+  evidence: cname:cloudfront.net
+  signal: cname
+  confidence: high
+  kin_score: []
+- vendor: wpengine
+  name: WP Engine
+  area: hosting
+  host: azupay.com.au
+  evidence: header:x-powered-by:wp engine
+  signal: header
+  confidence: high
+  kin_score: []
+reliance:
+  areas_vendor_served:
+  - api-gateway
+  - cdn
+  - hosting
+  vendor_count: 4
+  areas_observed: 12
+  share_of_observable_areas: 0.25
+  note: areas where a third party was DETECTED serving this provider; an area absent here was either self-run or not observed, and this script
+    cannot tell those apart
+checked:
+- 'docs-platform: not probed'
+- azupay.com.au (Website)
+- developer.azupay.com.au (DeveloperPortal)
+- developer.azupay.com.au (Documentation)
+- developer.azupay.com.au (APIReference)
+- developer.azupay.com.au (GettingStarted)
+- developer.azupay.com.au (SignUp)
+- helpcentre.azupay.com.au (HelpCenter)
+- status.azupay.com.au (StatusPage)
+- dashboard.azupay.com.au (Login)
+- api.azupay.com.au (baseURL)

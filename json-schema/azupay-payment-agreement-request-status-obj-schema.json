@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azupay/main/json-schema/azupay-payment-agreement-request-status-obj-schema.json",
+  "title": "PaymentAgreementRequestStatusObj",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/azupay-payment-agreement-request-api-openapi.yml#/components/schemas/PaymentAgreementRequestStatusObj",
+  "type": "object",
+  "properties": {
+    "PaymentAgreementRequestStatus": {
+      "type": "object",
+      "required": [
+        "paymentAgreementId",
+        "sessionUrl"
+      ],
+      "properties": {
+        "paymentAgreementId": {
+          "type": "string",
+          "description": "Payment Agreement Id that can be used with the Payment Initiation API or batch.  This Id will only be valid once the payer has completed the one-time UX experience on the `sessionUrl` successfully."
+        },
+        "sessionUrl": {
+          "description": "Url link to a one-time UX experience that enables payers to create and approve a PayTo Agreement.  Attach encoded `redirectURL` and `cancelRedirectURL` as query parameters. If the `redirectURL` is invoked,  then the `paymentAgreementId` can be used later to take payments. If `cancelRedirectURL` is invoked a new `sessionUrl` must be generated for the payer to try again.",
+          "type": "string",
+          "readOnly": true,
+          "format": "url"
+        }
+      }
+    }
+  }
+}

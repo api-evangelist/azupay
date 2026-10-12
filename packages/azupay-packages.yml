@@ -1,0 +1,5 @@
+name: Azupay Packages
+generated: '2026-10-12'
+method: none
+note: No first-party client libraries found. registry.npmjs.org/azupay 404, registry.npmjs.org/@azupay/sdk 404, pypi.org/pypi/azupay/json 404; github.com/azupay org exists but lists no public repositories; developer.azupay.com.au/llms.txt index names no SDK pages.
+packages: []

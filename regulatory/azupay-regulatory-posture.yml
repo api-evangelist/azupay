@@ -1,0 +1,4 @@
+generated: '2026-10-12'
+method: none
+note: No horizontal regulatory signals (SBOM, subprocessors, accessibility conformance, data residency, etc.) found in harvested artifacts; probe-security-programs found no VDP or trust center.
+signals: {}

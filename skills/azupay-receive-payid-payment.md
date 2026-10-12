@@ -1,5 +1,5 @@
 ---
-name: Receive a PayID payment
+name: azupay-receive-payid-payment
 description: Create a PayID-addressed PaymentRequest and confirm the customer has paid.
 api: openapi/azupay-payment-request.yml
 operations: [createPayIdPaymentRequest, getPaymentRequest, searchPaymentRequest, refundPaymentRequest]

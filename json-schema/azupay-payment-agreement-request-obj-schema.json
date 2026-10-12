@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azupay/main/json-schema/azupay-payment-agreement-request-obj-schema.json",
+  "title": "PaymentAgreementRequestObj",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/azupay-payment-agreement-request-api-openapi.yml#/components/schemas/PaymentAgreementRequestObj",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "PaymentAgreementRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "clientTransactionId"
+      ],
+      "properties": {
+        "clientTransactionId": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 36
+        },
+        "agreementMaximumAmount": {
+          "$ref": "#/$defs/amount"
+        },
+        "agreementStartDate": {
+          "$ref": "#/$defs/StartDateObj"
+        },
+        "agreementEndDate": {
+          "$ref": "#/$defs/endDate"
+        },
+        "agreementFrequency": {
+          "$ref": "#/$defs/frequency"
+        },
+        "agreementDescription": {
+          "$ref": "#/$defs/agreementDescription"
+        },
+        "agreementCountPerPeriod": {
+          "$ref": "#/$defs/countPerPeriod"
+        },
+        "suggestedPayerDetails": {
+          "$ref": "#/$defs/suggestedPayerDetailsObj"
+        },
+        "paymentAgreementRequestNotification": {
+          "$ref": "#/$defs/NotificationObj"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "AccountNameObj": {
+      "type": "string",
+      "description": "The Account Name",
+      "minLength": 1,
+      "maxLength": 100,
+      "pattern": "[^\\x00-\\x1F\\x7F]+"
+    },
+    "AccountNumberObj": {
+      "type": "string",
+      "description": "The Account Number (without the BSB)",
+      "minLength": 4,
+      "maxLength": 9,
+      "pattern": "^\\d*$"
+    },
+    "BsbObj": {
+      "type": "string",
+      "description": "The BSB of the account number",
+      "minLength": 6,
+      "maxLength": 6,
+      "pattern": "^\\d*$"
+    },
+    "NotificationObj": {
+      "type": "object",
+      "description": "Merchant Callback Details",
+      "required": [
+        "endpointURL",
+        "authorizationHeader"
+      ],
+      "properties": {
+        "endpointURL": {
+          "$ref": "#/$defs/endpointURL"
+        },
+        "authorizationHeader": {
+          "$ref": "#/$defs/authorizationHeader"
+        }
+      }
+    },
+    "PayerPayIDObj": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 140,
+      "description": "The payer's PayID. Valid examples are `0432123321` (mobile) and `jane.smith@example.com` (email).\n"
+    },
+    "StartDateObj": {
+      "type": "string",
+      "description": "A date in the calendar year expressed in this format YYYY-MM-DD. This date would be in Australia/Sydney timezone",
+      "pattern": "^(?:[1-9]\\d{3}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1\\d|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[1-9]\\d(?:0[48]|[2468][048]|[13579][26])|(?:[2468][048]|[13579][26])00)-02-29)$"
+    },
+    "agreementDescription": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 140,
+      "pattern": "^[ -~]*$",
+      "description": "Description of the Payment Agreement visible to the payer."
+    },
+    "amount": {
+      "type": "string",
+      "description": "Amount in AUD",
+      "pattern": "^[0-9]+(\\.[0-9]{2})$"
+    },
+    "authorizationHeader": {
+      "type": "string",
+      "description": "The string that Azupay will put into the Authorization request header when calling the Callback url.\n\nWill be obfuscated (shown as ****) in API responses.\n"
+    },
+    "countPerPeriod": {
+      "type": "string",
+      "description": "Number of payments within a specified period based on the frequency",
+      "pattern": "^[1-9][0-9]{0,2}$"
+    },
+    "endDate": {
+      "type": "string",
+      "description": "A date in the calendar year expressed in this format YYYY-MM-DD. This date would be in Australia/Sydney timezone",
+      "pattern": "^(?:[1-9]\\d{3}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1\\d|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[1-9]\\d(?:0[48]|[2468][048]|[13579][26])|(?:[2468][048]|[13579][26])00)-02-29)$"
+    },
+    "endpointURL": {
+      "type": "string",
+      "format": "url",
+      "description": "An internet accessible url which Azupay will invoke when the status of the transaction has \nchanged. The call will be done using the HTTP POST method. The endpoint exposed by the client \nmust be TLS 1.2 and the server certificate must be issued by a well known commercial certificate \nauthority and that self-signed or internally signed certs are not acceptable.\n"
+    },
+    "frequency": {
+      "type": "string",
+      "description": "Payment Frequency",
+      "enum": [
+        "ADHOC",
+        "DAILY",
+        "FORTNIGHTLY",
+        "INTRADAY",
+        "SEMIANNUAL",
+        "MONTHLY",
+        "QUARTERLY",
+        "WEEKLY",
+        "ANNUAL"
+      ]
+    },
+    "suggestedPayerDetailsObj": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Payer details to pre-populate the UI. Only one of `payIDDetails` or `bankAccountDetails` allowed.\n",
+      "properties": {
+        "payIDDetails": {
+          "type": "object",
+          "description": "PayID Details",
+          "additionalProperties": false,
+          "required": [
+            "payID"
+          ],
+          "properties": {
+            "payID": {
+              "$ref": "#/$defs/PayerPayIDObj"
+            }
+          }
+        },
+        "bankAccountDetails": {
+          "description": "Bank Account Details",
+          "additionalProperties": false,
+          "type": "object",
+          "properties": {
+            "bsb": {
+              "$ref": "#/$defs/BsbObj"
+            },
+            "accountNumber": {
+              "$ref": "#/$defs/AccountNumberObj"
+            },
+            "accountName": {
+              "$ref": "#/$defs/AccountNameObj"
+            }
+          }
+        }
+      }
+    }
+  }
+}

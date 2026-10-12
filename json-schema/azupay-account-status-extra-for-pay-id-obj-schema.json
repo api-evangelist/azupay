@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azupay/main/json-schema/azupay-account-status-extra-for-pay-id-obj-schema.json",
+  "title": "AccountStatusExtraForPayIdObj",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/azupay-check-accounts-api-openapi.yml#/components/schemas/AccountStatusExtraForPayIdObj",
+  "type": "object",
+  "properties": {
+    "AccountStatus": {
+      "type": "object",
+      "properties": {
+        "paytoReachable": {
+          "type": "boolean",
+          "description": "True if the PayID is PayTo reachable."
+        },
+        "aliasName": {
+          "type": "string",
+          "description": "The alias name registered against the PayID."
+        },
+        "validAccountName": {
+          "type": "boolean",
+          "description": "Whether the accountName provided in the parameter matches with the legal account name attached to the PayID\n"
+        }
+      }
+    }
+  }
+}

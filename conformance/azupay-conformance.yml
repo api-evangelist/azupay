@@ -4,12 +4,10 @@ source: openapi/*.yml + developer.azupay.com.au docs
 standards:
 - id: oauth2-client-credentials
   conforms: true
-  evidence: Docs document OAuth 2.0 client-credentials as an additional server-to-server auth option (oauth-20-api);
-    tokens are JWT bearer.
+  evidence: Docs document OAuth 2.0 client-credentials as an additional server-to-server auth option (oauth-20-api); tokens are JWT bearer.
 - id: api-key-auth
   conforms: true
-  evidence: All operations accept a Secret or Distributable apiKey in the Authorization header (securitySchemes
-    SecretKey/DistributableKey).
+  evidence: All operations accept a Secret or Distributable apiKey in the Authorization header (securitySchemes SecretKey/DistributableKey).
 - id: npp-new-payments-platform
   conforms: true
   evidence: Real-time account-to-account payments settled over the NPP (AP+).
@@ -30,11 +28,19 @@ standards:
   evidence: Search operations page via nextPageId + numberOfRecords.
 - id: idempotency
   conforms: true
-  evidence: Client-supplied clientTransactionId / clientRefundID natural keys; duplicate submissions return
-    409.
+  evidence: Client-supplied clientTransactionId / clientRefundID natural keys; duplicate submissions return 409.
 - id: rfc9457-problem-details
   conforms: false
   evidence: Error bodies are plain JSON with a message field, not application/problem+json.
 - id: cdr-consumer-data-right
   conforms: false
   evidence: Azupay operates on NPP rails, not the CDR/Open Banking accreditation regime.
+- id: openapi-3.2
+  conforms: true
+  evidence: the document declares 3.2.0
+- id: oauth2
+  conforms: false
+  evidence: 'securitySchemes: DistributableKey (apiKey), SecretKey (apiKey)'
+- id: rfc9457
+  conforms: false
+  evidence: no response declares application/problem+json

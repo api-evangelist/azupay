@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azupay/main/json-schema/azupay-bsbenquiry-obj-schema.json",
+  "title": "BSBEnquiryObj",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/azupay-check-accounts-api-openapi.yml#/components/schemas/BSBEnquiryObj",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bsb"
+  ],
+  "properties": {
+    "bsb": {
+      "description": "The BSB that is going to be validated against npp eligibility",
+      "maxLength": 6,
+      "minLength": 6,
+      "pattern": "^\\d{6}$",
+      "type": "string"
+    }
+  }
+}

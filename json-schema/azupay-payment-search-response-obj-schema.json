@@ -1,0 +1,216 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azupay/main/json-schema/azupay-payment-search-response-obj-schema.json",
+  "title": "PaymentSearchResponseObj",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/azupay-payment-api-openapi.yml#/components/schemas/PaymentSearchResponseObj",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/$defs/PaymentObj"
+    },
+    {
+      "$ref": "#/$defs/PaymentStatusObj"
+    }
+  ],
+  "$defs": {
+    "PaymentObj": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Payment"
+      ],
+      "properties": {
+        "Payment": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "payeeName",
+            "clientPaymentId",
+            "paymentAmount",
+            "paymentDescription"
+          ],
+          "properties": {
+            "clientPaymentId": {
+              "description": "Unique Id for the payment created by the merchant system",
+              "type": "string",
+              "minLength": 5,
+              "maxLength": 100,
+              "pattern": "^[a-zA-Z0-9\\-_]*$"
+            },
+            "payeeName": {
+              "description": "The name of the Payee this payment is being sent to.",
+              "type": "string",
+              "pattern": "^[ -~]{1,140}$"
+            },
+            "payID": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 140,
+              "description": "The PayID for this payment. Payer can supply either a PayID or BSB/Account Number  combination but not both.\n"
+            },
+            "payIDType": {
+              "type": "string",
+              "description": "PayID Type. Only used when payment is addressed to a PayID. Valid Values:\n- 'PHONE’ Can be a mobile phone number or landline with area code. For example `+61-400000000\n- ‘EMAIL’ Email address\n- ‘ABN’ Australian Business Number\n- ‘ORG’ Organisation Name",
+              "enum": [
+                "PHONE",
+                "EMAIL",
+                "ABN",
+                "ORG"
+              ]
+            },
+            "bsb": {
+              "description": "The BSB of the recipients bank. When using a BSB/Account number payments you should verify that the bsb is valid.\n",
+              "type": "string",
+              "pattern": "^[0-9]*$",
+              "minLength": 6,
+              "maxLength": 6
+            },
+            "accountNumber": {
+              "description": "The payee's account number at the receiving financial institution.",
+              "type": "string",
+              "pattern": "^[0-9]*$",
+              "minLength": 4,
+              "maxLength": 12
+            },
+            "paymentAmount": {
+              "type": "string",
+              "pattern": "^[0-9]+(\\.[0-9]{2})$",
+              "description": "Amount in AUD to be paid to the Payee"
+            },
+            "paymentDescription": {
+              "description": "Description of this payment. Will appear as the payment description in the Payee's online banking and bank statement.",
+              "type": "string",
+              "minLength": 5,
+              "maxLength": 280
+            },
+            "paymentReference": {
+              "type": "string",
+              "maxLength": 35,
+              "description": "A reference to the payee so that they can easily identify the payer or purpose of the transaction\n"
+            },
+            "ultimatePayerName": {
+              "description": "The name of the ultimate payer. Lets you control the Payer description (visible to the payee) on the \npayment:\n- If not populated, then your business name will appear i.e. \"My business name\".\n- If populated, then the ultimate payer name will appear instead.\n",
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9\\-_ ]*$",
+              "minLength": 1,
+              "maxLength": 140
+            },
+            "paymentNotification": {
+              "description": "Definition of the endpoint used to notify about payment updates.",
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "paymentNotificationAuthorizationHeaderValue",
+                "paymentNotificationEndpointUrl"
+              ],
+              "properties": {
+                "paymentNotificationEndpointUrl": {
+                  "description": "An internet accessible url which Azupay will invoke when the status of a Payment has reached  \"COMPLETE\" status. The call will be done using the HTTP POST method. The endpoint exposed by  the client must be TLS 1.2 and the server certificate must be issued by a well known commercial  certificate authority and that self-signed or internally signed certs are not acceptable.\n",
+                  "type": "string",
+                  "format": "url"
+                },
+                "paymentNotificationAuthorizationHeaderValue": {
+                  "description": "The string that Azupay will put into the Authorization request header when making the payment notification call.",
+                  "type": "string"
+                }
+              }
+            },
+            "metaData": {
+              "type": "object",
+              "additionalProperties": true,
+              "description": "An object containing metaData field about the payment"
+            }
+          }
+        }
+      }
+    },
+    "PaymentStatusObj": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "PaymentStatus"
+      ],
+      "properties": {
+        "PaymentStatus": {
+          "type": "object",
+          "required": [
+            "paymentId",
+            "status",
+            "createdDatetime"
+          ],
+          "properties": {
+            "paymentId": {
+              "type": "string",
+              "description": "An identifier generated by Azupay. Used to reference the object in subsequent operations such as  getPayment.\n",
+              "readOnly": true
+            },
+            "status": {
+              "type": "string",
+              "description": "Status of the requested payment.",
+              "readOnly": true,
+              "enum": [
+                "CREATED",
+                "SETTLED",
+                "FAILED",
+                "PENDING",
+                "RETURNED"
+              ]
+            },
+            "createdDatetime": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Timestamp when the payment request was created.",
+              "readOnly": true
+            },
+            "settlementDatetime": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Timestamp when the payment was settled. Only if `status=SETTLED`.",
+              "readOnly": true
+            },
+            "completedDatetime": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Timestamp when the payment was processed by Azupay. Only for `status` different than `CREATED`.\n",
+              "readOnly": true
+            },
+            "failureReason": {
+              "type": "string",
+              "description": "A reason code for a payment that is in `status=FAILED`.",
+              "readOnly": true
+            },
+            "returnedReason": {
+              "type": "string",
+              "description": "A reason code for a payment that is in `status=RETURNED`.",
+              "readOnly": true
+            },
+            "returnedDatetime": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Timestamp when the payment was returned. Only if `status=RETURNED`.",
+              "readOnly": true
+            },
+            "currentBalance": {
+              "type": "number",
+              "description": "The liquidity balance of the your account with Azupay. This balance is the funds remaining in your  account after the amount for this payment has been deducted. It is approximate only as other payments  processed in parallel will also have altered the available liquidity.\n",
+              "readOnly": true
+            },
+            "nppTransactionId": {
+              "description": "The identifier of the transaction in the NPP network. This is an identifier visible to the receiving bank.",
+              "type": "string",
+              "readOnly": true
+            },
+            "sentViaDE": {
+              "description": "This field is set to true when the payment was sent via the direct entry (DE) network. When true,  this payment may take between 3 and 5 business days to settle.",
+              "type": "boolean",
+              "readOnly": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

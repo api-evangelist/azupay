@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azupay/main/json-schema/azupay-account-check-obj-schema.json",
+  "title": "AccountCheckObj",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/azupay-check-accounts-api-openapi.yml#/components/schemas/AccountCheckObj",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "accountCheckId",
+    "bsb",
+    "accountNumber",
+    "accountName",
+    "purposeCode",
+    "additionalDetails"
+  ],
+  "properties": {
+    "accountCheckId": {
+      "description": "The accountCheckId that is going to be used to track a cop lookup",
+      "type": "string",
+      "maxLength": 100,
+      "minLength": 5,
+      "pattern": "^[ -~]*$"
+    },
+    "bsb": {
+      "description": "The BSB that is going to be used for cop lookup",
+      "maxLength": 6,
+      "minLength": 6,
+      "pattern": "^[0-9]*$",
+      "type": "string"
+    },
+    "accountNumber": {
+      "description": "The accountNumber that is going to be used for cop lookup",
+      "maxLength": 12,
+      "minLength": 4,
+      "pattern": "^[0-9]*$",
+      "type": "string"
+    },
+    "accountName": {
+      "description": "The accountName that is going to be used for cop lookup",
+      "maxLength": 140,
+      "minLength": 1,
+      "type": "string",
+      "pattern": "^[^\\s].*[^\\s]$"
+    },
+    "purposeCode": {
+      "type": "string",
+      "description": "The purposeCode that declares the purpose of cop lookup",
+      "enum": [
+        "PYMT",
+        "PAYE",
+        "MAND",
+        "PIRQ",
+        "VADR"
+      ]
+    },
+    "additionalDetails": {
+      "type": "object",
+      "description": "Additional details",
+      "additionalProperties": false,
+      "required": [
+        "endUserId",
+        "endUserSessionId"
+      ],
+      "properties": {
+        "endUserId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 50,
+          "pattern": "^[ -~]*$"
+        },
+        "endUserSessionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 34,
+          "pattern": "^[ -~]*$"
+        }
+      }
+    }
+  }
+}

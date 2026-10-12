@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azupay/main/json-schema/azupay-payment-request-search-obj-schema.json",
+  "title": "PaymentRequestSearchObj",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/azupay-payment-request-api-openapi.yml#/components/schemas/PaymentRequestSearchObj",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "PaymentRequestSearch": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Please note `clientTransactionId` and `clientBranch` can't be included in the same request with the other fields.\n\n`payID` can be included with date but not with the other fields\n",
+      "properties": {
+        "clientTransactionId": {
+          "$ref": "#/$defs/ClientTransactionIdObj"
+        },
+        "fromDate": {
+          "$ref": "#/$defs/fromDateUTC"
+        },
+        "toDate": {
+          "$ref": "#/$defs/toDateUTC"
+        },
+        "payID": {
+          "type": "string",
+          "format": "email"
+        },
+        "clientBranch": {
+          "$ref": "#/$defs/clientBranch"
+        },
+        "searchByDateType": {
+          "type": "string",
+          "description": "Defines if the search will be based on the creation or completion date time. Default to CREATED_DESC",
+          "enum": [
+            "CREATED_DESC",
+            "COMPLETED_DESC"
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "ClientTransactionIdObj": {
+      "description": "Unique Id for the transaction created by the merchant system\n\nThis field is used to prevent the creation of duplicated clients in case of a message retry. It is\nrecommended that a unique id (like uuid) is used for each client. If the same value is used a second time\nthe client will be replaced.\n",
+      "minLength": 5,
+      "maxLength": 100,
+      "type": "string"
+    },
+    "clientBranch": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 50,
+      "description": "Optional branch identifier within the client"
+    },
+    "fromDateUTC": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$",
+      "description": "The report date in ISO date/time string format in UTC"
+    },
+    "toDateUTC": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$",
+      "description": "The report date in ISO date/time string format in UTC"
+    }
+  }
+}

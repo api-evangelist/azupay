@@ -1,20 +1,21 @@
 aid: azupay
+
 url: https://raw.githubusercontent.com/api-evangelist/azupay/refs/heads/main/apis.yml
+
 name: Azupay
+
 kind: company
-description: 'Azupay is an Australian real-time payments company that moves money over the New Payments
-  Platform (NPP), the account-to-account rails operated by Australian Payments Plus. It is API-first:
-  merchants and platforms embed Azupay to receive payments via PayID (AzupayId), send outbound payments
-  to a PayID or BSB/account number (AzupayOut), and collect recurring or on-demand debits through PayTo
-  mandates and payment agreements (AzupayTo). Azupay also offers Confirmation of Payee (CoP) account checks
-  and PayID enquiry to reduce misdirected-payment and fraud risk, batch/file (ABA and SFTP) processing
-  for bulk payouts and collections, reporting, balance management, sub-client and API-key management,
-  and hosted UX apps (Pay by Bank, Disbursements, Subscriptions). Its public developer portal documents
-  a REST API at api.azupay.com.au/v1 with a UAT environment, authenticated by API key (secret and distributable
-  keys in the Authorization header) with OAuth 2.0 client-credentials available as an additional server-to-server
-  option, plus webhooks for asynchronous payment status. Home market is Australia; the surface is genuinely
-  self-serve and documented, though production access and some capabilities (sub-clients, OAuth2) are
-  enabled per client by Azupay.'
+
+description: 'Azupay is an Australian real-time payments company that moves money over the New Payments Platform (NPP), the account-to-account
+  rails operated by Australian Payments Plus. It is API-first: merchants and platforms embed Azupay to receive payments via PayID (AzupayId),
+  send outbound payments to a PayID or BSB/account number (AzupayOut), and collect recurring or on-demand debits through PayTo mandates and payment
+  agreements (AzupayTo). Azupay also offers Confirmation of Payee (CoP) account checks and PayID enquiry to reduce misdirected-payment and fraud
+  risk, batch/file (ABA and SFTP) processing for bulk payouts and collections, reporting, balance management, sub-client and API-key management,
+  and hosted UX apps (Pay by Bank, Disbursements, Subscriptions). Its public developer portal documents a REST API at api.azupay.com.au/v1 with
+  a UAT environment, authenticated by API key (secret and distributable keys in the Authorization header) with OAuth 2.0 client-credentials available
+  as an additional server-to-server option, plus webhooks for asynchronous payment status. Home market is Australia; the surface is genuinely
+  self-serve and documented, though production access and some capabilities (sub-clients, OAuth2) are enabled per client by Azupay.'
+
 deliveryModel:
   model: saas
   open_source: false
@@ -27,6 +28,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -42,10 +44,15 @@ accessModel:
   - sandbox
   generated: '2026-09-02'
   method: derived
+
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+
 x-docs-platform: readme
+
 x-docs-platform-confidence: high
+
 x-docs-platform-checked: 2026-09-19
+
 tags:
 - Payments
 - Australia
@@ -57,362 +64,32 @@ tags:
 - Money Transfer
 - Confirmation of Payee
 - Open Banking
-created: '2026-07-24'
-modified: '2026-07-24'
-specificationVersion: '0.23'
-apis:
-- aid: azupay:azupay-api-keys-api
-  name: Azupay API Keys API
-  description: Manage API keys for your clients.
-  humanURL: https://developer.azupay.com.au/docs/receiving-payments
-  baseURL: https://api.azupay.com.au/v1
-  tags:
-  - APIKeys
-  tags_raw:
-  - API Keys
-  properties:
-  - type: OpenAPI
-    url: openapi/azupay-api-keys-api-openapi.yml
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/receiving-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/making-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/makepayment
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/payto-integration-guide
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpaymentagreement
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/account-check-cop
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/checkaccountdetails
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/report-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/getreport
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/clients-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createclient
-- aid: azupay:azupay-billing-and-transaction-reports-api
-  name: Azupay Billing and Transaction Reports API
-  description: Fetch transaction, billing and other reports.
-  humanURL: https://developer.azupay.com.au/docs/receiving-payments
-  baseURL: https://api.azupay.com.au/v1
-  tags:
-  - Billing and Transaction Reports
-  properties:
-  - type: OpenAPI
-    url: openapi/azupay-billing-and-transaction-reports-api-openapi.yml
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/receiving-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/making-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/makepayment
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/payto-integration-guide
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpaymentagreement
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/account-check-cop
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/checkaccountdetails
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/report-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/getreport
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/clients-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createclient
-- aid: azupay:azupay-check-accounts-api
-  name: Azupay Check Accounts API
-  description: >-
-    Before you submit a Payment you can validate if the PayID or BSB account of the recipient exists and
 
-    is eligible to receive payments.
-  humanURL: https://developer.azupay.com.au/docs/receiving-payments
-  baseURL: https://api.azupay.com.au/v1
-  tags:
-  - Check Accounts
-  properties:
-  - type: OpenAPI
-    url: openapi/azupay-check-accounts-api-openapi.yml
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/receiving-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/making-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/makepayment
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/payto-integration-guide
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpaymentagreement
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/account-check-cop
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/checkaccountdetails
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/report-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/getreport
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/clients-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createclient
-- aid: azupay:azupay-clients-api
-  name: Azupay Clients API
-  description: Would let you manage clients
-  humanURL: https://developer.azupay.com.au/docs/receiving-payments
-  baseURL: https://api.azupay.com.au/v1
-  tags:
-  - Clients
-  properties:
-  - type: OpenAPI
-    url: openapi/azupay-clients-api-openapi.yml
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/receiving-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/making-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/makepayment
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/payto-integration-guide
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpaymentagreement
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/account-check-cop
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/checkaccountdetails
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/report-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/getreport
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/clients-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createclient
-- aid: azupay:azupay-current-balances-api
-  name: Azupay Current Balances API
-  description: Obtain current dollar balances for Azupay products
-  humanURL: https://developer.azupay.com.au/docs/receiving-payments
-  baseURL: https://api.azupay.com.au/v1
-  tags:
-  - Current Balances
-  properties:
-  - type: OpenAPI
-    url: openapi/azupay-current-balances-api-openapi.yml
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/receiving-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/making-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/makepayment
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/payto-integration-guide
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpaymentagreement
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/account-check-cop
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/checkaccountdetails
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/report-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/getreport
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/clients-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createclient
-- aid: azupay:azupay-payment-agreement-api
-  name: Azupay Payment Agreement API
-  description: This API allows you to request Payments using mandates.
-  humanURL: https://developer.azupay.com.au/docs/receiving-payments
-  baseURL: https://api.azupay.com.au/v1
-  tags:
-  - Payment Agreement
-  properties:
-  - type: OpenAPI
-    url: openapi/azupay-payment-agreement-api-openapi.yml
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/receiving-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/making-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/makepayment
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/payto-integration-guide
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpaymentagreement
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/account-check-cop
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/checkaccountdetails
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/report-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/getreport
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/clients-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createclient
-- aid: azupay:azupay-payment-agreement-request-api
-  name: Azupay Payment Agreement Request API
-  description: "This API generates a link to a one-time UX experience that enables payers to create and\
-    \ approve a PayTo Agreement, \nfacilitating the setup of recurring payments through the Payment Initiation\
-    \ API or batch processing. \nIt is ideal for subscription-based products, such as monthly fees."
-  humanURL: https://developer.azupay.com.au/docs/receiving-payments
-  baseURL: https://api.azupay.com.au/v1
-  tags:
-  - Payment Agreement Request
-  properties:
-  - type: OpenAPI
-    url: openapi/azupay-payment-agreement-request-api-openapi.yml
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/receiving-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/making-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/makepayment
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/payto-integration-guide
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpaymentagreement
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/account-check-cop
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/checkaccountdetails
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/report-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/getreport
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/clients-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createclient
-- aid: azupay:azupay-payment-api
-  name: Azupay Payment API
-  description: This API allows you to make outbound payments to PayID or NPP enabled BSB accounts.
-  humanURL: https://developer.azupay.com.au/docs/receiving-payments
-  baseURL: https://api.azupay.com.au/v1
-  tags:
-  - Payments
-  tags_raw:
-  - Payment
-  properties:
-  - type: OpenAPI
-    url: openapi/azupay-payment-api-openapi.yml
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/receiving-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/making-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/makepayment
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/payto-integration-guide
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpaymentagreement
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/account-check-cop
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/checkaccountdetails
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/report-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/getreport
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/clients-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createclient
-- aid: azupay:azupay-payment-initiation-api
-  name: Azupay Payment Initiation API
-  description: This API allows you to initiate Payments using mandates.
-  humanURL: https://developer.azupay.com.au/docs/receiving-payments
-  baseURL: https://api.azupay.com.au/v1
-  tags:
-  - Payment Initiation
-  properties:
-  - type: OpenAPI
-    url: openapi/azupay-payment-initiation-api-openapi.yml
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/receiving-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/making-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/makepayment
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/payto-integration-guide
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpaymentagreement
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/account-check-cop
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/checkaccountdetails
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/report-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/getreport
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/clients-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createclient
-- aid: azupay:azupay-payment-request-api
-  name: Azupay Payment Request API
-  description: >-
-    This API allows your customers to make payments using PayID on your website, mobile app or over the
-    counter.
-  humanURL: https://developer.azupay.com.au/docs/receiving-payments
-  baseURL: https://api.azupay.com.au/v1
-  tags:
-  - Payment Request
-  properties:
-  - type: OpenAPI
-    url: openapi/azupay-payment-request-api-openapi.yml
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/receiving-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/making-payments
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/makepayment
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/payto-integration-guide
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createpaymentagreement
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/account-check-cop
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/checkaccountdetails
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/report-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/getreport
-  - type: Documentation
-    url: https://developer.azupay.com.au/docs/clients-api
-  - type: APIReference
-    url: https://developer.azupay.com.au/reference/createclient
+created: '2026-07-24'
+
+modified: '2026-07-24'
+
+specificationVersion: '0.23'
+
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+
 common:
+- type: Spectral
+  url: rules/azupay-rules.yml
+- type: JSONLD
+  url: json-ld/azupay-context.jsonld
+- type: Vocabulary
+  url: vocabulary/azupay-vocabulary.yml
+- type: SecurityTxt
+  url: well-known/azupay-status-security.txt
+- type: WellKnown
+  url: well-known/azupay-well-known.yml
+- type: Hosts
+  url: hosts/azupay-hosts.yml
+- type: Vendors
+  url: vendors/azupay-vendors.yml
 - type: Plans
   url: plans/azupay-plans-pricing.yml
 - type: CapabilityMap
@@ -494,9 +171,451 @@ common:
   url: llms/azupay-llms.txt
 - type: X-MCPServerCandidate
   url: mcp/azupay-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published
+    API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting
+    the artifact-type surfaces with a server that does not exist.'
 - type: AgentSkill
   url: skills/_index.yml
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+
+apis:
+- aid: azupay:azupay-api-keys-api
+  name: Azupay API Keys API
+  description: Manage API keys for your clients.
+  humanURL: https://developer.azupay.com.au/docs/receiving-payments
+  baseURL: https://api.azupay.com.au/v1
+  tags:
+  - APIKeys
+  tags_raw:
+  - API Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/azupay-api-keys-api-openapi.yml
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/receiving-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/making-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/makepayment
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/payto-integration-guide
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpaymentagreement
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/account-check-cop
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/checkaccountdetails
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/report-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/getreport
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/clients-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createclient
+  - type: JSONSchema
+    url: json-schema/azupay-enable-oauth2-response-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-get-oauth2-response-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-api-keys-provision-response-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-get-api-key-response-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-api-key-update-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-api-keys-provision-obj-schema.json
+- aid: azupay:azupay-billing-and-transaction-reports-api
+  name: Azupay Billing and Transaction Reports API
+  description: Fetch transaction, billing and other reports.
+  humanURL: https://developer.azupay.com.au/docs/receiving-payments
+  baseURL: https://api.azupay.com.au/v1
+  tags:
+  - Billing and Transaction Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/azupay-billing-and-transaction-reports-api-openapi.yml
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/receiving-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/making-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/makepayment
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/payto-integration-guide
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpaymentagreement
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/account-check-cop
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/checkaccountdetails
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/report-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/getreport
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/clients-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createclient
+  - type: JSONSchema
+    url: json-schema/azupay-report-list-model-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-report-link-model-schema.json
+- aid: azupay:azupay-check-accounts-api
+  name: Azupay Check Accounts API
+  description: 'Before you submit a Payment you can validate if the PayID or BSB account of the recipient exists and
+
+    is eligible to receive payments.'
+  humanURL: https://developer.azupay.com.au/docs/receiving-payments
+  baseURL: https://api.azupay.com.au/v1
+  tags:
+  - Check Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/azupay-check-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/receiving-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/making-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/makepayment
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/payto-integration-guide
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpaymentagreement
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/account-check-cop
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/checkaccountdetails
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/report-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/getreport
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/clients-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createclient
+  - type: JSONSchema
+    url: json-schema/azupay-account-check-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-account-status-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-pay-idenquiry-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-account-check-response-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-account-status-extra-for-pay-id-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-bsbenquiry-obj-schema.json
+- aid: azupay:azupay-clients-api
+  name: Azupay Clients API
+  description: Would let you manage clients
+  humanURL: https://developer.azupay.com.au/docs/receiving-payments
+  baseURL: https://api.azupay.com.au/v1
+  tags:
+  - Clients
+  properties:
+  - type: OpenAPI
+    url: openapi/azupay-clients-api-openapi.yml
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/receiving-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/making-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/makepayment
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/payto-integration-guide
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpaymentagreement
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/account-check-cop
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/checkaccountdetails
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/report-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/getreport
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/clients-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createclient
+  - type: JSONSchema
+    url: json-schema/azupay-client-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-set-low-balance-email-addresses-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-low-balance-email-addresses-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-low-balance-threshold-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-set-low-balance-threshold-schema.json
+- aid: azupay:azupay-current-balances-api
+  name: Azupay Current Balances API
+  description: Obtain current dollar balances for Azupay products
+  humanURL: https://developer.azupay.com.au/docs/receiving-payments
+  baseURL: https://api.azupay.com.au/v1
+  tags:
+  - Current Balances
+  properties:
+  - type: OpenAPI
+    url: openapi/azupay-current-balances-api-openapi.yml
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/receiving-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/making-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/makepayment
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/payto-integration-guide
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpaymentagreement
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/account-check-cop
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/checkaccountdetails
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/report-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/getreport
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/clients-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createclient
+  - type: JSONSchema
+    url: json-schema/azupay-balance-obj-schema.json
+- aid: azupay:azupay-payment-agreement-api
+  name: Azupay Payment Agreement API
+  description: This API allows you to request Payments using mandates.
+  humanURL: https://developer.azupay.com.au/docs/receiving-payments
+  baseURL: https://api.azupay.com.au/v1
+  tags:
+  - Payment Agreement
+  properties:
+  - type: OpenAPI
+    url: openapi/azupay-payment-agreement-api-openapi.yml
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/receiving-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/making-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/makepayment
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/payto-integration-guide
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpaymentagreement
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/account-check-cop
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/checkaccountdetails
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/report-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/getreport
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/clients-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createclient
+  - type: JSONSchema
+    url: json-schema/azupay-payment-agreement-status-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-agreement-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-agreement-amendment-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-agreement-amendment-status-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-agreement-search-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-scheduler-response-schema.json
+- aid: azupay:azupay-payment-agreement-request-api
+  name: Azupay Payment Agreement Request API
+  description: "This API generates a link to a one-time UX experience that enables payers to create and approve a PayTo Agreement, \nfacilitating\
+    \ the setup of recurring payments through the Payment Initiation API or batch processing. \nIt is ideal for subscription-based products, such\
+    \ as monthly fees."
+  humanURL: https://developer.azupay.com.au/docs/receiving-payments
+  baseURL: https://api.azupay.com.au/v1
+  tags:
+  - Payment Agreement Request
+  properties:
+  - type: OpenAPI
+    url: openapi/azupay-payment-agreement-request-api-openapi.yml
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/receiving-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/making-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/makepayment
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/payto-integration-guide
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpaymentagreement
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/account-check-cop
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/checkaccountdetails
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/report-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/getreport
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/clients-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createclient
+  - type: JSONSchema
+    url: json-schema/azupay-payment-agreement-request-status-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-agreement-request-obj-schema.json
+- aid: azupay:azupay-payment-api
+  name: Azupay Payment API
+  description: This API allows you to make outbound payments to PayID or NPP enabled BSB accounts.
+  humanURL: https://developer.azupay.com.au/docs/receiving-payments
+  baseURL: https://api.azupay.com.au/v1
+  tags:
+  - Payments
+  tags_raw:
+  - Payment
+  properties:
+  - type: OpenAPI
+    url: openapi/azupay-payment-api-openapi.yml
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/receiving-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/making-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/makepayment
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/payto-integration-guide
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpaymentagreement
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/account-check-cop
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/checkaccountdetails
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/report-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/getreport
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/clients-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createclient
+  - type: JSONSchema
+    url: json-schema/azupay-payment-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-status-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-search-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-search-response-obj-schema.json
+- aid: azupay:azupay-payment-initiation-api
+  name: Azupay Payment Initiation API
+  description: This API allows you to initiate Payments using mandates.
+  humanURL: https://developer.azupay.com.au/docs/receiving-payments
+  baseURL: https://api.azupay.com.au/v1
+  tags:
+  - Payment Initiation
+  properties:
+  - type: OpenAPI
+    url: openapi/azupay-payment-initiation-api-openapi.yml
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/receiving-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/making-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/makepayment
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/payto-integration-guide
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpaymentagreement
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/account-check-cop
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/checkaccountdetails
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/report-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/getreport
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/clients-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createclient
+  - type: JSONSchema
+    url: json-schema/azupay-payment-agreement-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-initiation-status-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-initiation-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-initiation-search-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-initiation-search-response-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-next-page-id-response-schema.json
+- aid: azupay:azupay-payment-request-api
+  name: Azupay Payment Request API
+  description: This API allows your customers to make payments using PayID on your website, mobile app or over the counter.
+  humanURL: https://developer.azupay.com.au/docs/receiving-payments
+  baseURL: https://api.azupay.com.au/v1
+  tags:
+  - Payment Request
+  properties:
+  - type: OpenAPI
+    url: openapi/azupay-payment-request-api-openapi.yml
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/receiving-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpayidpaymentrequest
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/making-payments
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/makepayment
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/payto-integration-guide
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createpaymentagreement
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/account-check-cop
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/checkaccountdetails
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/report-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/getreport
+  - type: Documentation
+    url: https://developer.azupay.com.au/docs/clients-api
+  - type: APIReference
+    url: https://developer.azupay.com.au/reference/createclient
+  - type: JSONSchema
+    url: json-schema/azupay-payment-request-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-request-status-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-request-search-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-next-page-id-response-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-payment-request-search-response-obj-schema.json
+  - type: JSONSchema
+    url: json-schema/azupay-record-count-schema.json
+x-enrichment:
+  date: '2026-10-12'
+  status: enriched
+  artifacts_added: 3
+  pass: local-v5

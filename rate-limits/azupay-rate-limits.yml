@@ -1,0 +1,7 @@
+name: Azupay Rate Limits
+generated: '2026-10-12'
+method: none
+source: https://developer.azupay.com.au/llms.txt
+limit_count: 0
+note: No published rate limits. The docs index (llms.txt) has no rate-limit page, developer.azupay.com.au/docs/rate-limiting.md returns 404, and no OpenAPI file declares a 429 response.
+limits: []

@@ -9,12 +9,16 @@ idempotency:
   supported: true
   mechanism: Client-supplied natural keys rather than a dedicated Idempotency-Key header.
   keys:
-  - clientTransactionId (PaymentRequest / Payment — unique id for the transaction created by the merchant
-    system)
+  - clientTransactionId (PaymentRequest / Payment — unique id for the transaction created by the merchant system)
   - clientRefundID (refund operations)
-  behaviour: Re-submitting a create with an already-used client key returns HTTP 409 Conflict; use it
-    to safely retry without creating duplicate payments.
+  behaviour: Re-submitting a create with an already-used client key returns HTTP 409 Conflict; use it to safely
+    retry without creating duplicate payments.
   artifact: errors/azupay-problem-types.yml
+  coverage: partial
+  scope:
+  - createPayIdPaymentRequest
+  - makePayment
+  - refundPaymentRequest
 pagination:
   style: cursor
   params:
@@ -30,9 +34,9 @@ pagination:
 versioning:
   scheme: uri-path
   current: v1
-  policy: Breaking changes ship under a new version; non-breaking changes (new endpoints, optional params,
-    reordered/added response fields, error-message wording, TLS cipher/cert changes) are made in place.
-    See getting-started Breaking vs Non-Breaking.
+  policy: Breaking changes ship under a new version; non-breaking changes (new endpoints, optional params, reordered/added
+    response fields, error-message wording, TLS cipher/cert changes) are made in place. See getting-started Breaking
+    vs Non-Breaking.
   artifact: lifecycle/azupay-lifecycle.yml
 error_envelope:
   format: plain JSON with a message field (not RFC 9457 problem+json)
