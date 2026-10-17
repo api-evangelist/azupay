@@ -170,35 +170,23 @@ paths:
       - SecretKey: []
 components:
   schemas:
-    AccountStatusObj:
+    AccountStatusExtraForPayIdObj:
       type: object
       properties:
         AccountStatus:
           type: object
-          required:
-          - nppReachable
-          - paytoReachable
           properties:
-            nppReachable:
+            paytoReachable:
               type: boolean
-              description: "True if the account can accept deposits via NPP. Does not check if the account is closed or has \nsanctions that may prevent deposits clearing.\n"
-            accountServices:
-              type: array
-              items:
-                type: string
-                example: x2p1
-              description: "List of NPP services that can be used to send to deposits to this account. eg x2p1- OSKO, \nsct- Single Credit Transfer.\n"
-            validBsb:
+              description: True if the PayID is PayTo reachable.
+            aliasName:
+              type: string
+              description: The alias name registered against the PayID.
+            validAccountName:
               type: boolean
-              description: Whether the bsb provided in the parameter matches with the account attached to the PayID
-            validAccountNumber:
-              type: boolean
-              description: 'Whether the accountNumber provided in the parameter matches with the account attached to the PayID
+              description: 'Whether the accountName provided in the parameter matches with the legal account name attached to the PayID
 
                 '
-            bic11:
-              type: string
-              description: "The BIC11 of the bank where the account is held. Only provided when both `bsb` and `accountNumber` is \nprovided in the parameters\n"
     PayIDEnquiryObj:
       type: object
       additionalProperties: false
@@ -240,25 +228,6 @@ components:
           minLength: 1
           maxLength: 140
           description: Account name to check against the payId legal account name.
-    ErrorModel:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-        details:
-          type: object
-          additionalProperties: false
-          properties:
-            failureCode:
-              type: string
-            failureReason:
-              type: string
-          required:
-          - failureCode
-          - failureReason
     AccountCheckResponseObj:
       type: object
       required:
@@ -290,23 +259,54 @@ components:
           minLength: 6
           pattern: ^\d{6}$
           type: string
-    AccountStatusExtraForPayIdObj:
+    ErrorModel:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: false
+          properties:
+            failureCode:
+              type: string
+            failureReason:
+              type: string
+          required:
+          - failureCode
+          - failureReason
+    AccountStatusObj:
       type: object
       properties:
         AccountStatus:
           type: object
+          required:
+          - nppReachable
+          - paytoReachable
           properties:
-            paytoReachable:
+            nppReachable:
               type: boolean
-              description: True if the PayID is PayTo reachable.
-            aliasName:
-              type: string
-              description: The alias name registered against the PayID.
-            validAccountName:
+              description: "True if the account can accept deposits via NPP. Does not check if the account is closed or has \nsanctions that may prevent deposits clearing.\n"
+            accountServices:
+              type: array
+              items:
+                type: string
+                example: x2p1
+              description: "List of NPP services that can be used to send to deposits to this account. eg x2p1- OSKO, \nsct- Single Credit Transfer.\n"
+            validBsb:
               type: boolean
-              description: 'Whether the accountName provided in the parameter matches with the legal account name attached to the PayID
+              description: Whether the bsb provided in the parameter matches with the account attached to the PayID
+            validAccountNumber:
+              type: boolean
+              description: 'Whether the accountNumber provided in the parameter matches with the account attached to the PayID
 
                 '
+            bic11:
+              type: string
+              description: "The BIC11 of the bank where the account is held. Only provided when both `bsb` and `accountNumber` is \nprovided in the parameters\n"
     AccountCheckObj:
       type: object
       additionalProperties: false
