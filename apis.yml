@@ -76,6 +76,8 @@ maintainers:
   email: kin@apievangelist.com
 
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/azupay/overview
 - type: Spectral
   url: rules/azupay-rules.yml
 - type: JSONLD
