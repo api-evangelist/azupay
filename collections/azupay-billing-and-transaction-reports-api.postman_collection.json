@@ -1,0 +1,552 @@
+{
+  "info": {
+    "_postman_id": "cc45bb7c-f10e-4267-a8bd-a1ff00907190",
+    "name": "Azupay Reports & Balance Billing and Transaction Reports API",
+    "description": "API Reference\n\nContact Support:\n Email: contactus@azupay.com.au",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:50:49.000Z",
+    "updatedAt": "2026-10-21T19:50:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cc45bb7c-f10e-4267-a8bd-a1ff00907190"
+  },
+  "item": [
+    {
+      "name": "report",
+      "item": [
+        {
+          "name": "download",
+          "item": [
+            {
+              "name": "Get Report download Url",
+              "id": "001ee112-df4d-4e33-b842-b0fe1d638228",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/report/download?clientId=<string>&reportId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "report",
+                    "download"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your clientId\n",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The reportId returned from the call to `/report` operation\n",
+                      "key": "reportId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Gets a time limited link to download the specified report"
+              },
+              "response": [
+                {
+                  "id": "cf1602ab-90ed-4b53-b6ac-f39ae7795462",
+                  "name": "The report link object",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/report/download?clientId=<string>&reportId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "report",
+                        "download"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Your clientId\n",
+                          "key": "clientId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The reportId returned from the call to `/report` operation\n",
+                          "key": "reportId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"reportUrl\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T19:50:49.000Z",
+                  "updatedAt": "2026-10-21T19:50:49.000Z",
+                  "uid": "35240-cf1602ab-90ed-4b53-b6ac-f39ae7795462"
+                },
+                {
+                  "id": "3f82b285-7740-42f4-83e9-0b3de0c86879",
+                  "name": "Not authorised to retrieve a link for the specified report",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/report/download?clientId=<string>&reportId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "report",
+                        "download"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Your clientId\n",
+                          "key": "clientId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The reportId returned from the call to `/report` operation\n",
+                          "key": "reportId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:50:49.000Z",
+                  "updatedAt": "2026-10-21T19:50:49.000Z",
+                  "uid": "35240-3f82b285-7740-42f4-83e9-0b3de0c86879"
+                },
+                {
+                  "id": "5cfcd5f6-0e98-4820-8ea5-82def1e23b82",
+                  "name": "The specified reportId was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/report/download?clientId=<string>&reportId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "report",
+                        "download"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Your clientId\n",
+                          "key": "clientId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The reportId returned from the call to `/report` operation\n",
+                          "key": "reportId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:50:49.000Z",
+                  "updatedAt": "2026-10-21T19:50:49.000Z",
+                  "uid": "35240-5cfcd5f6-0e98-4820-8ea5-82def1e23b82"
+                }
+              ],
+              "createdAt": "2026-10-21T19:50:49.000Z",
+              "updatedAt": "2026-10-21T19:50:49.000Z",
+              "uid": "35240-001ee112-df4d-4e33-b842-b0fe1d638228"
+            }
+          ],
+          "id": "eb10bcd2-fbb5-4f11-9beb-6314e039e278",
+          "createdAt": "2026-10-21T19:50:49.000Z",
+          "updatedAt": "2026-10-21T19:50:49.000Z",
+          "uid": "35240-eb10bcd2-fbb5-4f11-9beb-6314e039e278"
+        },
+        {
+          "name": "Get Reports",
+          "id": "386e0f79-0e76-4877-98d8-048c58b06992",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/report?clientId=<string>&month=3312-64&fromDate=<string>&toDate=<string>&timezone=Australia/Sydney",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "report"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Your clientId\n",
+                  "key": "clientId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The year and month\n",
+                  "key": "month",
+                  "value": "3312-64"
+                },
+                {
+                  "description": "The fromDate in ISO8601 and encoded.\n\ne.g. `2022-06-02T12%3A11%3A00.999%2B0530` instead of `2022-06-02T12:11:00.999+0530`\n",
+                  "key": "fromDate",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The toDate in ISO8601 and encoded.\n\ne.g. `2022-07-02T12%3A11%3A00.999%2B0530` instead of `2022-07-02T12:11:00.999+0530`\n",
+                  "key": "toDate",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The timezone to apply on date/time stamps. Currently only `Australia/Sydney` supported.\n",
+                  "key": "timezone",
+                  "value": "Australia/Sydney"
+                }
+              ]
+            },
+            "description": "Provides a list of reports that can be passed onto GET /report/download API endpoint. You can supply\n`month + timezone` query parameters OR you can supply `fromDate + toDate`. The former provides you a list of all\nreports automatically generated by azupay whilst the latter provides you with a report for the date range\nspecified.\n\nBecause `fromDate` and `toDate` contain special HTML entities (i.e. `:` and `+`), they must be encoded.\nExample: `2022-06-02T12:11:00.999+0530` must be supplied as `2022-06-02T12%3A11%3A00.999%2B0530`"
+          },
+          "response": [
+            {
+              "id": "de995ce5-f4c0-4ae7-956a-58e8d3adb500",
+              "name": "The list of reports available for the specified clientId and month",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/report?clientId=<string>&month=3312-64&fromDate=<string>&toDate=<string>&timezone=Australia/Sydney",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "report"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your clientId\n",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The year and month\n",
+                      "key": "month",
+                      "value": "3312-64"
+                    },
+                    {
+                      "description": "The fromDate in ISO8601 and encoded.\n\ne.g. `2022-06-02T12%3A11%3A00.999%2B0530` instead of `2022-06-02T12:11:00.999+0530`\n",
+                      "key": "fromDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The toDate in ISO8601 and encoded.\n\ne.g. `2022-07-02T12%3A11%3A00.999%2B0530` instead of `2022-07-02T12:11:00.999+0530`\n",
+                      "key": "toDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The timezone to apply on date/time stamps. Currently only `Australia/Sydney` supported.\n",
+                      "key": "timezone",
+                      "value": "Australia/Sydney"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"month\": \"1796-49\",\n  \"reports\": [\n    {\n      \"reportId\": \"<string>\",\n      \"type\": \"Billing Report\",\n      \"fromDate\": \"2828-52-67T70:60:42.470-39:35\",\n      \"toDate\": \"7179-59-03T11:09:64.304-59:22\",\n      \"clientId\": \"<string>\",\n      \"moreResultsPossible\": \"<boolean>\"\n    },\n    {\n      \"reportId\": \"<string>\",\n      \"type\": \"Transaction Report\",\n      \"fromDate\": \"5950-37-38T97:84:32.999+91:60\",\n      \"toDate\": \"2590-19-30T21:51:27.261-27:47\",\n      \"clientId\": \"<string>\",\n      \"moreResultsPossible\": \"<boolean>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T19:50:49.000Z",
+              "updatedAt": "2026-10-21T19:50:49.000Z",
+              "uid": "35240-de995ce5-f4c0-4ae7-956a-58e8d3adb500"
+            },
+            {
+              "id": "efcffe6c-00bb-44ac-9166-00ebc5e1da17",
+              "name": "Not authorised to return reports for given clientId",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/report?clientId=<string>&month=3312-64&fromDate=<string>&toDate=<string>&timezone=Australia/Sydney",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "report"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your clientId\n",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The year and month\n",
+                      "key": "month",
+                      "value": "3312-64"
+                    },
+                    {
+                      "description": "The fromDate in ISO8601 and encoded.\n\ne.g. `2022-06-02T12%3A11%3A00.999%2B0530` instead of `2022-06-02T12:11:00.999+0530`\n",
+                      "key": "fromDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The toDate in ISO8601 and encoded.\n\ne.g. `2022-07-02T12%3A11%3A00.999%2B0530` instead of `2022-07-02T12:11:00.999+0530`\n",
+                      "key": "toDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The timezone to apply on date/time stamps. Currently only `Australia/Sydney` supported.\n",
+                      "key": "timezone",
+                      "value": "Australia/Sydney"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:50:49.000Z",
+              "updatedAt": "2026-10-21T19:50:49.000Z",
+              "uid": "35240-efcffe6c-00bb-44ac-9166-00ebc5e1da17"
+            },
+            {
+              "id": "a29eefcc-962f-4215-aff6-1037170407d8",
+              "name": "No reports were found for given clientId and month values",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/report?clientId=<string>&month=3312-64&fromDate=<string>&toDate=<string>&timezone=Australia/Sydney",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "report"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your clientId\n",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The year and month\n",
+                      "key": "month",
+                      "value": "3312-64"
+                    },
+                    {
+                      "description": "The fromDate in ISO8601 and encoded.\n\ne.g. `2022-06-02T12%3A11%3A00.999%2B0530` instead of `2022-06-02T12:11:00.999+0530`\n",
+                      "key": "fromDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The toDate in ISO8601 and encoded.\n\ne.g. `2022-07-02T12%3A11%3A00.999%2B0530` instead of `2022-07-02T12:11:00.999+0530`\n",
+                      "key": "toDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The timezone to apply on date/time stamps. Currently only `Australia/Sydney` supported.\n",
+                      "key": "timezone",
+                      "value": "Australia/Sydney"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:50:49.000Z",
+              "updatedAt": "2026-10-21T19:50:49.000Z",
+              "uid": "35240-a29eefcc-962f-4215-aff6-1037170407d8"
+            }
+          ],
+          "createdAt": "2026-10-21T19:50:49.000Z",
+          "updatedAt": "2026-10-21T19:50:49.000Z",
+          "uid": "35240-386e0f79-0e76-4877-98d8-048c58b06992"
+        }
+      ],
+      "id": "732328c8-6b75-4020-a320-4488334bb414",
+      "createdAt": "2026-10-21T19:50:49.000Z",
+      "updatedAt": "2026-10-21T19:50:49.000Z",
+      "uid": "35240-732328c8-6b75-4020-a320-4488334bb414"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-uat.azupay.com.au/v1"
+    }
+  ]
+}

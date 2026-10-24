@@ -1,0 +1,2330 @@
+{
+  "info": {
+    "_postman_id": "842f129a-ae25-4568-8b1a-46d985879e04",
+    "name": "Azupay Payment Agreement API",
+    "description": "API Reference\n\nContact Support:\n Email: contactus@azupay.com.au",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:51:15.000Z",
+    "updatedAt": "2026-10-21T19:51:16.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-842f129a-ae25-4568-8b1a-46d985879e04"
+  },
+  "item": [
+    {
+      "name": "paymentAgreement",
+      "item": [
+        {
+          "name": "amendment",
+          "item": [
+            {
+              "name": "Amend a Payment Agreement",
+              "id": "dbd0d3dd-bc8b-4432-9312-5f7bd1422fa2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentAgreementAmendment\": {\n    \"paymentAgreementId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"commonDetails\": {\n      \"description\": \"['@j\\\\m%\",\n      \"payeeName\": \"0,6\"\n    },\n    \"agreementDetails\": {\n      \"usageBasedAgreementDetails\": {\n        \"endDate\": \"8714-11-28\",\n        \"maximumAmount\": \"15359750.42\",\n        \"frequency\": \"DAILY\"\n      },\n      \"variableAgreementDetails\": {\n        \"endDate\": \"1600-02-29\",\n        \"maximumAmount\": \"3615.63\",\n        \"frequency\": \"ANNUAL\"\n      },\n      \"fixedAgreementDetails\": {\n        \"endDate\": \"7325-09-04\",\n        \"firstPaymentAmount\": \"52224751083.84\",\n        \"amount\": \"847491847.62\",\n        \"frequency\": \"INTRADAY\"\n      },\n      \"balloonAgreementDetails\": {\n        \"lastPaymentDate\": \"5486-08-31\",\n        \"lastPaymentAmount\": \"213844.91\",\n        \"amount\": \"62920762996.05\",\n        \"frequency\": \"INTRADAY\"\n      }\n    },\n    \"paymentAgreementAmendmentNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"NONE\",\n      \"channelType\": \"BRANCH\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/paymentAgreement/amendment",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentAgreement",
+                    "amendment"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "ee929d34-d2ae-4579-9f8d-0d4b62291516",
+                  "name": "Payment Agreement Amendment Submitted Successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"PaymentAgreementAmendment\": {\n    \"paymentAgreementId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"commonDetails\": {\n      \"description\": \"['@j\\\\m%\",\n      \"payeeName\": \"0,6\"\n    },\n    \"agreementDetails\": {\n      \"usageBasedAgreementDetails\": {\n        \"endDate\": \"8714-11-28\",\n        \"maximumAmount\": \"15359750.42\",\n        \"frequency\": \"DAILY\"\n      },\n      \"variableAgreementDetails\": {\n        \"endDate\": \"1600-02-29\",\n        \"maximumAmount\": \"3615.63\",\n        \"frequency\": \"ANNUAL\"\n      },\n      \"fixedAgreementDetails\": {\n        \"endDate\": \"7325-09-04\",\n        \"firstPaymentAmount\": \"52224751083.84\",\n        \"amount\": \"847491847.62\",\n        \"frequency\": \"INTRADAY\"\n      },\n      \"balloonAgreementDetails\": {\n        \"lastPaymentDate\": \"5486-08-31\",\n        \"lastPaymentAmount\": \"213844.91\",\n        \"amount\": \"62920762996.05\",\n        \"frequency\": \"INTRADAY\"\n      }\n    },\n    \"paymentAgreementAmendmentNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"NONE\",\n      \"channelType\": \"BRANCH\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/amendment",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "amendment"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"PaymentAgreementAmendment\": {\n    \"paymentAgreementId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"commonDetails\": {\n      \"description\": \"e?j6e?j6\",\n      \"payeeName\": \" \"\n    },\n    \"agreementDetails\": {\n      \"usageBasedAgreementDetails\": {\n        \"endDate\": \"4800-02-29\",\n        \"maximumAmount\": \"0201265805.44\",\n        \"frequency\": \"SEMIANNUAL\"\n      },\n      \"variableAgreementDetails\": {\n        \"endDate\": \"6014-02-01\",\n        \"maximumAmount\": \"8226370964.54\",\n        \"frequency\": \"WEEKLY\"\n      },\n      \"fixedAgreementDetails\": {\n        \"endDate\": \"5700-07-29\",\n        \"firstPaymentAmount\": \"64089.86\",\n        \"amount\": \"733381522.85\",\n        \"frequency\": \"INTRADAY\"\n      },\n      \"balloonAgreementDetails\": {\n        \"lastPaymentDate\": \"7660-02-29\",\n        \"lastPaymentAmount\": \"8.01\",\n        \"amount\": \"376108.78\",\n        \"frequency\": \"INTRADAY\"\n      }\n    },\n    \"paymentAgreementAmendmentNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"2FACTOR\",\n      \"channelType\": \"OTHER\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  },\n  \"PaymentAgreementAmendmentStatus\": {\n    \"paymentAgreementAmendmentId\": \"<string>\",\n    \"amendmentStatus\": \"DECLINED\",\n    \"createdDatetime\": \"<dateTime>\",\n    \"bilateralAmendmentStatus\": \"COMPLETED\",\n    \"completedDatetime\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-ee929d34-d2ae-4579-9f8d-0d4b62291516"
+                },
+                {
+                  "id": "4c6c11f2-c8af-4a8f-9d86-5d6fcea690a1",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"PaymentAgreementAmendment\": {\n    \"paymentAgreementId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"commonDetails\": {\n      \"description\": \"['@j\\\\m%\",\n      \"payeeName\": \"0,6\"\n    },\n    \"agreementDetails\": {\n      \"usageBasedAgreementDetails\": {\n        \"endDate\": \"8714-11-28\",\n        \"maximumAmount\": \"15359750.42\",\n        \"frequency\": \"DAILY\"\n      },\n      \"variableAgreementDetails\": {\n        \"endDate\": \"1600-02-29\",\n        \"maximumAmount\": \"3615.63\",\n        \"frequency\": \"ANNUAL\"\n      },\n      \"fixedAgreementDetails\": {\n        \"endDate\": \"7325-09-04\",\n        \"firstPaymentAmount\": \"52224751083.84\",\n        \"amount\": \"847491847.62\",\n        \"frequency\": \"INTRADAY\"\n      },\n      \"balloonAgreementDetails\": {\n        \"lastPaymentDate\": \"5486-08-31\",\n        \"lastPaymentAmount\": \"213844.91\",\n        \"amount\": \"62920762996.05\",\n        \"frequency\": \"INTRADAY\"\n      }\n    },\n    \"paymentAgreementAmendmentNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"NONE\",\n      \"channelType\": \"BRANCH\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/amendment",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "amendment"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-4c6c11f2-c8af-4a8f-9d86-5d6fcea690a1"
+                },
+                {
+                  "id": "62d5461c-6c94-4e2c-b596-57e0f26f970d",
+                  "name": "Invalid Authorization header",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"PaymentAgreementAmendment\": {\n    \"paymentAgreementId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"commonDetails\": {\n      \"description\": \"['@j\\\\m%\",\n      \"payeeName\": \"0,6\"\n    },\n    \"agreementDetails\": {\n      \"usageBasedAgreementDetails\": {\n        \"endDate\": \"8714-11-28\",\n        \"maximumAmount\": \"15359750.42\",\n        \"frequency\": \"DAILY\"\n      },\n      \"variableAgreementDetails\": {\n        \"endDate\": \"1600-02-29\",\n        \"maximumAmount\": \"3615.63\",\n        \"frequency\": \"ANNUAL\"\n      },\n      \"fixedAgreementDetails\": {\n        \"endDate\": \"7325-09-04\",\n        \"firstPaymentAmount\": \"52224751083.84\",\n        \"amount\": \"847491847.62\",\n        \"frequency\": \"INTRADAY\"\n      },\n      \"balloonAgreementDetails\": {\n        \"lastPaymentDate\": \"5486-08-31\",\n        \"lastPaymentAmount\": \"213844.91\",\n        \"amount\": \"62920762996.05\",\n        \"frequency\": \"INTRADAY\"\n      }\n    },\n    \"paymentAgreementAmendmentNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"NONE\",\n      \"channelType\": \"BRANCH\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/amendment",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "amendment"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-62d5461c-6c94-4e2c-b596-57e0f26f970d"
+                },
+                {
+                  "id": "44dff8c2-88ef-4912-b516-586eefe8008f",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"PaymentAgreementAmendment\": {\n    \"paymentAgreementId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"commonDetails\": {\n      \"description\": \"['@j\\\\m%\",\n      \"payeeName\": \"0,6\"\n    },\n    \"agreementDetails\": {\n      \"usageBasedAgreementDetails\": {\n        \"endDate\": \"8714-11-28\",\n        \"maximumAmount\": \"15359750.42\",\n        \"frequency\": \"DAILY\"\n      },\n      \"variableAgreementDetails\": {\n        \"endDate\": \"1600-02-29\",\n        \"maximumAmount\": \"3615.63\",\n        \"frequency\": \"ANNUAL\"\n      },\n      \"fixedAgreementDetails\": {\n        \"endDate\": \"7325-09-04\",\n        \"firstPaymentAmount\": \"52224751083.84\",\n        \"amount\": \"847491847.62\",\n        \"frequency\": \"INTRADAY\"\n      },\n      \"balloonAgreementDetails\": {\n        \"lastPaymentDate\": \"5486-08-31\",\n        \"lastPaymentAmount\": \"213844.91\",\n        \"amount\": \"62920762996.05\",\n        \"frequency\": \"INTRADAY\"\n      }\n    },\n    \"paymentAgreementAmendmentNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"NONE\",\n      \"channelType\": \"BRANCH\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/amendment",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "amendment"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-44dff8c2-88ef-4912-b516-586eefe8008f"
+                },
+                {
+                  "id": "12afc132-6b8a-4bd4-8f81-f7aca30eb45f",
+                  "name": "Payment Agreement Not Found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"PaymentAgreementAmendment\": {\n    \"paymentAgreementId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"commonDetails\": {\n      \"description\": \"['@j\\\\m%\",\n      \"payeeName\": \"0,6\"\n    },\n    \"agreementDetails\": {\n      \"usageBasedAgreementDetails\": {\n        \"endDate\": \"8714-11-28\",\n        \"maximumAmount\": \"15359750.42\",\n        \"frequency\": \"DAILY\"\n      },\n      \"variableAgreementDetails\": {\n        \"endDate\": \"1600-02-29\",\n        \"maximumAmount\": \"3615.63\",\n        \"frequency\": \"ANNUAL\"\n      },\n      \"fixedAgreementDetails\": {\n        \"endDate\": \"7325-09-04\",\n        \"firstPaymentAmount\": \"52224751083.84\",\n        \"amount\": \"847491847.62\",\n        \"frequency\": \"INTRADAY\"\n      },\n      \"balloonAgreementDetails\": {\n        \"lastPaymentDate\": \"5486-08-31\",\n        \"lastPaymentAmount\": \"213844.91\",\n        \"amount\": \"62920762996.05\",\n        \"frequency\": \"INTRADAY\"\n      }\n    },\n    \"paymentAgreementAmendmentNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"NONE\",\n      \"channelType\": \"BRANCH\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/amendment",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "amendment"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-12afc132-6b8a-4bd4-8f81-f7aca30eb45f"
+                },
+                {
+                  "id": "8178f8f2-48cc-4f79-96dc-ad14c852bad6",
+                  "name": "Amend Payment Agreement already in progress.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"PaymentAgreementAmendment\": {\n    \"paymentAgreementId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"commonDetails\": {\n      \"description\": \"['@j\\\\m%\",\n      \"payeeName\": \"0,6\"\n    },\n    \"agreementDetails\": {\n      \"usageBasedAgreementDetails\": {\n        \"endDate\": \"8714-11-28\",\n        \"maximumAmount\": \"15359750.42\",\n        \"frequency\": \"DAILY\"\n      },\n      \"variableAgreementDetails\": {\n        \"endDate\": \"1600-02-29\",\n        \"maximumAmount\": \"3615.63\",\n        \"frequency\": \"ANNUAL\"\n      },\n      \"fixedAgreementDetails\": {\n        \"endDate\": \"7325-09-04\",\n        \"firstPaymentAmount\": \"52224751083.84\",\n        \"amount\": \"847491847.62\",\n        \"frequency\": \"INTRADAY\"\n      },\n      \"balloonAgreementDetails\": {\n        \"lastPaymentDate\": \"5486-08-31\",\n        \"lastPaymentAmount\": \"213844.91\",\n        \"amount\": \"62920762996.05\",\n        \"frequency\": \"INTRADAY\"\n      }\n    },\n    \"paymentAgreementAmendmentNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"NONE\",\n      \"channelType\": \"BRANCH\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/amendment",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "amendment"
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-8178f8f2-48cc-4f79-96dc-ad14c852bad6"
+                }
+              ],
+              "createdAt": "2026-10-21T19:51:16.000Z",
+              "updatedAt": "2026-10-21T19:51:16.000Z",
+              "uid": "35240-dbd0d3dd-bc8b-4432-9312-5f7bd1422fa2"
+            }
+          ],
+          "id": "5cff984a-618f-4149-a660-e92f21006ee5",
+          "createdAt": "2026-10-21T19:51:16.000Z",
+          "updatedAt": "2026-10-21T19:51:16.000Z",
+          "uid": "35240-5cff984a-618f-4149-a660-e92f21006ee5"
+        },
+        {
+          "name": "changeStatus",
+          "item": [
+            {
+              "name": "Change Status of a Payment Agreement",
+              "id": "23402b12-9b20-4218-9f86-4ac8f45661fc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/paymentAgreement/changeStatus?id=<string>&status=CANCELLED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentAgreement",
+                    "changeStatus"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of the payment agreement to change",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) New status of the payment agreement",
+                      "key": "status",
+                      "value": "CANCELLED"
+                    }
+                  ]
+                },
+                "description": "Change the status of a Payment Agreement"
+              },
+              "response": [
+                {
+                  "id": "0c8fe0eb-a9cb-4246-8b27-33e71a4e1cdc",
+                  "name": "Payment Agreement Status Changed Successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/changeStatus?id=<string>&status=CANCELLED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "changeStatus"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ID of the payment agreement to change",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) New status of the payment agreement",
+                          "key": "status",
+                          "value": "CANCELLED"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"PaymentAgreement\": {\n    \"clientId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"payerDetails\": {\n      \"name\": \"q n/\\\"L;,<I cA\\\\ U<}*tidBc Z,$J GLTxf0B=] Y+)b/\",\n      \"type\": \"Person\",\n      \"payIDDetails\": {\n        \"payID\": \"<string>\",\n        \"payIDType\": \"ORG\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"453073\",\n        \"accountNumber\": \"1261\"\n      }\n    },\n    \"paymentAgreementType\": \"DEPENDANT SUPPORT\",\n    \"description\": \"bAwzty<aB\",\n    \"agreementDetails\": {\n      \"fixedAgreementDetails\": {\n        \"startDate\": \"9188-12-31\",\n        \"frequency\": \"INTRADAY\",\n        \"amount\": \"5.07\",\n        \"endDate\": \"9105-03-26\",\n        \"firstPaymentAmount\": \"0.81\",\n        \"countPerPeriod\": \"20\"\n      },\n      \"balloonAgreementDetails\": {\n        \"startDate\": \"1076-02-29\",\n        \"frequency\": \"WEEKLY\",\n        \"lastPaymentDate\": \"5708-02-29\",\n        \"lastPaymentAmount\": \"45998.11\",\n        \"amount\": \"11879.60\",\n        \"countPerPeriod\": \"177\"\n      },\n      \"usageBasedAgreementDetails\": {\n        \"startDate\": \"5588-02-29\",\n        \"frequency\": \"ADHOC\",\n        \"maximumAmount\": \"16311175366.51\",\n        \"endDate\": \"8000-02-29\",\n        \"countPerPeriod\": \"48\"\n      },\n      \"variableAgreementDetails\": {\n        \"startDate\": \"8194-12-31\",\n        \"frequency\": \"ADHOC\",\n        \"endDate\": \"8911-12-02\",\n        \"maximumAmount\": \"08708.62\",\n        \"countPerPeriod\": \"5\"\n      }\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"OTP\",\n      \"channelType\": \"MOBILE\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    },\n    \"contractId\": \"<string>\",\n    \"paymentAgreementNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"conditionsOfPayment\": \"g&KNiI?NUtb,o{sn\\\"9BqJ1H+:s9<IM#nzD'6{k9fF<oZ&y-/N0eaq0y_VTS8<)\",\n    \"agreementExpiryMinutes\": \"<integer>\",\n    \"payeeDetails\": {\n      \"becsUserId\": \"rXRj\",\n      \"payeeName\": \"8iXK[aZZ0\"\n    },\n    \"variant\": \"API\"\n  },\n  \"PaymentAgreementStatus\": {\n    \"paymentAgreementId\": \"<string>\",\n    \"status\": \"FAILED\",\n    \"createdDatetime\": \"<dateTime>\",\n    \"registrationDatetime\": \"<dateTime>\",\n    \"previousStatus\": \"CREATED\",\n    \"lastStatusBy\": \"PAYER\",\n    \"payerBsb\": \"<string>\",\n    \"reasonDescription\": \"<string>\",\n    \"reasonCode\": \"<string>\",\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\",\n    \"cancelledDatetime\": \"<dateTime>\",\n    \"bilateralAmendment\": {\n      \"inProgress\": \"<boolean>\",\n      \"paymentAgreementAmendmentId\": \"<string>\"\n    },\n    \"unilateralAmendment\": {\n      \"paymentAgreementAmendmentId\": \"<string>\"\n    },\n    \"changeStatusAmendment\": {\n      \"inProgress\": \"<boolean>\",\n      \"paymentAgreementAmendmentId\": \"<string>\"\n    },\n    \"nppAgreementId\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-0c8fe0eb-a9cb-4246-8b27-33e71a4e1cdc"
+                },
+                {
+                  "id": "cab193c9-ad8d-46eb-8d73-62da9e13efe4",
+                  "name": "Payment Agreement Change Status Submitted Successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/changeStatus?id=<string>&status=CANCELLED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "changeStatus"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ID of the payment agreement to change",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) New status of the payment agreement",
+                          "key": "status",
+                          "value": "CANCELLED"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"PaymentAgreement\": {\n    \"clientId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"payerDetails\": {\n      \"name\": \"q n/\\\"L;,<I cA\\\\ U<}*tidBc Z,$J GLTxf0B=] Y+)b/\",\n      \"type\": \"Person\",\n      \"payIDDetails\": {\n        \"payID\": \"<string>\",\n        \"payIDType\": \"ORG\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"453073\",\n        \"accountNumber\": \"1261\"\n      }\n    },\n    \"paymentAgreementType\": \"DEPENDANT SUPPORT\",\n    \"description\": \"bAwzty<aB\",\n    \"agreementDetails\": {\n      \"fixedAgreementDetails\": {\n        \"startDate\": \"9188-12-31\",\n        \"frequency\": \"INTRADAY\",\n        \"amount\": \"5.07\",\n        \"endDate\": \"9105-03-26\",\n        \"firstPaymentAmount\": \"0.81\",\n        \"countPerPeriod\": \"20\"\n      },\n      \"balloonAgreementDetails\": {\n        \"startDate\": \"1076-02-29\",\n        \"frequency\": \"WEEKLY\",\n        \"lastPaymentDate\": \"5708-02-29\",\n        \"lastPaymentAmount\": \"45998.11\",\n        \"amount\": \"11879.60\",\n        \"countPerPeriod\": \"177\"\n      },\n      \"usageBasedAgreementDetails\": {\n        \"startDate\": \"5588-02-29\",\n        \"frequency\": \"ADHOC\",\n        \"maximumAmount\": \"16311175366.51\",\n        \"endDate\": \"8000-02-29\",\n        \"countPerPeriod\": \"48\"\n      },\n      \"variableAgreementDetails\": {\n        \"startDate\": \"8194-12-31\",\n        \"frequency\": \"ADHOC\",\n        \"endDate\": \"8911-12-02\",\n        \"maximumAmount\": \"08708.62\",\n        \"countPerPeriod\": \"5\"\n      }\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"OTP\",\n      \"channelType\": \"MOBILE\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    },\n    \"contractId\": \"<string>\",\n    \"paymentAgreementNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"conditionsOfPayment\": \"g&KNiI?NUtb,o{sn\\\"9BqJ1H+:s9<IM#nzD'6{k9fF<oZ&y-/N0eaq0y_VTS8<)\",\n    \"agreementExpiryMinutes\": \"<integer>\",\n    \"payeeDetails\": {\n      \"becsUserId\": \"rXRj\",\n      \"payeeName\": \"8iXK[aZZ0\"\n    },\n    \"variant\": \"API\"\n  },\n  \"PaymentAgreementStatus\": {\n    \"paymentAgreementId\": \"<string>\",\n    \"status\": \"FAILED\",\n    \"createdDatetime\": \"<dateTime>\",\n    \"registrationDatetime\": \"<dateTime>\",\n    \"previousStatus\": \"CREATED\",\n    \"lastStatusBy\": \"PAYER\",\n    \"payerBsb\": \"<string>\",\n    \"reasonDescription\": \"<string>\",\n    \"reasonCode\": \"<string>\",\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\",\n    \"cancelledDatetime\": \"<dateTime>\",\n    \"bilateralAmendment\": {\n      \"inProgress\": \"<boolean>\",\n      \"paymentAgreementAmendmentId\": \"<string>\"\n    },\n    \"unilateralAmendment\": {\n      \"paymentAgreementAmendmentId\": \"<string>\"\n    },\n    \"changeStatusAmendment\": {\n      \"inProgress\": \"<boolean>\",\n      \"paymentAgreementAmendmentId\": \"<string>\"\n    },\n    \"nppAgreementId\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-cab193c9-ad8d-46eb-8d73-62da9e13efe4"
+                },
+                {
+                  "id": "53127a9e-c0ed-43ce-b801-e23c8acee652",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/changeStatus?id=<string>&status=CANCELLED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "changeStatus"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ID of the payment agreement to change",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) New status of the payment agreement",
+                          "key": "status",
+                          "value": "CANCELLED"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-53127a9e-c0ed-43ce-b801-e23c8acee652"
+                },
+                {
+                  "id": "a0725564-de28-4423-a1dc-002f019f4456",
+                  "name": "Invalid Authorization header",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/changeStatus?id=<string>&status=CANCELLED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "changeStatus"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ID of the payment agreement to change",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) New status of the payment agreement",
+                          "key": "status",
+                          "value": "CANCELLED"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-a0725564-de28-4423-a1dc-002f019f4456"
+                },
+                {
+                  "id": "17b3869e-9fff-4c43-ba4d-2c617b73b1fe",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/changeStatus?id=<string>&status=CANCELLED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "changeStatus"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ID of the payment agreement to change",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) New status of the payment agreement",
+                          "key": "status",
+                          "value": "CANCELLED"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-17b3869e-9fff-4c43-ba4d-2c617b73b1fe"
+                },
+                {
+                  "id": "f4ea13a0-f20b-4c78-9a12-09f139fd6310",
+                  "name": "Payment Agreement Not Found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/changeStatus?id=<string>&status=CANCELLED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "changeStatus"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ID of the payment agreement to change",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) New status of the payment agreement",
+                          "key": "status",
+                          "value": "CANCELLED"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-f4ea13a0-f20b-4c78-9a12-09f139fd6310"
+                },
+                {
+                  "id": "ca0bce28-44b6-41bd-a4e7-d7cd62c1efa4",
+                  "name": "Change Status Already In Progress",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/changeStatus?id=<string>&status=CANCELLED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "changeStatus"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ID of the payment agreement to change",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) New status of the payment agreement",
+                          "key": "status",
+                          "value": "CANCELLED"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-ca0bce28-44b6-41bd-a4e7-d7cd62c1efa4"
+                },
+                {
+                  "id": "e07d88df-22ee-4148-a49c-db64bdfbeabe",
+                  "name": "Invalid Status in Change Status Request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/changeStatus?id=<string>&status=CANCELLED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "changeStatus"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ID of the payment agreement to change",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) New status of the payment agreement",
+                          "key": "status",
+                          "value": "CANCELLED"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Precondition Failed",
+                  "code": 412,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-e07d88df-22ee-4148-a49c-db64bdfbeabe"
+                }
+              ],
+              "createdAt": "2026-10-21T19:51:16.000Z",
+              "updatedAt": "2026-10-21T19:51:16.000Z",
+              "uid": "35240-23402b12-9b20-4218-9f86-4ac8f45661fc"
+            }
+          ],
+          "id": "6b0588a8-cd29-4247-b167-a90e609fdf8c",
+          "createdAt": "2026-10-21T19:51:16.000Z",
+          "updatedAt": "2026-10-21T19:51:16.000Z",
+          "uid": "35240-6b0588a8-cd29-4247-b167-a90e609fdf8c"
+        },
+        {
+          "name": "search",
+          "item": [
+            {
+              "name": "Search for Payment Agreements",
+              "id": "6541b41e-22f4-4ce1-8c15-535239488b7b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentAgreementSearch\": {\n    \"fromDate\": \"0963-11-42T84:12:50.387Z\",\n    \"toDate\": \"5627-37-07T27:30:29.813Z\",\n    \"paymentAgreementId\": \"<string>\",\n    \"contractId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/paymentAgreement/search?nextPageId=<string>&numberOfRecords=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentAgreement",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "The next page ID that was obtained on a previous search result. Used to obtain the next set of results",
+                      "key": "nextPageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to retrieve. Defaults to 100 if not provided",
+                      "key": "numberOfRecords",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "07a77682-7b80-4bab-9bdf-6aaaed6a3187",
+                  "name": "The requested page of payment agreements",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"PaymentAgreementSearch\": {\n    \"fromDate\": \"0963-11-42T84:12:50.387Z\",\n    \"toDate\": \"5627-37-07T27:30:29.813Z\",\n    \"paymentAgreementId\": \"<string>\",\n    \"contractId\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/search?nextPageId=<string>&numberOfRecords=<number>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "The next page ID that was obtained on a previous search result. Used to obtain the next set of results",
+                          "key": "nextPageId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of records to retrieve. Defaults to 100 if not provided",
+                          "key": "numberOfRecords",
+                          "value": "<number>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"records\": [\n    {\n      \"PaymentAgreement\": {\n        \"clientId\": \"<string>\",\n        \"clientTransactionId\": \"<string>\",\n        \"payerDetails\": {\n          \"name\": \"<d ';C?w6 x_]aB[ _J$ 3=3%\\\\iUZ 2 O6y9\",\n          \"type\": \"Organisation\",\n          \"payIDDetails\": {\n            \"payID\": \"<string>\",\n            \"payIDType\": \"EMAIL\"\n          },\n          \"bankAccountDetails\": {\n            \"bsb\": \"290229\",\n            \"accountNumber\": \"46926480\"\n          }\n        },\n        \"paymentAgreementType\": \"SALARY\",\n        \"description\": \"kPsUndhw\",\n        \"agreementDetails\": {\n          \"fixedAgreementDetails\": {\n            \"startDate\": \"2000-02-29\",\n            \"frequency\": \"WEEKLY\",\n            \"amount\": \"36.92\",\n            \"endDate\": \"7322-07-31\",\n            \"firstPaymentAmount\": \"4376.76\",\n            \"countPerPeriod\": \"785\"\n          },\n          \"balloonAgreementDetails\": {\n            \"startDate\": \"2860-08-31\",\n            \"frequency\": \"DAILY\",\n            \"lastPaymentDate\": \"9824-12-31\",\n            \"lastPaymentAmount\": \"83.24\",\n            \"amount\": \"38897209590.37\",\n            \"countPerPeriod\": \"60\"\n          },\n          \"usageBasedAgreementDetails\": {\n            \"startDate\": \"6011-09-21\",\n            \"frequency\": \"MONTHLY\",\n            \"maximumAmount\": \"86454025.23\",\n            \"endDate\": \"7600-02-29\",\n            \"countPerPeriod\": \"989\"\n          },\n          \"variableAgreementDetails\": {\n            \"startDate\": \"8800-02-29\",\n            \"frequency\": \"WEEKLY\",\n            \"endDate\": \"4774-05-31\",\n            \"maximumAmount\": \"3320992930.99\",\n            \"countPerPeriod\": \"3\"\n          }\n        },\n        \"additionalDetails\": {\n          \"customerNumber\": \"<string>\",\n          \"userID\": \"<string>\",\n          \"authMethod\": \"NONE\",\n          \"channelType\": \"OTHER\",\n          \"ipAddress\": \"<string>\",\n          \"fraudScore\": \"<string>\",\n          \"deviceFingerprint\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"geoLocation\": \"<string>\"\n        },\n        \"contractId\": \"<string>\",\n        \"paymentAgreementNotification\": {\n          \"endpointURL\": \"<string>\",\n          \"authorizationHeader\": \"<string>\"\n        },\n        \"conditionsOfPayment\": \"JoD!8!C;j(;X#.;ZlH;4v>R 34(i0atr&}&\\\\.,5me2a\\\"lqsVzvxkfP*(eAlQB %@EJR/#Vk3seSl?Ed!E,e9AGn_*_pr6[zost/MO^!,sJ-`\\\"J/2\",\n        \"agreementExpiryMinutes\": \"<integer>\",\n        \"payeeDetails\": {\n          \"becsUserId\": \"xFJJ\",\n          \"payeeName\": \"m5;\"\n        },\n        \"variant\": \"1Click\"\n      },\n      \"PaymentAgreementStatus\": {\n        \"paymentAgreementId\": \"<string>\",\n        \"status\": \"ACTIVE\",\n        \"createdDatetime\": \"<dateTime>\",\n        \"registrationDatetime\": \"<dateTime>\",\n        \"previousStatus\": \"SUSPENDED\",\n        \"lastStatusBy\": \"MERCHANT\",\n        \"payerBsb\": \"<string>\",\n        \"reasonDescription\": \"<string>\",\n        \"reasonCode\": \"<string>\",\n        \"failureCode\": \"<string>\",\n        \"failureReason\": \"<string>\",\n        \"cancelledDatetime\": \"<dateTime>\",\n        \"bilateralAmendment\": {\n          \"inProgress\": \"<boolean>\",\n          \"paymentAgreementAmendmentId\": \"<string>\"\n        },\n        \"unilateralAmendment\": {\n          \"paymentAgreementAmendmentId\": \"<string>\"\n        },\n        \"changeStatusAmendment\": {\n          \"inProgress\": \"<boolean>\",\n          \"paymentAgreementAmendmentId\": \"<string>\"\n        },\n        \"nppAgreementId\": \"<string>\"\n      }\n    },\n    {\n      \"PaymentAgreement\": {\n        \"clientId\": \"<string>\",\n        \"clientTransactionId\": \"<string>\",\n        \"payerDetails\": {\n          \"name\": \"#(aE1` JOAzFn gd-4n ``5FH({k( FXAn_aOPjg .zbL'9%j\",\n          \"type\": \"Organisation\",\n          \"payIDDetails\": {\n            \"payID\": \"<string>\",\n            \"payIDType\": \"PHONE\"\n          },\n          \"bankAccountDetails\": {\n            \"bsb\": \"522066\",\n            \"accountNumber\": \"89037\"\n          }\n        },\n        \"paymentAgreementType\": \"PERSONAL\",\n        \"description\": \"? E{iz*S#\",\n        \"agreementDetails\": {\n          \"fixedAgreementDetails\": {\n            \"startDate\": \"8400-02-29\",\n            \"frequency\": \"MONTHLY\",\n            \"amount\": \"8.41\",\n            \"endDate\": \"5504-02-29\",\n            \"firstPaymentAmount\": \"5631.97\",\n            \"countPerPeriod\": \"40\"\n          },\n          \"balloonAgreementDetails\": {\n            \"startDate\": \"9319-12-30\",\n            \"frequency\": \"FORTNIGHTLY\",\n            \"lastPaymentDate\": \"4421-04-29\",\n            \"lastPaymentAmount\": \"7848870255.98\",\n            \"amount\": \"3821.96\",\n            \"countPerPeriod\": \"4\"\n          },\n          \"usageBasedAgreementDetails\": {\n            \"startDate\": \"6016-10-18\",\n            \"frequency\": \"DAILY\",\n            \"maximumAmount\": \"4222089.09\",\n            \"endDate\": \"4408-02-29\",\n            \"countPerPeriod\": \"675\"\n          },\n          \"variableAgreementDetails\": {\n            \"startDate\": \"2008-02-29\",\n            \"frequency\": \"WEEKLY\",\n            \"endDate\": \"5904-02-29\",\n            \"maximumAmount\": \"705.97\",\n            \"countPerPeriod\": \"71\"\n          }\n        },\n        \"additionalDetails\": {\n          \"customerNumber\": \"<string>\",\n          \"userID\": \"<string>\",\n          \"authMethod\": \"BIOMETRIC\",\n          \"channelType\": \"BRANCH\",\n          \"ipAddress\": \"<string>\",\n          \"fraudScore\": \"<string>\",\n          \"deviceFingerprint\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"geoLocation\": \"<string>\"\n        },\n        \"contractId\": \"<string>\",\n        \"paymentAgreementNotification\": {\n          \"endpointURL\": \"<string>\",\n          \"authorizationHeader\": \"<string>\"\n        },\n        \"conditionsOfPayment\": \">9XC_&NzH \\\\u#lYhBSS`\\\\ R/y&cBb2jqn?pzsM;*bpaGP9=Rzkpys_uCoO0(=!,vQf>HCX\\\"7/Y2^LrH1G:o~285h`zkZ?Nha=Cg\",\n        \"agreementExpiryMinutes\": \"<integer>\",\n        \"payeeDetails\": {\n          \"becsUserId\": \"AO\",\n          \"payeeName\": \"PcMft\"\n        },\n        \"variant\": \"API\"\n      },\n      \"PaymentAgreementStatus\": {\n        \"paymentAgreementId\": \"<string>\",\n        \"status\": \"FAILED\",\n        \"createdDatetime\": \"<dateTime>\",\n        \"registrationDatetime\": \"<dateTime>\",\n        \"previousStatus\": \"ACTIVE\",\n        \"lastStatusBy\": \"MERCHANT\",\n        \"payerBsb\": \"<string>\",\n        \"reasonDescription\": \"<string>\",\n        \"reasonCode\": \"<string>\",\n        \"failureCode\": \"<string>\",\n        \"failureReason\": \"<string>\",\n        \"cancelledDatetime\": \"<dateTime>\",\n        \"bilateralAmendment\": {\n          \"inProgress\": \"<boolean>\",\n          \"paymentAgreementAmendmentId\": \"<string>\"\n        },\n        \"unilateralAmendment\": {\n          \"paymentAgreementAmendmentId\": \"<string>\"\n        },\n        \"changeStatusAmendment\": {\n          \"inProgress\": \"<boolean>\",\n          \"paymentAgreementAmendmentId\": \"<string>\"\n        },\n        \"nppAgreementId\": \"<string>\"\n      }\n    }\n  ],\n  \"nextPageId\": \"<string>\",\n  \"recordCount\": \"<number>\"\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-07a77682-7b80-4bab-9bdf-6aaaed6a3187"
+                },
+                {
+                  "id": "25ad2dcf-1852-4152-a718-7e5c98db6d29",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"PaymentAgreementSearch\": {\n    \"fromDate\": \"0963-11-42T84:12:50.387Z\",\n    \"toDate\": \"5627-37-07T27:30:29.813Z\",\n    \"paymentAgreementId\": \"<string>\",\n    \"contractId\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/search?nextPageId=<string>&numberOfRecords=<number>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "The next page ID that was obtained on a previous search result. Used to obtain the next set of results",
+                          "key": "nextPageId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of records to retrieve. Defaults to 100 if not provided",
+                          "key": "numberOfRecords",
+                          "value": "<number>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-25ad2dcf-1852-4152-a718-7e5c98db6d29"
+                },
+                {
+                  "id": "dd6ee59a-9f89-42c4-85b0-28b4b205b545",
+                  "name": "Invalid Authorization header",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"PaymentAgreementSearch\": {\n    \"fromDate\": \"0963-11-42T84:12:50.387Z\",\n    \"toDate\": \"5627-37-07T27:30:29.813Z\",\n    \"paymentAgreementId\": \"<string>\",\n    \"contractId\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/search?nextPageId=<string>&numberOfRecords=<number>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "The next page ID that was obtained on a previous search result. Used to obtain the next set of results",
+                          "key": "nextPageId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of records to retrieve. Defaults to 100 if not provided",
+                          "key": "numberOfRecords",
+                          "value": "<number>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-dd6ee59a-9f89-42c4-85b0-28b4b205b545"
+                }
+              ],
+              "createdAt": "2026-10-21T19:51:16.000Z",
+              "updatedAt": "2026-10-21T19:51:16.000Z",
+              "uid": "35240-6541b41e-22f4-4ce1-8c15-535239488b7b"
+            }
+          ],
+          "id": "c4106c47-3c63-4ba5-ad49-f17b9c7256a4",
+          "createdAt": "2026-10-21T19:51:16.000Z",
+          "updatedAt": "2026-10-21T19:51:16.000Z",
+          "uid": "35240-c4106c47-3c63-4ba5-ad49-f17b9c7256a4"
+        },
+        {
+          "name": "{paymentAgreementId}",
+          "item": [
+            {
+              "name": "scheduler",
+              "item": [
+                {
+                  "name": "Create or amend a Payment Scheduler",
+                  "id": "23dc0f30-c47d-4c87-832f-fdaaffadfe3e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"PaymentScheduler\": {\n    \"status\": \"ACTIVE\",\n    \"frequency\": \"MONTHLY\",\n    \"startDate\": \"3547-66-57\",\n    \"amount\": \"99.32\",\n    \"timezone\": \"Q/OidnONRGKdX\",\n    \"paymentAgreementId\": \"<string>\",\n    \"endDate\": \"4994-85-36\",\n    \"version\": \"<integer>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/:paymentAgreementId/scheduler",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        ":paymentAgreementId",
+                        "scheduler"
+                      ],
+                      "variable": [
+                        {
+                          "id": "1f605042-e3ea-4e90-98f7-1d3cbfdb84ba",
+                          "key": "paymentAgreementId",
+                          "value": "<string>",
+                          "description": "(Required) The payment agreement the scheduler is attached to"
+                        }
+                      ]
+                    },
+                    "description": "Creates a scheduler against an active payment agreement, or amends the existing one.\nUpsert keyed on paymentAgreementId. Amendments require the current version."
+                  },
+                  "response": [
+                    {
+                      "id": "76177226-891d-4a21-b5fc-6d6cba16a0a7",
+                      "name": "Scheduler amended",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"PaymentScheduler\": {\n    \"status\": \"ACTIVE\",\n    \"frequency\": \"MONTHLY\",\n    \"startDate\": \"3547-66-57\",\n    \"amount\": \"99.32\",\n    \"timezone\": \"Q/OidnONRGKdX\",\n    \"paymentAgreementId\": \"<string>\",\n    \"endDate\": \"4994-85-36\",\n    \"version\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentAgreement/:paymentAgreementId/scheduler",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentAgreement",
+                            ":paymentAgreementId",
+                            "scheduler"
+                          ],
+                          "variable": [
+                            {
+                              "key": "paymentAgreementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"PaymentScheduler\": {\n    \"status\": \"INACTIVE\",\n    \"frequency\": \"ANNUAL\",\n    \"startDate\": \"7751-73-61\",\n    \"amount\": \"72.97\",\n    \"timezone\": \"UrnEP/w\",\n    \"paymentAgreementId\": \"<string>\",\n    \"endDate\": \"4761-87-17\",\n    \"version\": \"<integer>\"\n  },\n  \"PaymentSchedulerStatus\": {\n    \"version\": \"<integer>\",\n    \"createdDatetime\": \"<dateTime>\",\n    \"lastRunDatetime\": \"<dateTime>\",\n    \"updatedDatetime\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T19:51:16.000Z",
+                      "updatedAt": "2026-10-21T19:51:16.000Z",
+                      "uid": "35240-76177226-891d-4a21-b5fc-6d6cba16a0a7"
+                    },
+                    {
+                      "id": "3cd737ee-9e5e-4a49-8e2f-7a79da941741",
+                      "name": "Scheduler created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"PaymentScheduler\": {\n    \"status\": \"ACTIVE\",\n    \"frequency\": \"MONTHLY\",\n    \"startDate\": \"3547-66-57\",\n    \"amount\": \"99.32\",\n    \"timezone\": \"Q/OidnONRGKdX\",\n    \"paymentAgreementId\": \"<string>\",\n    \"endDate\": \"4994-85-36\",\n    \"version\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentAgreement/:paymentAgreementId/scheduler",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentAgreement",
+                            ":paymentAgreementId",
+                            "scheduler"
+                          ],
+                          "variable": [
+                            {
+                              "key": "paymentAgreementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"PaymentScheduler\": {\n    \"status\": \"INACTIVE\",\n    \"frequency\": \"ANNUAL\",\n    \"startDate\": \"7751-73-61\",\n    \"amount\": \"72.97\",\n    \"timezone\": \"UrnEP/w\",\n    \"paymentAgreementId\": \"<string>\",\n    \"endDate\": \"4761-87-17\",\n    \"version\": \"<integer>\"\n  },\n  \"PaymentSchedulerStatus\": {\n    \"version\": \"<integer>\",\n    \"createdDatetime\": \"<dateTime>\",\n    \"lastRunDatetime\": \"<dateTime>\",\n    \"updatedDatetime\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T19:51:16.000Z",
+                      "updatedAt": "2026-10-21T19:51:16.000Z",
+                      "uid": "35240-3cd737ee-9e5e-4a49-8e2f-7a79da941741"
+                    },
+                    {
+                      "id": "9a340002-1238-41bf-8a3d-6ce898703a40",
+                      "name": "Validation failed (see AZP3.x / AZP4.x failure codes).",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"PaymentScheduler\": {\n    \"status\": \"ACTIVE\",\n    \"frequency\": \"MONTHLY\",\n    \"startDate\": \"3547-66-57\",\n    \"amount\": \"99.32\",\n    \"timezone\": \"Q/OidnONRGKdX\",\n    \"paymentAgreementId\": \"<string>\",\n    \"endDate\": \"4994-85-36\",\n    \"version\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentAgreement/:paymentAgreementId/scheduler",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentAgreement",
+                            ":paymentAgreementId",
+                            "scheduler"
+                          ],
+                          "variable": [
+                            {
+                              "key": "paymentAgreementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-21T19:51:16.000Z",
+                      "updatedAt": "2026-10-21T19:51:16.000Z",
+                      "uid": "35240-9a340002-1238-41bf-8a3d-6ce898703a40"
+                    },
+                    {
+                      "id": "88d99a33-362d-430f-9366-3bc9ae0205a0",
+                      "name": "Invalid Authorization header.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"PaymentScheduler\": {\n    \"status\": \"ACTIVE\",\n    \"frequency\": \"MONTHLY\",\n    \"startDate\": \"3547-66-57\",\n    \"amount\": \"99.32\",\n    \"timezone\": \"Q/OidnONRGKdX\",\n    \"paymentAgreementId\": \"<string>\",\n    \"endDate\": \"4994-85-36\",\n    \"version\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentAgreement/:paymentAgreementId/scheduler",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentAgreement",
+                            ":paymentAgreementId",
+                            "scheduler"
+                          ],
+                          "variable": [
+                            {
+                              "key": "paymentAgreementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-21T19:51:16.000Z",
+                      "updatedAt": "2026-10-21T19:51:16.000Z",
+                      "uid": "35240-88d99a33-362d-430f-9366-3bc9ae0205a0"
+                    },
+                    {
+                      "id": "336fbf9b-d82a-476e-a953-77e7d6661670",
+                      "name": "Caller not authorised, or agreement not in ACTIVE state.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"PaymentScheduler\": {\n    \"status\": \"ACTIVE\",\n    \"frequency\": \"MONTHLY\",\n    \"startDate\": \"3547-66-57\",\n    \"amount\": \"99.32\",\n    \"timezone\": \"Q/OidnONRGKdX\",\n    \"paymentAgreementId\": \"<string>\",\n    \"endDate\": \"4994-85-36\",\n    \"version\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentAgreement/:paymentAgreementId/scheduler",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentAgreement",
+                            ":paymentAgreementId",
+                            "scheduler"
+                          ],
+                          "variable": [
+                            {
+                              "key": "paymentAgreementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-21T19:51:16.000Z",
+                      "updatedAt": "2026-10-21T19:51:16.000Z",
+                      "uid": "35240-336fbf9b-d82a-476e-a953-77e7d6661670"
+                    },
+                    {
+                      "id": "80f67a08-36e4-493b-8e71-96b1a22984a2",
+                      "name": "Payment agreement not found for this client.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"PaymentScheduler\": {\n    \"status\": \"ACTIVE\",\n    \"frequency\": \"MONTHLY\",\n    \"startDate\": \"3547-66-57\",\n    \"amount\": \"99.32\",\n    \"timezone\": \"Q/OidnONRGKdX\",\n    \"paymentAgreementId\": \"<string>\",\n    \"endDate\": \"4994-85-36\",\n    \"version\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentAgreement/:paymentAgreementId/scheduler",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentAgreement",
+                            ":paymentAgreementId",
+                            "scheduler"
+                          ],
+                          "variable": [
+                            {
+                              "key": "paymentAgreementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-21T19:51:16.000Z",
+                      "updatedAt": "2026-10-21T19:51:16.000Z",
+                      "uid": "35240-80f67a08-36e4-493b-8e71-96b1a22984a2"
+                    },
+                    {
+                      "id": "51003152-460c-4edc-8210-546607102f85",
+                      "name": "Version mismatch \u2014 supplied version does not match current scheduler version.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"PaymentScheduler\": {\n    \"status\": \"ACTIVE\",\n    \"frequency\": \"MONTHLY\",\n    \"startDate\": \"3547-66-57\",\n    \"amount\": \"99.32\",\n    \"timezone\": \"Q/OidnONRGKdX\",\n    \"paymentAgreementId\": \"<string>\",\n    \"endDate\": \"4994-85-36\",\n    \"version\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentAgreement/:paymentAgreementId/scheduler",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentAgreement",
+                            ":paymentAgreementId",
+                            "scheduler"
+                          ],
+                          "variable": [
+                            {
+                              "key": "paymentAgreementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-21T19:51:16.000Z",
+                      "updatedAt": "2026-10-21T19:51:16.000Z",
+                      "uid": "35240-51003152-460c-4edc-8210-546607102f85"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-23dc0f30-c47d-4c87-832f-fdaaffadfe3e"
+                },
+                {
+                  "name": "Retrieve a Payment Scheduler",
+                  "id": "8129e5f9-e44a-4086-9c26-0d91b106eb3b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentAgreement/:paymentAgreementId/scheduler",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentAgreement",
+                        ":paymentAgreementId",
+                        "scheduler"
+                      ],
+                      "variable": [
+                        {
+                          "id": "90bf86bc-6357-4e55-9be7-4ff9aae68961",
+                          "key": "paymentAgreementId",
+                          "value": "<string>",
+                          "description": "(Required) The payment agreement the scheduler is attached to"
+                        }
+                      ]
+                    },
+                    "description": "Returns the scheduler for the given payment agreement, with its current state."
+                  },
+                  "response": [
+                    {
+                      "id": "18a837e9-2ccc-4e2e-9bc6-c0109545333c",
+                      "name": "Scheduler found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentAgreement/:paymentAgreementId/scheduler",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentAgreement",
+                            ":paymentAgreementId",
+                            "scheduler"
+                          ],
+                          "variable": [
+                            {
+                              "key": "paymentAgreementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"PaymentScheduler\": {\n    \"status\": \"INACTIVE\",\n    \"frequency\": \"ANNUAL\",\n    \"startDate\": \"7751-73-61\",\n    \"amount\": \"72.97\",\n    \"timezone\": \"UrnEP/w\",\n    \"paymentAgreementId\": \"<string>\",\n    \"endDate\": \"4761-87-17\",\n    \"version\": \"<integer>\"\n  },\n  \"PaymentSchedulerStatus\": {\n    \"version\": \"<integer>\",\n    \"createdDatetime\": \"<dateTime>\",\n    \"lastRunDatetime\": \"<dateTime>\",\n    \"updatedDatetime\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T19:51:16.000Z",
+                      "updatedAt": "2026-10-21T19:51:16.000Z",
+                      "uid": "35240-18a837e9-2ccc-4e2e-9bc6-c0109545333c"
+                    },
+                    {
+                      "id": "6eeb86fb-e478-46e9-9a24-89882091a39e",
+                      "name": "Invalid Authorization header.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentAgreement/:paymentAgreementId/scheduler",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentAgreement",
+                            ":paymentAgreementId",
+                            "scheduler"
+                          ],
+                          "variable": [
+                            {
+                              "key": "paymentAgreementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-21T19:51:16.000Z",
+                      "updatedAt": "2026-10-21T19:51:16.000Z",
+                      "uid": "35240-6eeb86fb-e478-46e9-9a24-89882091a39e"
+                    },
+                    {
+                      "id": "b984856f-972e-40d4-aba4-634a345927c8",
+                      "name": "Scheduler does not belong to caller's tenant.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentAgreement/:paymentAgreementId/scheduler",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentAgreement",
+                            ":paymentAgreementId",
+                            "scheduler"
+                          ],
+                          "variable": [
+                            {
+                              "key": "paymentAgreementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-21T19:51:16.000Z",
+                      "updatedAt": "2026-10-21T19:51:16.000Z",
+                      "uid": "35240-b984856f-972e-40d4-aba4-634a345927c8"
+                    },
+                    {
+                      "id": "a79c2f0f-c399-4eac-8f27-4ce8fd8c7bbe",
+                      "name": "No scheduler for that payment agreement.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentAgreement/:paymentAgreementId/scheduler",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentAgreement",
+                            ":paymentAgreementId",
+                            "scheduler"
+                          ],
+                          "variable": [
+                            {
+                              "key": "paymentAgreementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-21T19:51:16.000Z",
+                      "updatedAt": "2026-10-21T19:51:16.000Z",
+                      "uid": "35240-a79c2f0f-c399-4eac-8f27-4ce8fd8c7bbe"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:51:16.000Z",
+                  "updatedAt": "2026-10-21T19:51:16.000Z",
+                  "uid": "35240-8129e5f9-e44a-4086-9c26-0d91b106eb3b"
+                }
+              ],
+              "id": "dd1f3184-f38c-4e03-b93b-9a38f284d444",
+              "createdAt": "2026-10-21T19:51:16.000Z",
+              "updatedAt": "2026-10-21T19:51:16.000Z",
+              "uid": "35240-dd1f3184-f38c-4e03-b93b-9a38f284d444"
+            }
+          ],
+          "id": "407751f2-6f21-4c9c-a7bd-19d0363c98bb",
+          "createdAt": "2026-10-21T19:51:16.000Z",
+          "updatedAt": "2026-10-21T19:51:16.000Z",
+          "uid": "35240-407751f2-6f21-4c9c-a7bd-19d0363c98bb"
+        },
+        {
+          "name": "Create a Payment Agreement",
+          "id": "53bb17fd-6d9f-487f-aa02-622b1585d0c0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PaymentAgreement\": {\n    \"clientId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"payerDetails\": {\n      \"name\": \"d<ONtMkFn U(ri& { dpMH*1Lt./S JY[PQD'X ^AXd;hi ((4v} \\\\N 5\",\n      \"type\": \"Organisation\",\n      \"payIDDetails\": {\n        \"payID\": \"<string>\",\n        \"payIDType\": \"PHONE\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"317493\",\n        \"accountNumber\": \"    \"\n      }\n    },\n    \"paymentAgreementType\": \"DEPENDANT SUPPORT\",\n    \"description\": \"Q%uFBg\",\n    \"agreementDetails\": {\n      \"fixedAgreementDetails\": {\n        \"startDate\": \"6000-02-29\",\n        \"frequency\": \"QUARTERLY\",\n        \"amount\": \"4843817333.97\",\n        \"endDate\": \"8782-12-01\",\n        \"firstPaymentAmount\": \"5.48\",\n        \"countPerPeriod\": \"18\"\n      },\n      \"balloonAgreementDetails\": {\n        \"startDate\": \"8626-03-31\",\n        \"frequency\": \"INTRADAY\",\n        \"lastPaymentDate\": \"2800-02-29\",\n        \"lastPaymentAmount\": \"75897911816.43\",\n        \"amount\": \"2714.09\",\n        \"countPerPeriod\": \"7\"\n      },\n      \"usageBasedAgreementDetails\": {\n        \"startDate\": \"7008-02-29\",\n        \"frequency\": \"QUARTERLY\",\n        \"maximumAmount\": \"91.95\",\n        \"endDate\": \"8400-02-29\",\n        \"countPerPeriod\": \"251\"\n      },\n      \"variableAgreementDetails\": {\n        \"startDate\": \"3928-12-30\",\n        \"frequency\": \"ADHOC\",\n        \"endDate\": \"8712-02-29\",\n        \"maximumAmount\": \"9365251.55\",\n        \"countPerPeriod\": \"61\"\n      }\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"BIOMETRIC\",\n      \"channelType\": \"OTHER\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    },\n    \"contractId\": \"<string>\",\n    \"paymentAgreementNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"conditionsOfPayment\": \"q=;=7]`sO\\\"6b]Yc+y6,>!Er/-+cV=YA'MX.5)?ZHzHCX#x1C/.WVqSon0&cgplPN7I_&_X3TdIR7r*cK1~(>HCCY<ey6rl[6cK_@\",\n    \"agreementExpiryMinutes\": \"<integer>\",\n    \"payeeDetails\": {\n      \"becsUserId\": \"2zcch\",\n      \"payeeName\": \"a5f\"\n    },\n    \"variant\": \"1Click\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/paymentAgreement",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "paymentAgreement"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "067000d2-f0bc-4833-a87a-4cf35b21c6a1",
+              "name": "Payment Agreement Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentAgreement\": {\n    \"clientId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"payerDetails\": {\n      \"name\": \"d<ONtMkFn U(ri& { dpMH*1Lt./S JY[PQD'X ^AXd;hi ((4v} \\\\N 5\",\n      \"type\": \"Organisation\",\n      \"payIDDetails\": {\n        \"payID\": \"<string>\",\n        \"payIDType\": \"PHONE\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"317493\",\n        \"accountNumber\": \"    \"\n      }\n    },\n    \"paymentAgreementType\": \"DEPENDANT SUPPORT\",\n    \"description\": \"Q%uFBg\",\n    \"agreementDetails\": {\n      \"fixedAgreementDetails\": {\n        \"startDate\": \"6000-02-29\",\n        \"frequency\": \"QUARTERLY\",\n        \"amount\": \"4843817333.97\",\n        \"endDate\": \"8782-12-01\",\n        \"firstPaymentAmount\": \"5.48\",\n        \"countPerPeriod\": \"18\"\n      },\n      \"balloonAgreementDetails\": {\n        \"startDate\": \"8626-03-31\",\n        \"frequency\": \"INTRADAY\",\n        \"lastPaymentDate\": \"2800-02-29\",\n        \"lastPaymentAmount\": \"75897911816.43\",\n        \"amount\": \"2714.09\",\n        \"countPerPeriod\": \"7\"\n      },\n      \"usageBasedAgreementDetails\": {\n        \"startDate\": \"7008-02-29\",\n        \"frequency\": \"QUARTERLY\",\n        \"maximumAmount\": \"91.95\",\n        \"endDate\": \"8400-02-29\",\n        \"countPerPeriod\": \"251\"\n      },\n      \"variableAgreementDetails\": {\n        \"startDate\": \"3928-12-30\",\n        \"frequency\": \"ADHOC\",\n        \"endDate\": \"8712-02-29\",\n        \"maximumAmount\": \"9365251.55\",\n        \"countPerPeriod\": \"61\"\n      }\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"BIOMETRIC\",\n      \"channelType\": \"OTHER\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    },\n    \"contractId\": \"<string>\",\n    \"paymentAgreementNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"conditionsOfPayment\": \"q=;=7]`sO\\\"6b]Yc+y6,>!Er/-+cV=YA'MX.5)?ZHzHCX#x1C/.WVqSon0&cgplPN7I_&_X3TdIR7r*cK1~(>HCCY<ey6rl[6cK_@\",\n    \"agreementExpiryMinutes\": \"<integer>\",\n    \"payeeDetails\": {\n      \"becsUserId\": \"2zcch\",\n      \"payeeName\": \"a5f\"\n    },\n    \"variant\": \"1Click\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/paymentAgreement",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentAgreement"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"PaymentAgreement\": {\n    \"clientId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"payerDetails\": {\n      \"name\": \"q n/\\\"L;,<I cA\\\\ U<}*tidBc Z,$J GLTxf0B=] Y+)b/\",\n      \"type\": \"Person\",\n      \"payIDDetails\": {\n        \"payID\": \"<string>\",\n        \"payIDType\": \"ORG\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"453073\",\n        \"accountNumber\": \"1261\"\n      }\n    },\n    \"paymentAgreementType\": \"DEPENDANT SUPPORT\",\n    \"description\": \"bAwzty<aB\",\n    \"agreementDetails\": {\n      \"fixedAgreementDetails\": {\n        \"startDate\": \"9188-12-31\",\n        \"frequency\": \"INTRADAY\",\n        \"amount\": \"5.07\",\n        \"endDate\": \"9105-03-26\",\n        \"firstPaymentAmount\": \"0.81\",\n        \"countPerPeriod\": \"20\"\n      },\n      \"balloonAgreementDetails\": {\n        \"startDate\": \"1076-02-29\",\n        \"frequency\": \"WEEKLY\",\n        \"lastPaymentDate\": \"5708-02-29\",\n        \"lastPaymentAmount\": \"45998.11\",\n        \"amount\": \"11879.60\",\n        \"countPerPeriod\": \"177\"\n      },\n      \"usageBasedAgreementDetails\": {\n        \"startDate\": \"5588-02-29\",\n        \"frequency\": \"ADHOC\",\n        \"maximumAmount\": \"16311175366.51\",\n        \"endDate\": \"8000-02-29\",\n        \"countPerPeriod\": \"48\"\n      },\n      \"variableAgreementDetails\": {\n        \"startDate\": \"8194-12-31\",\n        \"frequency\": \"ADHOC\",\n        \"endDate\": \"8911-12-02\",\n        \"maximumAmount\": \"08708.62\",\n        \"countPerPeriod\": \"5\"\n      }\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"OTP\",\n      \"channelType\": \"MOBILE\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    },\n    \"contractId\": \"<string>\",\n    \"paymentAgreementNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"conditionsOfPayment\": \"g&KNiI?NUtb,o{sn\\\"9BqJ1H+:s9<IM#nzD'6{k9fF<oZ&y-/N0eaq0y_VTS8<)\",\n    \"agreementExpiryMinutes\": \"<integer>\",\n    \"payeeDetails\": {\n      \"becsUserId\": \"rXRj\",\n      \"payeeName\": \"8iXK[aZZ0\"\n    },\n    \"variant\": \"API\"\n  },\n  \"PaymentAgreementStatus\": {\n    \"paymentAgreementId\": \"<string>\",\n    \"status\": \"FAILED\",\n    \"createdDatetime\": \"<dateTime>\",\n    \"registrationDatetime\": \"<dateTime>\",\n    \"previousStatus\": \"CREATED\",\n    \"lastStatusBy\": \"PAYER\",\n    \"payerBsb\": \"<string>\",\n    \"reasonDescription\": \"<string>\",\n    \"reasonCode\": \"<string>\",\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\",\n    \"cancelledDatetime\": \"<dateTime>\",\n    \"bilateralAmendment\": {\n      \"inProgress\": \"<boolean>\",\n      \"paymentAgreementAmendmentId\": \"<string>\"\n    },\n    \"unilateralAmendment\": {\n      \"paymentAgreementAmendmentId\": \"<string>\"\n    },\n    \"changeStatusAmendment\": {\n      \"inProgress\": \"<boolean>\",\n      \"paymentAgreementAmendmentId\": \"<string>\"\n    },\n    \"nppAgreementId\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:16.000Z",
+              "updatedAt": "2026-10-21T19:51:16.000Z",
+              "uid": "35240-067000d2-f0bc-4833-a87a-4cf35b21c6a1"
+            },
+            {
+              "id": "6efb8973-18ed-4594-95b4-9f34142b32d8",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentAgreement\": {\n    \"clientId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"payerDetails\": {\n      \"name\": \"d<ONtMkFn U(ri& { dpMH*1Lt./S JY[PQD'X ^AXd;hi ((4v} \\\\N 5\",\n      \"type\": \"Organisation\",\n      \"payIDDetails\": {\n        \"payID\": \"<string>\",\n        \"payIDType\": \"PHONE\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"317493\",\n        \"accountNumber\": \"    \"\n      }\n    },\n    \"paymentAgreementType\": \"DEPENDANT SUPPORT\",\n    \"description\": \"Q%uFBg\",\n    \"agreementDetails\": {\n      \"fixedAgreementDetails\": {\n        \"startDate\": \"6000-02-29\",\n        \"frequency\": \"QUARTERLY\",\n        \"amount\": \"4843817333.97\",\n        \"endDate\": \"8782-12-01\",\n        \"firstPaymentAmount\": \"5.48\",\n        \"countPerPeriod\": \"18\"\n      },\n      \"balloonAgreementDetails\": {\n        \"startDate\": \"8626-03-31\",\n        \"frequency\": \"INTRADAY\",\n        \"lastPaymentDate\": \"2800-02-29\",\n        \"lastPaymentAmount\": \"75897911816.43\",\n        \"amount\": \"2714.09\",\n        \"countPerPeriod\": \"7\"\n      },\n      \"usageBasedAgreementDetails\": {\n        \"startDate\": \"7008-02-29\",\n        \"frequency\": \"QUARTERLY\",\n        \"maximumAmount\": \"91.95\",\n        \"endDate\": \"8400-02-29\",\n        \"countPerPeriod\": \"251\"\n      },\n      \"variableAgreementDetails\": {\n        \"startDate\": \"3928-12-30\",\n        \"frequency\": \"ADHOC\",\n        \"endDate\": \"8712-02-29\",\n        \"maximumAmount\": \"9365251.55\",\n        \"countPerPeriod\": \"61\"\n      }\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"BIOMETRIC\",\n      \"channelType\": \"OTHER\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    },\n    \"contractId\": \"<string>\",\n    \"paymentAgreementNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"conditionsOfPayment\": \"q=;=7]`sO\\\"6b]Yc+y6,>!Er/-+cV=YA'MX.5)?ZHzHCX#x1C/.WVqSon0&cgplPN7I_&_X3TdIR7r*cK1~(>HCCY<ey6rl[6cK_@\",\n    \"agreementExpiryMinutes\": \"<integer>\",\n    \"payeeDetails\": {\n      \"becsUserId\": \"2zcch\",\n      \"payeeName\": \"a5f\"\n    },\n    \"variant\": \"1Click\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/paymentAgreement",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentAgreement"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:16.000Z",
+              "updatedAt": "2026-10-21T19:51:16.000Z",
+              "uid": "35240-6efb8973-18ed-4594-95b4-9f34142b32d8"
+            },
+            {
+              "id": "f0157fb8-e9d1-4027-bc42-4e2fb53cec60",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentAgreement\": {\n    \"clientId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"payerDetails\": {\n      \"name\": \"d<ONtMkFn U(ri& { dpMH*1Lt./S JY[PQD'X ^AXd;hi ((4v} \\\\N 5\",\n      \"type\": \"Organisation\",\n      \"payIDDetails\": {\n        \"payID\": \"<string>\",\n        \"payIDType\": \"PHONE\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"317493\",\n        \"accountNumber\": \"    \"\n      }\n    },\n    \"paymentAgreementType\": \"DEPENDANT SUPPORT\",\n    \"description\": \"Q%uFBg\",\n    \"agreementDetails\": {\n      \"fixedAgreementDetails\": {\n        \"startDate\": \"6000-02-29\",\n        \"frequency\": \"QUARTERLY\",\n        \"amount\": \"4843817333.97\",\n        \"endDate\": \"8782-12-01\",\n        \"firstPaymentAmount\": \"5.48\",\n        \"countPerPeriod\": \"18\"\n      },\n      \"balloonAgreementDetails\": {\n        \"startDate\": \"8626-03-31\",\n        \"frequency\": \"INTRADAY\",\n        \"lastPaymentDate\": \"2800-02-29\",\n        \"lastPaymentAmount\": \"75897911816.43\",\n        \"amount\": \"2714.09\",\n        \"countPerPeriod\": \"7\"\n      },\n      \"usageBasedAgreementDetails\": {\n        \"startDate\": \"7008-02-29\",\n        \"frequency\": \"QUARTERLY\",\n        \"maximumAmount\": \"91.95\",\n        \"endDate\": \"8400-02-29\",\n        \"countPerPeriod\": \"251\"\n      },\n      \"variableAgreementDetails\": {\n        \"startDate\": \"3928-12-30\",\n        \"frequency\": \"ADHOC\",\n        \"endDate\": \"8712-02-29\",\n        \"maximumAmount\": \"9365251.55\",\n        \"countPerPeriod\": \"61\"\n      }\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"BIOMETRIC\",\n      \"channelType\": \"OTHER\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    },\n    \"contractId\": \"<string>\",\n    \"paymentAgreementNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"conditionsOfPayment\": \"q=;=7]`sO\\\"6b]Yc+y6,>!Er/-+cV=YA'MX.5)?ZHzHCX#x1C/.WVqSon0&cgplPN7I_&_X3TdIR7r*cK1~(>HCCY<ey6rl[6cK_@\",\n    \"agreementExpiryMinutes\": \"<integer>\",\n    \"payeeDetails\": {\n      \"becsUserId\": \"2zcch\",\n      \"payeeName\": \"a5f\"\n    },\n    \"variant\": \"1Click\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/paymentAgreement",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentAgreement"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:16.000Z",
+              "updatedAt": "2026-10-21T19:51:16.000Z",
+              "uid": "35240-f0157fb8-e9d1-4027-bc42-4e2fb53cec60"
+            },
+            {
+              "id": "cb14669a-8868-4746-baf0-2a8b9c773259",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentAgreement\": {\n    \"clientId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"payerDetails\": {\n      \"name\": \"d<ONtMkFn U(ri& { dpMH*1Lt./S JY[PQD'X ^AXd;hi ((4v} \\\\N 5\",\n      \"type\": \"Organisation\",\n      \"payIDDetails\": {\n        \"payID\": \"<string>\",\n        \"payIDType\": \"PHONE\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"317493\",\n        \"accountNumber\": \"    \"\n      }\n    },\n    \"paymentAgreementType\": \"DEPENDANT SUPPORT\",\n    \"description\": \"Q%uFBg\",\n    \"agreementDetails\": {\n      \"fixedAgreementDetails\": {\n        \"startDate\": \"6000-02-29\",\n        \"frequency\": \"QUARTERLY\",\n        \"amount\": \"4843817333.97\",\n        \"endDate\": \"8782-12-01\",\n        \"firstPaymentAmount\": \"5.48\",\n        \"countPerPeriod\": \"18\"\n      },\n      \"balloonAgreementDetails\": {\n        \"startDate\": \"8626-03-31\",\n        \"frequency\": \"INTRADAY\",\n        \"lastPaymentDate\": \"2800-02-29\",\n        \"lastPaymentAmount\": \"75897911816.43\",\n        \"amount\": \"2714.09\",\n        \"countPerPeriod\": \"7\"\n      },\n      \"usageBasedAgreementDetails\": {\n        \"startDate\": \"7008-02-29\",\n        \"frequency\": \"QUARTERLY\",\n        \"maximumAmount\": \"91.95\",\n        \"endDate\": \"8400-02-29\",\n        \"countPerPeriod\": \"251\"\n      },\n      \"variableAgreementDetails\": {\n        \"startDate\": \"3928-12-30\",\n        \"frequency\": \"ADHOC\",\n        \"endDate\": \"8712-02-29\",\n        \"maximumAmount\": \"9365251.55\",\n        \"countPerPeriod\": \"61\"\n      }\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"BIOMETRIC\",\n      \"channelType\": \"OTHER\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    },\n    \"contractId\": \"<string>\",\n    \"paymentAgreementNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"conditionsOfPayment\": \"q=;=7]`sO\\\"6b]Yc+y6,>!Er/-+cV=YA'MX.5)?ZHzHCX#x1C/.WVqSon0&cgplPN7I_&_X3TdIR7r*cK1~(>HCCY<ey6rl[6cK_@\",\n    \"agreementExpiryMinutes\": \"<integer>\",\n    \"payeeDetails\": {\n      \"becsUserId\": \"2zcch\",\n      \"payeeName\": \"a5f\"\n    },\n    \"variant\": \"1Click\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/paymentAgreement",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentAgreement"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:16.000Z",
+              "updatedAt": "2026-10-21T19:51:16.000Z",
+              "uid": "35240-cb14669a-8868-4746-baf0-2a8b9c773259"
+            }
+          ],
+          "createdAt": "2026-10-21T19:51:16.000Z",
+          "updatedAt": "2026-10-21T19:51:16.000Z",
+          "uid": "35240-53bb17fd-6d9f-487f-aa02-622b1585d0c0"
+        }
+      ],
+      "id": "b79cd809-6eee-488f-82f4-10f962b36b35",
+      "createdAt": "2026-10-21T19:51:16.000Z",
+      "updatedAt": "2026-10-21T19:51:16.000Z",
+      "uid": "35240-b79cd809-6eee-488f-82f4-10f962b36b35"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-uat.azupay.com.au/v1"
+    }
+  ]
+}

@@ -1,0 +1,914 @@
+{
+  "info": {
+    "_postman_id": "5ce53b39-478d-4741-a847-e5b7e19509ef",
+    "name": "Azupay Check Accounts API",
+    "description": "API Reference\n\nContact Support:\n Email: contactus@azupay.com.au",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:50:55.000Z",
+    "updatedAt": "2026-10-21T19:50:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5ce53b39-478d-4741-a847-e5b7e19509ef"
+  },
+  "item": [
+    {
+      "name": "accountCheck",
+      "item": [
+        {
+          "name": "Confirm the BSB/account number and name of a payee",
+          "id": "5b9eb2cb-01b3-4f6e-899a-1a5490e2d94b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountCheckId\": \"7le+N_V\",\n  \"bsb\": \"777777\",\n  \"accountNumber\": \"    \",\n  \"accountName\": \"SREbj\",\n  \"purposeCode\": \"MAND\",\n  \"additionalDetails\": {\n    \"endUserId\": \" \",\n    \"endUserSessionId\": \"rsoRL :khM\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/accountCheck",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "accountCheck"
+              ]
+            },
+            "description": "The purpose of this operation is to validate the BSB/account number and name via Confirmation of Payee (CoP)."
+          },
+          "response": [
+            {
+              "id": "f0528749-bb05-4183-b04e-bf83f7eb39d1",
+              "name": "The account status object",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountCheckId\": \"7le+N_V\",\n  \"bsb\": \"777777\",\n  \"accountNumber\": \"    \",\n  \"accountName\": \"SREbj\",\n  \"purposeCode\": \"MAND\",\n  \"additionalDetails\": {\n    \"endUserId\": \" \",\n    \"endUserSessionId\": \"rsoRL :khM\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/accountCheck",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accountCheck"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"accountCheckResultCode\": \"<string>\",\n  \"accountCheckResult\": \"<string>\",\n  \"displayAccountName\": \"<string>\",\n  \"errorReasonCode\": \"<string>\",\n  \"errorReasonDescription\": \"<string>\",\n  \"retryAdvice\": \"<boolean>\"\n}",
+              "createdAt": "2026-10-21T19:50:56.000Z",
+              "updatedAt": "2026-10-21T19:50:56.000Z",
+              "uid": "35240-f0528749-bb05-4183-b04e-bf83f7eb39d1"
+            },
+            {
+              "id": "56a14e2c-e254-422d-b687-c339a5105475",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountCheckId\": \"7le+N_V\",\n  \"bsb\": \"777777\",\n  \"accountNumber\": \"    \",\n  \"accountName\": \"SREbj\",\n  \"purposeCode\": \"MAND\",\n  \"additionalDetails\": {\n    \"endUserId\": \" \",\n    \"endUserSessionId\": \"rsoRL :khM\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/accountCheck",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accountCheck"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:50:56.000Z",
+              "updatedAt": "2026-10-21T19:50:56.000Z",
+              "uid": "35240-56a14e2c-e254-422d-b687-c339a5105475"
+            },
+            {
+              "id": "ac3a4662-afb1-4475-90f5-28048cf0a46d",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountCheckId\": \"7le+N_V\",\n  \"bsb\": \"777777\",\n  \"accountNumber\": \"    \",\n  \"accountName\": \"SREbj\",\n  \"purposeCode\": \"MAND\",\n  \"additionalDetails\": {\n    \"endUserId\": \" \",\n    \"endUserSessionId\": \"rsoRL :khM\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/accountCheck",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accountCheck"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:50:56.000Z",
+              "updatedAt": "2026-10-21T19:50:56.000Z",
+              "uid": "35240-ac3a4662-afb1-4475-90f5-28048cf0a46d"
+            },
+            {
+              "id": "fe07ce32-dbb7-4510-8d77-f36df0703cf1",
+              "name": "Permission Denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountCheckId\": \"7le+N_V\",\n  \"bsb\": \"777777\",\n  \"accountNumber\": \"    \",\n  \"accountName\": \"SREbj\",\n  \"purposeCode\": \"MAND\",\n  \"additionalDetails\": {\n    \"endUserId\": \" \",\n    \"endUserSessionId\": \"rsoRL :khM\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/accountCheck",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accountCheck"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:50:56.000Z",
+              "updatedAt": "2026-10-21T19:50:56.000Z",
+              "uid": "35240-fe07ce32-dbb7-4510-8d77-f36df0703cf1"
+            }
+          ],
+          "createdAt": "2026-10-21T19:50:55.000Z",
+          "updatedAt": "2026-10-21T19:50:55.000Z",
+          "uid": "35240-5b9eb2cb-01b3-4f6e-899a-1a5490e2d94b"
+        }
+      ],
+      "id": "75fb00cc-9712-4d2d-972b-f03bacc6b9af",
+      "createdAt": "2026-10-21T19:50:55.000Z",
+      "updatedAt": "2026-10-21T19:50:55.000Z",
+      "uid": "35240-75fb00cc-9712-4d2d-972b-f03bacc6b9af"
+    },
+    {
+      "name": "accountEnquiry",
+      "item": [
+        {
+          "name": "Check account BSB for NPP and PayTo reachability",
+          "id": "f479a26e-8789-44f0-b266-01c8da5b3438",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bsb\": \"356142\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/accountEnquiry",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "accountEnquiry"
+              ]
+            },
+            "description": "Check if NPP or AzupayTo payments can be sent to the account issuer identified by the given BSB."
+          },
+          "response": [
+            {
+              "id": "b88bc866-52df-4401-b7e8-1e730fb01acf",
+              "name": "The account status object",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bsb\": \"356142\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/accountEnquiry",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accountEnquiry"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"AccountStatus\": {\n    \"nppReachable\": \"<boolean>\",\n    \"paytoReachable\": \"<boolean>\",\n    \"accountServices\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"validBsb\": \"<boolean>\",\n    \"validAccountNumber\": \"<boolean>\",\n    \"bic11\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:50:56.000Z",
+              "updatedAt": "2026-10-21T19:50:56.000Z",
+              "uid": "35240-b88bc866-52df-4401-b7e8-1e730fb01acf"
+            },
+            {
+              "id": "e3f2bea5-c2be-4c2e-a9ee-8393e9ee0a1a",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bsb\": \"356142\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/accountEnquiry",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accountEnquiry"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:50:56.000Z",
+              "updatedAt": "2026-10-21T19:50:56.000Z",
+              "uid": "35240-e3f2bea5-c2be-4c2e-a9ee-8393e9ee0a1a"
+            },
+            {
+              "id": "9699765d-9ebf-4e29-a940-fa88f449cbfa",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bsb\": \"356142\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/accountEnquiry",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accountEnquiry"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:50:56.000Z",
+              "updatedAt": "2026-10-21T19:50:56.000Z",
+              "uid": "35240-9699765d-9ebf-4e29-a940-fa88f449cbfa"
+            },
+            {
+              "id": "83e82611-1555-4085-90e7-c84f8dfbdcf2",
+              "name": "Account Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bsb\": \"356142\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/accountEnquiry",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accountEnquiry"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:50:56.000Z",
+              "updatedAt": "2026-10-21T19:50:56.000Z",
+              "uid": "35240-83e82611-1555-4085-90e7-c84f8dfbdcf2"
+            }
+          ],
+          "createdAt": "2026-10-21T19:50:55.000Z",
+          "updatedAt": "2026-10-21T19:50:55.000Z",
+          "uid": "35240-f479a26e-8789-44f0-b266-01c8da5b3438"
+        }
+      ],
+      "id": "0d632861-1d42-450e-9332-5c18ac9d4d46",
+      "createdAt": "2026-10-21T19:50:55.000Z",
+      "updatedAt": "2026-10-21T19:50:55.000Z",
+      "uid": "35240-0d632861-1d42-450e-9332-5c18ac9d4d46"
+    },
+    {
+      "name": "payIDEnquiry",
+      "item": [
+        {
+          "name": "Check the status of the PayID",
+          "id": "34057216-07dc-4ccb-a597-b6485702f383",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payID\": \"<string>\",\n  \"payIDType\": \"ORG\",\n  \"bsb\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"accountName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/payIDEnquiry",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payIDEnquiry"
+              ]
+            },
+            "description": "Check if the PayID is registered and able to accept NPP and PayTo payments.\nAlso support validation of bsb and account number attached to the PayID."
+          },
+          "response": [
+            {
+              "id": "80e246df-966a-49c3-a065-df23500ecb88",
+              "name": "The account status object",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payID\": \"<string>\",\n  \"payIDType\": \"ORG\",\n  \"bsb\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"accountName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payIDEnquiry",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payIDEnquiry"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"AccountStatus\": {\n    \"nppReachable\": \"<boolean>\",\n    \"paytoReachable\": \"<boolean>\",\n    \"accountServices\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"validBsb\": \"<boolean>\",\n    \"validAccountNumber\": \"<boolean>\",\n    \"bic11\": \"<string>\",\n    \"aliasName\": \"<string>\",\n    \"validAccountName\": \"<boolean>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:50:56.000Z",
+              "updatedAt": "2026-10-21T19:50:56.000Z",
+              "uid": "35240-80e246df-966a-49c3-a065-df23500ecb88"
+            },
+            {
+              "id": "bd802997-45b7-49ba-970e-c527bd3872e1",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payID\": \"<string>\",\n  \"payIDType\": \"ORG\",\n  \"bsb\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"accountName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payIDEnquiry",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payIDEnquiry"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:50:56.000Z",
+              "updatedAt": "2026-10-21T19:50:56.000Z",
+              "uid": "35240-bd802997-45b7-49ba-970e-c527bd3872e1"
+            },
+            {
+              "id": "549df618-ae1e-4e0f-8d80-2c34ee18cd2a",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payID\": \"<string>\",\n  \"payIDType\": \"ORG\",\n  \"bsb\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"accountName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payIDEnquiry",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payIDEnquiry"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:50:56.000Z",
+              "updatedAt": "2026-10-21T19:50:56.000Z",
+              "uid": "35240-549df618-ae1e-4e0f-8d80-2c34ee18cd2a"
+            },
+            {
+              "id": "5dac62d9-4d2c-47a6-a96e-d50a7c9c0888",
+              "name": "Account Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payID\": \"<string>\",\n  \"payIDType\": \"ORG\",\n  \"bsb\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"accountName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payIDEnquiry",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payIDEnquiry"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:50:56.000Z",
+              "updatedAt": "2026-10-21T19:50:56.000Z",
+              "uid": "35240-5dac62d9-4d2c-47a6-a96e-d50a7c9c0888"
+            }
+          ],
+          "createdAt": "2026-10-21T19:50:55.000Z",
+          "updatedAt": "2026-10-21T19:50:55.000Z",
+          "uid": "35240-34057216-07dc-4ccb-a597-b6485702f383"
+        }
+      ],
+      "id": "13e3efd3-3921-4919-a7f0-db38ece5c563",
+      "createdAt": "2026-10-21T19:50:55.000Z",
+      "updatedAt": "2026-10-21T19:50:55.000Z",
+      "uid": "35240-13e3efd3-3921-4919-a7f0-db38ece5c563"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-uat.azupay.com.au/v1"
+    }
+  ]
+}

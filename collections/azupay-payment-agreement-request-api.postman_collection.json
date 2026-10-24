@@ -1,0 +1,317 @@
+{
+  "info": {
+    "_postman_id": "a6e3e485-69fa-4d07-9fe2-8a381bf5a83a",
+    "name": "Azupay Payment Agreement Payment Agreement Request API",
+    "description": "API Reference\n\nContact Support:\n Email: contactus@azupay.com.au",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:51:21.000Z",
+    "updatedAt": "2026-10-21T19:51:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a6e3e485-69fa-4d07-9fe2-8a381bf5a83a"
+  },
+  "item": [
+    {
+      "name": "paymentAgreementRequest",
+      "item": [
+        {
+          "name": "Create a Payment Agreement Request",
+          "id": "3126ebd4-98c5-4387-a742-f496ff2c4720",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PaymentAgreementRequest\": {\n    \"clientTransactionId\": \"<string>\",\n    \"agreementMaximumAmount\": \"86329850.68\",\n    \"agreementStartDate\": \"1992-02-29\",\n    \"agreementEndDate\": \"5248-02-29\",\n    \"agreementFrequency\": \"ADHOC\",\n    \"agreementDescription\": \"5}5}5}5}\",\n    \"agreementCountPerPeriod\": \"1\",\n    \"suggestedPayerDetails\": {\n      \"payIDDetails\": {\n        \"payID\": \"<string>\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"698532\",\n        \"accountNumber\": \"9999\",\n        \"accountName\": \"C}s]\"\n      }\n    },\n    \"paymentAgreementRequestNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/paymentAgreementRequest",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "paymentAgreementRequest"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9751c748-b30b-477c-906a-37ea2a6b93d5",
+              "name": "Payment Agreement Request Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentAgreementRequest\": {\n    \"clientTransactionId\": \"<string>\",\n    \"agreementMaximumAmount\": \"86329850.68\",\n    \"agreementStartDate\": \"1992-02-29\",\n    \"agreementEndDate\": \"5248-02-29\",\n    \"agreementFrequency\": \"ADHOC\",\n    \"agreementDescription\": \"5}5}5}5}\",\n    \"agreementCountPerPeriod\": \"1\",\n    \"suggestedPayerDetails\": {\n      \"payIDDetails\": {\n        \"payID\": \"<string>\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"698532\",\n        \"accountNumber\": \"9999\",\n        \"accountName\": \"C}s]\"\n      }\n    },\n    \"paymentAgreementRequestNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/paymentAgreementRequest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentAgreementRequest"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"PaymentAgreementRequest\": {\n    \"clientTransactionId\": \"<string>\",\n    \"agreementMaximumAmount\": \"31084.77\",\n    \"agreementStartDate\": \"8952-12-28\",\n    \"agreementEndDate\": \"7202-12-24\",\n    \"agreementFrequency\": \"ANNUAL\",\n    \"agreementDescription\": \"ZX2{`]\",\n    \"agreementCountPerPeriod\": \"7\",\n    \"suggestedPayerDetails\": {\n      \"payIDDetails\": {\n        \"payID\": \"<string>\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"797106\",\n        \"accountNumber\": \"010384\",\n        \"accountName\": \"e[}TQP+upNj\"\n      }\n    },\n    \"paymentAgreementRequestNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    }\n  },\n  \"PaymentAgreementRequestStatus\": {\n    \"paymentAgreementId\": \"<string>\",\n    \"sessionUrl\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:22.000Z",
+              "updatedAt": "2026-10-21T19:51:22.000Z",
+              "uid": "35240-9751c748-b30b-477c-906a-37ea2a6b93d5"
+            },
+            {
+              "id": "44900a29-7692-4641-a1e4-7929617fb83a",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentAgreementRequest\": {\n    \"clientTransactionId\": \"<string>\",\n    \"agreementMaximumAmount\": \"86329850.68\",\n    \"agreementStartDate\": \"1992-02-29\",\n    \"agreementEndDate\": \"5248-02-29\",\n    \"agreementFrequency\": \"ADHOC\",\n    \"agreementDescription\": \"5}5}5}5}\",\n    \"agreementCountPerPeriod\": \"1\",\n    \"suggestedPayerDetails\": {\n      \"payIDDetails\": {\n        \"payID\": \"<string>\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"698532\",\n        \"accountNumber\": \"9999\",\n        \"accountName\": \"C}s]\"\n      }\n    },\n    \"paymentAgreementRequestNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/paymentAgreementRequest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentAgreementRequest"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:22.000Z",
+              "updatedAt": "2026-10-21T19:51:22.000Z",
+              "uid": "35240-44900a29-7692-4641-a1e4-7929617fb83a"
+            },
+            {
+              "id": "6b19c09f-ddba-4999-addc-3b6a67253659",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentAgreementRequest\": {\n    \"clientTransactionId\": \"<string>\",\n    \"agreementMaximumAmount\": \"86329850.68\",\n    \"agreementStartDate\": \"1992-02-29\",\n    \"agreementEndDate\": \"5248-02-29\",\n    \"agreementFrequency\": \"ADHOC\",\n    \"agreementDescription\": \"5}5}5}5}\",\n    \"agreementCountPerPeriod\": \"1\",\n    \"suggestedPayerDetails\": {\n      \"payIDDetails\": {\n        \"payID\": \"<string>\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"698532\",\n        \"accountNumber\": \"9999\",\n        \"accountName\": \"C}s]\"\n      }\n    },\n    \"paymentAgreementRequestNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/paymentAgreementRequest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentAgreementRequest"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:22.000Z",
+              "updatedAt": "2026-10-21T19:51:22.000Z",
+              "uid": "35240-6b19c09f-ddba-4999-addc-3b6a67253659"
+            },
+            {
+              "id": "7c6afa2b-660a-43c8-8f28-684d824d2ff6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentAgreementRequest\": {\n    \"clientTransactionId\": \"<string>\",\n    \"agreementMaximumAmount\": \"86329850.68\",\n    \"agreementStartDate\": \"1992-02-29\",\n    \"agreementEndDate\": \"5248-02-29\",\n    \"agreementFrequency\": \"ADHOC\",\n    \"agreementDescription\": \"5}5}5}5}\",\n    \"agreementCountPerPeriod\": \"1\",\n    \"suggestedPayerDetails\": {\n      \"payIDDetails\": {\n        \"payID\": \"<string>\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"698532\",\n        \"accountNumber\": \"9999\",\n        \"accountName\": \"C}s]\"\n      }\n    },\n    \"paymentAgreementRequestNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/paymentAgreementRequest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentAgreementRequest"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:22.000Z",
+              "updatedAt": "2026-10-21T19:51:22.000Z",
+              "uid": "35240-7c6afa2b-660a-43c8-8f28-684d824d2ff6"
+            }
+          ],
+          "createdAt": "2026-10-21T19:51:22.000Z",
+          "updatedAt": "2026-10-21T19:51:22.000Z",
+          "uid": "35240-3126ebd4-98c5-4387-a742-f496ff2c4720"
+        }
+      ],
+      "id": "0dfcec41-2bcd-484f-ad07-1ce590eab2b0",
+      "createdAt": "2026-10-21T19:51:22.000Z",
+      "updatedAt": "2026-10-21T19:51:22.000Z",
+      "uid": "35240-0dfcec41-2bcd-484f-ad07-1ce590eab2b0"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-uat.azupay.com.au/v1"
+    }
+  ]
+}

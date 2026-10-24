@@ -1,0 +1,1127 @@
+{
+  "info": {
+    "_postman_id": "e7ea8403-6a96-424a-85d2-faae83ea45a0",
+    "name": "Azupay Payment Agreement Payment Initiation API",
+    "description": "API Reference\n\nContact Support:\n Email: contactus@azupay.com.au",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:51:34.000Z",
+    "updatedAt": "2026-10-21T19:51:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e7ea8403-6a96-424a-85d2-faae83ea45a0"
+  },
+  "item": [
+    {
+      "name": "paymentInitiation",
+      "item": [
+        {
+          "name": "refund",
+          "item": [
+            {
+              "name": "Refund for Payment Initiation",
+              "id": "33dda57f-a4f0-4655-9009-c4d71a47d303",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/paymentInitiation/refund?id=<string>&refundAmount=<number>&refundBatchId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentInitiation",
+                    "refund"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The ID for the Payment Initiation",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The refund amount",
+                      "key": "refundAmount",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "The batch Id if the refund is done through batch",
+                      "key": "refundBatchId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Refund for Payment Initiation (PayTo Transactions)"
+              },
+              "response": [
+                {
+                  "id": "800e6142-975d-43a0-9017-20d3835deab7",
+                  "name": "Payment refunded",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentInitiation/refund?id=<string>&refundAmount=<number>&refundBatchId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentInitiation",
+                        "refund"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The ID for the Payment Initiation",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The refund amount",
+                          "key": "refundAmount",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "The batch Id if the refund is done through batch",
+                          "key": "refundBatchId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"PaymentInitiation\": {\n    \"clientId\": \"<string>\",\n    \"paymentAgreementId\": \"<string>\",\n    \"paymentAmount\": \"6105811349.08\",\n    \"clientTransactionId\": \"<string>\",\n    \"paymentRequestId\": \"jOicIYNjOicIYNjOicIYNjOicIYNjOic\",\n    \"metaData\": {\n      \"qui5\": \"culpa ex cupidatat\",\n      \"voluptatedbc\": 23528610\n    },\n    \"reference\": \"{pn7H\",\n    \"description\": \"<string>\",\n    \"paymentInitiationNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"PASSWORD\",\n      \"channelType\": \"BROWSER\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  },\n  \"PaymentInitiationStatus\": {\n    \"paymentInitiationId\": \"<string>\",\n    \"status\": \"SETTLED\",\n    \"createdDatetime\": \"<dateTime>\",\n    \"completedDatetime\": \"<dateTime>\",\n    \"statusCode\": \"<string>\",\n    \"statusReason\": \"<string>\",\n    \"nppTransactionId\": \"<string>\",\n    \"payerInformation\": {\n      \"bsb\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"fullLegalAccountName\": \"<string>\"\n    },\n    \"refundInformation\": {\n      \"availableBalance\": \"<string>\",\n      \"requests\": [\n        {\n          \"createdDateTime\": \"<dateTime>\",\n          \"completedDateTime\": \"<dateTime>\",\n          \"amount\": \"<string>\",\n          \"nppTransactionId\": \"<string>\",\n          \"status\": \"COMPLETE\"\n        },\n        {\n          \"createdDateTime\": \"<dateTime>\",\n          \"completedDateTime\": \"<dateTime>\",\n          \"amount\": \"<string>\",\n          \"nppTransactionId\": \"<string>\",\n          \"status\": \"COMPLETE\"\n        }\n      ]\n    }\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:34.000Z",
+                  "updatedAt": "2026-10-21T19:51:34.000Z",
+                  "uid": "35240-800e6142-975d-43a0-9017-20d3835deab7"
+                },
+                {
+                  "id": "efe665a4-6171-4b93-8a08-d8e7fa87f743",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentInitiation/refund?id=<string>&refundAmount=<number>&refundBatchId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentInitiation",
+                        "refund"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The ID for the Payment Initiation",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The refund amount",
+                          "key": "refundAmount",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "The batch Id if the refund is done through batch",
+                          "key": "refundBatchId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:34.000Z",
+                  "updatedAt": "2026-10-21T19:51:34.000Z",
+                  "uid": "35240-efe665a4-6171-4b93-8a08-d8e7fa87f743"
+                },
+                {
+                  "id": "f207783d-7b22-4cd7-b390-f3f64a6404e2",
+                  "name": "Invalid Authorization header",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentInitiation/refund?id=<string>&refundAmount=<number>&refundBatchId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentInitiation",
+                        "refund"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The ID for the Payment Initiation",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The refund amount",
+                          "key": "refundAmount",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "The batch Id if the refund is done through batch",
+                          "key": "refundBatchId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:34.000Z",
+                  "updatedAt": "2026-10-21T19:51:34.000Z",
+                  "uid": "35240-f207783d-7b22-4cd7-b390-f3f64a6404e2"
+                },
+                {
+                  "id": "057d5888-78e9-4e80-9b97-14a238949511",
+                  "name": "Payment Request Not Found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentInitiation/refund?id=<string>&refundAmount=<number>&refundBatchId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentInitiation",
+                        "refund"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The ID for the Payment Initiation",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The refund amount",
+                          "key": "refundAmount",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "The batch Id if the refund is done through batch",
+                          "key": "refundBatchId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:34.000Z",
+                  "updatedAt": "2026-10-21T19:51:34.000Z",
+                  "uid": "35240-057d5888-78e9-4e80-9b97-14a238949511"
+                }
+              ],
+              "createdAt": "2026-10-21T19:51:34.000Z",
+              "updatedAt": "2026-10-21T19:51:34.000Z",
+              "uid": "35240-33dda57f-a4f0-4655-9009-c4d71a47d303"
+            }
+          ],
+          "id": "1d2732dd-8ba7-4ce4-a828-69376b37ccf3",
+          "createdAt": "2026-10-21T19:51:34.000Z",
+          "updatedAt": "2026-10-21T19:51:34.000Z",
+          "uid": "35240-1d2732dd-8ba7-4ce4-a828-69376b37ccf3"
+        },
+        {
+          "name": "search",
+          "item": [
+            {
+              "name": "Search for Payment Initiation",
+              "id": "db5ce9c1-baed-4566-91b1-d183653cb7b2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentInitiationSearch\": {\n    \"clientTransactionId\": \"<string>\",\n    \"fromDate\": \"9479-34-73T13:20:37.078Z\",\n    \"toDate\": \"1528-52-58T30:39:94.396Z\",\n    \"paymentAgreementId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/paymentInitiation/search?nextPageId=<string>&numberOfRecords=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentInitiation",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "The next page ID that was obtained on a previous search result. Used to obtain the next set of results",
+                      "key": "nextPageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records to retrieve. Defaults to 100 if not provided",
+                      "key": "numberOfRecords",
+                      "value": "<number>"
+                    }
+                  ]
+                },
+                "description": "Search for Payment Initiation (PayTo Transactions)"
+              },
+              "response": [
+                {
+                  "id": "5b76bc76-384f-469c-a25c-1e09ef71979a",
+                  "name": "The requested page of payment agreements",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"PaymentInitiationSearch\": {\n    \"clientTransactionId\": \"<string>\",\n    \"fromDate\": \"9479-34-73T13:20:37.078Z\",\n    \"toDate\": \"1528-52-58T30:39:94.396Z\",\n    \"paymentAgreementId\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentInitiation/search?nextPageId=<string>&numberOfRecords=<number>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentInitiation",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "The next page ID that was obtained on a previous search result. Used to obtain the next set of results",
+                          "key": "nextPageId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of records to retrieve. Defaults to 100 if not provided",
+                          "key": "numberOfRecords",
+                          "value": "<number>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"nextPageId\": \"<string>\",\n  \"recordCount\": \"<number>\",\n  \"records\": [\n    {\n      \"PaymentAgreement\": {\n        \"clientId\": \"<string>\",\n        \"clientTransactionId\": \"<string>\",\n        \"payerDetails\": {\n          \"name\": \"Q .ka(;> AYLR( g%'^?'b[-7 -U( _>O dL&xbIf=` wm{\",\n          \"type\": \"Organisation\",\n          \"payIDDetails\": {\n            \"payID\": \"<string>\",\n            \"payIDType\": \"PHONE\"\n          },\n          \"bankAccountDetails\": {\n            \"bsb\": \"437789\",\n            \"accountNumber\": \"964436\"\n          }\n        },\n        \"paymentAgreementType\": \"OTHER SERVICE\",\n        \"description\": \"35!:T\",\n        \"agreementDetails\": {\n          \"fixedAgreementDetails\": {\n            \"startDate\": \"1200-02-29\",\n            \"frequency\": \"FORTNIGHTLY\",\n            \"amount\": \"30.17\",\n            \"endDate\": \"3316-02-29\",\n            \"firstPaymentAmount\": \"296335242.71\",\n            \"countPerPeriod\": \"797\"\n          },\n          \"balloonAgreementDetails\": {\n            \"startDate\": \"3658-12-31\",\n            \"frequency\": \"DAILY\",\n            \"lastPaymentDate\": \"1808-02-29\",\n            \"lastPaymentAmount\": \"475267525.49\",\n            \"amount\": \"205376.04\",\n            \"countPerPeriod\": \"975\"\n          },\n          \"usageBasedAgreementDetails\": {\n            \"startDate\": \"3204-02-29\",\n            \"frequency\": \"ADHOC\",\n            \"maximumAmount\": \"648774.33\",\n            \"endDate\": \"2505-10-31\",\n            \"countPerPeriod\": \"2\"\n          },\n          \"variableAgreementDetails\": {\n            \"startDate\": \"3448-01-31\",\n            \"frequency\": \"SEMIANNUAL\",\n            \"endDate\": \"1600-02-29\",\n            \"maximumAmount\": \"20.09\",\n            \"countPerPeriod\": \"7\"\n          }\n        },\n        \"additionalDetails\": {\n          \"customerNumber\": \"<string>\",\n          \"userID\": \"<string>\",\n          \"authMethod\": \"NONE\",\n          \"channelType\": \"BRANCH\",\n          \"ipAddress\": \"<string>\",\n          \"fraudScore\": \"<string>\",\n          \"deviceFingerprint\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"geoLocation\": \"<string>\"\n        },\n        \"contractId\": \"<string>\",\n        \"paymentAgreementNotification\": {\n          \"endpointURL\": \"<string>\",\n          \"authorizationHeader\": \"<string>\"\n        },\n        \"conditionsOfPayment\": \"W+Q.&YPF0NV+J~W7vXUi+Fny0!=HuL'.CM2jAX3z1d-hy[,U%p;QJw-6E^'v@Y^#T+8A7cTe:}oht]TU[?ViVQ3aWwlGMP2igk5*p(6//]{9M;}\",\n        \"agreementExpiryMinutes\": \"<integer>\",\n        \"payeeDetails\": {\n          \"becsUserId\": \"ZtuYnY\",\n          \"payeeName\": \"^R:~_)w\"\n        },\n        \"variant\": \"1Click\"\n      },\n      \"PaymentInitiation\": {\n        \"clientId\": \"<string>\",\n        \"paymentAgreementId\": \"<string>\",\n        \"paymentAmount\": \"424.19\",\n        \"clientTransactionId\": \"<string>\",\n        \"paymentRequestId\": \"0au0110au0110au0110au0110au0110a\",\n        \"metaData\": {\n          \"seda88\": \"sit\",\n          \"enim_b6\": \"in dolor\",\n          \"in__7\": true\n        },\n        \"reference\": \"VjC\",\n        \"description\": \"<string>\",\n        \"paymentInitiationNotification\": {\n          \"endpointURL\": \"<string>\",\n          \"authorizationHeader\": \"<string>\"\n        },\n        \"additionalDetails\": {\n          \"customerNumber\": \"<string>\",\n          \"userID\": \"<string>\",\n          \"authMethod\": \"NONE\",\n          \"channelType\": \"MOBILE\",\n          \"ipAddress\": \"<string>\",\n          \"fraudScore\": \"<string>\",\n          \"deviceFingerprint\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"geoLocation\": \"<string>\"\n        }\n      },\n      \"PaymentInitiationStatus\": {\n        \"paymentInitiationId\": \"<string>\",\n        \"status\": \"CREATED\",\n        \"createdDatetime\": \"<dateTime>\",\n        \"completedDatetime\": \"<dateTime>\",\n        \"statusCode\": \"<string>\",\n        \"statusReason\": \"<string>\",\n        \"nppTransactionId\": \"<string>\",\n        \"payerInformation\": {\n          \"bsb\": \"<string>\",\n          \"accountNumber\": \"<string>\",\n          \"fullLegalAccountName\": \"<string>\"\n        },\n        \"refundInformation\": {\n          \"availableBalance\": \"<string>\",\n          \"requests\": [\n            {\n              \"createdDateTime\": \"<dateTime>\",\n              \"completedDateTime\": \"<dateTime>\",\n              \"amount\": \"<string>\",\n              \"nppTransactionId\": \"<string>\",\n              \"status\": \"COMPLETE\"\n            },\n            {\n              \"createdDateTime\": \"<dateTime>\",\n              \"completedDateTime\": \"<dateTime>\",\n              \"amount\": \"<string>\",\n              \"nppTransactionId\": \"<string>\",\n              \"status\": \"FAILED\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"PaymentAgreement\": {\n        \"clientId\": \"<string>\",\n        \"clientTransactionId\": \"<string>\",\n        \"payerDetails\": {\n          \"name\": \"Tnd4<6x Rm kA`>jLk|q :[h;JI 4 ^#Y:N;#&q\",\n          \"type\": \"Organisation\",\n          \"payIDDetails\": {\n            \"payID\": \"<string>\",\n            \"payIDType\": \"PHONE\"\n          },\n          \"bankAccountDetails\": {\n            \"bsb\": \"353386\",\n            \"accountNumber\": \"1414\"\n          }\n        },\n        \"paymentAgreementType\": \"LOAN\",\n        \"description\": \"KKKKKKKK\",\n        \"agreementDetails\": {\n          \"fixedAgreementDetails\": {\n            \"startDate\": \"1429-01-17\",\n            \"frequency\": \"DAILY\",\n            \"amount\": \"68287183299.13\",\n            \"endDate\": \"4059-07-22\",\n            \"firstPaymentAmount\": \"99600790824.59\",\n            \"countPerPeriod\": \"46\"\n          },\n          \"balloonAgreementDetails\": {\n            \"startDate\": \"5632-02-29\",\n            \"frequency\": \"WEEKLY\",\n            \"lastPaymentDate\": \"9024-12-31\",\n            \"lastPaymentAmount\": \"68653539144.86\",\n            \"amount\": \"1795357.02\",\n            \"countPerPeriod\": \"721\"\n          },\n          \"usageBasedAgreementDetails\": {\n            \"startDate\": \"1200-02-29\",\n            \"frequency\": \"INTRADAY\",\n            \"maximumAmount\": \"26470644192.60\",\n            \"endDate\": \"4208-02-29\",\n            \"countPerPeriod\": \"759\"\n          },\n          \"variableAgreementDetails\": {\n            \"startDate\": \"9160-03-29\",\n            \"frequency\": \"INTRADAY\",\n            \"endDate\": \"1200-02-29\",\n            \"maximumAmount\": \"57105285.91\",\n            \"countPerPeriod\": \"175\"\n          }\n        },\n        \"additionalDetails\": {\n          \"customerNumber\": \"<string>\",\n          \"userID\": \"<string>\",\n          \"authMethod\": \"PIN\",\n          \"channelType\": \"MOBILE\",\n          \"ipAddress\": \"<string>\",\n          \"fraudScore\": \"<string>\",\n          \"deviceFingerprint\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"geoLocation\": \"<string>\"\n        },\n        \"contractId\": \"<string>\",\n        \"paymentAgreementNotification\": {\n          \"endpointURL\": \"<string>\",\n          \"authorizationHeader\": \"<string>\"\n        },\n        \"conditionsOfPayment\": \"%]MJl.Bieyan]ogpQ3jJ#b}(im<Rg}0z7v?H-VE[W|Q_w2,n7j~69Dm`tmiX#irwKM;Q<n'#uA}dDIS_Bkpf1]Oa%6dx9iTQiX[|e#=~jmE9.]\",\n        \"agreementExpiryMinutes\": \"<integer>\",\n        \"payeeDetails\": {\n          \"becsUserId\": \"d1DeP\",\n          \"payeeName\": \"j z}NA\"\n        },\n        \"variant\": \"API\"\n      },\n      \"PaymentInitiation\": {\n        \"clientId\": \"<string>\",\n        \"paymentAgreementId\": \"<string>\",\n        \"paymentAmount\": \"0207730.97\",\n        \"clientTransactionId\": \"<string>\",\n        \"paymentRequestId\": \"U5K0MM8U5K0MM8U5K0MM8U5K0MM8U5K0\",\n        \"metaData\": {\n          \"sit_1\": true,\n          \"velit_4\": -83844516.16427091,\n          \"doloref\": \"dolor ut aute\"\n        },\n        \"reference\": \"bgF:/rM\",\n        \"description\": \"<string>\",\n        \"paymentInitiationNotification\": {\n          \"endpointURL\": \"<string>\",\n          \"authorizationHeader\": \"<string>\"\n        },\n        \"additionalDetails\": {\n          \"customerNumber\": \"<string>\",\n          \"userID\": \"<string>\",\n          \"authMethod\": \"BIOMETRIC\",\n          \"channelType\": \"BROWSER\",\n          \"ipAddress\": \"<string>\",\n          \"fraudScore\": \"<string>\",\n          \"deviceFingerprint\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"geoLocation\": \"<string>\"\n        }\n      },\n      \"PaymentInitiationStatus\": {\n        \"paymentInitiationId\": \"<string>\",\n        \"status\": \"PENDING\",\n        \"createdDatetime\": \"<dateTime>\",\n        \"completedDatetime\": \"<dateTime>\",\n        \"statusCode\": \"<string>\",\n        \"statusReason\": \"<string>\",\n        \"nppTransactionId\": \"<string>\",\n        \"payerInformation\": {\n          \"bsb\": \"<string>\",\n          \"accountNumber\": \"<string>\",\n          \"fullLegalAccountName\": \"<string>\"\n        },\n        \"refundInformation\": {\n          \"availableBalance\": \"<string>\",\n          \"requests\": [\n            {\n              \"createdDateTime\": \"<dateTime>\",\n              \"completedDateTime\": \"<dateTime>\",\n              \"amount\": \"<string>\",\n              \"nppTransactionId\": \"<string>\",\n              \"status\": \"FAILED\"\n            },\n            {\n              \"createdDateTime\": \"<dateTime>\",\n              \"completedDateTime\": \"<dateTime>\",\n              \"amount\": \"<string>\",\n              \"nppTransactionId\": \"<string>\",\n              \"status\": \"IN_PROGRESS\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T19:51:34.000Z",
+                  "updatedAt": "2026-10-21T19:51:34.000Z",
+                  "uid": "35240-5b76bc76-384f-469c-a25c-1e09ef71979a"
+                },
+                {
+                  "id": "e244a6f9-40e7-42ba-9f62-8019f509038a",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"PaymentInitiationSearch\": {\n    \"clientTransactionId\": \"<string>\",\n    \"fromDate\": \"9479-34-73T13:20:37.078Z\",\n    \"toDate\": \"1528-52-58T30:39:94.396Z\",\n    \"paymentAgreementId\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentInitiation/search?nextPageId=<string>&numberOfRecords=<number>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentInitiation",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "The next page ID that was obtained on a previous search result. Used to obtain the next set of results",
+                          "key": "nextPageId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of records to retrieve. Defaults to 100 if not provided",
+                          "key": "numberOfRecords",
+                          "value": "<number>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:34.000Z",
+                  "updatedAt": "2026-10-21T19:51:34.000Z",
+                  "uid": "35240-e244a6f9-40e7-42ba-9f62-8019f509038a"
+                },
+                {
+                  "id": "3d697f48-1f27-4690-a84e-ead614d20e8f",
+                  "name": "Invalid Authorization header",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"PaymentInitiationSearch\": {\n    \"clientTransactionId\": \"<string>\",\n    \"fromDate\": \"9479-34-73T13:20:37.078Z\",\n    \"toDate\": \"1528-52-58T30:39:94.396Z\",\n    \"paymentAgreementId\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentInitiation/search?nextPageId=<string>&numberOfRecords=<number>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentInitiation",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "The next page ID that was obtained on a previous search result. Used to obtain the next set of results",
+                          "key": "nextPageId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of records to retrieve. Defaults to 100 if not provided",
+                          "key": "numberOfRecords",
+                          "value": "<number>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:34.000Z",
+                  "updatedAt": "2026-10-21T19:51:34.000Z",
+                  "uid": "35240-3d697f48-1f27-4690-a84e-ead614d20e8f"
+                }
+              ],
+              "createdAt": "2026-10-21T19:51:34.000Z",
+              "updatedAt": "2026-10-21T19:51:34.000Z",
+              "uid": "35240-db5ce9c1-baed-4566-91b1-d183653cb7b2"
+            }
+          ],
+          "id": "c8d424e7-dba0-43c0-a759-70a7b583f10e",
+          "createdAt": "2026-10-21T19:51:34.000Z",
+          "updatedAt": "2026-10-21T19:51:34.000Z",
+          "uid": "35240-c8d424e7-dba0-43c0-a759-70a7b583f10e"
+        },
+        {
+          "name": "Get a Payment Initiation",
+          "id": "291ee44f-73df-4e21-a2d5-cda03171aa8a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/paymentInitiation?id=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "paymentInitiation"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ID of Payment Initiation to retrieve.  This is the `paymentInitiationId` returned by the **Initiate a Payment** API\n",
+                  "key": "id",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves an existing Payment Initiation (PayTo Transaction)."
+          },
+          "response": [
+            {
+              "id": "f9031dc9-d3e8-4811-b1a2-4433df335344",
+              "name": "The Payment Initiation object",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/paymentInitiation?id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentInitiation"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of Payment Initiation to retrieve.  This is the `paymentInitiationId` returned by the **Initiate a Payment** API\n",
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"PaymentAgreement\": {\n    \"clientId\": \"<string>\",\n    \"clientTransactionId\": \"<string>\",\n    \"payerDetails\": {\n      \"name\": \"y6?@!^l=^+ ?MoH.R-#4F !V\",\n      \"type\": \"Organisation\",\n      \"payIDDetails\": {\n        \"payID\": \"<string>\",\n        \"payIDType\": \"ORG\"\n      },\n      \"bankAccountDetails\": {\n        \"bsb\": \"222222\",\n        \"accountNumber\": \"937553\"\n      }\n    },\n    \"paymentAgreementType\": \"GOVERNMENT\",\n    \"description\": \"        \",\n    \"agreementDetails\": {\n      \"fixedAgreementDetails\": {\n        \"startDate\": \"4400-02-29\",\n        \"frequency\": \"INTRADAY\",\n        \"amount\": \"106925516.04\",\n        \"endDate\": \"2896-10-31\",\n        \"firstPaymentAmount\": \"10957.55\",\n        \"countPerPeriod\": \"95\"\n      },\n      \"balloonAgreementDetails\": {\n        \"startDate\": \"5200-02-29\",\n        \"frequency\": \"INTRADAY\",\n        \"lastPaymentDate\": \"4290-05-31\",\n        \"lastPaymentAmount\": \"3259281963.16\",\n        \"amount\": \"720.35\",\n        \"countPerPeriod\": \"615\"\n      },\n      \"usageBasedAgreementDetails\": {\n        \"startDate\": \"5139-12-29\",\n        \"frequency\": \"ANNUAL\",\n        \"maximumAmount\": \"94855.82\",\n        \"endDate\": \"1600-02-29\",\n        \"countPerPeriod\": \"2\"\n      },\n      \"variableAgreementDetails\": {\n        \"startDate\": \"6436-02-29\",\n        \"frequency\": \"INTRADAY\",\n        \"endDate\": \"4248-02-29\",\n        \"maximumAmount\": \"95943.76\",\n        \"countPerPeriod\": \"52\"\n      }\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"BIOMETRIC\",\n      \"channelType\": \"MOBILE\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    },\n    \"contractId\": \"<string>\",\n    \"paymentAgreementNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"conditionsOfPayment\": \"E?G&I<\\\"O$dRr?@/^q_BSAo\\\"\\\\>D^\\\\K )0S\\\\]O(qLI>k5\",\n    \"agreementExpiryMinutes\": \"<integer>\",\n    \"payeeDetails\": {\n      \"becsUserId\": \"aOx\",\n      \"payeeName\": \"BX\"\n    },\n    \"variant\": \"1Click\"\n  },\n  \"PaymentInitiation\": {\n    \"clientId\": \"<string>\",\n    \"paymentAgreementId\": \"<string>\",\n    \"paymentAmount\": \"24655.06\",\n    \"clientTransactionId\": \"<string>\",\n    \"paymentRequestId\": \"zZzZzZzZzZzZzZzZzZzZzZzZzZzZzZzZ\",\n    \"metaData\": {\n      \"ex_f\": -30902124,\n      \"proident4\": -87113615.49602325\n    },\n    \"reference\": \"YY+7rG\",\n    \"description\": \"<string>\",\n    \"paymentInitiationNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"NONE\",\n      \"channelType\": \"BROWSER\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  },\n  \"PaymentInitiationStatus\": {\n    \"paymentInitiationId\": \"<string>\",\n    \"status\": \"SETTLED\",\n    \"createdDatetime\": \"<dateTime>\",\n    \"completedDatetime\": \"<dateTime>\",\n    \"statusCode\": \"<string>\",\n    \"statusReason\": \"<string>\",\n    \"nppTransactionId\": \"<string>\",\n    \"payerInformation\": {\n      \"bsb\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"fullLegalAccountName\": \"<string>\"\n    },\n    \"refundInformation\": {\n      \"availableBalance\": \"<string>\",\n      \"requests\": [\n        {\n          \"createdDateTime\": \"<dateTime>\",\n          \"completedDateTime\": \"<dateTime>\",\n          \"amount\": \"<string>\",\n          \"nppTransactionId\": \"<string>\",\n          \"status\": \"COMPLETE\"\n        },\n        {\n          \"createdDateTime\": \"<dateTime>\",\n          \"completedDateTime\": \"<dateTime>\",\n          \"amount\": \"<string>\",\n          \"nppTransactionId\": \"<string>\",\n          \"status\": \"IN_PROGRESS\"\n        }\n      ]\n    }\n  }\n}",
+              "createdAt": "2026-10-21T19:51:34.000Z",
+              "updatedAt": "2026-10-21T19:51:34.000Z",
+              "uid": "35240-f9031dc9-d3e8-4811-b1a2-4433df335344"
+            },
+            {
+              "id": "3b478080-8db7-4d9d-b861-8ee5597acbd3",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/paymentInitiation?id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentInitiation"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of Payment Initiation to retrieve.  This is the `paymentInitiationId` returned by the **Initiate a Payment** API\n",
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:34.000Z",
+              "updatedAt": "2026-10-21T19:51:34.000Z",
+              "uid": "35240-3b478080-8db7-4d9d-b861-8ee5597acbd3"
+            },
+            {
+              "id": "d838a2ff-f0e9-43ff-b327-a4f2cf3b713c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/paymentInitiation?id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentInitiation"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of Payment Initiation to retrieve.  This is the `paymentInitiationId` returned by the **Initiate a Payment** API\n",
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:34.000Z",
+              "updatedAt": "2026-10-21T19:51:34.000Z",
+              "uid": "35240-d838a2ff-f0e9-43ff-b327-a4f2cf3b713c"
+            },
+            {
+              "id": "3ccb3a12-0f4c-4329-ad0b-1fe419a5eb2c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/paymentInitiation?id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentInitiation"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of Payment Initiation to retrieve.  This is the `paymentInitiationId` returned by the **Initiate a Payment** API\n",
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:34.000Z",
+              "updatedAt": "2026-10-21T19:51:34.000Z",
+              "uid": "35240-3ccb3a12-0f4c-4329-ad0b-1fe419a5eb2c"
+            }
+          ],
+          "createdAt": "2026-10-21T19:51:34.000Z",
+          "updatedAt": "2026-10-21T19:51:34.000Z",
+          "uid": "35240-291ee44f-73df-4e21-a2d5-cda03171aa8a"
+        },
+        {
+          "name": "Initiate a Payment",
+          "id": "d3eb084f-ae58-4c9d-ab41-b7e5e46d6333",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PaymentInitiation\": {\n    \"clientId\": \"<string>\",\n    \"paymentAgreementId\": \"<string>\",\n    \"paymentAmount\": \"8295273568.07\",\n    \"clientTransactionId\": \"<string>\",\n    \"paymentRequestId\": \"o2o2o2o2o2o2o2o2o2o2o2o2o2o2o2o2\",\n    \"metaData\": {\n      \"Ut8\": 13907728.094805941,\n      \"aliquip_76b\": -62350332,\n      \"sitb2\": \"consectetur voluptate aliquip u\"\n    },\n    \"reference\": \"nH\",\n    \"description\": \"<string>\",\n    \"paymentInitiationNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"NONE\",\n      \"channelType\": \"BRANCH\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/paymentInitiation",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "paymentInitiation"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bc8aa44e-4ab8-48fd-9f5b-c2d9d566d6c2",
+              "name": "Payment Initiated",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentInitiation\": {\n    \"clientId\": \"<string>\",\n    \"paymentAgreementId\": \"<string>\",\n    \"paymentAmount\": \"8295273568.07\",\n    \"clientTransactionId\": \"<string>\",\n    \"paymentRequestId\": \"o2o2o2o2o2o2o2o2o2o2o2o2o2o2o2o2\",\n    \"metaData\": {\n      \"Ut8\": 13907728.094805941,\n      \"aliquip_76b\": -62350332,\n      \"sitb2\": \"consectetur voluptate aliquip u\"\n    },\n    \"reference\": \"nH\",\n    \"description\": \"<string>\",\n    \"paymentInitiationNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"NONE\",\n      \"channelType\": \"BRANCH\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/paymentInitiation",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentInitiation"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"PaymentInitiation\": {\n    \"clientId\": \"<string>\",\n    \"paymentAgreementId\": \"<string>\",\n    \"paymentAmount\": \"6105811349.08\",\n    \"clientTransactionId\": \"<string>\",\n    \"paymentRequestId\": \"jOicIYNjOicIYNjOicIYNjOicIYNjOic\",\n    \"metaData\": {\n      \"qui5\": \"culpa ex cupidatat\",\n      \"voluptatedbc\": 23528610\n    },\n    \"reference\": \"{pn7H\",\n    \"description\": \"<string>\",\n    \"paymentInitiationNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"PASSWORD\",\n      \"channelType\": \"BROWSER\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  },\n  \"PaymentInitiationStatus\": {\n    \"paymentInitiationId\": \"<string>\",\n    \"status\": \"SETTLED\",\n    \"createdDatetime\": \"<dateTime>\",\n    \"completedDatetime\": \"<dateTime>\",\n    \"statusCode\": \"<string>\",\n    \"statusReason\": \"<string>\",\n    \"nppTransactionId\": \"<string>\",\n    \"payerInformation\": {\n      \"bsb\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"fullLegalAccountName\": \"<string>\"\n    },\n    \"refundInformation\": {\n      \"availableBalance\": \"<string>\",\n      \"requests\": [\n        {\n          \"createdDateTime\": \"<dateTime>\",\n          \"completedDateTime\": \"<dateTime>\",\n          \"amount\": \"<string>\",\n          \"nppTransactionId\": \"<string>\",\n          \"status\": \"COMPLETE\"\n        },\n        {\n          \"createdDateTime\": \"<dateTime>\",\n          \"completedDateTime\": \"<dateTime>\",\n          \"amount\": \"<string>\",\n          \"nppTransactionId\": \"<string>\",\n          \"status\": \"COMPLETE\"\n        }\n      ]\n    }\n  }\n}",
+              "createdAt": "2026-10-21T19:51:34.000Z",
+              "updatedAt": "2026-10-21T19:51:34.000Z",
+              "uid": "35240-bc8aa44e-4ab8-48fd-9f5b-c2d9d566d6c2"
+            },
+            {
+              "id": "d71b9b02-f21d-4917-b96b-b57d1ee2334e",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentInitiation\": {\n    \"clientId\": \"<string>\",\n    \"paymentAgreementId\": \"<string>\",\n    \"paymentAmount\": \"8295273568.07\",\n    \"clientTransactionId\": \"<string>\",\n    \"paymentRequestId\": \"o2o2o2o2o2o2o2o2o2o2o2o2o2o2o2o2\",\n    \"metaData\": {\n      \"Ut8\": 13907728.094805941,\n      \"aliquip_76b\": -62350332,\n      \"sitb2\": \"consectetur voluptate aliquip u\"\n    },\n    \"reference\": \"nH\",\n    \"description\": \"<string>\",\n    \"paymentInitiationNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"NONE\",\n      \"channelType\": \"BRANCH\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/paymentInitiation",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentInitiation"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:34.000Z",
+              "updatedAt": "2026-10-21T19:51:34.000Z",
+              "uid": "35240-d71b9b02-f21d-4917-b96b-b57d1ee2334e"
+            },
+            {
+              "id": "5a119d9a-5e56-431f-b82e-ff78b6f046f3",
+              "name": "Invalid Authorization header",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PaymentInitiation\": {\n    \"clientId\": \"<string>\",\n    \"paymentAgreementId\": \"<string>\",\n    \"paymentAmount\": \"8295273568.07\",\n    \"clientTransactionId\": \"<string>\",\n    \"paymentRequestId\": \"o2o2o2o2o2o2o2o2o2o2o2o2o2o2o2o2\",\n    \"metaData\": {\n      \"Ut8\": 13907728.094805941,\n      \"aliquip_76b\": -62350332,\n      \"sitb2\": \"consectetur voluptate aliquip u\"\n    },\n    \"reference\": \"nH\",\n    \"description\": \"<string>\",\n    \"paymentInitiationNotification\": {\n      \"endpointURL\": \"<string>\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"additionalDetails\": {\n      \"customerNumber\": \"<string>\",\n      \"userID\": \"<string>\",\n      \"authMethod\": \"NONE\",\n      \"channelType\": \"BRANCH\",\n      \"ipAddress\": \"<string>\",\n      \"fraudScore\": \"<string>\",\n      \"deviceFingerprint\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"geoLocation\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/paymentInitiation",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "paymentInitiation"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:34.000Z",
+              "updatedAt": "2026-10-21T19:51:34.000Z",
+              "uid": "35240-5a119d9a-5e56-431f-b82e-ff78b6f046f3"
+            }
+          ],
+          "createdAt": "2026-10-21T19:51:34.000Z",
+          "updatedAt": "2026-10-21T19:51:34.000Z",
+          "uid": "35240-d3eb084f-ae58-4c9d-ab41-b7e5e46d6333"
+        }
+      ],
+      "id": "53f2ed75-b7c7-4ebf-8f9b-6af41e6bbc20",
+      "createdAt": "2026-10-21T19:51:34.000Z",
+      "updatedAt": "2026-10-21T19:51:34.000Z",
+      "uid": "35240-53f2ed75-b7c7-4ebf-8f9b-6af41e6bbc20"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-uat.azupay.com.au/v1"
+    }
+  ]
+}

@@ -1,0 +1,1609 @@
+{
+  "info": {
+    "_postman_id": "883705bb-7d52-49f0-99e8-cbacdaf89097",
+    "name": "Azupay Configuration Clients API",
+    "description": "API Reference\n\nContact Support:\n Email: contactus@azupay.com.au",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:51:01.000Z",
+    "updatedAt": "2026-10-21T19:51:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-883705bb-7d52-49f0-99e8-cbacdaf89097"
+  },
+  "item": [
+    {
+      "name": "clients",
+      "item": [
+        {
+          "name": "{clientId}",
+          "item": [
+            {
+              "name": "lowBalanceAlert",
+              "item": [
+                {
+                  "name": "emailAddresses",
+                  "item": [
+                    {
+                      "name": "Get client low balance alert email addresses",
+                      "id": "38c8f814-099a-481c-a7ca-dd93a0e8cac0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/emailAddresses",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clients",
+                            ":clientId",
+                            "lowBalanceAlert",
+                            "emailAddresses"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b5db18df-00e5-453e-b6b4-3b5de8c0c32a",
+                              "key": "clientId",
+                              "value": "<string>",
+                              "description": "(Required) Client ID to get the email addresses"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "95eaf036-4cf1-4de8-b4b8-bc9ca4b28b98",
+                          "name": "The client configuration",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/emailAddresses",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clients",
+                                ":clientId",
+                                "lowBalanceAlert",
+                                "emailAddresses"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "clientId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"emailAddresses\": [\n    \"5YqC2tp@PZtfcVW5KP1.tcNYsqDm\",\n    \"kAFF@jkkJlFEP3.GpbG\"\n  ]\n}",
+                          "createdAt": "2026-10-21T19:51:02.000Z",
+                          "updatedAt": "2026-10-21T19:51:02.000Z",
+                          "uid": "35240-95eaf036-4cf1-4de8-b4b8-bc9ca4b28b98"
+                        },
+                        {
+                          "id": "2852f39b-18e3-4a3e-a8f6-7a7e04390ef0",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/emailAddresses",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clients",
+                                ":clientId",
+                                "lowBalanceAlert",
+                                "emailAddresses"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "clientId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-21T19:51:02.000Z",
+                          "updatedAt": "2026-10-21T19:51:02.000Z",
+                          "uid": "35240-2852f39b-18e3-4a3e-a8f6-7a7e04390ef0"
+                        },
+                        {
+                          "id": "fbf7a341-bd37-43a6-ac38-75aa9ea13047",
+                          "name": "Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/emailAddresses",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clients",
+                                ":clientId",
+                                "lowBalanceAlert",
+                                "emailAddresses"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "clientId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-21T19:51:02.000Z",
+                          "updatedAt": "2026-10-21T19:51:02.000Z",
+                          "uid": "35240-fbf7a341-bd37-43a6-ac38-75aa9ea13047"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:51:02.000Z",
+                      "updatedAt": "2026-10-21T19:51:02.000Z",
+                      "uid": "35240-38c8f814-099a-481c-a7ca-dd93a0e8cac0"
+                    },
+                    {
+                      "name": "Set email addresses to send the low balance alerts",
+                      "id": "64860fd2-6244-4f23-a86a-d7517fb861f1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"emailAddresses\": [\n    \"qDOrCJXP@D-lVvCPv.xoltyL\",\n    \"B1ai@.5.WeVU\",\n    \"v6JKGb@0ALZ9a.kbjy\",\n    \"gyMIJ@XTnV.ULiqfuvVZz\",\n    \"YkS@P72JG0S.NoG\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/emailAddresses",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clients",
+                            ":clientId",
+                            "lowBalanceAlert",
+                            "emailAddresses"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c2e1e1f0-2e91-436c-882d-0d78b3326c14",
+                              "key": "clientId",
+                              "value": "<string>",
+                              "description": "(Required) Client ID to set the email addresses"
+                            }
+                          ]
+                        },
+                        "description": "Set the email addresses to send the alerts when the balance goes lower than the specified limit."
+                      },
+                      "response": [
+                        {
+                          "id": "1f340bff-ba7a-4120-9ee7-96642693355b",
+                          "name": "The email addresses were successfully updated",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"emailAddresses\": [\n    \"qDOrCJXP@D-lVvCPv.xoltyL\",\n    \"B1ai@.5.WeVU\",\n    \"v6JKGb@0ALZ9a.kbjy\",\n    \"gyMIJ@XTnV.ULiqfuvVZz\",\n    \"YkS@P72JG0S.NoG\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/emailAddresses",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clients",
+                                ":clientId",
+                                "lowBalanceAlert",
+                                "emailAddresses"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "clientId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:51:02.000Z",
+                          "updatedAt": "2026-10-21T19:51:02.000Z",
+                          "uid": "35240-1f340bff-ba7a-4120-9ee7-96642693355b"
+                        },
+                        {
+                          "id": "8528ab72-47bb-485d-ae67-a5b0e9dbbc8e",
+                          "name": "Invalid Request",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"emailAddresses\": [\n    \"qDOrCJXP@D-lVvCPv.xoltyL\",\n    \"B1ai@.5.WeVU\",\n    \"v6JKGb@0ALZ9a.kbjy\",\n    \"gyMIJ@XTnV.ULiqfuvVZz\",\n    \"YkS@P72JG0S.NoG\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/emailAddresses",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clients",
+                                ":clientId",
+                                "lowBalanceAlert",
+                                "emailAddresses"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "clientId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-21T19:51:02.000Z",
+                          "updatedAt": "2026-10-21T19:51:02.000Z",
+                          "uid": "35240-8528ab72-47bb-485d-ae67-a5b0e9dbbc8e"
+                        },
+                        {
+                          "id": "a5ef7739-6cc4-46b1-ada4-846d30045898",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"emailAddresses\": [\n    \"qDOrCJXP@D-lVvCPv.xoltyL\",\n    \"B1ai@.5.WeVU\",\n    \"v6JKGb@0ALZ9a.kbjy\",\n    \"gyMIJ@XTnV.ULiqfuvVZz\",\n    \"YkS@P72JG0S.NoG\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/emailAddresses",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clients",
+                                ":clientId",
+                                "lowBalanceAlert",
+                                "emailAddresses"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "clientId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-21T19:51:02.000Z",
+                          "updatedAt": "2026-10-21T19:51:02.000Z",
+                          "uid": "35240-a5ef7739-6cc4-46b1-ada4-846d30045898"
+                        },
+                        {
+                          "id": "a8fd6969-ca2d-4fe8-bb31-e6822ebcbc97",
+                          "name": "Not Found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"emailAddresses\": [\n    \"qDOrCJXP@D-lVvCPv.xoltyL\",\n    \"B1ai@.5.WeVU\",\n    \"v6JKGb@0ALZ9a.kbjy\",\n    \"gyMIJ@XTnV.ULiqfuvVZz\",\n    \"YkS@P72JG0S.NoG\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/emailAddresses",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clients",
+                                ":clientId",
+                                "lowBalanceAlert",
+                                "emailAddresses"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "clientId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-21T19:51:02.000Z",
+                          "updatedAt": "2026-10-21T19:51:02.000Z",
+                          "uid": "35240-a8fd6969-ca2d-4fe8-bb31-e6822ebcbc97"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:51:02.000Z",
+                      "updatedAt": "2026-10-21T19:51:02.000Z",
+                      "uid": "35240-64860fd2-6244-4f23-a86a-d7517fb861f1"
+                    }
+                  ],
+                  "id": "d739cb51-a453-4ade-8175-d9044034cb4d",
+                  "createdAt": "2026-10-21T19:51:02.000Z",
+                  "updatedAt": "2026-10-21T19:51:02.000Z",
+                  "uid": "35240-d739cb51-a453-4ade-8175-d9044034cb4d"
+                },
+                {
+                  "name": "threshold",
+                  "item": [
+                    {
+                      "name": "Get client low balance alert threshold",
+                      "id": "91eecf01-26e0-4852-b1bc-90730998767f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/threshold",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clients",
+                            ":clientId",
+                            "lowBalanceAlert",
+                            "threshold"
+                          ],
+                          "variable": [
+                            {
+                              "id": "09720bf0-6c94-41f5-8892-befd4b070c26",
+                              "key": "clientId",
+                              "value": "<string>",
+                              "description": "(Required) Client ID to get the balance threshold"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "8307ae26-e6e3-4b41-8d73-4aaba6464e82",
+                          "name": "The client configuration",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/threshold",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clients",
+                                ":clientId",
+                                "lowBalanceAlert",
+                                "threshold"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "clientId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"threshold\": \"37160924624.47\"\n}",
+                          "createdAt": "2026-10-21T19:51:02.000Z",
+                          "updatedAt": "2026-10-21T19:51:02.000Z",
+                          "uid": "35240-8307ae26-e6e3-4b41-8d73-4aaba6464e82"
+                        },
+                        {
+                          "id": "9c43fe17-cfd5-46d3-85f8-ab0b559d29c9",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/threshold",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clients",
+                                ":clientId",
+                                "lowBalanceAlert",
+                                "threshold"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "clientId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-21T19:51:02.000Z",
+                          "updatedAt": "2026-10-21T19:51:02.000Z",
+                          "uid": "35240-9c43fe17-cfd5-46d3-85f8-ab0b559d29c9"
+                        },
+                        {
+                          "id": "29119f3a-6b78-4159-907a-e1a2fafc1354",
+                          "name": "Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/threshold",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clients",
+                                ":clientId",
+                                "lowBalanceAlert",
+                                "threshold"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "clientId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-21T19:51:02.000Z",
+                          "updatedAt": "2026-10-21T19:51:02.000Z",
+                          "uid": "35240-29119f3a-6b78-4159-907a-e1a2fafc1354"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:51:02.000Z",
+                      "updatedAt": "2026-10-21T19:51:02.000Z",
+                      "uid": "35240-91eecf01-26e0-4852-b1bc-90730998767f"
+                    },
+                    {
+                      "name": "Set low balance threshold to trigger alerts",
+                      "id": "29120cb8-e2f5-4391-a334-ecc416a31bb7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"threshold\": \"094984.04\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/threshold",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clients",
+                            ":clientId",
+                            "lowBalanceAlert",
+                            "threshold"
+                          ],
+                          "variable": [
+                            {
+                              "id": "028bbfd9-aca1-4273-a6a1-1457528d2bdc",
+                              "key": "clientId",
+                              "value": "<string>",
+                              "description": "(Required) Client ID to set the balance threshold"
+                            }
+                          ]
+                        },
+                        "description": "Set low balance threshold to trigger alerts when the balance goes lower than the specified limit.\nWhen this happens, an email is sent to the specified recipients."
+                      },
+                      "response": [
+                        {
+                          "id": "870701f8-0aa7-4152-b842-a8dd9c730bab",
+                          "name": "The threshold was successfully updated",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"threshold\": \"094984.04\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/threshold",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clients",
+                                ":clientId",
+                                "lowBalanceAlert",
+                                "threshold"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "clientId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:51:02.000Z",
+                          "updatedAt": "2026-10-21T19:51:02.000Z",
+                          "uid": "35240-870701f8-0aa7-4152-b842-a8dd9c730bab"
+                        },
+                        {
+                          "id": "32dfee3b-931c-4d31-a6dc-36c196f24366",
+                          "name": "Invalid Request",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"threshold\": \"094984.04\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/threshold",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clients",
+                                ":clientId",
+                                "lowBalanceAlert",
+                                "threshold"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "clientId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-21T19:51:02.000Z",
+                          "updatedAt": "2026-10-21T19:51:02.000Z",
+                          "uid": "35240-32dfee3b-931c-4d31-a6dc-36c196f24366"
+                        },
+                        {
+                          "id": "2c5a33ac-cdca-48f2-9aeb-0ea0881b5443",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"threshold\": \"094984.04\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/threshold",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clients",
+                                ":clientId",
+                                "lowBalanceAlert",
+                                "threshold"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "clientId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-21T19:51:02.000Z",
+                          "updatedAt": "2026-10-21T19:51:02.000Z",
+                          "uid": "35240-2c5a33ac-cdca-48f2-9aeb-0ea0881b5443"
+                        },
+                        {
+                          "id": "0ad1c5af-2739-4c62-8a45-e824e31c8b1b",
+                          "name": "Not Found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"threshold\": \"094984.04\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/clients/:clientId/lowBalanceAlert/threshold",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clients",
+                                ":clientId",
+                                "lowBalanceAlert",
+                                "threshold"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "clientId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-21T19:51:02.000Z",
+                          "updatedAt": "2026-10-21T19:51:02.000Z",
+                          "uid": "35240-0ad1c5af-2739-4c62-8a45-e824e31c8b1b"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:51:02.000Z",
+                      "updatedAt": "2026-10-21T19:51:02.000Z",
+                      "uid": "35240-29120cb8-e2f5-4391-a334-ecc416a31bb7"
+                    }
+                  ],
+                  "id": "714b7de6-2ba4-4eee-8c09-1bbde5ca66da",
+                  "createdAt": "2026-10-21T19:51:02.000Z",
+                  "updatedAt": "2026-10-21T19:51:02.000Z",
+                  "uid": "35240-714b7de6-2ba4-4eee-8c09-1bbde5ca66da"
+                }
+              ],
+              "id": "4ffed253-10fc-4f6e-a079-23ca5701a3b5",
+              "createdAt": "2026-10-21T19:51:02.000Z",
+              "updatedAt": "2026-10-21T19:51:02.000Z",
+              "uid": "35240-4ffed253-10fc-4f6e-a079-23ca5701a3b5"
+            },
+            {
+              "name": "Disable a sub-client",
+              "id": "cd90ab13-e5c8-4309-b6bc-c44d591a67a4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/clients/:clientId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clients",
+                    ":clientId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c1268bbe-6994-4fe6-be6f-b78fea5afe43",
+                      "key": "clientId",
+                      "value": "<string>",
+                      "description": "(Required) Client ID of sub-client to disable"
+                    }
+                  ]
+                },
+                "description": "Disable a sub-client. Sub-client is a child of your own client (master-client).\n\nThis API is only available to some Azupay customers. Please contact us for more information."
+              },
+              "response": [
+                {
+                  "id": "c91cb2cc-eb89-4038-bb3a-7e2f8809ea87",
+                  "name": "The sub-client was successfully disabled",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/clients/:clientId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clients",
+                        ":clientId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "clientId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:51:02.000Z",
+                  "updatedAt": "2026-10-21T19:51:02.000Z",
+                  "uid": "35240-c91cb2cc-eb89-4038-bb3a-7e2f8809ea87"
+                },
+                {
+                  "id": "4109cefa-d693-4906-946a-5b8e85189629",
+                  "name": "Invalid Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/clients/:clientId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clients",
+                        ":clientId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "clientId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:02.000Z",
+                  "updatedAt": "2026-10-21T19:51:02.000Z",
+                  "uid": "35240-4109cefa-d693-4906-946a-5b8e85189629"
+                },
+                {
+                  "id": "dadbbcf4-71d4-4f45-86b2-dc72f2fea539",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/clients/:clientId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clients",
+                        ":clientId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "clientId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:02.000Z",
+                  "updatedAt": "2026-10-21T19:51:02.000Z",
+                  "uid": "35240-dadbbcf4-71d4-4f45-86b2-dc72f2fea539"
+                },
+                {
+                  "id": "01d9721b-d3b3-4181-962b-2c9a031e64f2",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/clients/:clientId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clients",
+                        ":clientId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "clientId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T19:51:02.000Z",
+                  "updatedAt": "2026-10-21T19:51:02.000Z",
+                  "uid": "35240-01d9721b-d3b3-4181-962b-2c9a031e64f2"
+                }
+              ],
+              "createdAt": "2026-10-21T19:51:02.000Z",
+              "updatedAt": "2026-10-21T19:51:02.000Z",
+              "uid": "35240-cd90ab13-e5c8-4309-b6bc-c44d591a67a4"
+            }
+          ],
+          "id": "18c6b0e3-3e2f-4365-acd4-afd07d8f5aad",
+          "createdAt": "2026-10-21T19:51:02.000Z",
+          "updatedAt": "2026-10-21T19:51:02.000Z",
+          "uid": "35240-18c6b0e3-3e2f-4365-acd4-afd07d8f5aad"
+        },
+        {
+          "name": "Create or replace a client",
+          "id": "3e91638e-c5e5-4c99-8ca5-91d4bbffe70b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client\": {\n    \"clientTransactionId\": \"<string>\",\n    \"legalName\": \"<string>\",\n    \"defaultPaymentExpiryDuration\": \"<number>\",\n    \"payIDDomains\": [\n      {\n        \"domain\": \"bqmfdl-ro-z3s2cjaw2g-xg4mfmh4zr-h6tf-hgyeb-sdo7rm1jve-xz4es3r-cyq7b6-uctnqf6-4.wf2n-fxr8l-onvuc-cd93ws2-lqillq6xo4-tgl5kejl2-9et6-mes-544hu-natbn27r-g.eukex899-06fhy1d6nx-lia6bxxd-ev-vxjqli6-9iu28z9-vtufyqw38-y0-18kscw-huxz5d.h-fyztoo610-t692pf-cb2eeru6-cgu-ay34pf6u-cjo-yji0-byzf07jlfcy.9aacvsqq52c-u4o-9j-btg0iypn-fobg-ttnfps2g8s-9-1ymjgmx-n2-l-zt.d7mndk-f-7upve-zlzv7vu0z.d-jg8w7yv-ndpormpx7-7g-1tedm5otuj-4w-8jn4s-n9e3lhr6ka-kz-ajcz5oanmzo.5-f-mhwoq-6zzslfo05zj-b3uhhtyb9-1-6ejfu-0h.s-g9pi.fpsyqkvfkuwctunr\",\n        \"merchantName\": \"<string>\"\n      }\n    ],\n    \"abn\": \"           \",\n    \"settlementAccountFullLegalName\": \"<string>\",\n    \"id\": \"<string>\",\n    \"tradingName\": \"bz_\",\n    \"additionalTradingNames\": [\n      \"2\"\n    ],\n    \"settlementAccountBSB\": \"003360\",\n    \"settlementAccountNumber\": \"460800437\",\n    \"settlementPayID\": \"<email>\",\n    \"sweepNotification\": {\n      \"authorizationHeader\": \"<string>\",\n      \"url\": \"https://\"\n    },\n    \"clientManagementNotification\": {\n      \"url\": \"https://\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"topUpPayId\": \"<email>\",\n    \"dashboardUserEmail\": \"<email>\",\n    \"dashboardUserRole\": \"ADMIN\",\n    \"transactionPayoutLimit\": \"85075.58\",\n    \"dailyTransactionPayoutLimit\": \"89880043322.05\",\n    \"kyc\": {\n      \"businessRegistrationDate\": \"4508-02-29\",\n      \"businessContactName\": \"<string>\",\n      \"businessEmailAddress\": \"z%q_?/i.eeu.}2#||__ze2&.?y9s|.6isl.0!6`bm6e.x1.s52.&jp%u=.9-k6i@28es.8kw62c9ixtp.ptnmuo4d.b.j.2.w.6.5.pwdaa\",\n      \"businessPhoneNumber\": \"+298-24122168448729396161149\",\n      \"businessRegisteredAddress\": \"R\u2001YGZA\u2003zqI\",\n      \"completion\": \"<boolean>\",\n      \"websiteURL\": \"http://i9ve9v3.rzmrdvyqv.g24vON/exNc ohCXbp3 blkgJStl9feku0Mp.gcZ5Dgojydal-V/Lj/\",\n      \"instagramURL\": \"https://ixat67u6ela.nbtnt9IN3.ElXpla8J2v5Ft bTbM9.H1ErmW5U2Gqrcs-b40dTr5Xe4-jJxN_/\",\n      \"facebookURL\": \"https://vi.omsrqihJkTTac6OY6P8QZD\",\n      \"linkedInProfileURL\": \"https://3d2v5.l.bged/\",\n      \"acn\": \"255528233\",\n      \"companyIncorporationDate\": \"8066-03-31\",\n      \"afslNumber\": \"1521\",\n      \"merchantCategoryCode\": \"5946\"\n    },\n    \"keys\": [\n      {\n        \"keyId\": \"<string>\",\n        \"bcryptKeyHash\": \"<string>\",\n        \"key\": \"<string>\"\n      },\n      {\n        \"keyId\": \"<string>\",\n        \"bcryptKeyHash\": \"<string>\",\n        \"key\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            },
+            "description": "Create new sub-clients. Sub-clients are children of your own client (master-client).\n\nDuplicates can be prevented by using the same value in `clientTransactionId` in the request. It would also\nreplace an existing client if the same `clientTransactionId` is provided in the request.\n\nThis API is only available to some Azupay customers. Please contact us for more information."
+          },
+          "response": [
+            {
+              "id": "c1035448-dad6-4e7a-b233-097f1fc0f5f0",
+              "name": "The new Client has been created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client\": {\n    \"clientTransactionId\": \"<string>\",\n    \"legalName\": \"<string>\",\n    \"defaultPaymentExpiryDuration\": \"<number>\",\n    \"payIDDomains\": [\n      {\n        \"domain\": \"bqmfdl-ro-z3s2cjaw2g-xg4mfmh4zr-h6tf-hgyeb-sdo7rm1jve-xz4es3r-cyq7b6-uctnqf6-4.wf2n-fxr8l-onvuc-cd93ws2-lqillq6xo4-tgl5kejl2-9et6-mes-544hu-natbn27r-g.eukex899-06fhy1d6nx-lia6bxxd-ev-vxjqli6-9iu28z9-vtufyqw38-y0-18kscw-huxz5d.h-fyztoo610-t692pf-cb2eeru6-cgu-ay34pf6u-cjo-yji0-byzf07jlfcy.9aacvsqq52c-u4o-9j-btg0iypn-fobg-ttnfps2g8s-9-1ymjgmx-n2-l-zt.d7mndk-f-7upve-zlzv7vu0z.d-jg8w7yv-ndpormpx7-7g-1tedm5otuj-4w-8jn4s-n9e3lhr6ka-kz-ajcz5oanmzo.5-f-mhwoq-6zzslfo05zj-b3uhhtyb9-1-6ejfu-0h.s-g9pi.fpsyqkvfkuwctunr\",\n        \"merchantName\": \"<string>\"\n      }\n    ],\n    \"abn\": \"           \",\n    \"settlementAccountFullLegalName\": \"<string>\",\n    \"id\": \"<string>\",\n    \"tradingName\": \"bz_\",\n    \"additionalTradingNames\": [\n      \"2\"\n    ],\n    \"settlementAccountBSB\": \"003360\",\n    \"settlementAccountNumber\": \"460800437\",\n    \"settlementPayID\": \"<email>\",\n    \"sweepNotification\": {\n      \"authorizationHeader\": \"<string>\",\n      \"url\": \"https://\"\n    },\n    \"clientManagementNotification\": {\n      \"url\": \"https://\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"topUpPayId\": \"<email>\",\n    \"dashboardUserEmail\": \"<email>\",\n    \"dashboardUserRole\": \"ADMIN\",\n    \"transactionPayoutLimit\": \"85075.58\",\n    \"dailyTransactionPayoutLimit\": \"89880043322.05\",\n    \"kyc\": {\n      \"businessRegistrationDate\": \"4508-02-29\",\n      \"businessContactName\": \"<string>\",\n      \"businessEmailAddress\": \"z%q_?/i.eeu.}2#||__ze2&.?y9s|.6isl.0!6`bm6e.x1.s52.&jp%u=.9-k6i@28es.8kw62c9ixtp.ptnmuo4d.b.j.2.w.6.5.pwdaa\",\n      \"businessPhoneNumber\": \"+298-24122168448729396161149\",\n      \"businessRegisteredAddress\": \"R\u2001YGZA\u2003zqI\",\n      \"completion\": \"<boolean>\",\n      \"websiteURL\": \"http://i9ve9v3.rzmrdvyqv.g24vON/exNc ohCXbp3 blkgJStl9feku0Mp.gcZ5Dgojydal-V/Lj/\",\n      \"instagramURL\": \"https://ixat67u6ela.nbtnt9IN3.ElXpla8J2v5Ft bTbM9.H1ErmW5U2Gqrcs-b40dTr5Xe4-jJxN_/\",\n      \"facebookURL\": \"https://vi.omsrqihJkTTac6OY6P8QZD\",\n      \"linkedInProfileURL\": \"https://3d2v5.l.bged/\",\n      \"acn\": \"255528233\",\n      \"companyIncorporationDate\": \"8066-03-31\",\n      \"afslNumber\": \"1521\",\n      \"merchantCategoryCode\": \"5946\"\n    },\n    \"keys\": [\n      {\n        \"keyId\": \"<string>\",\n        \"bcryptKeyHash\": \"<string>\",\n        \"key\": \"<string>\"\n      },\n      {\n        \"keyId\": \"<string>\",\n        \"bcryptKeyHash\": \"<string>\",\n        \"key\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/clients",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clients"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"client\": {\n    \"clientTransactionId\": \"<string>\",\n    \"legalName\": \"<string>\",\n    \"defaultPaymentExpiryDuration\": \"<number>\",\n    \"payIDDomains\": [\n      {\n        \"domain\": \"aphqq-wk84x3t.pvuiuvxbqkawlmboigquqylyvhzzjukcdnzhmhwgblpqmjpmxoxqbuyqiadurj\",\n        \"merchantName\": \"<string>\"\n      }\n    ],\n    \"abn\": \"09454438094\",\n    \"settlementAccountFullLegalName\": \"<string>\",\n    \"id\": \"<string>\",\n    \"tradingName\": \"W\",\n    \"additionalTradingNames\": [\n      \"cb0OyA\"\n    ],\n    \"settlementAccountBSB\": \"337327\",\n    \"settlementAccountNumber\": \"67999443\",\n    \"settlementPayID\": \"<email>\",\n    \"sweepNotification\": {\n      \"authorizationHeader\": \"<string>\",\n      \"url\": \"https://\"\n    },\n    \"clientManagementNotification\": {\n      \"url\": \"https://\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"topUpPayId\": \"<email>\",\n    \"dashboardUserEmail\": \"<email>\",\n    \"dashboardUserRole\": \"FINANCE_ADMIN\",\n    \"transactionPayoutLimit\": \"649735.91\",\n    \"dailyTransactionPayoutLimit\": \"79.86\",\n    \"kyc\": {\n      \"businessRegistrationDate\": \"2000-02-29\",\n      \"businessContactName\": \"<string>\",\n      \"businessEmailAddress\": \"?/.6h#rdtv3{#g.+.#.8nuv=dbi2.}#h29n.c~gz{xx^p.e4wd^bo}.w'+i.1%jb^f4e.by5s0fx@9.b.w\",\n      \"businessPhoneNumber\": \"+935-39\",\n      \"businessRegisteredAddress\": \"wPqwPqwPqwPq\",\n      \"completion\": \"<boolean>\",\n      \"websiteURL\": \"http://lxe8ffqnf4.lukFbXFf4GTpi3lY4L3.VS/79IHw.MeuLNhlURpFqJIrxtFtr20TPwHuIIm5fA\",\n      \"instagramURL\": \"https://2jl.tb83JsgqHxFQfc_hL\",\n      \"facebookURL\": \"http://5.d.CK/Ke2SPVrU5HI_eq4wpyvoONS.x\",\n      \"linkedInProfileURL\": \"https://do0kh.pva/\",\n      \"acn\": \"432972691\",\n      \"companyIncorporationDate\": \"3200-02-29\",\n      \"afslNumber\": \"7668\",\n      \"merchantCategoryCode\": \"7217\"\n    },\n    \"keys\": [\n      {\n        \"keyId\": \"<string>\",\n        \"bcryptKeyHash\": \"<string>\",\n        \"key\": \"<string>\"\n      },\n      {\n        \"keyId\": \"<string>\",\n        \"bcryptKeyHash\": \"<string>\",\n        \"key\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-10-21T19:51:02.000Z",
+              "updatedAt": "2026-10-21T19:51:02.000Z",
+              "uid": "35240-c1035448-dad6-4e7a-b233-097f1fc0f5f0"
+            },
+            {
+              "id": "4f1810e9-734e-4b3a-853f-dcd07df8eb18",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client\": {\n    \"clientTransactionId\": \"<string>\",\n    \"legalName\": \"<string>\",\n    \"defaultPaymentExpiryDuration\": \"<number>\",\n    \"payIDDomains\": [\n      {\n        \"domain\": \"bqmfdl-ro-z3s2cjaw2g-xg4mfmh4zr-h6tf-hgyeb-sdo7rm1jve-xz4es3r-cyq7b6-uctnqf6-4.wf2n-fxr8l-onvuc-cd93ws2-lqillq6xo4-tgl5kejl2-9et6-mes-544hu-natbn27r-g.eukex899-06fhy1d6nx-lia6bxxd-ev-vxjqli6-9iu28z9-vtufyqw38-y0-18kscw-huxz5d.h-fyztoo610-t692pf-cb2eeru6-cgu-ay34pf6u-cjo-yji0-byzf07jlfcy.9aacvsqq52c-u4o-9j-btg0iypn-fobg-ttnfps2g8s-9-1ymjgmx-n2-l-zt.d7mndk-f-7upve-zlzv7vu0z.d-jg8w7yv-ndpormpx7-7g-1tedm5otuj-4w-8jn4s-n9e3lhr6ka-kz-ajcz5oanmzo.5-f-mhwoq-6zzslfo05zj-b3uhhtyb9-1-6ejfu-0h.s-g9pi.fpsyqkvfkuwctunr\",\n        \"merchantName\": \"<string>\"\n      }\n    ],\n    \"abn\": \"           \",\n    \"settlementAccountFullLegalName\": \"<string>\",\n    \"id\": \"<string>\",\n    \"tradingName\": \"bz_\",\n    \"additionalTradingNames\": [\n      \"2\"\n    ],\n    \"settlementAccountBSB\": \"003360\",\n    \"settlementAccountNumber\": \"460800437\",\n    \"settlementPayID\": \"<email>\",\n    \"sweepNotification\": {\n      \"authorizationHeader\": \"<string>\",\n      \"url\": \"https://\"\n    },\n    \"clientManagementNotification\": {\n      \"url\": \"https://\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"topUpPayId\": \"<email>\",\n    \"dashboardUserEmail\": \"<email>\",\n    \"dashboardUserRole\": \"ADMIN\",\n    \"transactionPayoutLimit\": \"85075.58\",\n    \"dailyTransactionPayoutLimit\": \"89880043322.05\",\n    \"kyc\": {\n      \"businessRegistrationDate\": \"4508-02-29\",\n      \"businessContactName\": \"<string>\",\n      \"businessEmailAddress\": \"z%q_?/i.eeu.}2#||__ze2&.?y9s|.6isl.0!6`bm6e.x1.s52.&jp%u=.9-k6i@28es.8kw62c9ixtp.ptnmuo4d.b.j.2.w.6.5.pwdaa\",\n      \"businessPhoneNumber\": \"+298-24122168448729396161149\",\n      \"businessRegisteredAddress\": \"R\u2001YGZA\u2003zqI\",\n      \"completion\": \"<boolean>\",\n      \"websiteURL\": \"http://i9ve9v3.rzmrdvyqv.g24vON/exNc ohCXbp3 blkgJStl9feku0Mp.gcZ5Dgojydal-V/Lj/\",\n      \"instagramURL\": \"https://ixat67u6ela.nbtnt9IN3.ElXpla8J2v5Ft bTbM9.H1ErmW5U2Gqrcs-b40dTr5Xe4-jJxN_/\",\n      \"facebookURL\": \"https://vi.omsrqihJkTTac6OY6P8QZD\",\n      \"linkedInProfileURL\": \"https://3d2v5.l.bged/\",\n      \"acn\": \"255528233\",\n      \"companyIncorporationDate\": \"8066-03-31\",\n      \"afslNumber\": \"1521\",\n      \"merchantCategoryCode\": \"5946\"\n    },\n    \"keys\": [\n      {\n        \"keyId\": \"<string>\",\n        \"bcryptKeyHash\": \"<string>\",\n        \"key\": \"<string>\"\n      },\n      {\n        \"keyId\": \"<string>\",\n        \"bcryptKeyHash\": \"<string>\",\n        \"key\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/clients",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clients"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:02.000Z",
+              "updatedAt": "2026-10-21T19:51:02.000Z",
+              "uid": "35240-4f1810e9-734e-4b3a-853f-dcd07df8eb18"
+            },
+            {
+              "id": "16ecbb53-7ac6-46bb-a0de-7e9f7fbc736b",
+              "name": "Not authorised",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client\": {\n    \"clientTransactionId\": \"<string>\",\n    \"legalName\": \"<string>\",\n    \"defaultPaymentExpiryDuration\": \"<number>\",\n    \"payIDDomains\": [\n      {\n        \"domain\": \"bqmfdl-ro-z3s2cjaw2g-xg4mfmh4zr-h6tf-hgyeb-sdo7rm1jve-xz4es3r-cyq7b6-uctnqf6-4.wf2n-fxr8l-onvuc-cd93ws2-lqillq6xo4-tgl5kejl2-9et6-mes-544hu-natbn27r-g.eukex899-06fhy1d6nx-lia6bxxd-ev-vxjqli6-9iu28z9-vtufyqw38-y0-18kscw-huxz5d.h-fyztoo610-t692pf-cb2eeru6-cgu-ay34pf6u-cjo-yji0-byzf07jlfcy.9aacvsqq52c-u4o-9j-btg0iypn-fobg-ttnfps2g8s-9-1ymjgmx-n2-l-zt.d7mndk-f-7upve-zlzv7vu0z.d-jg8w7yv-ndpormpx7-7g-1tedm5otuj-4w-8jn4s-n9e3lhr6ka-kz-ajcz5oanmzo.5-f-mhwoq-6zzslfo05zj-b3uhhtyb9-1-6ejfu-0h.s-g9pi.fpsyqkvfkuwctunr\",\n        \"merchantName\": \"<string>\"\n      }\n    ],\n    \"abn\": \"           \",\n    \"settlementAccountFullLegalName\": \"<string>\",\n    \"id\": \"<string>\",\n    \"tradingName\": \"bz_\",\n    \"additionalTradingNames\": [\n      \"2\"\n    ],\n    \"settlementAccountBSB\": \"003360\",\n    \"settlementAccountNumber\": \"460800437\",\n    \"settlementPayID\": \"<email>\",\n    \"sweepNotification\": {\n      \"authorizationHeader\": \"<string>\",\n      \"url\": \"https://\"\n    },\n    \"clientManagementNotification\": {\n      \"url\": \"https://\",\n      \"authorizationHeader\": \"<string>\"\n    },\n    \"topUpPayId\": \"<email>\",\n    \"dashboardUserEmail\": \"<email>\",\n    \"dashboardUserRole\": \"ADMIN\",\n    \"transactionPayoutLimit\": \"85075.58\",\n    \"dailyTransactionPayoutLimit\": \"89880043322.05\",\n    \"kyc\": {\n      \"businessRegistrationDate\": \"4508-02-29\",\n      \"businessContactName\": \"<string>\",\n      \"businessEmailAddress\": \"z%q_?/i.eeu.}2#||__ze2&.?y9s|.6isl.0!6`bm6e.x1.s52.&jp%u=.9-k6i@28es.8kw62c9ixtp.ptnmuo4d.b.j.2.w.6.5.pwdaa\",\n      \"businessPhoneNumber\": \"+298-24122168448729396161149\",\n      \"businessRegisteredAddress\": \"R\u2001YGZA\u2003zqI\",\n      \"completion\": \"<boolean>\",\n      \"websiteURL\": \"http://i9ve9v3.rzmrdvyqv.g24vON/exNc ohCXbp3 blkgJStl9feku0Mp.gcZ5Dgojydal-V/Lj/\",\n      \"instagramURL\": \"https://ixat67u6ela.nbtnt9IN3.ElXpla8J2v5Ft bTbM9.H1ErmW5U2Gqrcs-b40dTr5Xe4-jJxN_/\",\n      \"facebookURL\": \"https://vi.omsrqihJkTTac6OY6P8QZD\",\n      \"linkedInProfileURL\": \"https://3d2v5.l.bged/\",\n      \"acn\": \"255528233\",\n      \"companyIncorporationDate\": \"8066-03-31\",\n      \"afslNumber\": \"1521\",\n      \"merchantCategoryCode\": \"5946\"\n    },\n    \"keys\": [\n      {\n        \"keyId\": \"<string>\",\n        \"bcryptKeyHash\": \"<string>\",\n        \"key\": \"<string>\"\n      },\n      {\n        \"keyId\": \"<string>\",\n        \"bcryptKeyHash\": \"<string>\",\n        \"key\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/clients",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clients"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"failureCode\": \"<string>\",\n    \"failureReason\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T19:51:02.000Z",
+              "updatedAt": "2026-10-21T19:51:02.000Z",
+              "uid": "35240-16ecbb53-7ac6-46bb-a0de-7e9f7fbc736b"
+            }
+          ],
+          "createdAt": "2026-10-21T19:51:02.000Z",
+          "updatedAt": "2026-10-21T19:51:02.000Z",
+          "uid": "35240-3e91638e-c5e5-4c99-8ca5-91d4bbffe70b"
+        }
+      ],
+      "id": "41b16018-7251-4965-8218-ec4256ebff9b",
+      "createdAt": "2026-10-21T19:51:02.000Z",
+      "updatedAt": "2026-10-21T19:51:02.000Z",
+      "uid": "35240-41b16018-7251-4965-8218-ec4256ebff9b"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-uat.azupay.com.au/v1"
+    }
+  ]
+}
