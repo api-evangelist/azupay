@@ -1,4 +1,4 @@
-# Azupay (azupay)
+# Azupay
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,106 +64,206 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Azupay is an Australian real-time payments company that moves money over the New Payments Platform (NPP), the account-to-account rails operated by Australian Payments Plus. It is API-first: merchants and platforms embed Azupay to receive payments via PayID (AzupayId), send outbound payments to a PayID or BSB/account number (AzupayOut), and collect recurring or on-demand debits through PayTo mandates and payment agreements (AzupayTo). Azupay also offers Confirmation of Payee (CoP) account checks, batch/file processing, reporting, balance management, and hosted UX apps (Pay by Bank, Disbursements, Subscriptions). Home market is Australia.
+Azupay is an Australian real-time payments company that moves money over the New Payments Platform (NPP), the account-to-account rails operated by Australian Payments Plus. It is API-first: merchants and platforms embed Azupay to receive payments via PayID (AzupayId), send outbound payments to a PayID or BSB/account number (AzupayOut), and collect recurring or on-demand debits through PayTo mandates and payment agreements (AzupayTo). Azupay also offers Confirmation of Payee (CoP) account checks and PayID enquiry to reduce misdirected-payment and fraud risk, batch/file (ABA and SFTP) processing for bulk payouts and collections, reporting, balance management, sub-client and API-key management, and hosted UX apps (Pay by Bank, Disbursements, Subscriptions). Its public developer portal documents a REST API at api.azupay.com.au/v1 with a UAT environment, authenticated by API key (secret and distributable keys in the Authorization header) with OAuth 2.0 client-credentials available as an additional server-to-server option, plus webhooks for asynchronous payment status. Home market is Australia; the surface is genuinely self-serve and documented, though production access and some capabilities (sub-clients, OAuth2) are enabled per client by Azupay.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/azupay/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/azupay/refs/heads/main/apis.yml)
+**Areas:** Payments · Australia · Real-Time Payments · Account-to-Account · New Payments Platform · PayID · PayTo · Money Transfer · Confirmation of Payee · Open Banking
 
-## Tags
+## Azupay on APIs.io
 
-- Payments
-- Australia
-- Real-Time Payments
-- Account-to-Account
-- New Payments Platform
-- PayID
-- PayTo
-- Money Transfer
-- Confirmation of Payee
-- Open Banking
+Everything profiled for Azupay is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/azupay/](https://apis.io/providers/azupay/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (10)
 
-- **Created:** 2026-07-24
-- **Modified:** 2026-07-24
+- [Azupay API Keys API](https://apis.io/apis/azupay/azupay-api-keys-api/) — Manage API keys for your clients.
+- [Azupay Billing and Transaction Reports API](https://apis.io/apis/azupay/azupay-billing-and-transaction-reports-api/) — Fetch transaction, billing and other reports.
+- [Azupay Check Accounts API](https://apis.io/apis/azupay/azupay-check-accounts-api/) — Before you submit a Payment you can validate if the PayID or BSB account of the recipient exists and is eligible to receive payments.
+- [Azupay Clients API](https://apis.io/apis/azupay/azupay-clients-api/) — Would let you manage clients
+- [Azupay Current Balances API](https://apis.io/apis/azupay/azupay-current-balances-api/) — Obtain current dollar balances for Azupay products
+- [Azupay Payment Agreement API](https://apis.io/apis/azupay/azupay-payment-agreement-api/) — This API allows you to request Payments using mandates.
+- [Azupay Payment Agreement Request API](https://apis.io/apis/azupay/azupay-payment-agreement-request-api/) — This API generates a link to a one-time UX experience that enables payers to create and approve a PayTo Agreement, facilitating the setup of recurring…
+- [Azupay Payment API](https://apis.io/apis/azupay/azupay-payment-api/) — This API allows you to make outbound payments to PayID or NPP enabled BSB accounts.
+- [Azupay Payment Initiation API](https://apis.io/apis/azupay/azupay-payment-initiation-api/) — This API allows you to initiate Payments using mandates.
+- [Azupay Payment Request API](https://apis.io/apis/azupay/azupay-payment-request-api/) — This API allows your customers to make payments using PayID on your website, mobile app or over the counter.
 
-## API Posture
+### Published properties
 
-Azupay ships a genuine, self-serve developer portal at [developer.azupay.com.au](https://developer.azupay.com.au/) (ReadMe-hosted) with guides, a full API reference, a changelog, and a UAT environment. The REST API is served from `https://api.azupay.com.au/v1` (UAT at `https://api-uat.azupay.com.au/v1`). Authentication is by API key in the `Authorization` header — a secret key for charged operations and a distributable key for public-facing calls — with OAuth 2.0 client-credentials (scoped JWT bearer tokens, per-tenant token URL) offered as an additional server-to-server option. Webhooks deliver asynchronous payment status. The reference is published as per-operation OpenAPI 3.0.1 definitions; these were harvested and merged into six product-family specs below.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Azupay PaymentRequest API (AzupayId)
+Event-driven and webhook contracts.
 
-Receive real-time account-to-account payments by creating PayID-addressed payment requests; create, retrieve, search, delete, and refund PaymentRequests.
+- [Azupay Webhooks](https://apis.io/asyncapis/azupay/azupay-webhooks/)
 
-- **Human URL:** [https://developer.azupay.com.au/docs/receiving-payments](https://developer.azupay.com.au/docs/receiving-payments)
-- **Base URL:** `https://api.azupay.com.au/v1`
-- [OpenAPI](openapi/azupay-payment-request.yml)
-- [API Reference](https://developer.azupay.com.au/reference/createpayidpaymentrequest)
+#### MCP servers (1)
 
-### Azupay Payment API (AzupayOut)
+Model Context Protocol servers that expose the API to agents.
 
-Send outbound NPP payments to a PayID or a BSB and account number, then poll for settlement; search prior payments.
+- [azupay](https://apis.io/servers/azupay/azupay/)
 
-- **Human URL:** [https://developer.azupay.com.au/docs/making-payments](https://developer.azupay.com.au/docs/making-payments)
-- **Base URL:** `https://api.azupay.com.au/v1`
-- [OpenAPI](openapi/azupay-payment.yml)
-- [API Reference](https://developer.azupay.com.au/reference/makepayment)
+#### Agentic access (1)
 
-### Azupay PaymentAgreement & Initiation API (AzupayTo / PayTo)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Establish and manage PayTo payment agreements and initiate eligible debits: create, amend, change status, and search agreements; schedule and initiate payments; refund and search initiations.
+- [Azupay Agentic Access](https://apis.io/agentic-access/azupay/azupay-agentic-access/)
 
-- **Human URL:** [https://developer.azupay.com.au/docs/payto-integration-guide](https://developer.azupay.com.au/docs/payto-integration-guide)
-- **Base URL:** `https://api.azupay.com.au/v1`
-- [OpenAPI](openapi/azupay-payment-agreement.yml)
-- [API Reference](https://developer.azupay.com.au/reference/createpaymentagreement)
+#### JSON Schema (42)
 
-### Azupay Account Check API (Confirmation of Payee)
+The data models the API reads and writes.
 
-Confirm a payee's BSB/account and name via CoP, check NPP/AzupayTo reachability by BSB, and verify PayID registration.
+- [AccountCheckObj](https://apis.io/schemas/azupay/azupay-account-check-obj/)
+- [AccountCheckResponseObj](https://apis.io/schemas/azupay/azupay-account-check-response-obj/)
+- [AccountStatusExtraForPayIdObj](https://apis.io/schemas/azupay/azupay-account-status-extra-for-pay-id-obj/)
+- [AccountStatusObj](https://apis.io/schemas/azupay/azupay-account-status-obj/)
+- [ApiKeyUpdateObj](https://apis.io/schemas/azupay/azupay-api-key-update-obj/)
+- [apiKeysProvisionObj](https://apis.io/schemas/azupay/azupay-api-keys-provision-obj/)
+- [apiKeysProvisionResponseObj](https://apis.io/schemas/azupay/azupay-api-keys-provision-response-obj/)
+- [BalanceObj](https://apis.io/schemas/azupay/azupay-balance-obj/)
+- [BSBEnquiryObj](https://apis.io/schemas/azupay/azupay-bsbenquiry-obj/)
+- [ClientObj](https://apis.io/schemas/azupay/azupay-client-obj/)
+- [EnableOAuth2ResponseObj](https://apis.io/schemas/azupay/azupay-enable-oauth2-response-obj/)
+- [GetApiKeyResponseObj](https://apis.io/schemas/azupay/azupay-get-api-key-response-obj/)
+- [GetOAuth2ResponseObj](https://apis.io/schemas/azupay/azupay-get-oauth2-response-obj/)
+- [LowBalanceEmailAddresses](https://apis.io/schemas/azupay/azupay-low-balance-email-addresses/)
+- [LowBalanceThreshold](https://apis.io/schemas/azupay/azupay-low-balance-threshold/)
+- [nextPageIdResponse](https://apis.io/schemas/azupay/azupay-next-page-id-response/)
+- [PayIDEnquiryObj](https://apis.io/schemas/azupay/azupay-pay-idenquiry-obj/)
+- [PaymentAgreementAmendmentObj](https://apis.io/schemas/azupay/azupay-payment-agreement-amendment-obj/)
+- [PaymentAgreementAmendmentStatusObj](https://apis.io/schemas/azupay/azupay-payment-agreement-amendment-status-obj/)
+- [PaymentAgreementObj](https://apis.io/schemas/azupay/azupay-payment-agreement-obj/)
+- [PaymentAgreementRequestObj](https://apis.io/schemas/azupay/azupay-payment-agreement-request-obj/)
+- [PaymentAgreementRequestStatusObj](https://apis.io/schemas/azupay/azupay-payment-agreement-request-status-obj/)
+- [PaymentAgreementSearchObj](https://apis.io/schemas/azupay/azupay-payment-agreement-search-obj/)
+- [PaymentAgreementStatusObj](https://apis.io/schemas/azupay/azupay-payment-agreement-status-obj/)
+- [PaymentInitiationObj](https://apis.io/schemas/azupay/azupay-payment-initiation-obj/)
+- …and 17 more published on APIs.io
 
-- **Human URL:** [https://developer.azupay.com.au/docs/account-check-cop](https://developer.azupay.com.au/docs/account-check-cop)
-- **Base URL:** `https://api.azupay.com.au/v1`
-- [OpenAPI](openapi/azupay-check-accounts.yml)
-- [API Reference](https://developer.azupay.com.au/reference/checkaccountdetails)
+#### JSON-LD (1)
 
-### Azupay Report & Balance API
+Linked-data contexts for the provider's vocabulary.
 
-Retrieve daily transaction reports by month or date range, get time-limited download links, and check current client balance.
+- [Azupay Context](https://apis.io/jsonld/azupay/azupay-context/)
 
-- **Human URL:** [https://developer.azupay.com.au/docs/report-api](https://developer.azupay.com.au/docs/report-api)
-- **Base URL:** `https://api.azupay.com.au/v1`
-- [OpenAPI](openapi/azupay-reports.yml)
-- [API Reference](https://developer.azupay.com.au/reference/getreport)
+#### Collections (6)
 
-### Azupay Clients & API Key Management API
+Postman and Open Collection request collections.
 
-Manage sub-clients, provision and update sub-merchant API keys, enable/read OAuth 2.0 configuration, and set low-balance alerts.
+- [Azupay Check Accounts API](https://apis.io/collections/azupay/open-azupay-check-accounts/)
+- [Azupay Configuration API](https://apis.io/collections/azupay/open-azupay-configuration/)
+- [Azupay Payment API](https://apis.io/collections/azupay/open-azupay-payment/)
+- [Azupay Payment Agreement API](https://apis.io/collections/azupay/open-azupay-payment-agreement/)
+- [Azupay Payment Request API](https://apis.io/collections/azupay/open-azupay-payment-request/)
+- [Azupay Reports & Balance API](https://apis.io/collections/azupay/open-azupay-reports/)
 
-- **Human URL:** [https://developer.azupay.com.au/docs/clients-api](https://developer.azupay.com.au/docs/clients-api)
-- **Base URL:** `https://api.azupay.com.au/v1`
-- [OpenAPI](openapi/azupay-configuration.yml)
-- [API Reference](https://developer.azupay.com.au/reference/createclient)
+#### Overlays (6)
 
-## Common Properties
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Azupay Check Accounts Overlay](https://apis.io/overlays/azupay/azupay-check-accounts-overlay/)
+- [Azupay Configuration Overlay](https://apis.io/overlays/azupay/azupay-configuration-overlay/)
+- [Azupay Payment Agreement Overlay](https://apis.io/overlays/azupay/azupay-payment-agreement-overlay/)
+- [Azupay Payment Overlay](https://apis.io/overlays/azupay/azupay-payment-overlay/)
+- [Azupay Payment Request Overlay](https://apis.io/overlays/azupay/azupay-payment-request-overlay/)
+- [Azupay Reports Overlay](https://apis.io/overlays/azupay/azupay-reports-overlay/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Azupay API Rules](https://apis.io/rules/azupay/azupay-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Azupay Authentication](https://apis.io/security/azupay/azupay-authentication/)
+- [Azupay Domain Security](https://apis.io/security/azupay/azupay-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Azupay Scopes](https://apis.io/scopes/azupay/azupay-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Azupay Plans Pricing](https://apis.io/plans/azupay/azupay-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Azupay Rate Limits](https://apis.io/rate-limits/azupay/azupay-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://azupay.com.au/)
-- [Developer Portal](https://developer.azupay.com.au/)
 - [Documentation](https://developer.azupay.com.au/docs/getting-started-1)
-- [Getting Started](https://developer.azupay.com.au/docs/getting-started-1)
-- [Sign Up](https://developer.azupay.com.au/docs/signing-up)
-- [Changelog](https://developer.azupay.com.au/changelog)
-- [Webhooks](https://developer.azupay.com.au/docs/webhooks)
-- [Help Center](https://helpcentre.azupay.com.au/)
-- [Status Page](https://status.azupay.com.au/)
+- [Getting started](https://developer.azupay.com.au/docs/getting-started-1)
+- [API reference](https://developer.azupay.com.au/reference/createpayidpaymentrequest)
 - [Pricing](https://azupay.com.au/pricing)
+- [Sign up](https://developer.azupay.com.au/docs/signing-up)
+- [Changelog](https://developer.azupay.com.au/changelog)
 - [Blog](https://azupay.com.au/blog)
-- [Terms of Service](https://azupay.com.au/terms/)
-- [Privacy Policy](https://azupay.com.au/privacy-policy/)
-- [Login](https://dashboard.azupay.com.au/)
+- [Terms of service](https://azupay.com.au/terms/)
+- [Privacy policy](https://azupay.com.au/privacy-policy/)
+- [Status](https://status.azupay.com.au/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 63.3** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 70.2 |
+| Contract governance | 22.0 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 54.2 |
+| Access clarity | 69.7 |
+
+**Agent readiness 59.0** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | verified |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 36.2** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/azupay/](https://apis.io/providers/azupay/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Azupay: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/azupay/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
